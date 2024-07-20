@@ -1,0 +1,3134 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Box2DSharp</name>
+    </assembly>
+    <members>
+        <member name="T:Box2DSharp.Collision.AABB">
+            <summary>
+                An axis aligned bounding box.
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Collision.AABB.LowerBound">
+            <summary>
+                the lower vertex
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Collision.AABB.UpperBound">
+            <summary>
+                the upper vertex
+            </summary>
+        </member>
+        <member name="M:Box2DSharp.Collision.AABB.IsValid">
+            <summary>
+                Verify that the bounds are sorted.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Box2DSharp.Collision.AABB.GetCenter">
+            <summary>
+                Get the center of the AABB.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Box2DSharp.Collision.AABB.GetExtents">
+            <summary>
+                Get the extents of the AABB (half-widths).
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Box2DSharp.Collision.AABB.GetPerimeter">
+            <summary>
+                Get the perimeter length
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Box2DSharp.Collision.AABB.Combine(Box2DSharp.Collision.AABB@)">
+            <summary>
+                Combine an AABB into this one.
+            </summary>
+            <param name="aabb"></param>
+        </member>
+        <member name="M:Box2DSharp.Collision.AABB.Combine(Box2DSharp.Collision.AABB@,Box2DSharp.Collision.AABB@)">
+            <summary>
+                Combine two AABBs into this one.
+            </summary>
+            <param name="aabb1"></param>
+            <param name="aabb2"></param>
+        </member>
+        <member name="M:Box2DSharp.Collision.AABB.Contains(Box2DSharp.Collision.AABB@)">
+            <summary>
+                Does this aabb contain the provided AABB.
+            </summary>
+            <param name="aabb">the provided AABB</param>
+            <returns></returns>
+        </member>
+        <member name="M:Box2DSharp.Collision.BroadPhase.CreateProxy(Box2DSharp.Collision.AABB@,Box2DSharp.Dynamics.FixtureProxy)">
+            Create a proxy with an initial AABB. Pairs are not reported until
+            UpdatePairs is called.
+        </member>
+        <member name="M:Box2DSharp.Collision.BroadPhase.DestroyProxy(System.Int32)">
+            Destroy a proxy. It is up to the client to remove any pairs.
+        </member>
+        <member name="M:Box2DSharp.Collision.BroadPhase.MoveProxy(System.Int32,Box2DSharp.Collision.AABB@,System.Numerics.Vector2@)">
+            Call MoveProxy as many times as you like, then when you are done
+            call UpdatePairs to finalized the proxy pairs (for your time step).
+        </member>
+        <member name="M:Box2DSharp.Collision.BroadPhase.TouchProxy(System.Int32)">
+            Call to trigger a re-processing of it's pairs on the next call to UpdatePairs.
+        </member>
+        <member name="M:Box2DSharp.Collision.BroadPhase.GetFatAABB(System.Int32)">
+            Get the fat AABB for a proxy.
+        </member>
+        <member name="M:Box2DSharp.Collision.BroadPhase.GetUserData(System.Int32)">
+            Get user data from a proxy. Returns nullptr if the id is invalid.
+        </member>
+        <member name="M:Box2DSharp.Collision.BroadPhase.TestOverlap(System.Int32,System.Int32)">
+            Test overlap of fat AABBs.
+        </member>
+        <member name="M:Box2DSharp.Collision.BroadPhase.GetProxyCount">
+            Get the number of proxies.
+        </member>
+        <member name="M:Box2DSharp.Collision.BroadPhase.UpdatePairs``1(``0)">
+            Update the pairs. This results in pair callbacks. This can only add pairs.
+        </member>
+        <member name="M:Box2DSharp.Collision.BroadPhase.Query(Box2DSharp.Dynamics.Internal.ITreeQueryCallback@,Box2DSharp.Collision.AABB@)">
+            Query an AABB for overlapping proxies. The callback class
+            is called for each proxy that overlaps the supplied AABB.
+        </member>
+        <member name="M:Box2DSharp.Collision.BroadPhase.RayCast(Box2DSharp.Dynamics.Internal.ITreeRayCastCallback@,Box2DSharp.Collision.Collider.RayCastInput@)">
+            Ray-cast against the proxies in the tree. This relies on the callback
+            to perform a exact ray-cast in the case were the proxy contains a shape.
+            The callback also performs the any collision filtering. This has performance
+            roughly equal to k * log(n), where k is the number of collisions and n is the
+            number of proxies in the tree.
+            @param input the ray-cast input data. The ray extends from p1 to p1 + maxFraction * (p2 - p1).
+            @param callback a callback class that is called for each proxy that is hit by the ray.
+        </member>
+        <member name="M:Box2DSharp.Collision.BroadPhase.GetTreeHeight">
+            Get the height of the embedded tree.
+        </member>
+        <member name="M:Box2DSharp.Collision.BroadPhase.GetTreeBalance">
+            Get the balance of the embedded tree.
+        </member>
+        <member name="M:Box2DSharp.Collision.BroadPhase.GetTreeQuality">
+            Get the quality metric of the embedded tree.
+        </member>
+        <member name="M:Box2DSharp.Collision.BroadPhase.ShiftOrigin(System.Numerics.Vector2@)">
+            Shift the world origin. Useful for large worlds.
+            The shift formula is: position -= newOrigin
+            @param newOrigin the new origin with respect to the old origin
+        </member>
+        <member name="T:Box2DSharp.Collision.CollisionUtils">
+            <summary>
+                Collision Algorithm
+            </summary>
+        </member>
+        <member name="M:Box2DSharp.Collision.CollisionUtils.CollideCircles(Box2DSharp.Collision.Collider.Manifold@,Box2DSharp.Collision.Shapes.CircleShape,Box2DSharp.Common.Transform@,Box2DSharp.Collision.Shapes.CircleShape,Box2DSharp.Common.Transform@)">
+            An axis aligned bounding box.
+            Compute the collision manifold between two circles.
+        </member>
+        <member name="M:Box2DSharp.Collision.CollisionUtils.CollidePolygonAndCircle(Box2DSharp.Collision.Collider.Manifold@,Box2DSharp.Collision.Shapes.PolygonShape,Box2DSharp.Common.Transform@,Box2DSharp.Collision.Shapes.CircleShape,Box2DSharp.Common.Transform@)">
+            Compute the collision manifold between a polygon and a circle.
+        </member>
+        <member name="M:Box2DSharp.Collision.CollisionUtils.CollideEdgeAndCircle(Box2DSharp.Collision.Collider.Manifold@,Box2DSharp.Collision.Shapes.EdgeShape,Box2DSharp.Common.Transform@,Box2DSharp.Collision.Shapes.CircleShape,Box2DSharp.Common.Transform@)">
+            <summary>
+                Compute contact points for edge versus circle.
+                This accounts for edge connectivity.
+                计算边缘和圆的碰撞点
+            </summary>
+            <param name="manifold"></param>
+            <param name="edgeA"></param>
+            <param name="xfA"></param>
+            <param name="circleB"></param>
+            <param name="xfB"></param>
+        </member>
+        <member name="F:Box2DSharp.Collision.CollisionUtils.TempPolygon.Vertices">
+            <summary>
+            Size Settings.MaxPolygonVertices
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Collision.CollisionUtils.TempPolygon.Normals">
+            <summary>
+            Size Settings.MaxPolygonVertices
+            </summary>
+        </member>
+        <member name="M:Box2DSharp.Collision.CollisionUtils.CollidePolygons(Box2DSharp.Collision.Collider.Manifold@,Box2DSharp.Collision.Shapes.PolygonShape,Box2DSharp.Common.Transform@,Box2DSharp.Collision.Shapes.PolygonShape,Box2DSharp.Common.Transform@)">
+            Compute the collision manifold between two polygons.
+        </member>
+        <member name="M:Box2DSharp.Collision.CollisionUtils.GetPointStates(Box2DSharp.Collision.Collider.PointState[]@,Box2DSharp.Collision.Collider.PointState[]@,Box2DSharp.Collision.Collider.Manifold@,Box2DSharp.Collision.Collider.Manifold@)">
+            Compute the point states given two manifolds. The states pertain to the transition from manifold1
+            to manifold2. So state1 is either persist or remove while state2 is either add or persist.
+        </member>
+        <member name="M:Box2DSharp.Collision.CollisionUtils.ClipSegmentToLine(System.Span{Box2DSharp.Collision.Collider.ClipVertex}@,System.Span{Box2DSharp.Collision.Collider.ClipVertex}@,System.Numerics.Vector2@,System.Single,System.Int32)">
+            Clipping for contact manifolds.
+        </member>
+        <member name="M:Box2DSharp.Collision.CollisionUtils.TestOverlap(Box2DSharp.Collision.Shapes.Shape,System.Int32,Box2DSharp.Collision.Shapes.Shape,System.Int32,Box2DSharp.Common.Transform@,Box2DSharp.Common.Transform@,Box2DSharp.Collision.GJkProfile)">
+            Determine if two generic shapes overlap.
+        </member>
+        <member name="T:Box2DSharp.Collision.Collider.ClipVertex">
+            Used for computing contact manifolds.
+        </member>
+        <member name="T:Box2DSharp.Collision.Collider.ContactFeature">
+            The features that intersect to form the contact point
+            This must be 4 bytes or less.
+        </member>
+        <member name="F:Box2DSharp.Collision.Collider.ContactFeature.IndexA">
+            Feature index on shapeA
+        </member>
+        <member name="F:Box2DSharp.Collision.Collider.ContactFeature.IndexB">
+            Feature index on shapeB
+        </member>
+        <member name="F:Box2DSharp.Collision.Collider.ContactFeature.TypeA">
+            The feature type on shapeA
+        </member>
+        <member name="F:Box2DSharp.Collision.Collider.ContactFeature.TypeB">
+            The feature type on shapeB
+        </member>
+        <member name="T:Box2DSharp.Collision.Collider.ContactId">
+            Contact ids to facilitate warm starting.
+        </member>
+        <member name="F:Box2DSharp.Collision.Collider.ContactId.Key">
+            Used to quickly compare contact ids.
+        </member>
+        <member name="T:Box2DSharp.Collision.Collider.Manifold">
+            A manifold for two touching convex shapes.
+            Box2D supports multiple types of contact:
+            - clip point versus plane with radius
+            - point versus point with radius (circles)
+            The local point usage depends on the manifold type:
+            -e_circles: the local center of circleA
+            -e_faceA: the center of faceA
+            -e_faceB: the center of faceB
+            Similarly the local normal usage:
+            -e_circles: not used
+            -e_faceA: the normal on polygonA
+            -e_faceB: the normal on polygonB
+            We store contacts in this way so that position correction can
+            account for movement, which is critical for continuous physics.
+            All contact scenarios must be expressed in one of these types.
+            This structure is stored across time steps, so we keep it small.
+        </member>
+        <member name="F:Box2DSharp.Collision.Collider.Manifold.Points">
+            <summary>
+            the points of contact, size Settings.MaxManifoldPoints
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Collision.Collider.Manifold.LocalNormal">
+            not use for Type::e_points
+        </member>
+        <member name="F:Box2DSharp.Collision.Collider.Manifold.LocalPoint">
+            usage depends on manifold type
+        </member>
+        <member name="F:Box2DSharp.Collision.Collider.Manifold.PointCount">
+            the number of manifold points
+        </member>
+        <member name="T:Box2DSharp.Collision.Collider.ManifoldPoint">
+            A manifold point is a contact point belonging to a contact
+            manifold. It holds details related to the geometry and dynamics
+            of the contact points.
+            The local point usage depends on the manifold type:
+            -e_circles: the local center of circleB
+            -e_faceA: the local center of cirlceB or the clip point of polygonB
+            -e_faceB: the clip point of polygonA
+            This structure is stored across time steps, so we keep it small.
+            Note: the impulses are used for internal caching and may not
+            provide reliable contact forces, especially for high speed collisions.
+        </member>
+        <member name="F:Box2DSharp.Collision.Collider.ManifoldPoint.LocalPoint">
+            usage depends on manifold type
+        </member>
+        <member name="F:Box2DSharp.Collision.Collider.ManifoldPoint.NormalImpulse">
+            the non-penetration impulse
+        </member>
+        <member name="F:Box2DSharp.Collision.Collider.ManifoldPoint.TangentImpulse">
+            /// the friction impulse
+        </member>
+        <member name="F:Box2DSharp.Collision.Collider.ManifoldPoint.Id">
+            uniquely identifies a contact point between two shapes
+        </member>
+        <member name="T:Box2DSharp.Collision.Collider.PointState">
+            This is used for determining the state of contact points.
+        </member>
+        <member name="F:Box2DSharp.Collision.Collider.PointState.NullState">
+            point does not exist
+        </member>
+        <member name="F:Box2DSharp.Collision.Collider.PointState.AddState">
+            point was added in the update
+        </member>
+        <member name="F:Box2DSharp.Collision.Collider.PointState.PersistState">
+            point persisted across the update
+        </member>
+        <member name="F:Box2DSharp.Collision.Collider.PointState.RemoveState">
+            point was removed in the update
+        </member>
+        <member name="T:Box2DSharp.Collision.Collider.RayCastInput">
+            Ray-cast input data. The ray extends from p1 to p1 + maxFraction * (p2 - p1).
+        </member>
+        <member name="T:Box2DSharp.Collision.Collider.RayCastOutput">
+            Ray-cast output data. The ray hits at p1 + fraction * (p2 - p1), where p1 and p2
+            come from b2RayCastInput.
+        </member>
+        <member name="T:Box2DSharp.Collision.Collider.WorldManifold">
+            This is used to compute the current state of a contact manifold.
+        </member>
+        <member name="M:Box2DSharp.Collision.Collider.WorldManifold.Initialize(Box2DSharp.Collision.Collider.Manifold@,Box2DSharp.Common.Transform@,System.Single,Box2DSharp.Common.Transform@,System.Single)">
+            Evaluate the manifold with supplied transforms. This assumes
+            modest motion from the original state. This does not change the
+            point count, impulses, etc. The radii must come from the shapes
+            that generated the manifold.
+        </member>
+        <member name="F:Box2DSharp.Collision.Collider.WorldManifold.Normal">
+            world vector pointing from A to B
+        </member>
+        <member name="F:Box2DSharp.Collision.Collider.WorldManifold.Points">
+            <summary>
+            world contact point (point of intersection), size Settings.MaxManifoldPoints
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Collision.Collider.WorldManifold.Separations">
+            <summary>
+            a negative value indicates overlap, in meters, size Settings.MaxManifoldPoints
+            </summary>
+        </member>
+        <member name="M:Box2DSharp.Collision.DistanceAlgorithm.Distance(Box2DSharp.Collision.DistanceOutput@,Box2DSharp.Collision.SimplexCache@,Box2DSharp.Collision.DistanceInput@,Box2DSharp.Collision.GJkProfile@)">
+            <summary>
+            GJK碰撞检测
+            </summary>
+            <param name="output"></param>
+            <param name="cache"></param>
+            <param name="input"></param>
+            <param name="gJkProfile"></param>
+        </member>
+        <member name="M:Box2DSharp.Collision.DistanceAlgorithm.ShapeCast(Box2DSharp.Collision.ShapeCastOutput@,Box2DSharp.Collision.ShapeCastInput@)">
+            <summary>
+            Perform a linear shape cast of shape B moving and shape A fixed. Determines the hit point, normal, and translation fraction.
+            </summary>
+            <param name="output"></param>
+            <param name="input"></param>
+            <returns>true if hit, false if there is no hit or an initial overlap</returns>
+        </member>
+        <member name="T:Box2DSharp.Collision.DistanceInput">
+            Input for b2Distance.
+            You have to option to use the shape radii
+            in the computation. Even 
+        </member>
+        <member name="T:Box2DSharp.Collision.DistanceOutput">
+            Output for b2Distance.
+        </member>
+        <member name="F:Box2DSharp.Collision.DistanceOutput.PointA">
+            closest point on shapeA
+        </member>
+        <member name="F:Box2DSharp.Collision.DistanceOutput.PointB">
+            closest point on shapeB
+        </member>
+        <member name="F:Box2DSharp.Collision.DistanceOutput.Iterations">
+            number of GJK iterations used
+        </member>
+        <member name="T:Box2DSharp.Collision.DistanceProxy">
+            A distance proxy is used by the GJK algorithm.
+            It encapsulates any shape.
+        </member>
+        <member name="M:Box2DSharp.Collision.DistanceProxy.Set(Box2DSharp.Collision.Shapes.Shape,System.Int32)">
+            Initialize the proxy using the given shape. The shape
+            must remain in scope while the proxy is in use.
+        </member>
+        <member name="M:Box2DSharp.Collision.DistanceProxy.Set(System.Numerics.Vector2[],System.Int32,System.Single)">
+            Initialize the proxy using a vertex cloud and radius. The vertices
+            must remain in scope while the proxy is in use.
+        </member>
+        <member name="M:Box2DSharp.Collision.DistanceProxy.GetSupport(System.Numerics.Vector2@)">
+            Get the supporting vertex index in the given direction.
+        </member>
+        <member name="M:Box2DSharp.Collision.DistanceProxy.GetSupportVertex(System.Numerics.Vector2@)">
+            Get the supporting vertex in the given direction.
+        </member>
+        <member name="M:Box2DSharp.Collision.DistanceProxy.GetVertexCount">
+            Get the vertex count.
+        </member>
+        <member name="M:Box2DSharp.Collision.DistanceProxy.GetVertex(System.Int32)">
+            Get a vertex by index. Used by b2Distance.
+        </member>
+        <member name="M:Box2DSharp.Collision.DynamicTree.CreateProxy(Box2DSharp.Collision.AABB@,System.Object)">
+            Create a proxy. Provide a tight fitting AABB and a userData pointer.
+        </member>
+        <member name="M:Box2DSharp.Collision.DynamicTree.DestroyProxy(System.Int32)">
+            Destroy a proxy. This asserts if the id is invalid.
+        </member>
+        <member name="M:Box2DSharp.Collision.DynamicTree.MoveProxy(System.Int32,Box2DSharp.Collision.AABB@,System.Numerics.Vector2@)">
+            Move a proxy with a swepted AABB. If the proxy has moved outside of its fattened AABB,
+            then the proxy is removed from the tree and re-inserted. Otherwise
+            the function returns immediately.
+            @return true if the proxy was re-inserted.
+        </member>
+        <member name="M:Box2DSharp.Collision.DynamicTree.GetUserData(System.Int32)">
+            Get proxy user data.
+            @return the proxy user data or 0 if the id is invalid.
+        </member>
+        <member name="M:Box2DSharp.Collision.DynamicTree.GetFatAABB(System.Int32)">
+            Get the fat AABB for a proxy.
+        </member>
+        <member name="M:Box2DSharp.Collision.DynamicTree.Query(Box2DSharp.Dynamics.Internal.ITreeQueryCallback@,Box2DSharp.Collision.AABB@)">
+            Query an AABB for overlapping proxies. The callback class
+            is called for each proxy that overlaps the supplied AABB.
+        </member>
+        <member name="M:Box2DSharp.Collision.DynamicTree.RayCast(Box2DSharp.Dynamics.Internal.ITreeRayCastCallback@,Box2DSharp.Collision.Collider.RayCastInput@)">
+            Ray-cast against the proxies in the tree. This relies on the callback
+            to perform a exact ray-cast in the case were the proxy contains a shape.
+            The callback also performs the any collision filtering. This has performance
+            roughly equal to k * log(n), where k is the number of collisions and n is the
+            number of proxies in the tree.
+            @param input the ray-cast input data. The ray extends from p1 to p1 + maxFraction * (p2 - p1).
+            @param callback a callback class that is called for each proxy that is hit by the ray.
+        </member>
+        <member name="M:Box2DSharp.Collision.DynamicTree.Validate">
+            Validate this tree. For testing.
+        </member>
+        <member name="M:Box2DSharp.Collision.DynamicTree.GetHeight">
+            Compute the height of the binary tree in O(N) time. Should not be
+            called often.
+        </member>
+        <member name="M:Box2DSharp.Collision.DynamicTree.GetMaxBalance">
+            Get the maximum balance of an node in the tree. The balance is the difference
+            in height of the two children of a node.
+        </member>
+        <member name="M:Box2DSharp.Collision.DynamicTree.GetAreaRatio">
+            Get the ratio of the sum of the node areas to the root area.
+        </member>
+        <member name="M:Box2DSharp.Collision.DynamicTree.RebuildBottomUp">
+            Build an optimal tree. Very expensive. For testing.
+        </member>
+        <member name="M:Box2DSharp.Collision.DynamicTree.ShiftOrigin(System.Numerics.Vector2@)">
+            Shift the world origin. Useful for large worlds.
+            The shift formula is: position -= newOrigin
+            @param newOrigin the new origin with respect to the old origin
+        </member>
+        <member name="F:Box2DSharp.Collision.TreeNode.AABB">
+            Enlarged AABB
+        </member>
+        <member name="T:Box2DSharp.Collision.ShapeCastInput">
+            Input parameters for b2ShapeCast
+        </member>
+        <member name="T:Box2DSharp.Collision.ShapeCastOutput">
+            Output results for b2ShapeCast
+        </member>
+        <member name="T:Box2DSharp.Collision.Shapes.ChainShape">
+            <summary>
+            A chain shape is a free form sequence of line segments.
+            The chain has one-sided collision, with the surface normal pointing to the right of the edge.
+            This provides a counter-clockwise winding like the polygon shape.
+            Connectivity information is used to create smooth collisions.
+            <para>@warning the chain will not collide properly if there are self-intersections.</para>
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Collision.Shapes.ChainShape.Count">
+            The vertex count.
+        </member>
+        <member name="F:Box2DSharp.Collision.Shapes.ChainShape.Vertices">
+            The vertices. Owned by this class.
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.ChainShape.Clone">
+            Implement b2Shape. Vertices are cloned using b2Alloc.
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.ChainShape.Clear">
+            <summary>
+            Clear all data.
+            </summary>
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.ChainShape.CreateLoop(System.Numerics.Vector2[],System.Int32)">
+            Create a loop. This automatically adjusts connectivity.
+            @param vertices an array of vertices, these are copied
+            @param count the vertex count
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.ChainShape.CreateChain(System.Numerics.Vector2[],System.Int32,System.Numerics.Vector2,System.Numerics.Vector2)">
+            <summary>
+            Create a chain with ghost vertices to connect multiple chains together.
+            </summary>
+            <param name="vertices">an array of vertices, these are copied</param>
+            <param name="count">the vertex count</param>
+            <param name="prevVertex">previous vertex from chain that connects to the start</param>
+            <param name="nextVertex">next vertex from chain that connects to the end</param>
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.ChainShape.GetChildCount">
+            @see b2Shape::GetChildCount
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.ChainShape.GetChildEdge(Box2DSharp.Collision.Shapes.EdgeShape@,System.Int32)">
+            Get a child edge.
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.ChainShape.TestPoint(Box2DSharp.Common.Transform@,System.Numerics.Vector2@)">
+            This always return false.
+            @see b2Shape::TestPoint
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.ChainShape.RayCast(Box2DSharp.Collision.Collider.RayCastOutput@,Box2DSharp.Collision.Collider.RayCastInput@,Box2DSharp.Common.Transform@,System.Int32)">
+            Implement b2Shape.
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.ChainShape.ComputeAABB(Box2DSharp.Collision.AABB@,Box2DSharp.Common.Transform@,System.Int32)">
+            @see b2Shape::ComputeAABB
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.ChainShape.ComputeMass(Box2DSharp.Collision.Shapes.MassData@,System.Single)">
+            Chains have zero mass.
+            @see b2Shape::ComputeMass
+        </member>
+        <member name="T:Box2DSharp.Collision.Shapes.CircleShape">
+            <summary>
+            A solid circle shape
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Collision.Shapes.CircleShape.Position">
+            Position
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.CircleShape.Clone">
+            Implement b2Shape.
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.CircleShape.GetChildCount">
+            @see b2Shape::GetChildCount
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.CircleShape.TestPoint(Box2DSharp.Common.Transform@,System.Numerics.Vector2@)">
+            Implement b2Shape.
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.CircleShape.RayCast(Box2DSharp.Collision.Collider.RayCastOutput@,Box2DSharp.Collision.Collider.RayCastInput@,Box2DSharp.Common.Transform@,System.Int32)">
+            <summary>
+            Implement b2Shape.
+            @note because the circle is solid, rays that start inside do not hit because the normal is
+            not defined.
+            </summary>
+            <param name="output"></param>
+            <param name="input"></param>
+            <param name="transform"></param>
+            <param name="childIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.CircleShape.ComputeAABB(Box2DSharp.Collision.AABB@,Box2DSharp.Common.Transform@,System.Int32)">
+            @see b2Shape::ComputeAABB
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.CircleShape.ComputeMass(Box2DSharp.Collision.Shapes.MassData@,System.Single)">
+            @see b2Shape::ComputeMass
+        </member>
+        <member name="T:Box2DSharp.Collision.Shapes.EdgeShape">
+            <summary>
+            A line segment (edge) shape. These can be connected in chains or loops
+            to other edge shapes. Edges created independently are two-sided and do
+            no provide smooth movement across junctions. 
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Collision.Shapes.EdgeShape.Vertex1">
+            These are the edge vertices
+        </member>
+        <member name="F:Box2DSharp.Collision.Shapes.EdgeShape.Vertex2">
+            These are the edge vertices
+        </member>
+        <member name="F:Box2DSharp.Collision.Shapes.EdgeShape.Vertex0">
+            Optional adjacent vertices. These are used for smooth collision.
+        </member>
+        <member name="F:Box2DSharp.Collision.Shapes.EdgeShape.Vertex3">
+            Optional adjacent vertices. These are used for smooth collision.
+        </member>
+        <member name="F:Box2DSharp.Collision.Shapes.EdgeShape.OneSided">
+            Uses m_vertex0 and m_vertex3 to create smooth collision.
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.EdgeShape.SetOneSided(System.Numerics.Vector2@,System.Numerics.Vector2@,System.Numerics.Vector2@,System.Numerics.Vector2@)">
+            <summary>
+            Set this as a part of a sequence. Vertex v0 precedes the edge and vertex v3
+            follows. These extra vertices are used to provide smooth movement
+            across junctions. This also makes the collision one-sided. The edge
+            normal points to the right looking from v1 to v2.
+            </summary>
+            <param name="v0"></param>
+            <param name="v1"></param>
+            <param name="v2"></param>
+            <param name="v3"></param>
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.EdgeShape.SetTwoSided(System.Numerics.Vector2@,System.Numerics.Vector2@)">
+            <summary>
+            Set this as an isolated edge. Collision is two-sided.
+            </summary>
+            <param name="v1"></param>
+            <param name="v2"></param>
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.EdgeShape.Clone">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.EdgeShape.GetChildCount">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.EdgeShape.TestPoint(Box2DSharp.Common.Transform@,System.Numerics.Vector2@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.EdgeShape.RayCast(Box2DSharp.Collision.Collider.RayCastOutput@,Box2DSharp.Collision.Collider.RayCastInput@,Box2DSharp.Common.Transform@,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.EdgeShape.ComputeAABB(Box2DSharp.Collision.AABB@,Box2DSharp.Common.Transform@,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.EdgeShape.ComputeMass(Box2DSharp.Collision.Shapes.MassData@,System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="F:Box2DSharp.Collision.Shapes.MassData.Mass">
+            The mass of the shape, usually in kilograms.
+        </member>
+        <member name="F:Box2DSharp.Collision.Shapes.MassData.Center">
+            The position of the shape's centroid relative to the shape's origin.
+        </member>
+        <member name="F:Box2DSharp.Collision.Shapes.MassData.RotationInertia">
+            The rotational inertia of the shape about the local origin.
+        </member>
+        <member name="T:Box2DSharp.Collision.Shapes.PolygonShape">
+            <summary>
+            A solid convex polygon. It is assumed that the interior of the polygon is to
+            the left of each edge.
+            Polygons have a maximum number of vertices equal to b2_maxPolygonVertices.
+            In most cases you should not need many vertices for a convex polygon.
+            </summary>
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.PolygonShape.Clone">
+            Implement b2Shape.
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.PolygonShape.GetChildCount">
+            @see b2Shape::GetChildCount
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.PolygonShape.Set(System.Numerics.Vector2[],System.Int32)">
+            Create a convex hull from the given array of local points.
+            The count must be in the range [3, b2_maxPolygonVertices].
+            @warning the points may be re-ordered, even if they form a convex polygon
+            @warning collinear points are handled but not removed. Collinear points
+            may lead to poor stacking behavior.
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.PolygonShape.SetAsBox(System.Single,System.Single)">
+            Build vertices to represent an axis-aligned box centered on the local origin.
+            @param hx the half-width.
+            @param hy the half-height.
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.PolygonShape.SetAsBox(System.Single,System.Single,System.Numerics.Vector2@,System.Single)">
+            Build vertices to represent an oriented box.
+            @param hx the half-width.
+            @param hy the half-height.
+            @param center the center of the box in local coordinates.
+            @param angle the rotation of the box in local coordinates.
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.PolygonShape.TestPoint(Box2DSharp.Common.Transform@,System.Numerics.Vector2@)">
+            @see b2Shape::TestPoint
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.PolygonShape.RayCast(Box2DSharp.Collision.Collider.RayCastOutput@,Box2DSharp.Collision.Collider.RayCastInput@,Box2DSharp.Common.Transform@,System.Int32)">
+            <summary>
+            Implement b2Shape.
+            @note because the polygon is solid, rays that start inside do not hit because the normal is
+            not defined.
+            </summary>
+            <param name="output"></param>
+            <param name="input"></param>
+            <param name="transform"></param>
+            <param name="childIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.PolygonShape.ComputeAABB(Box2DSharp.Collision.AABB@,Box2DSharp.Common.Transform@,System.Int32)">
+            @see b2Shape::ComputeAABB
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.PolygonShape.ComputeMass(Box2DSharp.Collision.Shapes.MassData@,System.Single)">
+            @see b2Shape::ComputeMass
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.PolygonShape.Validate">
+            Validate convexity. This is a very time consuming operation.
+            @returns true if valid
+        </member>
+        <member name="T:Box2DSharp.Collision.Shapes.Shape">
+            This holds the mass data computed for a shape.
+            A shape is used for collision detection. You can create a shape however you like.
+            Shapes used for simulation in b2World are created automatically when a b2Fixture
+            is created. Shapes may encapsulate a one or more child shapes.
+        </member>
+        <member name="P:Box2DSharp.Collision.Shapes.Shape.Radius">
+            Radius of a shape. For polygonal shapes this must be b2_polygonRadius. There is no support for
+            making rounded polygons.
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.Shape.Clone">
+            Clone the concrete shape using the provided allocator.
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.Shape.GetChildCount">
+            Get the number of child primitives.
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.Shape.TestPoint(Box2DSharp.Common.Transform@,System.Numerics.Vector2@)">
+            Test a point for containment in this shape. This only works for convex shapes.
+            @param xf the shape world transform.
+            @param p a point in world coordinates.
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.Shape.RayCast(Box2DSharp.Collision.Collider.RayCastOutput@,Box2DSharp.Collision.Collider.RayCastInput@,Box2DSharp.Common.Transform@,System.Int32)">
+            Cast a ray against a child shape.
+            @param output the ray-cast results.
+            @param input the ray-cast input parameters.
+            @param transform the transform to be applied to the shape.
+            @param childIndex the child shape index
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.Shape.ComputeAABB(Box2DSharp.Collision.AABB@,Box2DSharp.Common.Transform@,System.Int32)">
+            Given a transform, compute the associated axis aligned bounding box for a child shape.
+            @param aabb returns the axis aligned box.
+            @param xf the world transform of the shape.
+            @param childIndex the child shape
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.Shape.ComputeMass(Box2DSharp.Collision.Shapes.MassData@,System.Single)">
+            Compute the mass properties of this shape using its dimensions and density.
+            The inertia tensor is computed about the local origin.
+            @param massData returns the mass data for this shape.
+            @param density the density in kilograms per meter squared.
+        </member>
+        <member name="T:Box2DSharp.Collision.Shapes.Sweep">
+            This describes the motion of a body/shape for TOI computation.
+            Shapes are defined with respect to the body origin, which may
+            no coincide with the center of mass. However, to support dynamics
+            we must interpolate the center of mass position.
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.Sweep.GetTransform(Box2DSharp.Common.Transform@,System.Single)">
+            <summary>
+            Get the interpolated transform at a specific time.
+            @param beta is a factor in [0,1], where 0 indicates alpha0.
+            https://fgiesen.wordpress.com/2012/08/15/linear-interpolation-past-present-and-future/
+            </summary>
+            <param name="xf"></param>
+            <param name="beta"></param>
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.Sweep.Advance(System.Single)">
+            Advance the sweep forward, yielding a new initial state.
+            @param alpha the new initial time.
+        </member>
+        <member name="M:Box2DSharp.Collision.Shapes.Sweep.Normalize">
+            Normalize the angles.
+        </member>
+        <member name="F:Box2DSharp.Collision.Shapes.Sweep.LocalCenter">
+            <summary>
+            local center of mass position
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Collision.Shapes.Sweep.C0">
+            <summary>
+            center world positions
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Collision.Shapes.Sweep.C">
+            <summary>
+            center world positions
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Collision.Shapes.Sweep.A0">
+            <summary>
+            world angles
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Collision.Shapes.Sweep.A">
+            <summary>
+            world angles
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Collision.Shapes.Sweep.Alpha0">
+            Fraction of the current time step in the range [0,1]
+            c0 and a0 are the positions at alpha0.
+        </member>
+        <member name="T:Box2DSharp.Collision.SimplexCache">
+            Used to warm start b2Distance.
+            Set count to zero on first call.
+        </member>
+        <member name="F:Box2DSharp.Collision.SimplexCache.Metric">
+            length or area
+        </member>
+        <member name="F:Box2DSharp.Collision.SimplexCache.IndexA">
+            vertices on shape A
+        </member>
+        <member name="F:Box2DSharp.Collision.SimplexCache.IndexB">
+            vertices on shape B
+        </member>
+        <member name="T:Box2DSharp.Collision.ToiInput">
+            Input parameters for b2TimeOfImpact
+        </member>
+        <member name="T:Box2DSharp.Collision.ToiOutput">
+            Output parameters for b2TimeOfImpact.
+        </member>
+        <member name="M:Box2DSharp.Collision.TimeOfImpact.ComputeTimeOfImpact(Box2DSharp.Collision.ToiOutput@,Box2DSharp.Collision.ToiInput@,Box2DSharp.Collision.ToiProfile,Box2DSharp.Collision.GJkProfile)">
+            Compute the upper bound on time before two shapes penetrate. Time is represented as
+            a fraction between [0,tMax]. This uses a swept separating axis and may miss some intermediate,
+            non-tunneling collisions. If you change the time interval, you should call this function
+            again.
+            Note: use b2Distance to compute the contact point and normal at the time of impact.
+        </member>
+        <member name="M:Box2DSharp.Common.IDrawer.DrawPolygon(System.Span{System.Numerics.Vector2},System.Int32,Box2DSharp.Common.Color@)">
+            Draw a closed polygon provided in CCW order.
+        </member>
+        <member name="M:Box2DSharp.Common.IDrawer.DrawSolidPolygon(System.Span{System.Numerics.Vector2},System.Int32,Box2DSharp.Common.Color@)">
+            Draw a solid closed polygon provided in CCW order.
+        </member>
+        <member name="M:Box2DSharp.Common.IDrawer.DrawCircle(System.Numerics.Vector2@,System.Single,Box2DSharp.Common.Color@)">
+            Draw a circle.
+        </member>
+        <member name="M:Box2DSharp.Common.IDrawer.DrawSolidCircle(System.Numerics.Vector2@,System.Single,System.Numerics.Vector2@,Box2DSharp.Common.Color@)">
+            Draw a solid circle.
+        </member>
+        <member name="M:Box2DSharp.Common.IDrawer.DrawSegment(System.Numerics.Vector2@,System.Numerics.Vector2@,Box2DSharp.Common.Color@)">
+            Draw a line segment.
+        </member>
+        <member name="M:Box2DSharp.Common.IDrawer.DrawTransform(Box2DSharp.Common.Transform@)">
+            Draw a transform. Choose your own length scale.
+            @param xf a transform.
+        </member>
+        <member name="M:Box2DSharp.Common.IDrawer.DrawPoint(System.Numerics.Vector2@,System.Single,Box2DSharp.Common.Color@)">
+            Draw a point.
+        </member>
+        <member name="F:Box2DSharp.Common.DrawFlag.DrawShape">
+            <summary>
+            draw shapes
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Common.DrawFlag.DrawJoint">
+            <summary>
+            draw joint connections
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Common.DrawFlag.DrawAABB">
+            <summary>
+            draw axis aligned bounding boxes
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Common.DrawFlag.DrawPair">
+            <summary>
+            draw broad-phase pairs
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Common.DrawFlag.DrawCenterOfMass">
+            <summary>
+            draw center of mass frame
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Common.DrawFlag.DrawContactPoint">
+            <summary>
+            draw body contact point
+            </summary>
+        </member>
+        <member name="M:Box2DSharp.Common.InternalDumpLogger.Log(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Common.MathExtensions.Normalize(System.Numerics.Vector2@)">
+            Convert this vector into a unit vector. Returns the length.
+        </member>
+        <member name="M:Box2DSharp.Common.MathExtensions.Skew(System.Numerics.Vector2@)">
+            <summary>
+             Get the skew vector such that dot(skew_vec, other) == cross(vec, other)
+            </summary>
+            <param name="vector2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Box2DSharp.Common.MathUtils.Cross(System.Numerics.Vector2@,System.Numerics.Vector2@)">
+            Perform the cross product on two vectors. In 2D this produces a scalar.
+            叉积,axb=|a||b|·sinθ 
+        </member>
+        <member name="M:Box2DSharp.Common.MathUtils.Cross(System.Numerics.Vector2@,System.Single)">
+            Perform the cross product on a vector and a scalar. In 2D this produces
+            a vector.
+        </member>
+        <member name="M:Box2DSharp.Common.MathUtils.Cross(System.Single,System.Numerics.Vector2@)">
+            Perform the cross product on a scalar and a vector. In 2D this produces
+            a vector.
+        </member>
+        <member name="M:Box2DSharp.Common.MathUtils.Mul(Box2DSharp.Common.Matrix2x2@,System.Numerics.Vector2@)">
+            Multiply a matrix times a vector. If a rotation matrix is provided,
+            then this transforms the vector from one frame to another.
+        </member>
+        <member name="M:Box2DSharp.Common.MathUtils.MulT(Box2DSharp.Common.Matrix2x2@,System.Numerics.Vector2@)">
+            Multiply a matrix transpose times a vector. If a rotation matrix is provided,
+            then this transforms the vector from one frame to another (inverse transform).
+        </member>
+        <member name="M:Box2DSharp.Common.MathUtils.Mul(Box2DSharp.Common.Matrix3x3@,System.Numerics.Vector3@)">
+            Multiply a matrix times a vector.
+        </member>
+        <member name="M:Box2DSharp.Common.MathUtils.Mul22(Box2DSharp.Common.Matrix3x3@,System.Numerics.Vector2@)">
+            Multiply a matrix times a vector.
+        </member>
+        <member name="M:Box2DSharp.Common.MathUtils.Mul(Box2DSharp.Common.Rotation@,Box2DSharp.Common.Rotation@)">
+            Multiply two rotations: q * r
+        </member>
+        <member name="M:Box2DSharp.Common.MathUtils.MulT(Box2DSharp.Common.Rotation@,Box2DSharp.Common.Rotation@)">
+            Transpose multiply two rotations: qT * r
+        </member>
+        <member name="M:Box2DSharp.Common.MathUtils.Mul(Box2DSharp.Common.Rotation@,System.Numerics.Vector2@)">
+            Rotate a vector
+        </member>
+        <member name="M:Box2DSharp.Common.MathUtils.MulT(Box2DSharp.Common.Rotation@,System.Numerics.Vector2@)">
+            Inverse rotate a vector
+        </member>
+        <member name="M:Box2DSharp.Common.MathUtils.NextPowerOfTwo(System.UInt32)">
+            "Next Largest Power of 2
+            Given a binary integer value x, the next largest power of 2 can be computed by a SWAR algorithm
+            that recursively "folds" the upper bits into the lower bits. This process yields a bit vector with
+            the same most significant 1 as x, but all 1's below it. Adding 1 to that value yields the next
+            largest power of 2. For a 32-bit value:"
+        </member>
+        <member name="M:Box2DSharp.Common.Matrix2x2.#ctor(System.Numerics.Vector2@,System.Numerics.Vector2@)">
+            The default constructor does nothing (for performance).
+            Construct this matrix using columns.
+        </member>
+        <member name="M:Box2DSharp.Common.Matrix2x2.#ctor(System.Single,System.Single,System.Single,System.Single)">
+            Construct this matrix using scalars.
+        </member>
+        <member name="M:Box2DSharp.Common.Matrix2x2.Set(System.Numerics.Vector2@,System.Numerics.Vector2@)">
+            Initialize this matrix using columns.
+        </member>
+        <member name="M:Box2DSharp.Common.Matrix2x2.SetIdentity">
+            Set this to the identity matrix.
+        </member>
+        <member name="M:Box2DSharp.Common.Matrix2x2.SetZero">
+            Set this matrix to all zeros.
+        </member>
+        <member name="M:Box2DSharp.Common.Matrix2x2.Solve(System.Numerics.Vector2@)">
+            Solve A * x = b, where b is a column vector. This is more efficient
+            than computing the inverse in one-shot cases.
+        </member>
+        <member name="M:Box2DSharp.Common.Matrix3x3.#ctor(System.Numerics.Vector3@,System.Numerics.Vector3@,System.Numerics.Vector3@)">
+            Construct this matrix using columns.
+        </member>
+        <member name="M:Box2DSharp.Common.Matrix3x3.SetZero">
+            Set this matrix to all zeros.
+        </member>
+        <member name="M:Box2DSharp.Common.Matrix3x3.Solve33(System.Numerics.Vector3@)">
+            Solve A * x = b, where b is a column vector. This is more efficient
+            than computing the inverse in one-shot cases.
+        </member>
+        <member name="M:Box2DSharp.Common.Matrix3x3.Solve22(System.Numerics.Vector2@)">
+            Solve A * x = b, where b is a column vector. This is more efficient
+            than computing the inverse in one-shot cases. Solve only the upper
+            2-by-2 matrix equation.
+        </member>
+        <member name="M:Box2DSharp.Common.Matrix3x3.GetInverse22(Box2DSharp.Common.Matrix3x3@)">
+            Get the inverse of this matrix as a 2-by-2.
+            Returns the zero matrix if singular.
+        </member>
+        <member name="M:Box2DSharp.Common.Matrix3x3.GetSymInverse33(Box2DSharp.Common.Matrix3x3@)">
+            Get the symmetric inverse of this matrix as a 3-by-3.
+            Returns the zero matrix if singular.
+        </member>
+        <member name="T:Box2DSharp.Common.Rotation">
+            Rotation
+        </member>
+        <member name="F:Box2DSharp.Common.Rotation.Sin">
+            Sine and cosine
+        </member>
+        <member name="M:Box2DSharp.Common.Rotation.#ctor(System.Single)">
+            Initialize from an angle in radians
+        </member>
+        <member name="M:Box2DSharp.Common.Rotation.Set(System.Single)">
+            Set using an angle in radians.
+        </member>
+        <member name="M:Box2DSharp.Common.Rotation.SetIdentity">
+            Set to the identity rotation
+        </member>
+        <member name="P:Box2DSharp.Common.Rotation.Angle">
+            Get the angle in radians
+        </member>
+        <member name="M:Box2DSharp.Common.Rotation.GetXAxis">
+            Get the x-axis
+        </member>
+        <member name="M:Box2DSharp.Common.Rotation.GetYAxis">
+            Get the u-axis
+        </member>
+        <member name="F:Box2DSharp.Common.Settings.MaxManifoldPoints">
+            The maximum number of contact points between two convex shapes. Do
+            not change this value.
+        </member>
+        <member name="F:Box2DSharp.Common.Settings.MaxPolygonVertices">
+            The maximum number of vertices on a convex polygon. You cannot increase
+            this too much because b2BlockAllocator has a maximum object size.
+        </member>
+        <member name="F:Box2DSharp.Common.Settings.AABBExtension">
+            This is used to fatten AABBs in the dynamic tree. This allows proxies
+            to move by a small amount without triggering a tree adjustment.
+            This is in meters.
+        </member>
+        <member name="F:Box2DSharp.Common.Settings.AABBMultiplier">
+            This is used to fatten AABBs in the dynamic tree. This is used to predict
+            the future position based on the current displacement.
+            This is a dimensionless multiplier.
+        </member>
+        <member name="F:Box2DSharp.Common.Settings.LinearSlop">
+            A small length used as a collision and constraint tolerance. Usually it is
+            chosen to be numerically significant, but visually insignificant.
+        </member>
+        <member name="F:Box2DSharp.Common.Settings.AngularSlop">
+            A small angle used as a collision and constraint tolerance. Usually it is
+            chosen to be numerically significant, but visually insignificant.
+        </member>
+        <member name="F:Box2DSharp.Common.Settings.PolygonRadius">
+            The radius of the polygon/edge shape skin. This should not be modified. Making
+            this smaller means polygons will have an insufficient buffer for continuous collision.
+            Making it larger may create artifacts for vertex collision.
+        </member>
+        <member name="F:Box2DSharp.Common.Settings.MaxSubSteps">
+            Maximum number of sub-steps per contact in continuous physics simulation.
+        </member>
+        <member name="F:Box2DSharp.Common.Settings.MaxToiContacts">
+            Maximum number of contacts to be handled to solve a TOI impact.
+        </member>
+        <member name="F:Box2DSharp.Common.Settings.MaxLinearCorrection">
+            The maximum linear position correction used when solving constraints. This helps to
+            prevent overshoot.
+        </member>
+        <member name="F:Box2DSharp.Common.Settings.MaxAngularCorrection">
+            The maximum angular position correction used when solving constraints. This helps to
+            prevent overshoot.
+        </member>
+        <member name="F:Box2DSharp.Common.Settings.MaxTranslation">
+            The maximum linear velocity of a body. This limit is very large and is used
+            to prevent numerical problems. You shouldn't need to adjust this.
+        </member>
+        <member name="F:Box2DSharp.Common.Settings.MaxRotation">
+            The maximum angular velocity of a body. This limit is very large and is used
+            to prevent numerical problems. You shouldn't need to adjust this.
+        </member>
+        <member name="F:Box2DSharp.Common.Settings.Baumgarte">
+            This scale factor controls how fast overlap is resolved. Ideally this would be 1 so
+            that overlap is removed in one time step. However using values close to 1 often lead
+            to overshoot.
+        </member>
+        <member name="F:Box2DSharp.Common.Settings.TimeToSleep">
+            The time that a body must be still before it will go to sleep.
+        </member>
+        <member name="F:Box2DSharp.Common.Settings.LinearSleepTolerance">
+            A body cannot sleep if its linear velocity is above this tolerance.
+        </member>
+        <member name="F:Box2DSharp.Common.Settings.AngularSleepTolerance">
+            A body cannot sleep if its angular velocity is above this tolerance.
+        </member>
+        <member name="M:Box2DSharp.Common.Transform.#ctor(System.Numerics.Vector2@,Box2DSharp.Common.Rotation@)">
+            Initialize using a position vector and a rotation.
+        </member>
+        <member name="M:Box2DSharp.Common.Transform.SetIdentity">
+            Set this to the identity transform.
+        </member>
+        <member name="M:Box2DSharp.Common.Transform.Set(System.Numerics.Vector2@,System.Single)">
+            Set this based on the position and angle.
+        </member>
+        <member name="M:Box2DSharp.Common.Transform.ToString(System.String,System.IFormatProvider)">
+            <inheritdoc />
+        </member>
+        <member name="T:Box2DSharp.Dynamics.BodyType">
+            The body type.
+            static: zero mass, zero velocity, may be manually moved
+            kinematic: zero mass, non-zero velocity set by user, moved by solver
+            dynamic: positive mass, non-zero velocity determined by forces, moved by solver
+        </member>
+        <member name="T:Box2DSharp.Dynamics.BodyDef">
+            A body definition holds all the data needed to construct a rigid body.
+            You can safely re-use body definitions. Shapes are added to a body after construction.
+        </member>
+        <member name="P:Box2DSharp.Dynamics.BodyDef.Enabled">
+            Does this body start out enabled?
+        </member>
+        <member name="P:Box2DSharp.Dynamics.BodyDef.AllowSleep">
+            Set this flag to false if this body should never fall asleep. Note that
+            this increases CPU usage.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.BodyDef.Angle">
+            The world angle of the body in radians.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.BodyDef.AngularDamping">
+            Angular damping is use to reduce the angular velocity. The damping parameter
+            can be larger than 1.0f but the damping effect becomes sensitive to the
+            time step when the damping parameter is large.
+            Units are 1/time
+        </member>
+        <member name="F:Box2DSharp.Dynamics.BodyDef.AngularVelocity">
+            The angular velocity of the body.
+        </member>
+        <member name="P:Box2DSharp.Dynamics.BodyDef.Awake">
+            Is this body initially awake or sleeping?
+        </member>
+        <member name="F:Box2DSharp.Dynamics.BodyDef.BodyType">
+            The body type: static, kinematic, or dynamic.
+            Note: if a dynamic body would have zero mass, the mass is set to one.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.BodyDef.Bullet">
+            Is this a fast moving body that should be prevented from tunneling through
+            other moving bodies? Note that all bodies are prevented from tunneling through
+            kinematic and static bodies. This setting is only considered on dynamic bodies.
+            @warning You should use this flag sparingly since it increases processing time.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.BodyDef.FixedRotation">
+            Should this body be prevented from rotating? Useful for characters.
+        </member>
+        <member name="P:Box2DSharp.Dynamics.BodyDef.GravityScale">
+            Scale the gravity applied to this body.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.BodyDef.LinearDamping">
+            Linear damping is use to reduce the linear velocity. The damping parameter
+            can be larger than 1.0f but the damping effect becomes sensitive to the
+            time step when the damping parameter is large.
+            Units are 1/time
+        </member>
+        <member name="F:Box2DSharp.Dynamics.BodyDef.LinearVelocity">
+            The linear velocity of the body's origin in world co-ordinates.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.BodyDef.Position">
+            The world position of the body. Avoid creating bodies at the origin
+            since this can lead to many overlapping shapes.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.BodyDef.UserData">
+            Use this to store application specific body data.
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Body">
+            A rigid body. These are created via b2World::CreateBody.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Body.ContactEdges">
+            <summary>
+            接触边缘列表
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Body.FixtureList">
+            <summary>
+            夹具列表
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Body.Fixtures">
+            <summary>
+            夹具列表
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Body.JointEdges">
+            <summary>
+            关节边缘列表
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Body._angularDamping">
+            <summary>
+            Get/Set the angular damping of the body.
+            角阻尼
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Body._inertia">
+            <summary>
+            质心的转动惯量
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Body._linearDamping">
+            <summary>
+            线性阻尼
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Body._mass">
+            <summary>
+            Get the total mass of the body.
+            @return the mass, usually in kilograms (kg).
+            质量
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Body._type">
+            <summary>
+            物体类型
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Body._world">
+            <summary>
+            所属世界
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Body.Flags">
+            <summary>
+            物体标志
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Body.Force">
+            <summary>
+            受力
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Body.GravityScale">
+            <summary>
+            重力系数
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Body.InverseInertia">
+            <summary>
+            质心的转动惯量倒数
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Body.InvMass">
+            <summary>
+            质量倒数
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Body.IslandIndex">
+            <summary>
+            岛屿索引
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Body.Node">
+            <summary>
+            链表节点物体
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Body.Sweep">
+            <summary>
+            扫描
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Body.Torque">
+            <summary>
+            扭矩
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Body.Transform">
+            <summary>
+            物体位置
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Body.AngularVelocity">
+            <summary>
+            Get/Set the angular velocity.
+            the new angular velocity in radians/second.
+            角速度
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Body.Inertia">
+            Get the rotational inertia of the body about the local origin.
+            @return the rotational inertia, usually in kg-m^2.
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Body.LinearDamping">
+            Get/Set the linear damping of the body.
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Body.LinearVelocity">
+            <summary>
+            线速度
+            </summary>
+            Set the linear velocity of the center of mass.
+            @param v the new linear velocity of the center of mass.
+            Get the linear velocity of the center of mass.
+            @return the linear velocity of the center of mass.
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Body.SleepTime">
+            <summary>
+            休眠时间
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Body.BodyType">
+            Set the type of this body. This may alter the mass and velocity.
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Body.IsBullet">
+            Should this body be treated like a bullet for continuous collision detection?
+            Is this body treated like a bullet for continuous collision detection?
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Body.IsSleepingAllowed">
+            You can disable sleeping on this body. If you disable sleeping, the
+            body will be woken.
+            Is this body allowed to sleep
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Body.IsAwake">
+            <summary>
+            Set the sleep state of the body. A sleeping body has very
+            low CPU cost.
+            @param flag set to true to wake the body, false to put it to sleep.
+            Get the sleeping state of this body.
+            @return true if the body is awake.
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Body.IsEnabled">
+            <summary>
+            Set the active state of the body. An inactive body is not
+            simulated and cannot be collided with or woken up.
+            If you pass a flag of true, all fixtures will be added to the
+            broad-phase.
+            If you pass a flag of false, all fixtures will be removed from
+            the broad-phase and all contacts will be destroyed.
+            Fixtures and joints are otherwise unaffected. You may continue
+            to create/destroy fixtures and joints on inactive bodies.
+            Fixtures on an inactive body are implicitly inactive and will
+            not participate in collisions, ray-casts, or queries.
+            Joints connected to an inactive body are implicitly inactive.
+            An inactive body is still owned by a b2World object and remains
+            in the body list.
+            Get the active state of the body.
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Body.IsFixedRotation">
+            Set this body to have fixed rotation. This causes the mass
+            to be reset.
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Body.UserData">
+            <summary>
+            Get/Set the user data pointer that was provided in the body definition.
+            用户信息
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Body.World">
+            Get the parent world of this body.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.CreateFixture(Box2DSharp.Dynamics.FixtureDef)">
+            <summary>
+            Creates a fixture and attach it to this body. Use this function if you need
+            to set some fixture parameters, like friction. Otherwise you can create the
+            fixture directly from a shape.
+            If the density is non-zero, this function automatically updates the mass of the body.
+            Contacts are not created until the next time step.
+            @param def the fixture definition.
+            @warning This function is locked during callbacks.
+            创建夹具
+            </summary>
+            <param name="def"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.CreateFixture(Box2DSharp.Collision.Shapes.Shape,System.Single)">
+            Creates a fixture from a shape and attach it to this body.
+            This is a convenience function. Use b2FixtureDef if you need to set parameters
+            like friction, restitution, user data, or filtering.
+            If the density is non-zero, this function automatically updates the mass of the body.
+            @param shape the shape to be cloned.
+            @param density the shape density (set to zero for static bodies).
+            @warning This function is locked during callbacks.
+            创建夹具
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.DestroyFixture(Box2DSharp.Dynamics.Fixture)">
+            Destroy a fixture. This removes the fixture from the broad-phase and
+            destroys all contacts associated with this fixture. This will
+            automatically adjust the mass of the body if the body is dynamic and the
+            fixture has positive density.
+            All fixtures attached to a body are implicitly destroyed when the body is destroyed.
+            @param fixture the fixture to be removed.
+            @warning This function is locked during callbacks.
+            删除夹具
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.SetTransform(System.Numerics.Vector2@,System.Single)">
+            Set the position of the body's origin and rotation.
+            Manipulating a body's transform may cause non-physical behavior.
+            Note: contacts are updated on the next call to b2World::Step.
+            @param position the world position of the body's local origin.
+            @param angle the world rotation in radians.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.GetTransform">
+            Get the body transform for the body's origin.
+            @return the world transform of the body's origin.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.GetPosition">
+            Get the world body origin position.
+            @return the world position of the body's origin.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.GetAngle">
+            Get the angle in radians.
+            @return the current world rotation angle in radians.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.GetWorldCenter">
+            Get the world position of the center of mass.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.GetLocalCenter">
+            Get the local position of the center of mass.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.ApplyForce(System.Numerics.Vector2@,System.Numerics.Vector2@,System.Boolean)">
+            <summary>
+            Apply a force at a world point. If the force is not
+            applied at the center of mass, it will generate a torque and
+            affect the angular velocity. This wakes up the body.
+            @param force the world force vector, usually in Newtons (N).
+            @param point the world position of the point of application.
+            @param wake also wake up the body
+            在指定位置施加作用力
+            </summary>
+            <param name="force"></param>
+            <param name="point"></param>
+            <param name="wake"></param>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.ApplyForceToCenter(System.Numerics.Vector2@,System.Boolean)">
+            <summary>
+            Apply a force to the center of mass. This wakes up the body.
+            @param force the world force vector, usually in Newtons (N).
+            @param wake also wake up the body
+            在质心施加作用力
+            </summary>
+            <param name="force"></param>
+            <param name="wake"></param>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.ApplyTorque(System.Single,System.Boolean)">
+            <summary>
+            Apply a torque. This affects the angular velocity
+            without affecting the linear velocity of the center of mass.
+            @param torque about the z-axis (out of the screen), usually in N-m.
+            @param wake also wake up the body
+            施加扭矩
+            </summary>
+            <param name="torque"></param>
+            <param name="wake"></param>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.ApplyLinearImpulse(System.Numerics.Vector2@,System.Numerics.Vector2@,System.Boolean)">
+            <summary>
+            Apply an impulse at a point. This immediately modifies the velocity.
+            It also modifies the angular velocity if the point of application
+            is not at the center of mass. This wakes up the body.
+            @param impulse the world impulse vector, usually in N-seconds or kg-m/s.
+            @param point the world position of the point of application.
+            @param wake also wake up the body
+            在物体指定位置施加线性冲量
+            </summary>
+            <param name="impulse"></param>
+            <param name="point"></param>
+            <param name="wake"></param>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.ApplyLinearImpulseToCenter(System.Numerics.Vector2@,System.Boolean)">
+            <summary>
+            Apply an impulse to the center of mass. This immediately modifies the velocity.
+            @param impulse the world impulse vector, usually in N-seconds or kg-m/s.
+            @param wake also wake up the body
+            在质心施加线性冲量
+            </summary>
+            <param name="impulse"></param>
+            <param name="wake"></param>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.ApplyAngularImpulse(System.Single,System.Boolean)">
+            <summary>
+            Apply an angular impulse.
+            @param impulse the angular impulse in units of kg*m*m/s
+            @param wake also wake up the body
+            施加角冲量
+            </summary>
+            <param name="impulse"></param>
+            <param name="wake"></param>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.GetMassData(Box2DSharp.Collision.Shapes.MassData@)">
+            Get the mass data of the body.
+            @return a struct containing the mass, inertia and center of the body.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.SetMassData(Box2DSharp.Collision.Shapes.MassData@)">
+            Set the mass properties to override the mass properties of the fixtures.
+            Note that this changes the center of mass position.
+            Note that creating or destroying fixtures can also alter the mass.
+            This function has no effect if the body isn't dynamic.
+            @param massData the mass properties.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.ResetMassData">
+            This resets the mass properties to the sum of the mass properties of the fixtures.
+            This normally does not need to be called unless you called SetMassData to override
+            the mass and you later want to reset the mass.
+            重置质量数据
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.GetWorldPoint(System.Numerics.Vector2@)">
+            Get the world coordinates of a point given the local coordinates.
+            @param localPoint a point on the body measured relative the the body's origin.
+            @return the same point expressed in world coordinates.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.GetWorldVector(System.Numerics.Vector2@)">
+            Get the world coordinates of a vector given the local coordinates.
+            @param localVector a vector fixed in the body.
+            @return the same vector expressed in world coordinates.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.GetLocalPoint(System.Numerics.Vector2@)">
+            Gets a local point relative to the body's origin given a world point.
+            @param a point in world coordinates.
+            @return the corresponding local point relative to the body's origin.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.GetLocalVector(System.Numerics.Vector2@)">
+            Gets a local vector given a world vector.
+            @param a vector in world coordinates.
+            @return the corresponding local vector.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.GetLinearVelocityFromWorldPoint(System.Numerics.Vector2@)">
+            Get the world linear velocity of a world point attached to this body.
+            @param a point in world coordinates.
+            @return the world velocity of a point.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.GetLinearVelocityFromLocalPoint(System.Numerics.Vector2@)">
+            Get the world velocity of a local point.
+            @param a point in local coordinates.
+            @return the world velocity of a point.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.Dump">
+            Dump this body to a log file
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.SynchronizeFixtures">
+            <summary>
+            同步夹具
+            </summary>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.SynchronizeTransform">
+            <summary>
+            同步位置
+            </summary>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.ShouldCollide(Box2DSharp.Dynamics.Body)">
+            <summary>
+            This is used to prevent connected bodies from colliding.
+            It may lie, depending on the collideConnected flag.
+            判断物体之间是否应该检测碰撞
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Body.Advance(System.Single)">
+            <summary>
+            在安全时间段内快进,此时不同步粗检测
+            </summary>
+            <param name="alpha"></param>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.BodyFlags.Island">
+            <summary>
+            孤岛
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.BodyFlags.IsAwake">
+            <summary>
+            醒着的
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.BodyFlags.AutoSleep">
+            <summary>
+            自动休眠
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.BodyFlags.IsBullet">
+            <summary>
+            子弹
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.BodyFlags.FixedRotation">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.BodyFlags.IsEnabled">
+            <summary>
+            活跃
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.BodyFlags.Toi">
+            <summary>
+            碰撞时间
+            </summary>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.IRayCastCallback.RayCastCallback(Box2DSharp.Dynamics.Fixture,System.Numerics.Vector2@,System.Numerics.Vector2@,System.Single)">
+            Callback for ray casts.
+            See b2World::RayCast
+            Called for each fixture found in the query. You control how the ray cast
+            proceeds by returning a float:
+            return -1: ignore this fixture and continue
+            return 0: terminate the ray cast
+            return fraction: clip the ray to this point
+            return 1: don't clip the ray and continue
+            @param fixture the fixture hit by the ray
+            @param point the point of initial intersection
+            @param normal the normal vector at the point of intersection
+            @return -1 to filter, 0 to terminate, fraction to clip the ray for
+            closest hit, 1 to continue
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Contacts.Contact.FixtureA">
+            <summary>
+            Get fixture A in this contact.
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Contacts.Contact.FixtureB">
+            <summary>
+            Get fixture B in this contact.
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Contacts.Contact.ChildIndexA">
+            <summary>
+            Get the child primitive index for fixture A.
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Contacts.Contact.ChildIndexB">
+            <summary>
+            Get the child primitive index for fixture B.
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Contacts.Contact.Manifold">
+            <summary>
+            Get the contact manifold. Do not modify the manifold unless you understand the
+            internals of Box2D.
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Contacts.Contact.Node">
+            World pool and list pointers.
+            Nodes for connecting bodies.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Contacts.Contact.MixRestitutionThreshold(System.Single,System.Single)">
+            Restitution mixing law. This picks the lowest value.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Contacts.Contact.GetWorldManifold(Box2DSharp.Collision.Collider.WorldManifold@)">
+            Get the world manifold.
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Contacts.Contact.IsTouching">
+            Is this contact touching?
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Contacts.Contact.SetEnabled(System.Boolean)">
+            Enable/disable this contact. This can be used inside the pre-solve
+            contact listener. The contact is only disabled for the current
+            time step (or sub-step in continuous collisions).
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Contacts.Contact.IsEnabled">
+            Has this contact been disabled?
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Contacts.Contact.SetFriction(System.Single)">
+            Override the default friction mixture. You can call this in b2ContactListener::PreSolve.
+            This value persists until set or reset.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Contacts.Contact.GetFriction">
+            Get the friction.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Contacts.Contact.ResetFriction">
+            Reset the friction mixture to the default value.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Contacts.Contact.SetRestitution(System.Single)">
+            Override the default restitution mixture. You can call this in b2ContactListener::PreSolve.
+            The value persists until you set or reset.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Contacts.Contact.GetRestitution">
+            Get the restitution.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Contacts.Contact.ResetRestitution">
+            Reset the restitution to the default value.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Contacts.Contact.SetRestitutionThreshold(System.Single)">
+            Override the default restitution velocity threshold mixture. You can call this in b2ContactListener::PreSolve.
+            The value persists until you set or reset.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Contacts.Contact.GetRestitutionThreshold">
+            Get the restitution threshold.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Contacts.Contact.ResetRestitutionThreshold">
+            Reset the restitution threshold to the default value.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Contacts.Contact.SetTangentSpeed(System.Single)">
+            Set the desired tangent speed for a conveyor belt behavior. In meters per second.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Contacts.Contact.GetTangentSpeed">
+            Get the desired tangent speed. In meters per second.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Contacts.Contact.Evaluate(Box2DSharp.Collision.Collider.Manifold@,Box2DSharp.Common.Transform@,Box2DSharp.Common.Transform)">
+            Evaluate this contact with your own manifold and transforms.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Contacts.Contact.FlagForFiltering">
+            Flag this contact for filtering. Filtering will occur the next time step.
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Contacts.ContactEdge">
+            A contact edge is used to connect bodies and contacts together
+            in a contact graph where each body is a node and each contact
+            is an edge. A contact edge belongs to a doubly linked list
+            maintained in each attached body. Each contact has two contact
+            nodes, one for each attached body.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Contacts.ContactEdge.Other">
+            provides quick access to the other body attached.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Contacts.ContactEdge.Contact">
+            the contact        
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Contacts.ContactImpulse">
+            Contact impulses for reporting. Impulses are used instead of forces because
+            sub-step forces may approach infinity for rigid body collisions. These
+            match up one-to-one with the contact points in b2Manifold.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Contacts.ContactPositionConstraint.LocalPoints">
+            <summary>
+            Size <see cref="F:Box2DSharp.Common.Settings.MaxManifoldPoints"/>
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Contacts.ContactVelocityConstraint.Points">
+            <summary>
+            Size <see cref="F:Box2DSharp.Common.Settings.MaxManifoldPoints"/>
+            </summary>
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Contacts.EdgeAndCircleContact">
+            <summary>
+                边缘与圆接触
+            </summary>
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Contacts.EdgeAndPolygonContact">
+            <summary>
+                边缘与多边形接触
+            </summary>
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Contacts.PolygonAndCircleContact">
+            <summary>
+                多边形与圆接触
+            </summary>
+        </member>
+        <member name="T:Box2DSharp.Dynamics.DefaultContactFilter">
+            Implement this class to provide collision filtering. In other words, you can implement
+            this class if you want finer control over contact creation.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.DefaultContactFilter.ShouldCollide(Box2DSharp.Dynamics.Fixture,Box2DSharp.Dynamics.Fixture)">
+            Return true if contact calculations should be performed between these two shapes.
+            @warning for performance reasons this is only called when the AABBs begin to overlap.
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Fixture">
+            A fixture is used to attach a shape to a body for collision detection. A fixture
+            inherits its transform from its parent. Fixtures hold additional non-geometric data
+            such as friction, collision filters, etc.
+            Fixtures are created via b2Body::CreateFixture.
+            @warning you cannot reuse fixtures.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Fixture.Restitution">
+            <summary>
+            the coefficient of restitution. This will _not_ change the restitution of existing contacts.
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Fixture.RestitutionThreshold">
+            <summary>
+            The restitution velocity threshold.
+            Modify this will _not_ change the restitution threshold of existing contacts.
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Fixture.Body">
+            Get the parent body of this fixture. This is null if the fixture is not attached.
+            @return the parent body.
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Fixture.Density">
+            <summary>
+            the density of this fixture. This will _not_ automatically adjust the mass of the body. You must call b2Body::ResetMassData to update the body's mass.
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Fixture.Filter">
+            Get the child shape. You can modify the child shape, however you should not change the
+            number of vertices because this will crash some collision caching mechanisms.
+            Manipulating the shape may lead to non-physical behavior.
+            Set the contact filtering data. This will not update contacts until the next time
+            step when either parent body is active and awake.
+            This automatically calls Refilter.
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Fixture.Friction">
+            <summary>
+            the coefficient of friction. This will _not_ change the friction of existing contacts.
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Fixture.UserData">
+            <summary>
+            the user data that was assigned in the fixture definition. Use this to store your application specific data.
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Fixture.ShapeType">
+            Get the type of the child shape. You can use this to down cast to the concrete shape.
+            @return the shape type.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Fixture.Create(Box2DSharp.Dynamics.Body,Box2DSharp.Dynamics.FixtureDef@)">
+            We need separation create/destroy functions from the constructor/destructor because
+            the destructor cannot access the allocator (no destructor arguments allowed by C++).
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Fixture.Refilter">
+            Call this if you want to establish collision that was previously disabled by b2ContactFilter::ShouldCollide.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Fixture.TestPoint(System.Numerics.Vector2@)">
+            Test a point for containment in this fixture.
+            @param p a point in world coordinates.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Fixture.RayCast(Box2DSharp.Collision.Collider.RayCastOutput@,Box2DSharp.Collision.Collider.RayCastInput@,System.Int32)">
+            Cast a ray against this shape.
+            @param output the ray-cast results.
+            @param input the ray-cast input parameters.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Fixture.GetMassData(Box2DSharp.Collision.Shapes.MassData@)">
+            Get the mass data for this fixture. The mass data is based on the density and
+            the shape. The rotational inertia is about the shape's origin. This operation
+            may be expensive.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Fixture.GetAABB(System.Int32)">
+            Get the fixture's AABB. This AABB may be enlarge and/or stale.
+            If you need a more accurate AABB, compute it using the shape and
+            the body transform.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Fixture.Dump(System.Int32)">
+            Dump this fixture to the log file.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Fixture.Synchronize(Box2DSharp.Collision.BroadPhase@,Box2DSharp.Common.Transform@,Box2DSharp.Common.Transform@)">
+            <summary>
+            同步粗检测AABB形状
+            </summary>
+            <param name="broadPhase"></param>
+            <param name="transform1"></param>
+            <param name="transform2"></param>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Fixture.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Filter">
+            This holds contact filtering data.
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Filter.CategoryBits">
+            The collision category bits. Normally you would just set one bit.
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Filter.MaskBits">
+            The collision mask bits. This states the categories that this
+            shape would accept for collision.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Filter.GroupIndex">
+            Collision groups allow a certain group of objects to never collide (negative)
+            or always collide (positive). Zero means no collision group. Non-zero group
+            filtering always wins against the mask bits.
+        </member>
+        <member name="T:Box2DSharp.Dynamics.FixtureDef">
+            A fixture definition is used to create a fixture. This class defines an
+            abstract fixture definition. You can reuse fixture definitions safely.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.FixtureDef.Density">
+            The density, usually in kg/m^2.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.FixtureDef.Filter">
+            Contact filtering data.
+        </member>
+        <member name="P:Box2DSharp.Dynamics.FixtureDef.Friction">
+            The friction coefficient, usually in the range [0,1].
+        </member>
+        <member name="F:Box2DSharp.Dynamics.FixtureDef.IsSensor">
+            A sensor shape collects contact information but never generates a collision
+            response.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.FixtureDef.Restitution">
+            The restitution (elasticity) usually in the range [0,1].
+        </member>
+        <member name="P:Box2DSharp.Dynamics.FixtureDef.RestitutionThreshold">
+            Restitution velocity threshold, usually in m/s. Collisions above this
+            speed have restitution applied (will bounce).
+        </member>
+        <member name="F:Box2DSharp.Dynamics.FixtureDef.Shape">
+            The shape, this must be set. The shape will be cloned, so you
+            can create the shape on the stack.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.FixtureDef.UserData">
+            Use this to store application specific fixture data.
+        </member>
+        <member name="T:Box2DSharp.Dynamics.FixtureProxy">
+            <summary>
+            This proxy is used internally to connect fixtures to the broad-phase.
+            夹具代理,用于夹具和粗检测之间关联
+            </summary>
+        </member>
+        <member name="T:Box2DSharp.Dynamics.IContactFilter">
+            Implement this class to provide collision filtering. In other words, you can implement
+            this class if you want finer control over contact creation.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.IContactFilter.ShouldCollide(Box2DSharp.Dynamics.Fixture,Box2DSharp.Dynamics.Fixture)">
+            Return true if contact calculations should be performed between these two shapes.
+            @warning for performance reasons this is only called when the AABBs begin to overlap.
+        </member>
+        <member name="T:Box2DSharp.Dynamics.IContactListener">
+            Implement this class to get contact information. You can use these results for
+            things like sounds and game logic. You can also get contact results by
+            traversing the contact lists after the time step. However, you might miss
+            some contacts because continuous physics leads to sub-stepping.
+            Additionally you may receive multiple callbacks for the same contact in a
+            single time step.
+            You should strive to make your callbacks efficient because there may be
+            many callbacks per time step.
+            @warning You cannot create/destroy Box2D entities inside these callbacks.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.IContactListener.BeginContact(Box2DSharp.Dynamics.Contacts.Contact)">
+            Called when two fixtures begin to touch.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.IContactListener.EndContact(Box2DSharp.Dynamics.Contacts.Contact)">
+            Called when two fixtures cease to touch.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.IContactListener.PreSolve(Box2DSharp.Dynamics.Contacts.Contact,Box2DSharp.Collision.Collider.Manifold@)">
+            This is called after a contact is updated. This allows you to inspect a
+            contact before it goes to the solver. If you are careful, you can modify the
+            contact manifold (e.g. disable contact).
+            A copy of the old manifold is provided so that you can detect changes.
+            Note: this is called only for awake bodies.
+            Note: this is called even when the number of contact points is zero.
+            Note: this is not called for sensors.
+            Note: if you set the number of contact points to zero, you will not
+            get an EndContact callback. However, you may get a BeginContact callback
+            the next step.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.IContactListener.PostSolve(Box2DSharp.Dynamics.Contacts.Contact,Box2DSharp.Dynamics.Contacts.ContactImpulse@)">
+            This lets you inspect a contact after the solver is finished. This is useful
+            for inspecting impulses.
+            Note: the contact manifold does not include time of impact impulses, which can be
+            arbitrarily large if the sub-step is small. Hence the impulse is provided explicitly
+            in a separate data structure.
+            Note: this is only called for contacts that are touching, solid, and awake.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.IDestructionListener.SayGoodbye(Box2DSharp.Dynamics.Joints.Joint)">
+            Called when any joint is about to be destroyed due
+            to the destruction of one of its attached bodies.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.IDestructionListener.SayGoodbye(Box2DSharp.Dynamics.Fixture)">
+            Called when any fixture is about to be destroyed due
+            to the destruction of its parent body.
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Island">
+            This is an internal class.
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Joints.DistanceJoint">
+            A distance joint constrains two points on two bodies to remain at a fixed
+            distance from each other. You can view this as a massless, rigid rod.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.DistanceJoint._length">
+            The rest length
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Joints.DistanceJoint.Stiffness">
+            Set/get the linear stiffness in N/m
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Joints.DistanceJoint.Damping">
+            Set/get linear damping in N*s/m
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.DistanceJoint.GetReactionForce(System.Single)">
+            Get the reaction force given the inverse time step.
+            Unit is N.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.DistanceJoint.GetReactionTorque(System.Single)">
+            Get the reaction torque given the inverse time step.
+            Unit is N*m. This is always zero for a distance joint.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.DistanceJoint.GetLocalAnchorA">
+            The local anchor point relative to bodyA's origin.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.DistanceJoint.GetLocalAnchorB">
+            The local anchor point relative to bodyB's origin.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.DistanceJoint.Dump">
+            Dump joint to dmLog
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.DistanceJoint.Draw(Box2DSharp.Common.IDrawer)">
+            <inheritdoc />
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Joints.DistanceJointDef">
+            Distance joint definition. This requires defining an anchor point on both
+            bodies and the non-zero distance of the distance joint. The definition uses
+            local anchor points so that the initial configuration can violate the
+            constraint slightly. This helps when saving and loading a game.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.DistanceJointDef.MinLength">
+            Minimum length. Clamped to a stable minimum value.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.DistanceJointDef.MaxLength">
+            Maximum length. Must be greater than or equal to the minimum length.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.DistanceJointDef.Stiffness">
+            The linear stiffness in N/m.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.DistanceJointDef.Damping">
+            The linear damping in N*s/m.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.DistanceJointDef.Length">
+            The rest length of this joint. Clamped to a stable minimum value.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.DistanceJointDef.LocalAnchorA">
+            The local anchor point relative to bodyA's origin.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.DistanceJointDef.LocalAnchorB">
+            The local anchor point relative to bodyB's origin.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.DistanceJointDef.Initialize(Box2DSharp.Dynamics.Body,Box2DSharp.Dynamics.Body,System.Numerics.Vector2@,System.Numerics.Vector2@)">
+            Initialize the bodies, anchors, and rest length using world space anchors.
+            The minimum and maximum lengths are set to the rest length.
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Joints.FrictionJoint">
+            Friction joint. This is used for top-down friction.
+            It provides 2D translational friction and angular friction.
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Joints.FrictionJoint.MaxForce">
+            Get/Set the maximum friction force in N.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.FrictionJoint.GetLocalAnchorA">
+            The local anchor point relative to bodyA's origin.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.FrictionJoint.GetLocalAnchorB">
+            The local anchor point relative to bodyB's origin.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.FrictionJoint.GetAnchorA">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.FrictionJoint.GetAnchorB">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.FrictionJoint.GetReactionForce(System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.FrictionJoint.GetReactionTorque(System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.FrictionJoint.Dump">
+            Dump joint to dmLog
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.FrictionJoint.InitVelocityConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.FrictionJoint.SolveVelocityConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.FrictionJoint.SolvePositionConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Joints.FrictionJointDef">
+            Friction joint definition.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.FrictionJointDef.LocalAnchorA">
+            The local anchor point relative to bodyA's origin.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.FrictionJointDef.LocalAnchorB">
+            The local anchor point relative to bodyB's origin.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.FrictionJointDef.MaxForce">
+            The maximum friction force in N.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.FrictionJointDef.MaxTorque">
+            The maximum friction torque in N-m.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.FrictionJointDef.Initialize(Box2DSharp.Dynamics.Body,Box2DSharp.Dynamics.Body,System.Numerics.Vector2@)">
+            Initialize the bodies, anchors, axis, and reference angle using the world
+            anchor and world axis.
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Joints.GearJoint">
+            A gear joint is used to connect two joints together. Either joint
+            can be a revolute or prismatic joint. You specify a gear ratio
+            to bind the motions together:
+            coordinate1 + ratio * coordinate2 = constant
+            The ratio can be negative or positive. If one joint is a revolute joint
+            and the other joint is a prismatic joint, then the ratio will have units
+            of length or units of 1/length.
+            @warning You have to manually destroy the gear joint if joint1 or joint2
+            is destroyed.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.GearJoint.GetJoint1">
+            Get the first joint.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.GearJoint.GetJoint2">
+            Get the second joint.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.GearJoint.SetRatio(System.Single)">
+            Set/Get the gear ratio.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.GearJoint.Dump">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.GearJoint.GetAnchorA">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.GearJoint.GetAnchorB">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.GearJoint.GetReactionForce(System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.GearJoint.GetReactionTorque(System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.GearJoint.InitVelocityConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.GearJoint.SolveVelocityConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.GearJoint.SolvePositionConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Joints.GearJointDef">
+            <summary>
+            Gear joint definition. This definition requires two existing
+            revolute or prismatic joints (any combination will work).
+            @warning bodyB on the input joints must both be dynamic
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.GearJointDef.Joint1">
+            The first revolute/prismatic joint attached to the gear joint.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.GearJointDef.Joint2">
+            The second revolute/prismatic joint attached to the gear joint.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.GearJointDef.Ratio">
+            The gear ratio.
+            @see b2GearJoint for explanation.
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Joints.JointEdge">
+            A joint edge is used to connect bodies and joints together
+            in a joint graph where each body is a node and each joint
+            is an edge. A joint edge belongs to a doubly linked list
+            maintained in each attached body. Each joint has two joint
+            nodes, one for each attached body.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.JointEdge.Other">
+            provides quick access to the other body attached.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.JointEdge.Joint">
+            the joint
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.JointEdge.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Joints.JointDef">
+            Joint definitions are used to construct joints.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.JointDef.BodyA">
+            The first attached body.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.JointDef.BodyB">
+            The second attached body.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.JointDef.CollideConnected">
+            Set this flag to true if the attached bodies should collide.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.JointDef.JointType">
+            The joint type is set automatically for concrete joint types.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.JointDef.UserData">
+            Use this to attach application specific data to your joints.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.JointDef.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.Joint.BodyA">
+            <summary>
+            A物体
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.Joint.BodyB">
+            <summary>
+            B物体
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.Joint.EdgeA">
+            <summary>
+            关节A头
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.Joint.EdgeB">
+            <summary>
+            关节B头
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.Joint.Index">
+            <summary>
+            关节索引值,只用于Dump
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.Joint.IslandFlag">
+            <summary>
+            当前关节是否已经在孤岛中
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.Joint.Node">
+            <summary>
+            关节链表节点
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.Joint.UserData">
+            <summary>
+            用户数据
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Joints.Joint.IsEnabled">
+            Get the next joint the world joint list.
+            Short-cut function to determine if either body is inactive.
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Joints.Joint.IsCollideConnected">
+            Get collide connected.
+            Note: modifying the collide connect flag won't work correctly because
+            the flag is only checked when fixture AABBs begin to overlap.
+        </member>
+        <member name="P:Box2DSharp.Dynamics.Joints.Joint.JointType">
+            <summary>
+            关节类型
+            </summary>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.Joint.GetAnchorA">
+            Get the anchor point on bodyA in world coordinates.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.Joint.GetAnchorB">
+            Get the anchor point on bodyB in world coordinates.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.Joint.GetReactionForce(System.Single)">
+            Get the reaction force on bodyB at the joint anchor in Newtons.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.Joint.GetReactionTorque(System.Single)">
+            Get the reaction torque on bodyB in N*m.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.Joint.Dump">
+            Dump this joint to the log file.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.Joint.ShiftOrigin(System.Numerics.Vector2@)">
+            Shift the origin for any points stored in world coordinates.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.Joint.Draw(Box2DSharp.Common.IDrawer)">
+            <summary>
+            /// Debug draw this joint
+            </summary>
+            <param name="drawer"></param>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.JointUtils.LinearStiffness(System.Single@,System.Single@,System.Single,System.Single,Box2DSharp.Dynamics.Body,Box2DSharp.Dynamics.Body)">
+            Utility to compute linear stiffness values from frequency and damping ratio
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.JointUtils.AngularStiffness(System.Single@,System.Single@,System.Single,System.Single,Box2DSharp.Dynamics.Body,Box2DSharp.Dynamics.Body)">
+            Utility to compute rotational stiffness values frequency and damping ratio
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Joints.MotorJoint">
+            A motor joint is used to control the relative motion
+            between two bodies. A typical usage is to control the movement
+            of a dynamic body with respect to the ground.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MotorJoint.SetLinearOffset(System.Numerics.Vector2@)">
+            Set/get the target linear offset, in frame A, in meters.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MotorJoint.SetAngularOffset(System.Single)">
+            Set/get the target angular offset, in radians.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MotorJoint.SetMaxForce(System.Single)">
+            Set the maximum friction force in N.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MotorJoint.GetMaxForce">
+            Get the maximum friction force in N.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MotorJoint.SetMaxTorque(System.Single)">
+            Set the maximum friction torque in N*m.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MotorJoint.GetMaxTorque">
+            Get the maximum friction torque in N*m.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MotorJoint.SetCorrectionFactor(System.Single)">
+            Set the position correction factor in the range [0,1].
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MotorJoint.GetCorrectionFactor">
+            Get the position correction factor in the range [0,1].
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MotorJoint.GetAnchorA">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MotorJoint.GetAnchorB">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MotorJoint.GetReactionForce(System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MotorJoint.GetReactionTorque(System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MotorJoint.Dump">
+            Dump to Logger.Log
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MotorJoint.InitVelocityConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MotorJoint.SolveVelocityConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MotorJoint.SolvePositionConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Joints.MotorJointDef">
+            Motor joint definition.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.MotorJointDef.AngularOffset">
+            The bodyB angle minus bodyA angle in radians.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.MotorJointDef.CorrectionFactor">
+            Position correction factor in the range [0,1].
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.MotorJointDef.LinearOffset">
+            Position of bodyB minus the position of bodyA, in bodyA's frame, in meters.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.MotorJointDef.MaxForce">
+            The maximum motor force in N.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.MotorJointDef.MaxTorque">
+            The maximum motor torque in N-m.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MotorJointDef.Initialize(Box2DSharp.Dynamics.Body,Box2DSharp.Dynamics.Body)">
+            Initialize the bodies and offsets using the current transforms.
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Joints.MouseJoint">
+            A mouse joint is used to make a point on a body track a
+            specified world point. This a soft constraint with a maximum
+            force. This allows the constraint to stretch and without
+            applying huge forces.
+            NOTE: this joint is not documented in the manual because it was
+            developed to be used in the testbed. If you want to learn how to
+            use the mouse joint, look at the testbed.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MouseJoint.SetTarget(System.Numerics.Vector2@)">
+            Implements b2Joint.
+            Use this to update the target point.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MouseJoint.ShiftOrigin(System.Numerics.Vector2@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MouseJoint.GetAnchorA">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MouseJoint.GetAnchorB">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MouseJoint.GetReactionForce(System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MouseJoint.GetReactionTorque(System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MouseJoint.Dump">
+            The mouse joint does not support dumping.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MouseJoint.InitVelocityConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MouseJoint.SolveVelocityConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.MouseJoint.SolvePositionConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Joints.MouseJointDef">
+            Mouse joint definition. This requires a world target point,
+            tuning parameters, and the time step.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.MouseJointDef.Damping">
+            The damping ratio. 0 = no damping, 1 = critical damping.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.MouseJointDef.Stiffness">
+            The response speed.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.MouseJointDef.MaxForce">
+            The maximum constraint force that can be exerted
+            to move the candidate body. Usually you will express
+            as some multiple of the weight (multiplier * mass * gravity).
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.MouseJointDef.Target">
+            The initial world target point. This is assumed
+            to coincide with the body anchor initially.
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Joints.PrismaticJoint">
+             <summary>
+             Linear constraint (point-to-line)
+             d = p2 - p1 = x2 + r2 - x1 - r1
+             C = dot(perp, d)
+             Cdot = dot(d, cross(w1, perp)) + dot(perp, v2 + cross(w2, r2) - v1 - cross(w1, r1))
+                  = -dot(perp, v1) - dot(cross(d + r1, perp), w1) + dot(perp, v2) + dot(cross(r2, perp), v2)
+             J = [-perp, -cross(d + r1, perp), perp, cross(r2,perp)]
+            
+             Angular constraint
+             C = a2 - a1 + a_initial
+             Cdot = w2 - w1
+             J = [0 0 -1 0 0 1]
+            
+             K = J * invM * JT
+            
+             J = [-a -s1 a s2]
+                 [0  -1  0  1]
+             a = perp
+             s1 = cross(d + r1, a) = cross(p2 - x1, a)
+             s2 = cross(r2, a) = cross(p2 - x2, a)
+            
+             Motor/Limit linear constraint
+             C = dot(ax1, d)
+             Cdot = -dot(ax1, v1) - dot(cross(d + r1, ax1), w1) + dot(ax1, v2) + dot(cross(r2, ax1), v2)
+             J = [-ax1 -cross(d+r1,ax1) ax1 cross(r2,ax1)]
+            
+             Predictive limit is applied even when the limit is not active.
+             Prevents a constraint speed that can lead to a constraint error in one time step.
+             Want C2 = C1 + h * Cdot >= 0
+             Or:
+             Cdot + C1/h >= 0
+             I do not apply a negative constraint error because that is handled in position correction.
+             So:
+             Cdot + max(C1, 0)/h >= 0
+            
+             Block Solver
+             We develop a block solver that includes the angular and linear constraints. This makes the limit stiffer.
+            
+             The Jacobian has 2 rows:
+             J = [-uT -s1 uT s2] /// linear
+                 [0   -1   0  1] /// angular
+            
+             u = perp
+             s1 = cross(d + r1, u), s2 = cross(r2, u)
+             a1 = cross(d + r1, v), a2 = cross(r2, v)
+             </summary>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.GetLocalAnchorA">
+            The local anchor point relative to bodyA's origin.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.GetLocalAnchorB">
+            The local anchor point relative to bodyB's origin.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.GetLocalAxisA">
+            The local joint axis relative to bodyA.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.GetReferenceAngle">
+            Get the reference angle.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.GetJointTranslation">
+            Get the current joint translation, usually in meters.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.GetJointSpeed">
+            Get the current joint translation speed, usually in meters per second.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.IsLimitEnabled">
+            Is the joint limit enabled?
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.EnableLimit(System.Boolean)">
+            Enable/disable the joint limit.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.GetLowerLimit">
+            Get the lower joint limit, usually in meters.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.GetUpperLimit">
+            Get the upper joint limit, usually in meters.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.SetLimits(System.Single,System.Single)">
+            Set the joint limits, usually in meters.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.IsMotorEnabled">
+            Is the joint motor enabled?
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.EnableMotor(System.Boolean)">
+            Enable/disable the joint motor.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.SetMotorSpeed(System.Single)">
+            Set the motor speed, usually in meters per second.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.GetMotorSpeed">
+            Get the motor speed, usually in meters per second.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.SetMaxMotorForce(System.Single)">
+            Set the maximum motor force, usually in N.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.GetMotorForce(System.Single)">
+            Get the current motor force given the inverse time step, usually in N.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.GetAnchorA">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.GetAnchorB">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.GetReactionForce(System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.GetReactionTorque(System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.Dump">
+            Dump to b2Log
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJoint.Draw(Box2DSharp.Common.IDrawer)">
+            <inheritdoc />
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Joints.PrismaticJointDef">
+            Prismatic joint definition. This requires defining a line of
+            motion using an axis and an anchor point. The definition uses local
+            anchor points and a local axis so that the initial configuration
+            can violate the constraint slightly. The joint translation is zero
+            when the local anchor points coincide in world space. Using local
+            anchors and a local axis helps when saving and loading a game.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.PrismaticJointDef.EnableLimit">
+            Enable/disable the joint limit.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.PrismaticJointDef.EnableMotor">
+            Enable/disable the joint motor.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.PrismaticJointDef.LocalAnchorA">
+            The local anchor point relative to bodyA's origin.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.PrismaticJointDef.LocalAnchorB">
+            The local anchor point relative to bodyB's origin.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.PrismaticJointDef.LocalAxisA">
+            The local translation unit axis in bodyA.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.PrismaticJointDef.LowerTranslation">
+            The lower translation limit, usually in meters.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.PrismaticJointDef.MaxMotorForce">
+            The maximum motor torque, usually in N-m.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.PrismaticJointDef.MotorSpeed">
+            The desired motor speed in radians per second.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.PrismaticJointDef.ReferenceAngle">
+            The constrained angle between the bodies: bodyB_angle - bodyA_angle.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.PrismaticJointDef.UpperTranslation">
+            The upper translation limit, usually in meters.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PrismaticJointDef.Initialize(Box2DSharp.Dynamics.Body,Box2DSharp.Dynamics.Body,System.Numerics.Vector2@,System.Numerics.Vector2@)">
+            Initialize the bodies, anchors, axis, and reference angle using the world
+            anchor and unit world axis.
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Box2DSharp.Dynamics.Joints.PulleyJoint" -->
+        <member name="M:Box2DSharp.Dynamics.Joints.PulleyJoint.GetGroundAnchorA">
+            Get the first ground anchor.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PulleyJoint.GetGroundAnchorB">
+            Get the second ground anchor.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PulleyJoint.GetLengthA">
+            Get the current length of the segment attached to bodyA.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PulleyJoint.GetLengthB">
+            Get the current length of the segment attached to bodyB.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PulleyJoint.GetRatio">
+            Get the pulley ratio.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PulleyJoint.GetCurrentLengthA">
+            Get the current length of the segment attached to bodyA.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PulleyJoint.GetCurrentLengthB">
+            Get the current length of the segment attached to bodyB.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PulleyJoint.GetAnchorA">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PulleyJoint.GetAnchorB">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PulleyJoint.GetReactionForce(System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PulleyJoint.GetReactionTorque(System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PulleyJoint.InitVelocityConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PulleyJoint.SolveVelocityConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PulleyJoint.SolvePositionConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PulleyJoint.Dump">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PulleyJoint.ShiftOrigin(System.Numerics.Vector2@)">
+            <inheritdoc />
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Joints.PulleyJointDef">
+            Pulley joint definition. This requires two ground anchors,
+            two dynamic body anchor points, and a pulley ratio.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.PulleyJointDef.GroundAnchorA">
+            The first ground anchor in world coordinates. This point never moves.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.PulleyJointDef.GroundAnchorB">
+            The second ground anchor in world coordinates. This point never moves.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.PulleyJointDef.LengthA">
+            The a reference length for the segment attached to bodyA.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.PulleyJointDef.LengthB">
+            The a reference length for the segment attached to bodyB.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.PulleyJointDef.LocalAnchorA">
+            The local anchor point relative to bodyA's origin.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.PulleyJointDef.LocalAnchorB">
+            The local anchor point relative to bodyB's origin.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.PulleyJointDef.Ratio">
+            The pulley ratio, used to simulate a block-and-tackle.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.PulleyJointDef.Initialize(Box2DSharp.Dynamics.Body,Box2DSharp.Dynamics.Body,System.Numerics.Vector2@,System.Numerics.Vector2@,System.Numerics.Vector2@,System.Numerics.Vector2@,System.Single)">
+            Initialize the bodies, anchors, lengths, max lengths, and ratio using the world anchors.
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Joints.RevoluteJoint">
+            A revolute joint constrains two bodies to share a common point while they
+            are free to rotate about the point. The relative rotation about the shared
+            point is the joint angle. You can limit the relative rotation with
+            a joint limit that specifies a lower and upper angle. You can use a motor
+            to drive the relative rotation about the shared point. A maximum motor torque
+            is provided so that infinite forces are not generated.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.GetLocalAnchorA">
+            The local anchor point relative to bodyA's origin.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.GetLocalAnchorB">
+            The local anchor point relative to bodyB's origin.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.GetReferenceAngle">
+            Get the reference angle.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.GetJointAngle">
+            Get the current joint angle in radians.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.GetJointSpeed">
+            Get the current joint angle speed in radians per second.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.IsLimitEnabled">
+            Is the joint limit enabled?
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.EnableLimit(System.Boolean)">
+            Enable/disable the joint limit.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.GetLowerLimit">
+            Get the lower joint limit in radians.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.GetUpperLimit">
+            Get the upper joint limit in radians.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.SetLimits(System.Single,System.Single)">
+            Set the joint limits in radians.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.IsMotorEnabled">
+            Is the joint motor enabled?
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.EnableMotor(System.Boolean)">
+            Enable/disable the joint motor.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.SetMotorSpeed(System.Single)">
+            Set the motor speed in radians per second.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.GetMotorSpeed">
+            Get the motor speed in radians per second.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.SetMaxMotorTorque(System.Single)">
+            Set the maximum motor torque, usually in N-m.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.GetMotorTorque(System.Single)">
+            Get the reaction force given the inverse time step.
+            Unit is N.
+            Get the current motor torque given the inverse time step.
+            Unit is N*m.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.GetAnchorA">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.GetAnchorB">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.GetReactionForce(System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.GetReactionTorque(System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.Dump">
+            Dump to Logger.Log.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.InitVelocityConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.SolveVelocityConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.SolvePositionConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJoint.Draw(Box2DSharp.Common.IDrawer)">
+            <inheritdoc />
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Joints.RevoluteJointDef">
+            Revolute joint definition. This requires defining an anchor point where the
+            bodies are joined. The definition uses local anchor points so that the
+            initial configuration can violate the constraint slightly. You also need to
+            specify the initial relative angle for joint limits. This helps when saving
+            and loading a game.
+            The local anchor points are measured from the body's origin
+            rather than the center of mass because:
+            1. you might not know where the center of mass will be.
+            2. if you add/remove shapes from a body and recompute the mass,
+               the joints will be broken.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.RevoluteJointDef.EnableLimit">
+            A flag to enable joint limits.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.RevoluteJointDef.EnableMotor">
+            A flag to enable the joint motor.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.RevoluteJointDef.LocalAnchorA">
+            The local anchor point relative to bodyA's origin.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.RevoluteJointDef.LocalAnchorB">
+            The local anchor point relative to bodyB's origin.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.RevoluteJointDef.LowerAngle">
+            The lower angle for the joint limit (radians).
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.RevoluteJointDef.MaxMotorTorque">
+            The maximum motor torque used to achieve the desired motor speed.
+            Usually in N-m.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.RevoluteJointDef.MotorSpeed">
+            The desired motor speed. Usually in radians per second.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.RevoluteJointDef.ReferenceAngle">
+            The bodyB angle minus bodyA angle in the reference state (radians).
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.RevoluteJointDef.UpperAngle">
+            The upper angle for the joint limit (radians).
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.RevoluteJointDef.Initialize(Box2DSharp.Dynamics.Body,Box2DSharp.Dynamics.Body,System.Numerics.Vector2)">
+            Initialize the bodies, anchors, and reference angle using a world
+            anchor point.
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Joints.WeldJoint">
+            A weld joint essentially glues two bodies together. A weld joint may
+            distort somewhat because the island constraint solver is approximate.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WeldJoint.GetLocalAnchorA">
+            The local anchor point relative to bodyA's origin.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WeldJoint.GetLocalAnchorB">
+            The local anchor point relative to bodyB's origin.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WeldJoint.GetReferenceAngle">
+            Get the reference angle.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WeldJoint.GetAnchorA">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WeldJoint.GetAnchorB">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WeldJoint.GetReactionForce(System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WeldJoint.GetReactionTorque(System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WeldJoint.Dump">
+            Dump to Logger.Log
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WeldJoint.InitVelocityConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WeldJoint.SolveVelocityConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WeldJoint.SolvePositionConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Joints.WeldJointDef">
+            Weld joint definition. You need to specify local anchor points
+            where they are attached and the relative body angle. The position
+            of the anchor points is important for computing the reaction torque.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.WeldJointDef.Stiffness">
+            The rotational stiffness in N*m
+            Disable softness with a value of 0
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.WeldJointDef.Damping">
+            The rotational damping in N*m*s
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.WeldJointDef.LocalAnchorA">
+            The local anchor point relative to bodyA's origin.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.WeldJointDef.LocalAnchorB">
+            The local anchor point relative to bodyB's origin.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.WeldJointDef.ReferenceAngle">
+            The bodyB angle minus bodyA angle in the reference state (radians).
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WeldJointDef.Initialize(Box2DSharp.Dynamics.Body,Box2DSharp.Dynamics.Body,System.Numerics.Vector2@)">
+            <summary>
+            Initialize the bodies, anchors, reference angle, stiffness, and damping.
+            </summary>
+            <param name="bA">the first body connected by this joint</param>
+            <param name="bB">the second body connected by this joint</param>
+            <param name="anchor">the point of connection in world coordinates</param>
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Joints.WheelJoint">
+            <summary>
+            A wheel joint. This joint provides two degrees of freedom: translation
+            along an axis fixed in bodyA and rotation in the plane. In other words, it is a point to
+            line constraint with a rotational motor and a linear spring/damper. The spring/damper is
+            initialized upon creation. This joint is designed for vehicle suspensions.
+            </summary>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.GetLocalAnchorA">
+            The local anchor point relative to bodyA's origin.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.GetLocalAnchorB">
+            The local anchor point relative to bodyB's origin.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.GetLocalAxisA">
+            The local joint axis relative to bodyA.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.GetJointTranslation">
+            Get the current joint translation, usually in meters.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.GetJointLinearSpeed">
+            Get the current joint linear speed, usually in meters per second.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.GetJointAngle">
+            Get the current joint angle in radians.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.GetJointAngularSpeed">
+            Get the current joint angular speed in radians per second.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.IsLimitEnabled">
+            Is the joint limit enabled?
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.EnableLimit(System.Boolean)">
+            Enable/disable the joint translation limit.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.GetLowerLimit">
+            Get the lower joint translation limit, usually in meters.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.GetUpperLimit">
+            Get the upper joint translation limit, usually in meters.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.SetLimits(System.Single,System.Single)">
+            Set the joint translation limits, usually in meters.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.IsMotorEnabled">
+            Is the joint motor enabled?
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.EnableMotor(System.Boolean)">
+            Enable/disable the joint motor.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.SetMotorSpeed(System.Single)">
+            Set the motor speed, usually in radians per second.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.GetMotorSpeed">
+            Get the motor speed, usually in radians per second.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.SetMaxMotorTorque(System.Single)">
+            Set/Get the maximum motor force, usually in N-m.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.GetMotorTorque(System.Single)">
+            Get the current motor torque given the inverse time step, usually in N-m.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.SetStiffness(System.Single)">
+            Access spring stiffness
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.SetDamping(System.Single)">
+            Access damping
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.GetAnchorA">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.GetAnchorB">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.GetReactionForce(System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.GetReactionTorque(System.Single)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.Dump">
+            Dump to Logger.Log
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.InitVelocityConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.SolveVelocityConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.SolvePositionConstraints(Box2DSharp.Dynamics.SolverData@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJoint.Draw(Box2DSharp.Common.IDrawer)">
+            <inheritdoc />
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Joints.WheelJointDef">
+            Wheel joint definition. This requires defining a line of
+            motion using an axis and an anchor point. The definition uses local
+            anchor points and a local axis so that the initial configuration
+            can violate the constraint slightly. The joint translation is zero
+            when the local anchor points coincide in world space. Using local
+            anchors and a local axis helps when saving and loading a game.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.WheelJointDef.LocalAnchorA">
+            The local anchor point relative to bodyA's origin.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.WheelJointDef.LocalAnchorB">
+            The local anchor point relative to bodyB's origin.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.WheelJointDef.LocalAxisA">
+            The local translation axis in bodyA.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.WheelJointDef.EnableLimit">
+            Enable/disable the joint limit.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.WheelJointDef.LowerTranslation">
+            The lower translation limit, usually in meters.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.WheelJointDef.UpperTranslation">
+            The upper translation limit, usually in meters.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.WheelJointDef.EnableMotor">
+            Enable/disable the joint motor.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.WheelJointDef.MaxMotorTorque">
+            The maximum motor torque, usually in N-m.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.WheelJointDef.MotorSpeed">
+            The desired motor speed in radians per second.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.WheelJointDef.Stiffness">
+            Suspension stiffness. Typically in units N/m.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.Joints.WheelJointDef.Damping">
+            Suspension damping. Typically in units of N*s/m.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.Joints.WheelJointDef.Initialize(Box2DSharp.Dynamics.Body,Box2DSharp.Dynamics.Body,System.Numerics.Vector2@,System.Numerics.Vector2@)">
+            Initialize the bodies, anchors, axis, and reference angle using the world
+            anchor and world axis.
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Position">
+            This is an internal structure.
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Profile">
+            Profiling data. Times are in milliseconds.
+        </member>
+        <member name="T:Box2DSharp.Dynamics.SolverData">
+            Solver Data
+        </member>
+        <member name="T:Box2DSharp.Dynamics.TimeStep">
+            This is an internal structure.
+        </member>
+        <member name="T:Box2DSharp.Dynamics.Velocity">
+            This is an internal structure.
+        </member>
+        <member name="F:Box2DSharp.Dynamics.World._invDt0">
+            <summary>
+            This is used to compute the time step ratio to
+            support a variable time step.
+            时间步倍率
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.World._stepComplete">
+            <summary>
+            时间步完成
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.World.HasNewContacts">
+            <summary>
+            存在新接触点
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.World.DestructionListener">
+            <summary>
+            Register a destruction listener. The listener is owned by you and must
+            remain in scope.
+            析构监听器
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.World.Drawer">
+            <summary>
+            Debug Drawer
+            调试绘制
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.World.ContinuousPhysics">
+            <summary>
+            是否启用连续碰撞
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.World.Gravity">
+            <summary>
+            重力常数
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.World.IsAutoClearForces">
+            <summary>
+            清除受力
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.World.IsLocked">
+            <summary>
+            锁定世界
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.World.AllowSleep">
+            <summary>
+            世界是否允许休眠
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.World.SubStepping">
+            <summary>
+            Enable/disable single stepped continuous physics. For testing. 
+            子步进
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.World.WarmStarting">
+            <summary>
+            These are for debugging the solver.
+            Enable/disable warm starting. For testing.
+            热启动,用于调试求解器
+            </summary>
+        </member>
+        <member name="F:Box2DSharp.Dynamics.World.Profile">
+            <summary>
+            性能统计
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.World.ContactManager">
+            <summary>
+            接触点管理器
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.World.BodyList">
+            <summary>
+            物体链表
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.World.JointList">
+            <summary>
+            关节链表
+            </summary>
+        </member>
+        <member name="P:Box2DSharp.Dynamics.World.ProxyCount">
+            Get the number of broad-phase proxies.
+        </member>
+        <member name="P:Box2DSharp.Dynamics.World.BodyCount">
+            Get the number of bodies.
+        </member>
+        <member name="P:Box2DSharp.Dynamics.World.JointCount">
+            Get the number of joints.
+        </member>
+        <member name="P:Box2DSharp.Dynamics.World.ContactCount">
+            Get the number of contacts (each may have 0 or more contact points).
+        </member>
+        <member name="P:Box2DSharp.Dynamics.World.TreeHeight">
+            Get the height of the dynamic tree.
+        </member>
+        <member name="P:Box2DSharp.Dynamics.World.TreeBalance">
+            Get the balance of the dynamic tree.
+        </member>
+        <member name="P:Box2DSharp.Dynamics.World.TreeQuality">
+            Get the quality metric of the dynamic tree. The smaller the better.
+            The minimum is 1.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.World.SetContactFilter(Box2DSharp.Dynamics.IContactFilter)">
+            <summary>
+            Register a contact filter to provide specific control over collision.
+            Otherwise the default filter is used (b2_defaultFilter). The listener is
+            owned by you and must remain in scope.
+            注册碰撞过滤器,用于在碰撞过程中执行自定义过滤
+            </summary>
+            <param name="filter"></param>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.World.SetContactListener(Box2DSharp.Dynamics.IContactListener)">
+            <summary>
+            Register a contact event listener. The listener is owned by you and must
+            remain in scope.
+            注册接触监听器
+            </summary>
+            <param name="listener"></param>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.World.CreateBody(Box2DSharp.Dynamics.BodyDef@)">
+            <summary>
+            Create a rigid body given a definition. No reference to the definition
+            is retained.
+            @warning This function is locked during callbacks.
+            创建一个物体(刚体)
+            </summary>
+            <param name="def"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.World.DestroyBody(Box2DSharp.Dynamics.Body)">
+            <summary>
+            Destroy a rigid body given a definition. No reference to the definition
+            is retained. This function is locked during callbacks.
+            @warning This automatically deletes all associated shapes and joints.
+            @warning This function is locked during callbacks.
+            删除一个物体(刚体)
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.World.CreateJoint(Box2DSharp.Dynamics.Joints.JointDef)">
+            <summary>
+            Create a joint to constrain bodies together. No reference to the definition
+            is retained. This may cause the connected bodies to cease colliding.
+            @warning This function is locked during callbacks.
+            创建关节,用于把两个物体连接在一起,在回调中不可调用
+            </summary>
+            <param name="def"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.World.DestroyJoint(Box2DSharp.Dynamics.Joints.Joint)">
+            Destroy a joint. This may cause the connected bodies to begin colliding.
+            @warning This function is locked during callbacks.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.World.Step(System.Single,System.Int32,System.Int32)">
+            <summary>
+            Take a time step. This performs collision detection, integration, and constraint solution.
+            </summary>
+            <param name="timeStep">the amount of time to simulate, this should not vary.</param>
+            <param name="velocityIterations">for the velocity constraint solver.</param>
+            <param name="positionIterations">for the position constraint solver.</param>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.World.ClearForces">
+            Manually clear the force buffer on all bodies. By default, forces are cleared automatically
+            after each call to Step. The default behavior is modified by calling SetAutoClearForces.
+            The purpose of this function is to support sub-stepping. Sub-stepping is often used to maintain
+            a fixed sized time step under a variable frame-rate.
+            When you perform sub-stepping you will disable auto clearing of forces and instead call
+            ClearForces after all sub-steps are complete in one pass of your game loop.
+            @see SetAutoClearForces
+        </member>
+        <member name="M:Box2DSharp.Dynamics.World.TreeQueryCallback.QueryCallback(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Box2DSharp.Dynamics.World.QueryAABB(Box2DSharp.Dynamics.IQueryCallback@,Box2DSharp.Collision.AABB@)">
+            Query the world for all fixtures that potentially overlap the
+            provided AABB.
+            @param callback a user implemented callback class.
+            @param aabb the query box.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.World.RayCast(Box2DSharp.Dynamics.IRayCastCallback@,System.Numerics.Vector2@,System.Numerics.Vector2@)">
+            Ray-cast the world for all fixtures in the path of the ray. Your callback
+            controls whether you get the closest point, any point, or n-points.
+            The ray-cast ignores shapes that contain the starting point.
+            @param callback a user implemented callback class.
+            @param point1 the ray starting point
+            @param point2 the ray ending point
+        </member>
+        <member name="M:Box2DSharp.Dynamics.World.ShiftOrigin(System.Numerics.Vector2@)">
+            Shift the world origin. Useful for large worlds.
+            The body shift formula is: position -= newOrigin
+            @param newOrigin the new origin with respect to the old origin
+        </member>
+        <member name="M:Box2DSharp.Dynamics.World.Solve(Box2DSharp.Dynamics.TimeStep@)">
+            <summary>
+            Find islands, integrate and solve constraints, solve position constraints
+            找出岛屿,迭代求解约束,求解位置约束(岛屿用来对物理空间进行物体分组求解,提高效率)
+            </summary>
+            <param name="step"></param>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.World.SolveTOI(Box2DSharp.Dynamics.TimeStep@)">
+            <summary>
+            Find TOI contacts and solve them.
+            求解碰撞时间
+            </summary>
+            <param name="step"></param>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.World.Dump">
+            Dump the world into the log file.
+            @warning this should be called outside of a time step.
+        </member>
+        <member name="M:Box2DSharp.Dynamics.World.SetDebugDrawer(Box2DSharp.Common.IDrawer)">
+            <summary>
+            Register a routine for debug drawing. The debug draw functions are called
+            inside with <see cref="M:Box2DSharp.Dynamics.World.DebugDraw"/> method. The debug draw object is owned
+            by you and must remain in scope.
+            调试绘制,用于绘制物体的图形
+            </summary>
+            <param name="drawer"></param>
+        </member>
+        <member name="M:Box2DSharp.Dynamics.World.DebugDraw">
+            Call this to draw shapes and other debug draw data. This is intentionally non-const.
+            绘制调试数据
+        </member>
+        <member name="M:Box2DSharp.Dynamics.World.DrawShape(Box2DSharp.Dynamics.Fixture,Box2DSharp.Common.Transform@,Box2DSharp.Common.Color@)">
+            <summary>
+            绘制形状
+            </summary>
+            <param name="fixture"></param>
+            <param name="xf"></param>
+            <param name="color"></param>
+        </member>
+        <member name="T:Box2DSharp.Ropes.RopeDef">
+            
+        </member>
+        <member name="T:Box2DSharp.Ropes.RopeJointDef">
+            Rope joint definition. This requires two body anchor points and
+            a maximum lengths.
+            Note: by default the connected objects will not collide.
+            see collideConnected in b2JointDef.
+        </member>
+        <member name="F:Box2DSharp.Ropes.RopeJointDef.LocalAnchorA">
+            The local anchor point relative to bodyA's origin.
+        </member>
+        <member name="F:Box2DSharp.Ropes.RopeJointDef.LocalAnchorB">
+            The local anchor point relative to bodyB's origin.
+        </member>
+        <member name="F:Box2DSharp.Ropes.RopeJointDef.MaxLength">
+            The maximum length of the rope.
+            Warning: this must be larger than b2_linearSlop or
+            the joint will have no effect.
+        </member>
+        <member name="T:Box2DSharp.Ropes.RopeTuning">
+            
+        </member>
+    </members>
+</doc>
