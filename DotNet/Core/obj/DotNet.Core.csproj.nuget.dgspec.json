@@ -1,0 +1,169 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Core\\DotNet.Core.csproj": {}
+  },
+  "projects": {
+    "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Core\\DotNet.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Core\\DotNet.Core.csproj",
+        "projectName": "Core",
+        "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Core\\DotNet.Core.csproj",
+        "packagesPath": "C:\\Users\\NullStackSuger\\.nuget\\packages\\",
+        "outputPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\ToolSoft\\VS2022\\Tools\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\NullStackSuger\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj": {
+                "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "allWarningsAsErrors": true,
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj",
+        "projectName": "ThirdParty",
+        "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj",
+        "packagesPath": "C:\\Users\\NullStackSuger\\.nuget\\packages\\",
+        "outputPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\ThirdParty\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\ToolSoft\\VS2022\\Tools\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\NullStackSuger\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "allWarningsAsErrors": true,
+          "noWarn": [
+            "NU1903"
+          ],
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "CommandLineParser": {
+              "target": "Package",
+              "version": "[2.8.0, )"
+            },
+            "EPPlus": {
+              "target": "Package",
+              "version": "[5.8.8, )"
+            },
+            "MemoryPack": {
+              "target": "Package",
+              "version": "[1.10.0, )"
+            },
+            "Microsoft.CodeAnalysis.CSharp": {
+              "target": "Package",
+              "version": "[4.0.1, )"
+            },
+            "Microsoft.CodeAnalysis.Common": {
+              "target": "Package",
+              "version": "[4.0.1, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.17.1, )"
+            },
+            "NLog": {
+              "target": "Package",
+              "version": "[4.7.15, )"
+            },
+            "SharpZipLib": {
+              "target": "Package",
+              "version": "[1.3.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

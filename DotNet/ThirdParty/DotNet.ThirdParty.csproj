@@ -1,0 +1,2559 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>disable</Nullable>
+        <LangVersion>12</LangVersion>
+        <RootNamespace>ET</RootNamespace>
+        <AssemblyName>ThirdParty</AssemblyName>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+        <DefineConstants>DOTNET;UNITY_DOTSPLAYER</DefineConstants>
+        <OutputPath>..\..\Bin\</OutputPath>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <Optimize>true</Optimize>
+        <NoWarn>0169,0649,3021,8981,NU1903</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <DefineConstants>DOTNET;UNITY_DOTSPLAYER</DefineConstants>
+        <OutputPath>..\..\Bin\</OutputPath>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <NoWarn>0169,0649,3021,8981,NU1903</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\BSExtensionMethods.cs">
+          <Link>BulletUnity\BulletSharp\BSExtensionMethods.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ActivatingCollisionAlgorithm.cs">
+          <Link>BulletUnity\BulletSharp\Collision\ActivatingCollisionAlgorithm.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\AxisSweep3.cs">
+          <Link>BulletUnity\BulletSharp\Collision\AxisSweep3.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\Box2DBox2DCollisionAlgorithm.cs">
+          <Link>BulletUnity\BulletSharp\Collision\Box2DBox2DCollisionAlgorithm.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\Box2DShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\Box2DShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\BoxBoxCollisionAlgorithm.cs">
+          <Link>BulletUnity\BulletSharp\Collision\BoxBoxCollisionAlgorithm.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\BoxBoxDetector.cs">
+          <Link>BulletUnity\BulletSharp\Collision\BoxBoxDetector.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\BoxShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\BoxShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\BroadphaseInterface.cs">
+          <Link>BulletUnity\BulletSharp\Collision\BroadphaseInterface.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\BroadphaseProxy.cs">
+          <Link>BulletUnity\BulletSharp\Collision\BroadphaseProxy.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\BvhTriangleMeshShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\BvhTriangleMeshShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CapsuleShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\CapsuleShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CollisionAlgorithm.cs">
+          <Link>BulletUnity\BulletSharp\Collision\CollisionAlgorithm.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CollisionConfiguration.cs">
+          <Link>BulletUnity\BulletSharp\Collision\CollisionConfiguration.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CollisionCreateFunc.cs">
+          <Link>BulletUnity\BulletSharp\Collision\CollisionCreateFunc.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CollisionDispatcher.cs">
+          <Link>BulletUnity\BulletSharp\Collision\CollisionDispatcher.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CollisionObject.cs">
+          <Link>BulletUnity\BulletSharp\Collision\CollisionObject.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CollisionObjectWrapper.cs">
+          <Link>BulletUnity\BulletSharp\Collision\CollisionObjectWrapper.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CollisionShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\CollisionShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CollisionWorld.cs">
+          <Link>BulletUnity\BulletSharp\Collision\CollisionWorld.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CompoundCollisionAlgorithm.cs">
+          <Link>BulletUnity\BulletSharp\Collision\CompoundCollisionAlgorithm.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CompoundCompoundCollisionAlgorithm.cs">
+          <Link>BulletUnity\BulletSharp\Collision\CompoundCompoundCollisionAlgorithm.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CompoundShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\CompoundShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConcaveShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\ConcaveShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConeShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\ConeShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ContinuousConvexCollision.cs">
+          <Link>BulletUnity\BulletSharp\Collision\ContinuousConvexCollision.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\Convex2DConvex2DAlgorithm.cs">
+          <Link>BulletUnity\BulletSharp\Collision\Convex2DConvex2DAlgorithm.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\Convex2DShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\Convex2DShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConvexCast.cs">
+          <Link>BulletUnity\BulletSharp\Collision\ConvexCast.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConvexConcaveCollisionAlgorithm.cs">
+          <Link>BulletUnity\BulletSharp\Collision\ConvexConcaveCollisionAlgorithm.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConvexConvexAlgorithm.cs">
+          <Link>BulletUnity\BulletSharp\Collision\ConvexConvexAlgorithm.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConvexHullShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\ConvexHullShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConvexInternalShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\ConvexInternalShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConvexPenetrationDepthSolver.cs">
+          <Link>BulletUnity\BulletSharp\Collision\ConvexPenetrationDepthSolver.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConvexPlaneCollisionAlgorithm.cs">
+          <Link>BulletUnity\BulletSharp\Collision\ConvexPlaneCollisionAlgorithm.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConvexPointCloudShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\ConvexPointCloudShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConvexPolyhedron.cs">
+          <Link>BulletUnity\BulletSharp\Collision\ConvexPolyhedron.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConvexShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\ConvexShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConvexTriangleMeshShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\ConvexTriangleMeshShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CylinderShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\CylinderShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\Dbvt.cs">
+          <Link>BulletUnity\BulletSharp\Collision\Dbvt.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\DbvtBroadphase.cs">
+          <Link>BulletUnity\BulletSharp\Collision\DbvtBroadphase.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\DefaultCollisionConfiguration.cs">
+          <Link>BulletUnity\BulletSharp\Collision\DefaultCollisionConfiguration.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\DiscreteCollisionDetectorInterface.cs">
+          <Link>BulletUnity\BulletSharp\Collision\DiscreteCollisionDetectorInterface.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\Dispatcher.cs">
+          <Link>BulletUnity\BulletSharp\Collision\Dispatcher.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\EmptyCollisionAlgorithm.cs">
+          <Link>BulletUnity\BulletSharp\Collision\EmptyCollisionAlgorithm.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\EmptyShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\EmptyShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GhostObject.cs">
+          <Link>BulletUnity\BulletSharp\Collision\GhostObject.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GImpact\BoxCollision.cs">
+          <Link>BulletUnity\BulletSharp\Collision\GImpact\BoxCollision.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GImpact\CompoundFromGImpact.cs">
+          <Link>BulletUnity\BulletSharp\Collision\GImpact\CompoundFromGImpact.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GImpact\GImpactBvh.cs">
+          <Link>BulletUnity\BulletSharp\Collision\GImpact\GImpactBvh.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GImpact\GImpactCollisionAlgorithm.cs">
+          <Link>BulletUnity\BulletSharp\Collision\GImpact\GImpactCollisionAlgorithm.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GImpact\GImpactQuantizedBvh.cs">
+          <Link>BulletUnity\BulletSharp\Collision\GImpact\GImpactQuantizedBvh.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GImpact\GImpactShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\GImpact\GImpactShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GImpact\TriangleShapeEx.cs">
+          <Link>BulletUnity\BulletSharp\Collision\GImpact\TriangleShapeEx.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GjkConvexCast.cs">
+          <Link>BulletUnity\BulletSharp\Collision\GjkConvexCast.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GjkEpaPenetrationDepthSolver.cs">
+          <Link>BulletUnity\BulletSharp\Collision\GjkEpaPenetrationDepthSolver.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GjkPairDetector.cs">
+          <Link>BulletUnity\BulletSharp\Collision\GjkPairDetector.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\HeightfieldTerrainShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\HeightfieldTerrainShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ManifoldPoint.cs">
+          <Link>BulletUnity\BulletSharp\Collision\ManifoldPoint.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ManifoldResult.cs">
+          <Link>BulletUnity\BulletSharp\Collision\ManifoldResult.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\MinkowskiPenetrationDepthSolver.cs">
+          <Link>BulletUnity\BulletSharp\Collision\MinkowskiPenetrationDepthSolver.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\MinkowskiSumShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\MinkowskiSumShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\MultimaterialTriangleMeshShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\MultimaterialTriangleMeshShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\MultiSphereShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\MultiSphereShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\OptimizedBvh.cs">
+          <Link>BulletUnity\BulletSharp\Collision\OptimizedBvh.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\OverlappingPairCache.cs">
+          <Link>BulletUnity\BulletSharp\Collision\OverlappingPairCache.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\OverlappingPairCallback.cs">
+          <Link>BulletUnity\BulletSharp\Collision\OverlappingPairCallback.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\PersistentManifold.cs">
+          <Link>BulletUnity\BulletSharp\Collision\PersistentManifold.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\PointCollector.cs">
+          <Link>BulletUnity\BulletSharp\Collision\PointCollector.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\PolyhedralConvexShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\PolyhedralConvexShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\QuantizedBvh.cs">
+          <Link>BulletUnity\BulletSharp\Collision\QuantizedBvh.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\RaycastCallback.cs">
+          <Link>BulletUnity\BulletSharp\Collision\RaycastCallback.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ScaledBvhTriangleMeshShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\ScaledBvhTriangleMeshShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ShapeHull.cs">
+          <Link>BulletUnity\BulletSharp\Collision\ShapeHull.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\SimpleBroadphase.cs">
+          <Link>BulletUnity\BulletSharp\Collision\SimpleBroadphase.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\SimulationIslandManager.cs">
+          <Link>BulletUnity\BulletSharp\Collision\SimulationIslandManager.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\SoftBodyConcaveCollisionAlgorithm.cs">
+          <Link>BulletUnity\BulletSharp\Collision\SoftBodyConcaveCollisionAlgorithm.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\SoftRigidCollisionAlgorithm.cs">
+          <Link>BulletUnity\BulletSharp\Collision\SoftRigidCollisionAlgorithm.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\SoftSoftCollisionAlgorithm.cs">
+          <Link>BulletUnity\BulletSharp\Collision\SoftSoftCollisionAlgorithm.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\SphereBoxCollisionAlgorithm.cs">
+          <Link>BulletUnity\BulletSharp\Collision\SphereBoxCollisionAlgorithm.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\SphereShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\SphereShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\SphereSphereCollisionAlgorithm.cs">
+          <Link>BulletUnity\BulletSharp\Collision\SphereSphereCollisionAlgorithm.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\SphereTriangleCollisionAlgorithm.cs">
+          <Link>BulletUnity\BulletSharp\Collision\SphereTriangleCollisionAlgorithm.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\SphereTriangleDetector.cs">
+          <Link>BulletUnity\BulletSharp\Collision\SphereTriangleDetector.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\StaticPlaneShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\StaticPlaneShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\StridingMeshInterface.cs">
+          <Link>BulletUnity\BulletSharp\Collision\StridingMeshInterface.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\TetrahedronShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\TetrahedronShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\TriangleBuffer.cs">
+          <Link>BulletUnity\BulletSharp\Collision\TriangleBuffer.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\TriangleCallback.cs">
+          <Link>BulletUnity\BulletSharp\Collision\TriangleCallback.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\TriangleIndexVertexArray.cs">
+          <Link>BulletUnity\BulletSharp\Collision\TriangleIndexVertexArray.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\TriangleIndexVertexMaterialArray.cs">
+          <Link>BulletUnity\BulletSharp\Collision\TriangleIndexVertexMaterialArray.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\TriangleInfoMap.cs">
+          <Link>BulletUnity\BulletSharp\Collision\TriangleInfoMap.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\TriangleMesh.cs">
+          <Link>BulletUnity\BulletSharp\Collision\TriangleMesh.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\TriangleMeshShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\TriangleMeshShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\TriangleShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\TriangleShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\UniformScalingShape.cs">
+          <Link>BulletUnity\BulletSharp\Collision\UniformScalingShape.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\UnionFind.cs">
+          <Link>BulletUnity\BulletSharp\Collision\UnionFind.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\VoronoiSimplexSolver.cs">
+          <Link>BulletUnity\BulletSharp\Collision\VoronoiSimplexSolver.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\ConeTwistConstraint.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\ConeTwistConstraint.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\ConstraintSolver.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\ConstraintSolver.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\ContactConstraint.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\ContactConstraint.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\ContactSolverInfo.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\ContactSolverInfo.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\DantzigSolver.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\DantzigSolver.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\DiscreteDynamicsWorld.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\DiscreteDynamicsWorld.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\DynamicsWorld.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\DynamicsWorld.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBody.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBody.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyConstraint.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyConstraint.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyConstraintSolver.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyConstraintSolver.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyDynamicsWorld.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyDynamicsWorld.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyJointLimitConstraint.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyJointLimitConstraint.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyJointMotor.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyJointMotor.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyLink.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyLink.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyLinkCollider.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyLinkCollider.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyPoint2Point.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyPoint2Point.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodySolverConstraint.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodySolverConstraint.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\FixedConstraint.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\FixedConstraint.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\GearConstraint.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\GearConstraint.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Generic6DofConstraint.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\Generic6DofConstraint.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Generic6DofSpring2Constraint.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\Generic6DofSpring2Constraint.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Generic6DofSpringConstraint.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\Generic6DofSpringConstraint.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Hinge2Constraint.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\Hinge2Constraint.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\HingeConstraint.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\HingeConstraint.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\IAction.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\IAction.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\ICharacterController.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\ICharacterController.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\KinematicCharacterController.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\KinematicCharacterController.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\MlcpSolver.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\MlcpSolver.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\MlcpSolverInterface.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\MlcpSolverInterface.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\NncgConstraintSolver.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\NncgConstraintSolver.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Point2PointConstraint.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\Point2PointConstraint.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\RaycastVehicle.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\RaycastVehicle.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\RigidBody.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\RigidBody.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\RigidBodyConstructionInfo.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\RigidBodyConstructionInfo.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\SequentialImpulseConstraintSolver.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\SequentialImpulseConstraintSolver.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\SliderConstraint.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\SliderConstraint.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\TypedConstraint.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\TypedConstraint.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\UniversalConstraint.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\UniversalConstraint.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\VehicleRaycaster.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\VehicleRaycaster.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\WheelInfo.cs">
+          <Link>BulletUnity\BulletSharp\Dynamics\WheelInfo.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Extras\bFile.cs">
+          <Link>BulletUnity\BulletSharp\Extras\bFile.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Extras\BulletFile.cs">
+          <Link>BulletUnity\BulletSharp\Extras\BulletFile.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Extras\BulletReader.cs">
+          <Link>BulletUnity\BulletSharp\Extras\BulletReader.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Extras\BulletWorldImporter.cs">
+          <Link>BulletUnity\BulletSharp\Extras\BulletWorldImporter.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Extras\BulletWriter.cs">
+          <Link>BulletUnity\BulletSharp\Extras\BulletWriter.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Extras\BulletXmlWorldImporter.cs">
+          <Link>BulletUnity\BulletSharp\Extras\BulletXmlWorldImporter.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Extras\Chunk.cs">
+          <Link>BulletUnity\BulletSharp\Extras\Chunk.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Extras\Dna.cs">
+          <Link>BulletUnity\BulletSharp\Extras\Dna.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Extras\Hacd.cs">
+          <Link>BulletUnity\BulletSharp\Extras\Hacd.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Extras\WorldImporter.cs">
+          <Link>BulletUnity\BulletSharp\Extras\WorldImporter.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\InvalidDataException.cs">
+          <Link>BulletUnity\BulletSharp\InvalidDataException.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\AlignedBroadphasePairArray.cs">
+          <Link>BulletUnity\BulletSharp\LinearMath\AlignedBroadphasePairArray.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\AlignedCollisionObjectArray.cs">
+          <Link>BulletUnity\BulletSharp\LinearMath\AlignedCollisionObjectArray.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\AlignedIndexedMeshArray.cs">
+          <Link>BulletUnity\BulletSharp\LinearMath\AlignedIndexedMeshArray.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\AlignedManifoldArray.cs">
+          <Link>BulletUnity\BulletSharp\LinearMath\AlignedManifoldArray.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\AlignedVector3Array.cs">
+          <Link>BulletUnity\BulletSharp\LinearMath\AlignedVector3Array.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\Collections.cs">
+          <Link>BulletUnity\BulletSharp\LinearMath\Collections.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\CpuFeatureUtility.cs">
+          <Link>BulletUnity\BulletSharp\LinearMath\CpuFeatureUtility.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\DebugDraw.cs">
+          <Link>BulletUnity\BulletSharp\LinearMath\DebugDraw.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\DefaultMotionState.cs">
+          <Link>BulletUnity\BulletSharp\LinearMath\DefaultMotionState.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\GeometryUtil.cs">
+          <Link>BulletUnity\BulletSharp\LinearMath\GeometryUtil.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\IDebugDraw.cs">
+          <Link>BulletUnity\BulletSharp\LinearMath\IDebugDraw.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\MotionState.cs">
+          <Link>BulletUnity\BulletSharp\LinearMath\MotionState.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\PolarDecomposition.cs">
+          <Link>BulletUnity\BulletSharp\LinearMath\PolarDecomposition.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\Serializer.cs">
+          <Link>BulletUnity\BulletSharp\LinearMath\Serializer.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\TransformUtil.cs">
+          <Link>BulletUnity\BulletSharp\LinearMath\TransformUtil.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\MathUtil.cs">
+          <Link>BulletUnity\BulletSharp\MathUtil.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Math\Matrix.cs">
+          <Link>BulletUnity\BulletSharp\Math\Matrix.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Math\Quaternion.cs">
+          <Link>BulletUnity\BulletSharp\Math\Quaternion.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Math\Vector3.cs">
+          <Link>BulletUnity\BulletSharp\Math\Vector3.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Math\Vector4.cs">
+          <Link>BulletUnity\BulletSharp\Math\Vector4.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Native.cs">
+          <Link>BulletUnity\BulletSharp\Native.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\AlignedAnchorArray.cs">
+          <Link>BulletUnity\BulletSharp\SoftBody\AlignedAnchorArray.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\AlignedClusterArray.cs">
+          <Link>BulletUnity\BulletSharp\SoftBody\AlignedClusterArray.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\AlignedFaceArray.cs">
+          <Link>BulletUnity\BulletSharp\SoftBody\AlignedFaceArray.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\AlignedJointArray.cs">
+          <Link>BulletUnity\BulletSharp\SoftBody\AlignedJointArray.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\AlignedLinkArray.cs">
+          <Link>BulletUnity\BulletSharp\SoftBody\AlignedLinkArray.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\AlignedMaterialArray.cs">
+          <Link>BulletUnity\BulletSharp\SoftBody\AlignedMaterialArray.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\AlignedNodeArray.cs">
+          <Link>BulletUnity\BulletSharp\SoftBody\AlignedNodeArray.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\AlignedSoftBodyArray.cs">
+          <Link>BulletUnity\BulletSharp\SoftBody\AlignedSoftBodyArray.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\AlignedTetraArray.cs">
+          <Link>BulletUnity\BulletSharp\SoftBody\AlignedTetraArray.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\Collections.cs">
+          <Link>BulletUnity\BulletSharp\SoftBody\Collections.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\DefaultSoftBodySolver.cs">
+          <Link>BulletUnity\BulletSharp\SoftBody\DefaultSoftBodySolver.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\SoftBody.cs">
+          <Link>BulletUnity\BulletSharp\SoftBody\SoftBody.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\SoftBodyHelpers.cs">
+          <Link>BulletUnity\BulletSharp\SoftBody\SoftBodyHelpers.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\SoftBodyRigidBodyCollisionConfiguration.cs">
+          <Link>BulletUnity\BulletSharp\SoftBody\SoftBodyRigidBodyCollisionConfiguration.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\SoftBodySolver.cs">
+          <Link>BulletUnity\BulletSharp\SoftBody\SoftBodySolver.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\SoftRigidDynamicsWorld.cs">
+          <Link>BulletUnity\BulletSharp\SoftBody\SoftRigidDynamicsWorld.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\SparseSdf.cs">
+          <Link>BulletUnity\BulletSharp\SoftBody\SparseSdf.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Utilities.cs">
+          <Link>BulletUnity\BulletSharp\Utilities.cs</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\TrueSync\**\*.cs">
+            <Link>TrueSync/%(RecursiveDir)%(FileName)%(Extension)</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\ETTask\**\*.cs">
+            <Link>ETTask/%(RecursiveDir)%(FileName)%(Extension)</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\Kcp\**\*.cs">
+            <Link>Kcp/%(RecursiveDir)%(FileName)%(Extension)</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\NativeCollection\**\*.cs">
+            <Link>NativeCollection/%(RecursiveDir)%(FileName)%(Extension)</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\DotRecast\**\*.cs">
+            <Link>DotRecast/%(RecursiveDir)%(FileName)%(Extension)</Link>
+        </Compile>
+
+        <Compile Include="..\..\Unity\Library\PackageCache\com.unity.mathematics*\Unity.Mathematics\**\*.cs">
+            <Link>Unity.Mathematics/$([System.String]::new(%(RecursiveDir)).Substring($([System.String]::new(%(RecursiveDir)).Indexof("Unity.Mathematics"))).Replace("Unity.Mathematics", ""))/%(FileName)%(Extension)</Link>
+        </Compile>
+
+        <Compile Remove="BulletSharp\**" />
+
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="CommandLineParser" Version="2.8.0" />
+        <PackageReference Include="EPPlus" Version="5.8.8" />
+        <PackageReference Include="MemoryPack" Version="1.10.0" />
+        <PackageReference Include="MongoDB.Driver" Version="2.17.1" />
+        <PackageReference Include="NLog" Version="4.7.15" />
+        <PackageReference Include="SharpZipLib" Version="1.3.3" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.0.1" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp.meta">
+        <Link>BulletUnity\BulletSharp.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\BSExtensionMethods.cs.meta">
+        <Link>BulletUnity\BulletSharp\BSExtensionMethods.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision.meta">
+        <Link>BulletUnity\BulletSharp\Collision.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ActivatingCollisionAlgorithm.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\ActivatingCollisionAlgorithm.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\AxisSweep3.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\AxisSweep3.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\Box2DBox2DCollisionAlgorithm.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\Box2DBox2DCollisionAlgorithm.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\Box2DShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\Box2DShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\BoxBoxCollisionAlgorithm.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\BoxBoxCollisionAlgorithm.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\BoxBoxDetector.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\BoxBoxDetector.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\BoxShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\BoxShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\BroadphaseInterface.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\BroadphaseInterface.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\BroadphaseProxy.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\BroadphaseProxy.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\BvhTriangleMeshShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\BvhTriangleMeshShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CapsuleShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\CapsuleShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CollisionAlgorithm.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\CollisionAlgorithm.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CollisionConfiguration.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\CollisionConfiguration.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CollisionCreateFunc.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\CollisionCreateFunc.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CollisionDispatcher.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\CollisionDispatcher.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CollisionObject.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\CollisionObject.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CollisionObjectWrapper.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\CollisionObjectWrapper.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CollisionShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\CollisionShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CollisionWorld.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\CollisionWorld.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CompoundCollisionAlgorithm.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\CompoundCollisionAlgorithm.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CompoundCompoundCollisionAlgorithm.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\CompoundCompoundCollisionAlgorithm.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CompoundShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\CompoundShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConcaveShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\ConcaveShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConeShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\ConeShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ContinuousConvexCollision.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\ContinuousConvexCollision.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\Convex2DConvex2DAlgorithm.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\Convex2DConvex2DAlgorithm.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\Convex2DShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\Convex2DShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConvexCast.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\ConvexCast.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConvexConcaveCollisionAlgorithm.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\ConvexConcaveCollisionAlgorithm.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConvexConvexAlgorithm.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\ConvexConvexAlgorithm.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConvexHullShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\ConvexHullShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConvexInternalShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\ConvexInternalShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConvexPenetrationDepthSolver.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\ConvexPenetrationDepthSolver.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConvexPlaneCollisionAlgorithm.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\ConvexPlaneCollisionAlgorithm.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConvexPointCloudShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\ConvexPointCloudShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConvexPolyhedron.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\ConvexPolyhedron.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConvexShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\ConvexShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ConvexTriangleMeshShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\ConvexTriangleMeshShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\CylinderShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\CylinderShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\Dbvt.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\Dbvt.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\DbvtBroadphase.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\DbvtBroadphase.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\DefaultCollisionConfiguration.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\DefaultCollisionConfiguration.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\DiscreteCollisionDetectorInterface.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\DiscreteCollisionDetectorInterface.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\Dispatcher.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\Dispatcher.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\EmptyCollisionAlgorithm.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\EmptyCollisionAlgorithm.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\EmptyShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\EmptyShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GhostObject.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\GhostObject.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GImpact.meta">
+        <Link>BulletUnity\BulletSharp\Collision\GImpact.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GImpact\BoxCollision.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\GImpact\BoxCollision.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GImpact\CompoundFromGImpact.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\GImpact\CompoundFromGImpact.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GImpact\GImpactBvh.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\GImpact\GImpactBvh.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GImpact\GImpactCollisionAlgorithm.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\GImpact\GImpactCollisionAlgorithm.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GImpact\GImpactQuantizedBvh.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\GImpact\GImpactQuantizedBvh.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GImpact\GImpactShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\GImpact\GImpactShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GImpact\TriangleShapeEx.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\GImpact\TriangleShapeEx.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GjkConvexCast.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\GjkConvexCast.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GjkEpaPenetrationDepthSolver.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\GjkEpaPenetrationDepthSolver.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\GjkPairDetector.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\GjkPairDetector.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\HeightfieldTerrainShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\HeightfieldTerrainShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ManifoldPoint.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\ManifoldPoint.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ManifoldResult.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\ManifoldResult.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\MinkowskiPenetrationDepthSolver.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\MinkowskiPenetrationDepthSolver.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\MinkowskiSumShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\MinkowskiSumShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\MultimaterialTriangleMeshShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\MultimaterialTriangleMeshShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\MultiSphereShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\MultiSphereShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\OptimizedBvh.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\OptimizedBvh.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\OverlappingPairCache.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\OverlappingPairCache.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\OverlappingPairCallback.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\OverlappingPairCallback.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\PersistentManifold.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\PersistentManifold.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\PointCollector.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\PointCollector.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\PolyhedralConvexShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\PolyhedralConvexShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\QuantizedBvh.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\QuantizedBvh.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\RaycastCallback.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\RaycastCallback.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ScaledBvhTriangleMeshShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\ScaledBvhTriangleMeshShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\ShapeHull.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\ShapeHull.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\SimpleBroadphase.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\SimpleBroadphase.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\SimulationIslandManager.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\SimulationIslandManager.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\SoftBodyConcaveCollisionAlgorithm.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\SoftBodyConcaveCollisionAlgorithm.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\SoftRigidCollisionAlgorithm.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\SoftRigidCollisionAlgorithm.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\SoftSoftCollisionAlgorithm.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\SoftSoftCollisionAlgorithm.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\SphereBoxCollisionAlgorithm.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\SphereBoxCollisionAlgorithm.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\SphereShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\SphereShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\SphereSphereCollisionAlgorithm.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\SphereSphereCollisionAlgorithm.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\SphereTriangleCollisionAlgorithm.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\SphereTriangleCollisionAlgorithm.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\SphereTriangleDetector.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\SphereTriangleDetector.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\StaticPlaneShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\StaticPlaneShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\StridingMeshInterface.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\StridingMeshInterface.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\TetrahedronShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\TetrahedronShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\TriangleBuffer.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\TriangleBuffer.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\TriangleCallback.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\TriangleCallback.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\TriangleIndexVertexArray.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\TriangleIndexVertexArray.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\TriangleIndexVertexMaterialArray.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\TriangleIndexVertexMaterialArray.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\TriangleInfoMap.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\TriangleInfoMap.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\TriangleMesh.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\TriangleMesh.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\TriangleMeshShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\TriangleMeshShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\TriangleShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\TriangleShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\UniformScalingShape.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\UniformScalingShape.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\UnionFind.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\UnionFind.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\VoronoiSimplexSolver.cs.meta">
+        <Link>BulletUnity\BulletSharp\Collision\VoronoiSimplexSolver.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\ConeTwistConstraint.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\ConeTwistConstraint.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\ConstraintSolver.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\ConstraintSolver.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\ContactConstraint.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\ContactConstraint.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\ContactSolverInfo.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\ContactSolverInfo.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\DantzigSolver.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\DantzigSolver.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\DiscreteDynamicsWorld.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\DiscreteDynamicsWorld.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\DynamicsWorld.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\DynamicsWorld.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Featherstone.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\Featherstone.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBody.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBody.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyConstraint.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyConstraint.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyConstraintSolver.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyConstraintSolver.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyDynamicsWorld.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyDynamicsWorld.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyJointLimitConstraint.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyJointLimitConstraint.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyJointMotor.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyJointMotor.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyLink.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyLink.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyLinkCollider.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyLinkCollider.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyPoint2Point.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodyPoint2Point.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodySolverConstraint.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\Featherstone\MultiBodySolverConstraint.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\FixedConstraint.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\FixedConstraint.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\GearConstraint.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\GearConstraint.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Generic6DofConstraint.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\Generic6DofConstraint.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Generic6DofSpring2Constraint.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\Generic6DofSpring2Constraint.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Generic6DofSpringConstraint.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\Generic6DofSpringConstraint.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Hinge2Constraint.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\Hinge2Constraint.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\HingeConstraint.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\HingeConstraint.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\IAction.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\IAction.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\ICharacterController.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\ICharacterController.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\KinematicCharacterController.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\KinematicCharacterController.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\MlcpSolver.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\MlcpSolver.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\MlcpSolverInterface.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\MlcpSolverInterface.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\NncgConstraintSolver.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\NncgConstraintSolver.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\Point2PointConstraint.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\Point2PointConstraint.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\RaycastVehicle.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\RaycastVehicle.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\RigidBody.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\RigidBody.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\RigidBodyConstructionInfo.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\RigidBodyConstructionInfo.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\SequentialImpulseConstraintSolver.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\SequentialImpulseConstraintSolver.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\SliderConstraint.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\SliderConstraint.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\TypedConstraint.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\TypedConstraint.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\UniversalConstraint.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\UniversalConstraint.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\VehicleRaycaster.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\VehicleRaycaster.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Dynamics\WheelInfo.cs.meta">
+        <Link>BulletUnity\BulletSharp\Dynamics\WheelInfo.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Extras.meta">
+        <Link>BulletUnity\BulletSharp\Extras.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Extras\bFile.cs.meta">
+        <Link>BulletUnity\BulletSharp\Extras\bFile.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Extras\BulletFile.cs.meta">
+        <Link>BulletUnity\BulletSharp\Extras\BulletFile.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Extras\BulletReader.cs.meta">
+        <Link>BulletUnity\BulletSharp\Extras\BulletReader.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Extras\BulletWorldImporter.cs.meta">
+        <Link>BulletUnity\BulletSharp\Extras\BulletWorldImporter.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Extras\BulletWriter.cs.meta">
+        <Link>BulletUnity\BulletSharp\Extras\BulletWriter.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Extras\BulletXmlWorldImporter.cs.meta">
+        <Link>BulletUnity\BulletSharp\Extras\BulletXmlWorldImporter.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Extras\Chunk.cs.meta">
+        <Link>BulletUnity\BulletSharp\Extras\Chunk.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Extras\Dna.cs.meta">
+        <Link>BulletUnity\BulletSharp\Extras\Dna.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Extras\Hacd.cs.meta">
+        <Link>BulletUnity\BulletSharp\Extras\Hacd.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Extras\WorldImporter.cs.meta">
+        <Link>BulletUnity\BulletSharp\Extras\WorldImporter.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\InvalidDataException.cs.meta">
+        <Link>BulletUnity\BulletSharp\InvalidDataException.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath.meta">
+        <Link>BulletUnity\BulletSharp\LinearMath.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\AlignedBroadphasePairArray.cs.meta">
+        <Link>BulletUnity\BulletSharp\LinearMath\AlignedBroadphasePairArray.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\AlignedCollisionObjectArray.cs.meta">
+        <Link>BulletUnity\BulletSharp\LinearMath\AlignedCollisionObjectArray.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\AlignedIndexedMeshArray.cs.meta">
+        <Link>BulletUnity\BulletSharp\LinearMath\AlignedIndexedMeshArray.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\AlignedManifoldArray.cs.meta">
+        <Link>BulletUnity\BulletSharp\LinearMath\AlignedManifoldArray.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\AlignedVector3Array.cs.meta">
+        <Link>BulletUnity\BulletSharp\LinearMath\AlignedVector3Array.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\Collections.cs.meta">
+        <Link>BulletUnity\BulletSharp\LinearMath\Collections.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\CpuFeatureUtility.cs.meta">
+        <Link>BulletUnity\BulletSharp\LinearMath\CpuFeatureUtility.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\DebugDraw.cs.meta">
+        <Link>BulletUnity\BulletSharp\LinearMath\DebugDraw.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\DefaultMotionState.cs.meta">
+        <Link>BulletUnity\BulletSharp\LinearMath\DefaultMotionState.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\GeometryUtil.cs.meta">
+        <Link>BulletUnity\BulletSharp\LinearMath\GeometryUtil.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\IDebugDraw.cs.meta">
+        <Link>BulletUnity\BulletSharp\LinearMath\IDebugDraw.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\MotionState.cs.meta">
+        <Link>BulletUnity\BulletSharp\LinearMath\MotionState.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\PolarDecomposition.cs.meta">
+        <Link>BulletUnity\BulletSharp\LinearMath\PolarDecomposition.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\Serializer.cs.meta">
+        <Link>BulletUnity\BulletSharp\LinearMath\Serializer.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\LinearMath\TransformUtil.cs.meta">
+        <Link>BulletUnity\BulletSharp\LinearMath\TransformUtil.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Math.meta">
+        <Link>BulletUnity\BulletSharp\Math.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\MathUtil.cs.meta">
+        <Link>BulletUnity\BulletSharp\MathUtil.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Math\Matrix.cs.meta">
+        <Link>BulletUnity\BulletSharp\Math\Matrix.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Math\Quaternion.cs.meta">
+        <Link>BulletUnity\BulletSharp\Math\Quaternion.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Math\Vector3.cs.meta">
+        <Link>BulletUnity\BulletSharp\Math\Vector3.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Math\Vector4.cs.meta">
+        <Link>BulletUnity\BulletSharp\Math\Vector4.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Native.cs.meta">
+        <Link>BulletUnity\BulletSharp\Native.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody.meta">
+        <Link>BulletUnity\BulletSharp\SoftBody.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\AlignedAnchorArray.cs.meta">
+        <Link>BulletUnity\BulletSharp\SoftBody\AlignedAnchorArray.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\AlignedClusterArray.cs.meta">
+        <Link>BulletUnity\BulletSharp\SoftBody\AlignedClusterArray.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\AlignedFaceArray.cs.meta">
+        <Link>BulletUnity\BulletSharp\SoftBody\AlignedFaceArray.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\AlignedJointArray.cs.meta">
+        <Link>BulletUnity\BulletSharp\SoftBody\AlignedJointArray.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\AlignedLinkArray.cs.meta">
+        <Link>BulletUnity\BulletSharp\SoftBody\AlignedLinkArray.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\AlignedMaterialArray.cs.meta">
+        <Link>BulletUnity\BulletSharp\SoftBody\AlignedMaterialArray.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\AlignedNodeArray.cs.meta">
+        <Link>BulletUnity\BulletSharp\SoftBody\AlignedNodeArray.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\AlignedSoftBodyArray.cs.meta">
+        <Link>BulletUnity\BulletSharp\SoftBody\AlignedSoftBodyArray.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\AlignedTetraArray.cs.meta">
+        <Link>BulletUnity\BulletSharp\SoftBody\AlignedTetraArray.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\Collections.cs.meta">
+        <Link>BulletUnity\BulletSharp\SoftBody\Collections.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\DefaultSoftBodySolver.cs.meta">
+        <Link>BulletUnity\BulletSharp\SoftBody\DefaultSoftBodySolver.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\SoftBody.cs.meta">
+        <Link>BulletUnity\BulletSharp\SoftBody\SoftBody.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\SoftBodyHelpers.cs.meta">
+        <Link>BulletUnity\BulletSharp\SoftBody\SoftBodyHelpers.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\SoftBodyRigidBodyCollisionConfiguration.cs.meta">
+        <Link>BulletUnity\BulletSharp\SoftBody\SoftBodyRigidBodyCollisionConfiguration.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\SoftBodySolver.cs.meta">
+        <Link>BulletUnity\BulletSharp\SoftBody\SoftBodySolver.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\SoftRigidDynamicsWorld.cs.meta">
+        <Link>BulletUnity\BulletSharp\SoftBody\SoftRigidDynamicsWorld.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\SoftBody\SparseSdf.cs.meta">
+        <Link>BulletUnity\BulletSharp\SoftBody\SparseSdf.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Utilities.cs.meta">
+        <Link>BulletUnity\BulletSharp\Utilities.cs.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native.meta">
+        <Link>BulletUnity\Native.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\android.meta">
+        <Link>BulletUnity\Native\android.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\android\armeabi-v7a.meta">
+        <Link>BulletUnity\Native\android\armeabi-v7a.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\android\armeabi-v7a\libbulletc.so">
+        <Link>BulletUnity\Native\android\armeabi-v7a\libbulletc.so</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\android\armeabi-v7a\libbulletc.so.meta">
+        <Link>BulletUnity\Native\android\armeabi-v7a\libbulletc.so.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\android\x86.meta">
+        <Link>BulletUnity\Native\android\x86.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\android\x86\libbulletc.so">
+        <Link>BulletUnity\Native\android\x86\libbulletc.so</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\android\x86\libbulletc.so.meta">
+        <Link>BulletUnity\Native\android\x86\libbulletc.so.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS.meta">
+        <Link>BulletUnity\Native\iOS.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btActionInterface_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btActionInterface_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btAlignedObjectArray_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btAlignedObjectArray_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btAxisSweep3_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btAxisSweep3_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBox2dBox2dCollisionAlgorithm_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btBox2dBox2dCollisionAlgorithm_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBox2dShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btBox2dShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBoxBoxCollisionAlgorithm_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btBoxBoxCollisionAlgorithm_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBoxBoxDetector_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btBoxBoxDetector_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBoxCollision_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btBoxCollision_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBoxShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btBoxShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBroadphaseInterface_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btBroadphaseInterface_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBroadphaseProxy_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btBroadphaseProxy_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBulletFile_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btBulletFile_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBulletWorldImporter_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btBulletWorldImporter_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBulletXmlWorldImporter_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btBulletXmlWorldImporter_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBvhTriangleMeshShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btBvhTriangleMeshShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCapsuleShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btCapsuleShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCharacterControllerInterface_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btCharacterControllerInterface_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCollisionAlgorithm_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btCollisionAlgorithm_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCollisionConfiguration_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btCollisionConfiguration_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCollisionCreateFunc_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btCollisionCreateFunc_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCollisionDispatcher_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btCollisionDispatcher_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCollisionObjectWrapper_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btCollisionObjectWrapper_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCollisionObject_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btCollisionObject_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCollisionShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btCollisionShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCollisionWorld_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btCollisionWorld_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCompoundCollisionAlgorithm_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btCompoundCollisionAlgorithm_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCompoundCompoundCollisionAlgorithm_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btCompoundCompoundCollisionAlgorithm_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCompoundFromGimpact_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btCompoundFromGimpact_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCompoundShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btCompoundShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConcaveShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btConcaveShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConeShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btConeShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConeTwistConstraint_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btConeTwistConstraint_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConstraintSolver_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btConstraintSolver_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btContactConstraint_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btContactConstraint_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btContactSolverInfo_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btContactSolverInfo_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btContinuousConvexCollision_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btContinuousConvexCollision_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvex2dConvex2dAlgorithm_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btConvex2dConvex2dAlgorithm_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvex2dShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btConvex2dShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvexCast_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btConvexCast_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvexConcaveCollisionAlgorithm_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btConvexConcaveCollisionAlgorithm_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvexConvexAlgorithm_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btConvexConvexAlgorithm_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvexHullShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btConvexHullShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvexInternalShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btConvexInternalShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvexPenetrationDepthSolver_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btConvexPenetrationDepthSolver_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvexPlaneCollisionAlgorithm_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btConvexPlaneCollisionAlgorithm_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvexPointCloudShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btConvexPointCloudShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvexPolyhedron_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btConvexPolyhedron_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvexShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btConvexShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvexTriangleMeshShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btConvexTriangleMeshShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCpuFeatureUtility_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btCpuFeatureUtility_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCylinderShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btCylinderShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btDantzigSolver_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btDantzigSolver_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btDbvtBroadphase_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btDbvtBroadphase_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btDbvt_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btDbvt_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btDefaultCollisionConfiguration_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btDefaultCollisionConfiguration_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btDefaultMotionState_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btDefaultMotionState_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btDefaultSoftBodySolver_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btDefaultSoftBodySolver_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btDiscreteCollisionDetectorInterface_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btDiscreteCollisionDetectorInterface_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btDiscreteDynamicsWorld_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btDiscreteDynamicsWorld_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btDispatcher_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btDispatcher_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btDynamicsWorld_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btDynamicsWorld_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btEmptyCollisionAlgorithm_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btEmptyCollisionAlgorithm_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btEmptyShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btEmptyShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btFixedConstraint_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btFixedConstraint_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGearConstraint_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btGearConstraint_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGeneric6DofConstraint_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btGeneric6DofConstraint_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGeneric6DofSpring2Constraint_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btGeneric6DofSpring2Constraint_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGeneric6DofSpringConstraint_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btGeneric6DofSpringConstraint_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGeometryUtil_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btGeometryUtil_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGhostObject_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btGhostObject_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGImpactBvh_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btGImpactBvh_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGImpactCollisionAlgorithm_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btGImpactCollisionAlgorithm_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGImpactQuantizedBvh_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btGImpactQuantizedBvh_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGImpactShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btGImpactShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGjkConvexCast_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btGjkConvexCast_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGjkEpaPenetrationDepthSolver_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btGjkEpaPenetrationDepthSolver_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGjkPairDetector_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btGjkPairDetector_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btHeightfieldTerrainShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btHeightfieldTerrainShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btHinge2Constraint_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btHinge2Constraint_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btHingeConstraint_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btHingeConstraint_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btIDebugDraw_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btIDebugDraw_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btKinematicCharacterController_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btKinematicCharacterController_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btLemkeSolver_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btLemkeSolver_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btManifoldPoint_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btManifoldPoint_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btManifoldResult_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btManifoldResult_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMinkowskiPenetrationDepthSolver_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btMinkowskiPenetrationDepthSolver_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMinkowskiSumShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btMinkowskiSumShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMLCPSolverInterface_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btMLCPSolverInterface_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMLCPSolver_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btMLCPSolver_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMotionState_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btMotionState_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultiBodyConstraintSolver_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btMultiBodyConstraintSolver_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultiBodyConstraint_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btMultiBodyConstraint_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultiBodyDynamicsWorld_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btMultiBodyDynamicsWorld_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultiBodyJointLimitConstraint_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btMultiBodyJointLimitConstraint_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultiBodyJointMotor_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btMultiBodyJointMotor_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultiBodyLinkCollider_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btMultiBodyLinkCollider_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultiBodyLink_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btMultiBodyLink_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultiBodyPoint2Point_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btMultiBodyPoint2Point_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultiBodySolverConstraint_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btMultiBodySolverConstraint_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultiBody_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btMultiBody_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultimaterialTriangleMeshShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btMultimaterialTriangleMeshShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultiSphereShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btMultiSphereShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btNNCGConstraintSolver_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btNNCGConstraintSolver_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btOptimizedBvh_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btOptimizedBvh_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btOverlappingPairCache_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btOverlappingPairCache_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btOverlappingPairCallback_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btOverlappingPairCallback_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btPersistentManifold_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btPersistentManifold_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btPoint2PointConstraint_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btPoint2PointConstraint_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btPointCollector_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btPointCollector_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btPolarDecomposition_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btPolarDecomposition_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btPolyhedralConvexShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btPolyhedralConvexShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btQuantizedBvh_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btQuantizedBvh_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btRaycastVehicle_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btRaycastVehicle_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btRigidBody_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btRigidBody_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btScaledBvhTriangleMeshShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btScaledBvhTriangleMeshShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSequentialImpulseConstraintSolver_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btSequentialImpulseConstraintSolver_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSerializer_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btSerializer_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btShapeHull_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btShapeHull_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSimulationIslandManager_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btSimulationIslandManager_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSliderConstraint_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btSliderConstraint_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSoftBodyConcaveCollisionAlgorithm_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btSoftBodyConcaveCollisionAlgorithm_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSoftBodyHelpers_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btSoftBodyHelpers_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSoftBodyRigidBodyCollisionConfiguration_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btSoftBodyRigidBodyCollisionConfiguration_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSoftBodySolvers_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btSoftBodySolvers_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSoftBody_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btSoftBody_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSoftRigidCollisionAlgorithm_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btSoftRigidCollisionAlgorithm_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSoftRigidDynamicsWorld_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btSoftRigidDynamicsWorld_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSoftSoftCollisionAlgorithm_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btSoftSoftCollisionAlgorithm_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSparseSdf3_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btSparseSdf3_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSphereBoxCollisionAlgorithm_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btSphereBoxCollisionAlgorithm_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSphereShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btSphereShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSphereSphereCollisionAlgorithm_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btSphereSphereCollisionAlgorithm_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSphereTriangleCollisionAlgorithm_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btSphereTriangleCollisionAlgorithm_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btStaticPlaneShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btStaticPlaneShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btStridingMeshInterface_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btStridingMeshInterface_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTetrahedronShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btTetrahedronShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTransformUtil_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btTransformUtil_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTriangleBuffer_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btTriangleBuffer_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTriangleCallback_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btTriangleCallback_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTriangleIndexVertexArray_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btTriangleIndexVertexArray_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTriangleIndexVertexMaterialArray_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btTriangleIndexVertexMaterialArray_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTriangleInfoMap_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btTriangleInfoMap_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTriangleMeshShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btTriangleMeshShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTriangleMesh_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btTriangleMesh_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTriangleShapeEx_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btTriangleShapeEx_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTriangleShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btTriangleShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTypedConstraint_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btTypedConstraint_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btUniformScalingShape_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btUniformScalingShape_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btUnionFind_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btUnionFind_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btUniversalConstraint_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btUniversalConstraint_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btVehicleRaycaster_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btVehicleRaycaster_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btVoronoiSimplexSolver_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btVoronoiSimplexSolver_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btWheelInfo_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btWheelInfo_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btWorldImporter_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\btWorldImporter_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\bulletc.h.meta">
+        <Link>BulletUnity\Native\iOS\bulletc.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\collections.h.meta">
+        <Link>BulletUnity\Native\iOS\collections.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\conversion.h.meta">
+        <Link>BulletUnity\Native\iOS\conversion.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\hacdHACD_wrap.h.meta">
+        <Link>BulletUnity\Native\iOS\hacdHACD_wrap.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\libbulletc.a">
+        <Link>BulletUnity\Native\iOS\libbulletc.a</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\libbulletc.a.meta">
+        <Link>BulletUnity\Native\iOS\libbulletc.a.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\main.h.meta">
+        <Link>BulletUnity\Native\iOS\main.h.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX.meta">
+        <Link>BulletUnity\Native\OSX.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle.dSYM.meta">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle.dSYM.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle.dSYM\Contents.meta">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle.dSYM\Contents.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle.dSYM\Contents\Info.plist">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle.dSYM\Contents\Info.plist</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle.dSYM\Contents\Info.plist.meta">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle.dSYM\Contents\Info.plist.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle.dSYM\Contents\Resources.meta">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle.dSYM\Contents\Resources.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle.dSYM\Contents\Resources\DWARF.meta">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle.dSYM\Contents\Resources\DWARF.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle.dSYM\Contents\Resources\DWARF\libbulletc">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle.dSYM\Contents\Resources\DWARF\libbulletc</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle.dSYM\Contents\Resources\DWARF\libbulletc.meta">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle.dSYM\Contents\Resources\DWARF\libbulletc.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle.meta">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle\Contents.meta">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle\Contents.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle\Contents\Info.plist">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle\Contents\Info.plist</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle\Contents\Info.plist.meta">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle\Contents\Info.plist.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle\Contents\MacOS.meta">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle\Contents\MacOS.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle\Contents\MacOS\libbulletc">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle\Contents\MacOS\libbulletc</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle\Contents\MacOS\libbulletc.meta">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle\Contents\MacOS\libbulletc.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle\Contents\Resources.meta">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle\Contents\Resources.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle\Contents\Resources\CMakeLists.txt">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle\Contents\Resources\CMakeLists.txt</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle\Contents\Resources\CMakeLists.txt.meta">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle\Contents\Resources\CMakeLists.txt.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle\Contents\Resources\hacdCircularList.inl.meta">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle\Contents\Resources\hacdCircularList.inl.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle\Contents\Resources\hacdVector.inl.meta">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle\Contents\Resources\hacdVector.inl.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle\Contents\Resources\Makefile.am">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle\Contents\Resources\Makefile.am</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle\Contents\Resources\Makefile.am.meta">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle\Contents\Resources\Makefile.am.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle\Contents\Resources\premake4.lua">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle\Contents\Resources\premake4.lua</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle\Contents\Resources\premake4.lua.meta">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle\Contents\Resources\premake4.lua.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\UWP.meta">
+        <Link>BulletUnity\Native\UWP.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\UWP\ARM.meta">
+        <Link>BulletUnity\Native\UWP\ARM.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\UWP\ARM\libbulletc.dll">
+        <Link>BulletUnity\Native\UWP\ARM\libbulletc.dll</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\UWP\ARM\libbulletc.dll.meta">
+        <Link>BulletUnity\Native\UWP\ARM\libbulletc.dll.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\UWP\x64.meta">
+        <Link>BulletUnity\Native\UWP\x64.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\UWP\x64\libbulletc.dll">
+        <Link>BulletUnity\Native\UWP\x64\libbulletc.dll</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\UWP\x64\libbulletc.dll.meta">
+        <Link>BulletUnity\Native\UWP\x64\libbulletc.dll.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\UWP\x86.meta">
+        <Link>BulletUnity\Native\UWP\x86.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\UWP\x86\libbulletc.dll">
+        <Link>BulletUnity\Native\UWP\x86\libbulletc.dll</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\UWP\x86\libbulletc.dll.meta">
+        <Link>BulletUnity\Native\UWP\x86\libbulletc.dll.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\x64.meta">
+        <Link>BulletUnity\Native\x64.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\x64\libbulletc.dll">
+        <Link>BulletUnity\Native\x64\libbulletc.dll</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\x64\libbulletc.dll.meta">
+        <Link>BulletUnity\Native\x64\libbulletc.dll.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\x86.meta">
+        <Link>BulletUnity\Native\x86.meta</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\x86\libbulletc.dll">
+        <Link>BulletUnity\Native\x86\libbulletc.dll</Link>
+      </Content>
+      <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\x86\libbulletc.dll.meta">
+        <Link>BulletUnity\Native\x86\libbulletc.dll.meta</Link>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="BulletSharp\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="BulletSharp\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btActionInterface_wrap.h">
+        <Link>BulletUnity\Native\iOS\btActionInterface_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btAlignedObjectArray_wrap.h">
+        <Link>BulletUnity\Native\iOS\btAlignedObjectArray_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btAxisSweep3_wrap.h">
+        <Link>BulletUnity\Native\iOS\btAxisSweep3_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBox2dBox2dCollisionAlgorithm_wrap.h">
+        <Link>BulletUnity\Native\iOS\btBox2dBox2dCollisionAlgorithm_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBox2dShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btBox2dShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBoxBoxCollisionAlgorithm_wrap.h">
+        <Link>BulletUnity\Native\iOS\btBoxBoxCollisionAlgorithm_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBoxBoxDetector_wrap.h">
+        <Link>BulletUnity\Native\iOS\btBoxBoxDetector_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBoxCollision_wrap.h">
+        <Link>BulletUnity\Native\iOS\btBoxCollision_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBoxShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btBoxShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBroadphaseInterface_wrap.h">
+        <Link>BulletUnity\Native\iOS\btBroadphaseInterface_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBroadphaseProxy_wrap.h">
+        <Link>BulletUnity\Native\iOS\btBroadphaseProxy_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBulletFile_wrap.h">
+        <Link>BulletUnity\Native\iOS\btBulletFile_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBulletWorldImporter_wrap.h">
+        <Link>BulletUnity\Native\iOS\btBulletWorldImporter_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBulletXmlWorldImporter_wrap.h">
+        <Link>BulletUnity\Native\iOS\btBulletXmlWorldImporter_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btBvhTriangleMeshShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btBvhTriangleMeshShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCapsuleShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btCapsuleShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCharacterControllerInterface_wrap.h">
+        <Link>BulletUnity\Native\iOS\btCharacterControllerInterface_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCollisionAlgorithm_wrap.h">
+        <Link>BulletUnity\Native\iOS\btCollisionAlgorithm_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCollisionConfiguration_wrap.h">
+        <Link>BulletUnity\Native\iOS\btCollisionConfiguration_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCollisionCreateFunc_wrap.h">
+        <Link>BulletUnity\Native\iOS\btCollisionCreateFunc_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCollisionDispatcher_wrap.h">
+        <Link>BulletUnity\Native\iOS\btCollisionDispatcher_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCollisionObjectWrapper_wrap.h">
+        <Link>BulletUnity\Native\iOS\btCollisionObjectWrapper_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCollisionObject_wrap.h">
+        <Link>BulletUnity\Native\iOS\btCollisionObject_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCollisionShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btCollisionShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCollisionWorld_wrap.h">
+        <Link>BulletUnity\Native\iOS\btCollisionWorld_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCompoundCollisionAlgorithm_wrap.h">
+        <Link>BulletUnity\Native\iOS\btCompoundCollisionAlgorithm_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCompoundCompoundCollisionAlgorithm_wrap.h">
+        <Link>BulletUnity\Native\iOS\btCompoundCompoundCollisionAlgorithm_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCompoundFromGimpact_wrap.h">
+        <Link>BulletUnity\Native\iOS\btCompoundFromGimpact_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCompoundShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btCompoundShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConcaveShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btConcaveShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConeShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btConeShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConeTwistConstraint_wrap.h">
+        <Link>BulletUnity\Native\iOS\btConeTwistConstraint_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConstraintSolver_wrap.h">
+        <Link>BulletUnity\Native\iOS\btConstraintSolver_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btContactConstraint_wrap.h">
+        <Link>BulletUnity\Native\iOS\btContactConstraint_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btContactSolverInfo_wrap.h">
+        <Link>BulletUnity\Native\iOS\btContactSolverInfo_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btContinuousConvexCollision_wrap.h">
+        <Link>BulletUnity\Native\iOS\btContinuousConvexCollision_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvex2dConvex2dAlgorithm_wrap.h">
+        <Link>BulletUnity\Native\iOS\btConvex2dConvex2dAlgorithm_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvex2dShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btConvex2dShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvexCast_wrap.h">
+        <Link>BulletUnity\Native\iOS\btConvexCast_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvexConcaveCollisionAlgorithm_wrap.h">
+        <Link>BulletUnity\Native\iOS\btConvexConcaveCollisionAlgorithm_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvexConvexAlgorithm_wrap.h">
+        <Link>BulletUnity\Native\iOS\btConvexConvexAlgorithm_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvexHullShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btConvexHullShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvexInternalShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btConvexInternalShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvexPenetrationDepthSolver_wrap.h">
+        <Link>BulletUnity\Native\iOS\btConvexPenetrationDepthSolver_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvexPlaneCollisionAlgorithm_wrap.h">
+        <Link>BulletUnity\Native\iOS\btConvexPlaneCollisionAlgorithm_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvexPointCloudShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btConvexPointCloudShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvexPolyhedron_wrap.h">
+        <Link>BulletUnity\Native\iOS\btConvexPolyhedron_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvexShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btConvexShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btConvexTriangleMeshShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btConvexTriangleMeshShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCpuFeatureUtility_wrap.h">
+        <Link>BulletUnity\Native\iOS\btCpuFeatureUtility_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btCylinderShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btCylinderShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btDantzigSolver_wrap.h">
+        <Link>BulletUnity\Native\iOS\btDantzigSolver_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btDbvtBroadphase_wrap.h">
+        <Link>BulletUnity\Native\iOS\btDbvtBroadphase_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btDbvt_wrap.h">
+        <Link>BulletUnity\Native\iOS\btDbvt_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btDefaultCollisionConfiguration_wrap.h">
+        <Link>BulletUnity\Native\iOS\btDefaultCollisionConfiguration_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btDefaultMotionState_wrap.h">
+        <Link>BulletUnity\Native\iOS\btDefaultMotionState_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btDefaultSoftBodySolver_wrap.h">
+        <Link>BulletUnity\Native\iOS\btDefaultSoftBodySolver_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btDiscreteCollisionDetectorInterface_wrap.h">
+        <Link>BulletUnity\Native\iOS\btDiscreteCollisionDetectorInterface_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btDiscreteDynamicsWorld_wrap.h">
+        <Link>BulletUnity\Native\iOS\btDiscreteDynamicsWorld_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btDispatcher_wrap.h">
+        <Link>BulletUnity\Native\iOS\btDispatcher_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btDynamicsWorld_wrap.h">
+        <Link>BulletUnity\Native\iOS\btDynamicsWorld_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btEmptyCollisionAlgorithm_wrap.h">
+        <Link>BulletUnity\Native\iOS\btEmptyCollisionAlgorithm_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btEmptyShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btEmptyShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btFixedConstraint_wrap.h">
+        <Link>BulletUnity\Native\iOS\btFixedConstraint_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGearConstraint_wrap.h">
+        <Link>BulletUnity\Native\iOS\btGearConstraint_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGeneric6DofConstraint_wrap.h">
+        <Link>BulletUnity\Native\iOS\btGeneric6DofConstraint_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGeneric6DofSpring2Constraint_wrap.h">
+        <Link>BulletUnity\Native\iOS\btGeneric6DofSpring2Constraint_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGeneric6DofSpringConstraint_wrap.h">
+        <Link>BulletUnity\Native\iOS\btGeneric6DofSpringConstraint_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGeometryUtil_wrap.h">
+        <Link>BulletUnity\Native\iOS\btGeometryUtil_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGhostObject_wrap.h">
+        <Link>BulletUnity\Native\iOS\btGhostObject_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGImpactBvh_wrap.h">
+        <Link>BulletUnity\Native\iOS\btGImpactBvh_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGImpactCollisionAlgorithm_wrap.h">
+        <Link>BulletUnity\Native\iOS\btGImpactCollisionAlgorithm_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGImpactQuantizedBvh_wrap.h">
+        <Link>BulletUnity\Native\iOS\btGImpactQuantizedBvh_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGImpactShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btGImpactShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGjkConvexCast_wrap.h">
+        <Link>BulletUnity\Native\iOS\btGjkConvexCast_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGjkEpaPenetrationDepthSolver_wrap.h">
+        <Link>BulletUnity\Native\iOS\btGjkEpaPenetrationDepthSolver_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btGjkPairDetector_wrap.h">
+        <Link>BulletUnity\Native\iOS\btGjkPairDetector_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btHeightfieldTerrainShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btHeightfieldTerrainShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btHinge2Constraint_wrap.h">
+        <Link>BulletUnity\Native\iOS\btHinge2Constraint_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btHingeConstraint_wrap.h">
+        <Link>BulletUnity\Native\iOS\btHingeConstraint_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btIDebugDraw_wrap.h">
+        <Link>BulletUnity\Native\iOS\btIDebugDraw_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btKinematicCharacterController_wrap.h">
+        <Link>BulletUnity\Native\iOS\btKinematicCharacterController_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btLemkeSolver_wrap.h">
+        <Link>BulletUnity\Native\iOS\btLemkeSolver_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btManifoldPoint_wrap.h">
+        <Link>BulletUnity\Native\iOS\btManifoldPoint_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btManifoldResult_wrap.h">
+        <Link>BulletUnity\Native\iOS\btManifoldResult_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMinkowskiPenetrationDepthSolver_wrap.h">
+        <Link>BulletUnity\Native\iOS\btMinkowskiPenetrationDepthSolver_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMinkowskiSumShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btMinkowskiSumShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMLCPSolverInterface_wrap.h">
+        <Link>BulletUnity\Native\iOS\btMLCPSolverInterface_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMLCPSolver_wrap.h">
+        <Link>BulletUnity\Native\iOS\btMLCPSolver_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMotionState_wrap.h">
+        <Link>BulletUnity\Native\iOS\btMotionState_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultiBodyConstraintSolver_wrap.h">
+        <Link>BulletUnity\Native\iOS\btMultiBodyConstraintSolver_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultiBodyConstraint_wrap.h">
+        <Link>BulletUnity\Native\iOS\btMultiBodyConstraint_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultiBodyDynamicsWorld_wrap.h">
+        <Link>BulletUnity\Native\iOS\btMultiBodyDynamicsWorld_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultiBodyJointLimitConstraint_wrap.h">
+        <Link>BulletUnity\Native\iOS\btMultiBodyJointLimitConstraint_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultiBodyJointMotor_wrap.h">
+        <Link>BulletUnity\Native\iOS\btMultiBodyJointMotor_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultiBodyLinkCollider_wrap.h">
+        <Link>BulletUnity\Native\iOS\btMultiBodyLinkCollider_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultiBodyLink_wrap.h">
+        <Link>BulletUnity\Native\iOS\btMultiBodyLink_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultiBodyPoint2Point_wrap.h">
+        <Link>BulletUnity\Native\iOS\btMultiBodyPoint2Point_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultiBodySolverConstraint_wrap.h">
+        <Link>BulletUnity\Native\iOS\btMultiBodySolverConstraint_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultiBody_wrap.h">
+        <Link>BulletUnity\Native\iOS\btMultiBody_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultimaterialTriangleMeshShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btMultimaterialTriangleMeshShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btMultiSphereShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btMultiSphereShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btNNCGConstraintSolver_wrap.h">
+        <Link>BulletUnity\Native\iOS\btNNCGConstraintSolver_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btOptimizedBvh_wrap.h">
+        <Link>BulletUnity\Native\iOS\btOptimizedBvh_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btOverlappingPairCache_wrap.h">
+        <Link>BulletUnity\Native\iOS\btOverlappingPairCache_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btOverlappingPairCallback_wrap.h">
+        <Link>BulletUnity\Native\iOS\btOverlappingPairCallback_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btPersistentManifold_wrap.h">
+        <Link>BulletUnity\Native\iOS\btPersistentManifold_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btPoint2PointConstraint_wrap.h">
+        <Link>BulletUnity\Native\iOS\btPoint2PointConstraint_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btPointCollector_wrap.h">
+        <Link>BulletUnity\Native\iOS\btPointCollector_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btPolarDecomposition_wrap.h">
+        <Link>BulletUnity\Native\iOS\btPolarDecomposition_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btPolyhedralConvexShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btPolyhedralConvexShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btQuantizedBvh_wrap.h">
+        <Link>BulletUnity\Native\iOS\btQuantizedBvh_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btRaycastVehicle_wrap.h">
+        <Link>BulletUnity\Native\iOS\btRaycastVehicle_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btRigidBody_wrap.h">
+        <Link>BulletUnity\Native\iOS\btRigidBody_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btScaledBvhTriangleMeshShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btScaledBvhTriangleMeshShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSequentialImpulseConstraintSolver_wrap.h">
+        <Link>BulletUnity\Native\iOS\btSequentialImpulseConstraintSolver_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSerializer_wrap.h">
+        <Link>BulletUnity\Native\iOS\btSerializer_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btShapeHull_wrap.h">
+        <Link>BulletUnity\Native\iOS\btShapeHull_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSimulationIslandManager_wrap.h">
+        <Link>BulletUnity\Native\iOS\btSimulationIslandManager_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSliderConstraint_wrap.h">
+        <Link>BulletUnity\Native\iOS\btSliderConstraint_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSoftBodyConcaveCollisionAlgorithm_wrap.h">
+        <Link>BulletUnity\Native\iOS\btSoftBodyConcaveCollisionAlgorithm_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSoftBodyHelpers_wrap.h">
+        <Link>BulletUnity\Native\iOS\btSoftBodyHelpers_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSoftBodyRigidBodyCollisionConfiguration_wrap.h">
+        <Link>BulletUnity\Native\iOS\btSoftBodyRigidBodyCollisionConfiguration_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSoftBodySolvers_wrap.h">
+        <Link>BulletUnity\Native\iOS\btSoftBodySolvers_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSoftBody_wrap.h">
+        <Link>BulletUnity\Native\iOS\btSoftBody_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSoftRigidCollisionAlgorithm_wrap.h">
+        <Link>BulletUnity\Native\iOS\btSoftRigidCollisionAlgorithm_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSoftRigidDynamicsWorld_wrap.h">
+        <Link>BulletUnity\Native\iOS\btSoftRigidDynamicsWorld_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSoftSoftCollisionAlgorithm_wrap.h">
+        <Link>BulletUnity\Native\iOS\btSoftSoftCollisionAlgorithm_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSparseSdf3_wrap.h">
+        <Link>BulletUnity\Native\iOS\btSparseSdf3_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSphereBoxCollisionAlgorithm_wrap.h">
+        <Link>BulletUnity\Native\iOS\btSphereBoxCollisionAlgorithm_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSphereShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btSphereShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSphereSphereCollisionAlgorithm_wrap.h">
+        <Link>BulletUnity\Native\iOS\btSphereSphereCollisionAlgorithm_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btSphereTriangleCollisionAlgorithm_wrap.h">
+        <Link>BulletUnity\Native\iOS\btSphereTriangleCollisionAlgorithm_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btStaticPlaneShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btStaticPlaneShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btStridingMeshInterface_wrap.h">
+        <Link>BulletUnity\Native\iOS\btStridingMeshInterface_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTetrahedronShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btTetrahedronShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTransformUtil_wrap.h">
+        <Link>BulletUnity\Native\iOS\btTransformUtil_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTriangleBuffer_wrap.h">
+        <Link>BulletUnity\Native\iOS\btTriangleBuffer_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTriangleCallback_wrap.h">
+        <Link>BulletUnity\Native\iOS\btTriangleCallback_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTriangleIndexVertexArray_wrap.h">
+        <Link>BulletUnity\Native\iOS\btTriangleIndexVertexArray_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTriangleIndexVertexMaterialArray_wrap.h">
+        <Link>BulletUnity\Native\iOS\btTriangleIndexVertexMaterialArray_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTriangleInfoMap_wrap.h">
+        <Link>BulletUnity\Native\iOS\btTriangleInfoMap_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTriangleMeshShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btTriangleMeshShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTriangleMesh_wrap.h">
+        <Link>BulletUnity\Native\iOS\btTriangleMesh_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTriangleShapeEx_wrap.h">
+        <Link>BulletUnity\Native\iOS\btTriangleShapeEx_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTriangleShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btTriangleShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btTypedConstraint_wrap.h">
+        <Link>BulletUnity\Native\iOS\btTypedConstraint_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btUniformScalingShape_wrap.h">
+        <Link>BulletUnity\Native\iOS\btUniformScalingShape_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btUnionFind_wrap.h">
+        <Link>BulletUnity\Native\iOS\btUnionFind_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btUniversalConstraint_wrap.h">
+        <Link>BulletUnity\Native\iOS\btUniversalConstraint_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btVehicleRaycaster_wrap.h">
+        <Link>BulletUnity\Native\iOS\btVehicleRaycaster_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btVoronoiSimplexSolver_wrap.h">
+        <Link>BulletUnity\Native\iOS\btVoronoiSimplexSolver_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btWheelInfo_wrap.h">
+        <Link>BulletUnity\Native\iOS\btWheelInfo_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\btWorldImporter_wrap.h">
+        <Link>BulletUnity\Native\iOS\btWorldImporter_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\bulletc.h">
+        <Link>BulletUnity\Native\iOS\bulletc.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\collections.h">
+        <Link>BulletUnity\Native\iOS\collections.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\conversion.h">
+        <Link>BulletUnity\Native\iOS\conversion.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\hacdHACD_wrap.h">
+        <Link>BulletUnity\Native\iOS\hacdHACD_wrap.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\iOS\main.h">
+        <Link>BulletUnity\Native\iOS\main.h</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle\Contents\Resources\hacdCircularList.inl">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle\Contents\Resources\hacdCircularList.inl</Link>
+      </ClInclude>
+      <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\BulletUnity\Native\OSX\libbulletc.bundle\Contents\Resources\hacdVector.inl">
+        <Link>BulletUnity\Native\OSX\libbulletc.bundle\Contents\Resources\hacdVector.inl</Link>
+      </ClInclude>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="UnityEngine.CoreModule">
+        <HintPath>..\..\..\..\..\Editor\2022.3.15f1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+</Project>
