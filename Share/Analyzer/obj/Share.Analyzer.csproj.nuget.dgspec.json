@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\Share\\Analyzer\\Share.Analyzer.csproj": {}
+    "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\Share\\Analyzer\\Share.Analyzer.csproj": {}
   },
   "projects": {
-    "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\Share\\Analyzer\\Share.Analyzer.csproj": {
+    "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\Share\\Analyzer\\Share.Analyzer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\Share\\Analyzer\\Share.Analyzer.csproj",
+        "projectUniqueName": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\Share\\Analyzer\\Share.Analyzer.csproj",
         "projectName": "Share.Analyzer",
-        "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\Share\\Analyzer\\Share.Analyzer.csproj",
+        "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\Share\\Analyzer\\Share.Analyzer.csproj",
         "packagesPath": "C:\\Users\\NullStackSuger\\.nuget\\packages\\",
-        "outputPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\Share\\Analyzer\\obj\\",
+        "outputPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\Share\\Analyzer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\ToolSoft\\VS2022\\Tools\\NuGetPackages"

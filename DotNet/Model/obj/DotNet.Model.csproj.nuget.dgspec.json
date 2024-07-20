@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Model\\DotNet.Model.csproj": {}
+    "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Model\\DotNet.Model.csproj": {}
   },
   "projects": {
-    "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Core\\DotNet.Core.csproj": {
+    "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Core\\DotNet.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Core\\DotNet.Core.csproj",
+        "projectUniqueName": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Core\\DotNet.Core.csproj",
         "projectName": "Core",
-        "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Core\\DotNet.Core.csproj",
+        "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Core\\DotNet.Core.csproj",
         "packagesPath": "C:\\Users\\NullStackSuger\\.nuget\\packages\\",
-        "outputPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Core\\obj\\",
+        "outputPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\ToolSoft\\VS2022\\Tools\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj": {
-                "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj"
+              "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj": {
+                "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj"
               }
             }
           }
@@ -68,14 +68,14 @@
         }
       }
     },
-    "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Model\\DotNet.Model.csproj": {
+    "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Model\\DotNet.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Model\\DotNet.Model.csproj",
+        "projectUniqueName": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Model\\DotNet.Model.csproj",
         "projectName": "Model",
-        "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Model\\DotNet.Model.csproj",
+        "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Model\\DotNet.Model.csproj",
         "packagesPath": "C:\\Users\\NullStackSuger\\.nuget\\packages\\",
-        "outputPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Model\\obj\\",
+        "outputPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\ToolSoft\\VS2022\\Tools\\NuGetPackages"
@@ -96,11 +96,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Core\\DotNet.Core.csproj": {
-                "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Core\\DotNet.Core.csproj"
+              "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Core\\DotNet.Core.csproj": {
+                "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Core\\DotNet.Core.csproj"
               },
-              "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj": {
-                "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj"
+              "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj": {
+                "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj"
               }
             }
           }
@@ -135,14 +135,14 @@
         }
       }
     },
-    "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj": {
+    "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj",
+        "projectUniqueName": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj",
         "projectName": "ThirdParty",
-        "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj",
+        "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj",
         "packagesPath": "C:\\Users\\NullStackSuger\\.nuget\\packages\\",
-        "outputPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\ThirdParty\\obj\\",
+        "outputPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\ThirdParty\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\ToolSoft\\VS2022\\Tools\\NuGetPackages"

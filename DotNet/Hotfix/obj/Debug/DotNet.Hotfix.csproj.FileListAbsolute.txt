@@ -25,3 +25,17 @@ D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\DotNet\Hotfix\obj\Debug\Hotfix.dll
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\DotNet\Hotfix\obj\Debug\refint\Hotfix.dll
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\DotNet\Hotfix\obj\Debug\Hotfix.pdb
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\DotNet\Hotfix\obj\Debug\ref\Hotfix.dll
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\Bin\Hotfix.deps.json
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\Bin\Hotfix.dll
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\Bin\Hotfix.pdb
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Hotfix\obj\Debug\DotNet.Hotfix.csproj.AssemblyReference.cache
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Hotfix\obj\Debug\DotNet.Hotfix.GeneratedMSBuildEditorConfig.editorconfig
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Hotfix\obj\Debug\DotNet.Hotfix.AssemblyInfoInputs.cache
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Hotfix\obj\Debug\DotNet.Hotfix.AssemblyInfo.cs
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Hotfix\obj\Debug\DotNet.Hotfix.csproj.CoreCompileInputs.cache
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Hotfix\obj\Debug\DotNet.Hotfix.sourcelink.json
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Hotfix\obj\Debug\DotNet.Hotfix.csproj.CopyComplete
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Hotfix\obj\Debug\Hotfix.dll
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Hotfix\obj\Debug\refint\Hotfix.dll
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Hotfix\obj\Debug\Hotfix.pdb
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Hotfix\obj\Debug\ref\Hotfix.dll

@@ -2277,11 +2277,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Hotfix\\DotNet.Hotfix.csproj",
+      "projectUniqueName": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Hotfix\\DotNet.Hotfix.csproj",
       "projectName": "Hotfix",
-      "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Hotfix\\DotNet.Hotfix.csproj",
+      "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Hotfix\\DotNet.Hotfix.csproj",
       "packagesPath": "C:\\Users\\NullStackSuger\\.nuget\\packages\\",
-      "outputPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Hotfix\\obj\\",
+      "outputPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Hotfix\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\ToolSoft\\VS2022\\Tools\\NuGetPackages"
@@ -2302,11 +2302,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Loader\\DotNet.Loader.csproj": {
-              "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Loader\\DotNet.Loader.csproj"
+            "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Loader\\DotNet.Loader.csproj": {
+              "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Loader\\DotNet.Loader.csproj"
             },
-            "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Model\\DotNet.Model.csproj": {
-              "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\Model\\DotNet.Model.csproj"
+            "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Model\\DotNet.Model.csproj": {
+              "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Model\\DotNet.Model.csproj"
             }
           }
         }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hnnIi0hhzONz5TT1RMSOBbAV3+IsvUWBDIfn87hgMIAnfbA3tjHZCDXTaXAJvJKyDq2iicRV5ztAVMaImXROXw==",
+  "dgSpecHash": "/TYxvLnhLgOWq514ABbCdhCk8RT+jHrrDigeKVgGi2oftGrKksDAv0aiBCvEvVzPUJAHJTZvjGACwjgGx6nOvQ==",
   "success": true,
-  "projectFilePath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo\\DotNet\\App\\DotNet.App.csproj",
+  "projectFilePath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\App\\DotNet.App.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\NullStackSuger\\.nuget\\packages\\commandlineparser\\2.8.0\\commandlineparser.2.8.0.nupkg.sha512",
     "C:\\Users\\NullStackSuger\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",

@@ -25,3 +25,17 @@ D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Bin\Model.dll
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Bin\Model.pdb
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\DotNet\Model\obj\Debug\DotNet.Model.csproj.CopyComplete
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\DotNet\Model\obj\Debug\ref\Model.dll
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\Bin\Model.deps.json
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\Bin\Model.dll
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\Bin\Model.pdb
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Model\obj\Debug\DotNet.Model.csproj.AssemblyReference.cache
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Model\obj\Debug\DotNet.Model.GeneratedMSBuildEditorConfig.editorconfig
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Model\obj\Debug\DotNet.Model.AssemblyInfoInputs.cache
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Model\obj\Debug\DotNet.Model.AssemblyInfo.cs
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Model\obj\Debug\DotNet.Model.csproj.CoreCompileInputs.cache
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Model\obj\Debug\DotNet.Model.sourcelink.json
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Model\obj\Debug\DotNet.Model.csproj.CopyComplete
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Model\obj\Debug\Model.dll
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Model\obj\Debug\refint\Model.dll
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Model\obj\Debug\Model.pdb
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Model\obj\Debug\ref\Model.dll
