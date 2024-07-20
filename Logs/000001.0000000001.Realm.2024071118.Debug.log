@@ -1,0 +1,45 @@
+2024-07-11 18:15:37.6674 (KChannel.cs:89) channel create: 2147483649 286868291 127.0.0.1:61613 Accept
+2024-07-11 18:15:37.6794 (Session.cs:51) session create: zone: 1 id: 2147483649 1720692937678 
+2024-07-11 18:15:37.6794 (KService.cs:319) kservice syn: 2147483649 286868291 2147483649 127.0.0.1:61613
+2024-07-11 18:15:37.7318 (NetComponentSystem.cs:77) { "_t" : "C2R_Login", "RpcId" : 1, "Account" : "", "Password" : "" }
+2024-07-11 18:15:37.7568 (C2R_LoginHandler.cs:14) gate address: { "_t" : "StartSceneConfig", "ActorId" : { "Address" : { "Process" : 1, "Fiber" : 2 }, "InstanceId" : NumberLong(1) }, "Type" : NumberLong(16), "_id" : 2, "Process" : 1, "Zone" : 1, "SceneType" : "Gate", "Name" : "Gate1", "Port" : 30003 }
+2024-07-11 18:15:37.7985 (Session.cs:153) { "_t" : "R2C_Login", "RpcId" : 1, "Error" : 0, "Message" : null, "Address" : "127.0.0.1:30003", "Key" : NumberLong("2396081995354314423"), "GateId" : NumberLong(2) }
+2024-07-11 18:15:37.8749 (KService.cs:373) kservice recv fin: 2147483649 286868291 0
+2024-07-11 18:15:37.8749 (KService.cs:452) kservice remove channel: 2147483649 2147483649 286868291 100208
+2024-07-11 18:15:37.8749 (KChannel.cs:109) channel dispose: 2147483649 286868291 100208
+2024-07-11 18:15:37.8827 (Session.cs:64) session dispose: 127.0.0.1:56926 id: 2147483649 ErrorCode: 100208, please see ErrorCode.cs! 1720692937894
+2024-07-11 18:43:38.5621 (KChannel.cs:89) channel create: 2147483649 1365540659 127.0.0.1:58559 Accept
+2024-07-11 18:43:38.7509 (Session.cs:51) session create: zone: 1 id: 2147483649 1720694618736 
+2024-07-11 18:43:38.9944 (KService.cs:319) kservice syn: 2147483649 1365540659 2147483649 127.0.0.1:58559
+2024-07-11 18:43:38.9944 (KService.cs:319) kservice syn: 2147483649 1365540659 0 127.0.0.1:58559
+2024-07-11 18:43:39.0700 (KService.cs:319) kservice syn: 2147483649 1365540659 0 127.0.0.1:58559
+2024-07-11 18:43:39.8393 (NetComponentSystem.cs:77) { "_t" : "C2R_Login", "RpcId" : 1, "Account" : "", "Password" : "" }
+2024-07-11 18:43:39.8605 (C2R_LoginHandler.cs:14) gate address: { "_t" : "StartSceneConfig", "ActorId" : { "Address" : { "Process" : 1, "Fiber" : 2 }, "InstanceId" : NumberLong(1) }, "Type" : NumberLong(16), "_id" : 2, "Process" : 1, "Zone" : 1, "SceneType" : "Gate", "Name" : "Gate1", "Port" : 30003 }
+2024-07-11 18:43:39.8975 (Session.cs:153) { "_t" : "R2C_Login", "RpcId" : 1, "Error" : 0, "Message" : null, "Address" : "127.0.0.1:30003", "Key" : NumberLong("8040410638493105353"), "GateId" : NumberLong(2) }
+2024-07-11 18:43:39.9407 (KService.cs:373) kservice recv fin: 2147483649 1365540659 0
+2024-07-11 18:43:39.9443 (KService.cs:452) kservice remove channel: 2147483649 2147483649 1365540659 100208
+2024-07-11 18:43:39.9443 (KChannel.cs:109) channel dispose: 2147483649 1365540659 100208
+2024-07-11 18:43:39.9598 (Session.cs:64) session dispose: 127.0.0.1:58562 id: 2147483649 ErrorCode: 100208, please see ErrorCode.cs! 1720694619972
+2024-07-11 18:57:11.8403 (KChannel.cs:89) channel create: 2147483649 962335604 127.0.0.1:61226 Accept
+2024-07-11 18:57:11.8403 (Session.cs:51) session create: zone: 1 id: 2147483649 1720695431848 
+2024-07-11 18:57:11.8573 (KService.cs:319) kservice syn: 2147483649 962335604 2147483649 127.0.0.1:61226
+2024-07-11 18:57:11.9102 (NetComponentSystem.cs:77) { "_t" : "C2R_Login", "RpcId" : 1, "Account" : "", "Password" : "" }
+2024-07-11 18:57:11.9372 (C2R_LoginHandler.cs:14) gate address: { "_t" : "StartSceneConfig", "ActorId" : { "Address" : { "Process" : 1, "Fiber" : 2 }, "InstanceId" : NumberLong(1) }, "Type" : NumberLong(16), "_id" : 2, "Process" : 1, "Zone" : 1, "SceneType" : "Gate", "Name" : "Gate1", "Port" : 30003 }
+2024-07-11 18:57:11.9715 (Session.cs:153) { "_t" : "R2C_Login", "RpcId" : 1, "Error" : 0, "Message" : null, "Address" : "127.0.0.1:30003", "Key" : NumberLong("3765252887336761509"), "GateId" : NumberLong(2) }
+2024-07-11 18:57:12.0143 (KService.cs:373) kservice recv fin: 2147483649 962335604 0
+2024-07-11 18:57:12.0143 (KService.cs:452) kservice remove channel: 2147483649 2147483649 962335604 100208
+2024-07-11 18:57:12.0143 (KChannel.cs:109) channel dispose: 2147483649 962335604 100208
+2024-07-11 18:57:12.0265 (Session.cs:64) session dispose: 127.0.0.1:52664 id: 2147483649 ErrorCode: 100208, please see ErrorCode.cs! 1720695432026
+2024-07-11 18:58:18.3190 (KChannel.cs:89) channel create: 2147483649 946925897 127.0.0.1:56512 Accept
+2024-07-11 18:58:18.3190 (Session.cs:51) session create: zone: 1 id: 2147483649 1720695498324 
+2024-07-11 18:58:18.3347 (KService.cs:319) kservice syn: 2147483649 946925897 2147483649 127.0.0.1:56512
+2024-07-11 18:58:18.3812 (NetComponentSystem.cs:77) { "_t" : "C2R_Login", "RpcId" : 1, "Account" : "", "Password" : "" }
+2024-07-11 18:58:18.3987 (C2R_LoginHandler.cs:14) gate address: { "_t" : "StartSceneConfig", "ActorId" : { "Address" : { "Process" : 1, "Fiber" : 2 }, "InstanceId" : NumberLong(1) }, "Type" : NumberLong(16), "_id" : 2, "Process" : 1, "Zone" : 1, "SceneType" : "Gate", "Name" : "Gate1", "Port" : 30003 }
+2024-07-11 18:58:18.4231 (Session.cs:153) { "_t" : "R2C_Login", "RpcId" : 1, "Error" : 0, "Message" : null, "Address" : "127.0.0.1:30003", "Key" : NumberLong("3890373048961395052"), "GateId" : NumberLong(2) }
+2024-07-11 18:58:18.4670 (KService.cs:373) kservice recv fin: 2147483649 946925897 0
+2024-07-11 18:58:18.4670 (KService.cs:452) kservice remove channel: 2147483649 2147483649 946925897 100208
+2024-07-11 18:58:18.4670 (KChannel.cs:109) channel dispose: 2147483649 946925897 100208
+2024-07-11 18:58:18.4795 (Session.cs:64) session dispose: 127.0.0.1:62727 id: 2147483649 ErrorCode: 100208, please see ErrorCode.cs! 1720695498479
+2024-07-11 18:59:59.9755 (KChannel.cs:89) channel create: 2147483649 938829395 127.0.0.1:52949 Accept
+2024-07-11 18:59:59.9755 (Session.cs:51) session create: zone: 1 id: 2147483649 1720695599981 
+2024-07-11 18:59:59.9929 (KService.cs:319) kservice syn: 2147483649 938829395 2147483649 127.0.0.1:52949

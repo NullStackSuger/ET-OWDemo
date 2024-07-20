@@ -1,0 +1,54 @@
+2024-07-11 19:01:22.8996 (FiberInit_Router.cs:15) Router create: 302
+2024-07-11 19:02:37.2012 (FiberInit_Router.cs:15) Router create: 302
+2024-07-11 19:05:05.0377 (FiberInit_Router.cs:15) Router create: 302
+2024-07-11 19:05:08.8151 (RouterComponentSystem.cs:607) router new: outerConn: 1460760427 innerConn: 0 127.0.0.1:52816
+2024-07-11 19:05:08.8151 (RouterComponentSystem.cs:246) router create: 127.0.0.1:30002 1460760427 0 127.0.0.1:52816
+2024-07-11 19:05:08.8534 (RouterComponentSystem.cs:343) kcp router syn: 1460760427 0 127.0.0.1:30002 127.0.0.1:52816
+2024-07-11 19:05:08.8692 (RouterComponentSystem.cs:513) kcp router ack: 1460760427 2147483649 127.0.0.1:52816
+2024-07-11 19:05:08.9958 (RouterComponentSystem.cs:380) kcp router outer fin: 1460760427 2147483649 127.0.0.1:30002
+2024-07-11 19:05:08.9958 (RouterComponentSystem.cs:380) kcp router outer fin: 1460760427 2147483649 127.0.0.1:30002
+2024-07-11 19:05:08.9958 (RouterComponentSystem.cs:380) kcp router outer fin: 1460760427 2147483649 127.0.0.1:30002
+2024-07-11 19:08:16.4923 (FiberInit_Router.cs:15) Router create: 302
+2024-07-11 19:08:28.7716 (FiberInit_Router.cs:15) Router create: 302
+2024-07-11 19:08:36.3351 (RouterComponentSystem.cs:607) router new: outerConn: 458018632 innerConn: 0 127.0.0.1:50022
+2024-07-11 19:08:36.3351 (RouterComponentSystem.cs:246) router create: 127.0.0.1:30003 458018632 0 127.0.0.1:50022
+2024-07-11 19:08:36.3667 (RouterComponentSystem.cs:343) kcp router syn: 458018632 0 127.0.0.1:30003 127.0.0.1:50022
+2024-07-11 19:08:36.3667 (RouterComponentSystem.cs:513) kcp router ack: 458018632 2147483650 127.0.0.1:50022
+2024-07-11 19:23:18.9174 (FiberInit_Router.cs:15) Router create: 302
+2024-07-11 19:23:23.9823 (RouterComponentSystem.cs:607) router new: outerConn: 246370351 innerConn: 0 127.0.0.1:59402
+2024-07-11 19:23:23.9823 (RouterComponentSystem.cs:246) router create: 127.0.0.1:30003 246370351 0 127.0.0.1:59402
+2024-07-11 19:23:24.0135 (RouterComponentSystem.cs:343) kcp router syn: 246370351 0 127.0.0.1:30003 127.0.0.1:59402
+2024-07-11 19:23:24.0215 (RouterComponentSystem.cs:513) kcp router ack: 246370351 2147483650 127.0.0.1:59402
+2024-07-11 19:27:03.6010 (FiberInit_Router.cs:15) Router create: 302
+2024-07-11 19:27:13.3970 (RouterComponentSystem.cs:607) router new: outerConn: 1388245558 innerConn: 0 127.0.0.1:56262
+2024-07-11 19:27:13.3970 (RouterComponentSystem.cs:246) router create: 127.0.0.1:30002 1388245558 0 127.0.0.1:56262
+2024-07-11 19:27:13.4339 (RouterComponentSystem.cs:343) kcp router syn: 1388245558 0 127.0.0.1:30002 127.0.0.1:56262
+2024-07-11 19:27:13.4492 (RouterComponentSystem.cs:513) kcp router ack: 1388245558 2147483649 127.0.0.1:56262
+2024-07-11 19:27:13.5906 (RouterComponentSystem.cs:380) kcp router outer fin: 1388245558 2147483649 127.0.0.1:30002
+2024-07-11 19:27:13.5906 (RouterComponentSystem.cs:380) kcp router outer fin: 1388245558 2147483649 127.0.0.1:30002
+2024-07-11 19:27:13.5906 (RouterComponentSystem.cs:380) kcp router outer fin: 1388245558 2147483649 127.0.0.1:30002
+2024-07-11 19:30:27.5067 (FiberInit_Router.cs:15) Router create: 302
+2024-07-11 19:30:34.7815 (RouterComponentSystem.cs:607) router new: outerConn: 1528836048 innerConn: 0 127.0.0.1:62739
+2024-07-11 19:30:34.7815 (RouterComponentSystem.cs:246) router create: 127.0.0.1:30003 1528836048 0 127.0.0.1:62739
+2024-07-11 19:30:34.8085 (RouterComponentSystem.cs:343) kcp router syn: 1528836048 0 127.0.0.1:30003 127.0.0.1:62739
+2024-07-11 19:30:34.8085 (RouterComponentSystem.cs:513) kcp router ack: 1528836048 2147483650 127.0.0.1:62739
+2024-07-11 19:30:49.5861 (RouterComponentSystem.cs:380) kcp router outer fin: 1528836048 2147483650 127.0.0.1:30003
+2024-07-11 19:30:49.5861 (RouterComponentSystem.cs:380) kcp router outer fin: 1528836048 2147483650 127.0.0.1:30003
+2024-07-11 19:30:49.5861 (RouterComponentSystem.cs:380) kcp router outer fin: 1528836048 2147483650 127.0.0.1:30003
+2024-07-11 19:33:58.7099 (FiberInit_Router.cs:15) Router create: 302
+2024-07-11 19:48:43.8096 (FiberInit_Router.cs:15) Router create: 302
+2024-07-11 19:49:31.9168 (RouterComponentSystem.cs:607) router new: outerConn: 1516484855 innerConn: 0 127.0.0.1:64214
+2024-07-11 19:49:31.9168 (RouterComponentSystem.cs:246) router create: 127.0.0.1:30002 1516484855 0 127.0.0.1:64214
+2024-07-11 19:49:31.9537 (RouterComponentSystem.cs:343) kcp router syn: 1516484855 0 127.0.0.1:30002 127.0.0.1:64214
+2024-07-11 19:49:31.9610 (RouterComponentSystem.cs:513) kcp router ack: 1516484855 2147483649 127.0.0.1:64214
+2024-07-11 19:49:32.1007 (RouterComponentSystem.cs:380) kcp router outer fin: 1516484855 2147483649 127.0.0.1:30002
+2024-07-11 19:49:32.1007 (RouterComponentSystem.cs:380) kcp router outer fin: 1516484855 2147483649 127.0.0.1:30002
+2024-07-11 19:49:32.1007 (RouterComponentSystem.cs:380) kcp router outer fin: 1516484855 2147483649 127.0.0.1:30002
+2024-07-11 19:55:31.5438 (FiberInit_Router.cs:15) Router create: 302
+2024-07-11 19:55:36.7214 (RouterComponentSystem.cs:607) router new: outerConn: 1035399496 innerConn: 0 127.0.0.1:61823
+2024-07-11 19:55:36.7214 (RouterComponentSystem.cs:246) router create: 127.0.0.1:30002 1035399496 0 127.0.0.1:61823
+2024-07-11 19:55:36.7731 (RouterComponentSystem.cs:343) kcp router syn: 1035399496 0 127.0.0.1:30002 127.0.0.1:61823
+2024-07-11 19:55:36.7904 (RouterComponentSystem.cs:513) kcp router ack: 1035399496 2147483649 127.0.0.1:61823
+2024-07-11 19:55:36.9414 (RouterComponentSystem.cs:380) kcp router outer fin: 1035399496 2147483649 127.0.0.1:30002
+2024-07-11 19:55:36.9414 (RouterComponentSystem.cs:380) kcp router outer fin: 1035399496 2147483649 127.0.0.1:30002
+2024-07-11 19:55:36.9414 (RouterComponentSystem.cs:380) kcp router outer fin: 1035399496 2147483649 127.0.0.1:30002

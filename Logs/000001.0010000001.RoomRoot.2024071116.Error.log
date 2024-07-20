@@ -1,0 +1,7 @@
+2024-07-11 16:39:22.0962 (EntitySystemSingleton.cs:142) System.DllNotFoundException: Unable to load DLL 'libbulletc' or one of its dependencies: 找不到指定的模块。 (0x8007007E)
+   at BulletSharp.DefaultCollisionConfiguration.btDefaultCollisionConfiguration_new()
+   at BulletSharp.DefaultCollisionConfiguration..ctor() in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Unity\Assets\Scripts\ThirdParty\BulletUnity\BulletSharp\Collision\DefaultCollisionConfiguration.cs:line 112
+   at ET.B3WorldComponentSystem.Awake(B3WorldComponent self) in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Unity\Assets\Scripts\Hotfix\Share\Bullet3\B3WorldComponentSystem.cs:line 14
+   at ET.B3WorldComponentSystem.ET_B3WorldComponent_AwakeSystem.Awake(B3WorldComponent self) in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\DotNet\Hotfix\Share.SourceGenerator\ET.Generator.ETSystemGenerator\ET.B3WorldComponentSystem.Awake.ET_B3WorldComponent.g.cs:line 10
+   at ET.AwakeSystem`1.ET.IAwakeSystem.Run(Entity o) in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Unity\Assets\Scripts\Core\Entity\IAwakeSystem.cs:line 70
+   at ET.EntitySystemSingleton.Awake(Entity component) in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Unity\Assets\Scripts\Core\Entity\EntitySystemSingleton.cs:line 138

@@ -1,0 +1,49 @@
+2024-07-05 12:24:50.8365 (Init.cs:35) server start........................ 
+2024-07-05 12:24:54.1224 (ExcelExporter.cs:215) System.Exception: 不支持此类型: object[]
+   at ET.ExcelExporter.Convert(String type, String value) in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 582
+   at ET.ExcelExporter.ExportSheetJson(ExcelWorksheet worksheet, String name, Dictionary`2 classField, ConfigType configType, StringBuilder sb) in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 545
+   at ET.ExcelExporter.ExportExcelJson(ExcelPackage p, String name, Table table, ConfigType configType, String relativeDir) in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 474
+   at ET.ExcelExporter.ExportExcel(String path) in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 266
+   at ET.ExcelExporter.Export() in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 202
+2024-07-05 12:33:28.0227 (Init.cs:35) server start........................ 
+2024-07-05 12:33:31.2953 (ExcelExporter.cs:215) System.Exception: 不支持此类型: object[]
+   at ET.ExcelExporter.Convert(String type, String value) in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 582
+   at ET.ExcelExporter.ExportSheetJson(ExcelWorksheet worksheet, String name, Dictionary`2 classField, ConfigType configType, StringBuilder sb) in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 545
+   at ET.ExcelExporter.ExportExcelJson(ExcelPackage p, String name, Table table, ConfigType configType, String relativeDir) in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 474
+   at ET.ExcelExporter.ExportExcel(String path) in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 266
+   at ET.ExcelExporter.Export() in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 202
+2024-07-05 12:36:32.1360 (Init.cs:35) server start........................ 
+2024-07-05 12:36:35.7102 (ExcelExporter.cs:215) System.Exception: 不支持此类型: object[]
+   at ET.ExcelExporter.Convert(String type, String value) in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 582
+   at ET.ExcelExporter.ExportSheetJson(ExcelWorksheet worksheet, String name, Dictionary`2 classField, ConfigType configType, StringBuilder sb) in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 545
+   at ET.ExcelExporter.ExportExcelJson(ExcelPackage p, String name, Table table, ConfigType configType, String relativeDir) in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 474
+   at ET.ExcelExporter.ExportExcel(String path) in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 266
+   at ET.ExcelExporter.Export() in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 202
+2024-07-05 12:37:11.4370 (Init.cs:35) server start........................ 
+2024-07-05 12:37:14.8986 (ExcelExporter.cs:215) System.Exception: 不支持此类型: object[]
+   at ET.ExcelExporter.Convert(String type, String value) in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 582
+   at ET.ExcelExporter.ExportSheetJson(ExcelWorksheet worksheet, String name, Dictionary`2 classField, ConfigType configType, StringBuilder sb) in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 545
+   at ET.ExcelExporter.ExportExcelJson(ExcelPackage p, String name, Table table, ConfigType configType, String relativeDir) in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 474
+   at ET.ExcelExporter.ExportExcel(String path) in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 266
+   at ET.ExcelExporter.Export() in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 202
+2024-07-05 12:41:13.0455 (Init.cs:35) server start........................ 
+2024-07-05 12:41:16.8232 (ExcelExporter.cs:215) System.Exception: 不支持此类型: object[]
+   at ET.ExcelExporter.Convert(String type, String value) in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 582
+   at ET.ExcelExporter.ExportSheetJson(ExcelWorksheet worksheet, String name, Dictionary`2 classField, ConfigType configType, StringBuilder sb) in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 545
+   at ET.ExcelExporter.ExportExcelJson(ExcelPackage p, String name, Table table, ConfigType configType, String relativeDir) in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 474
+   at ET.ExcelExporter.ExportExcel(String path) in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 266
+   at ET.ExcelExporter.Export() in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 202
+2024-07-05 12:55:59.3055 (Init.cs:35) server start........................ 
+2024-07-05 12:56:02.7823 (ExcelExporter.cs:215) System.Exception: 不支持此类型: object[]
+   at ET.ExcelExporter.Convert(String type, String value) in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Share\Tool\ExcelExporter\ExcelExporter.cs:line 582
+   at ET.ExcelExporter.ExportSheetJson(ExcelWorksheet worksheet, String name, Dictionary`2 classField, ConfigType configType, StringBuilder sb) in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Share\Tool\ExcelExporter\ExcelExporter.cs:line 545
+   at ET.ExcelExporter.ExportExcelJson(ExcelPackage p, String name, Table table, ConfigType configType, String relativeDir) in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Share\Tool\ExcelExporter\ExcelExporter.cs:line 474
+   at ET.ExcelExporter.ExportExcel(String path) in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Share\Tool\ExcelExporter\ExcelExporter.cs:line 266
+   at ET.ExcelExporter.Export() in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Share\Tool\ExcelExporter\ExcelExporter.cs:line 202
+2024-07-05 12:56:31.2334 (Init.cs:35) server start........................ 
+2024-07-05 12:56:34.7414 (ExcelExporter.cs:215) System.Exception: 不支持此类型: object[]
+   at ET.ExcelExporter.Convert(String type, String value) in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Share\Tool\ExcelExporter\ExcelExporter.cs:line 582
+   at ET.ExcelExporter.ExportSheetJson(ExcelWorksheet worksheet, String name, Dictionary`2 classField, ConfigType configType, StringBuilder sb) in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Share\Tool\ExcelExporter\ExcelExporter.cs:line 545
+   at ET.ExcelExporter.ExportExcelJson(ExcelPackage p, String name, Table table, ConfigType configType, String relativeDir) in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Share\Tool\ExcelExporter\ExcelExporter.cs:line 474
+   at ET.ExcelExporter.ExportExcel(String path) in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Share\Tool\ExcelExporter\ExcelExporter.cs:line 266
+   at ET.ExcelExporter.Export() in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Share\Tool\ExcelExporter\ExcelExporter.cs:line 202

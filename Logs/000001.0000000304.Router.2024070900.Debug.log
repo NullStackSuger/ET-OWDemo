@@ -1,0 +1,19 @@
+2024-07-09 00:22:44.1842 (FiberInit_Router.cs:15) Router create: 304
+2024-07-09 00:27:35.9978 (FiberInit_Router.cs:15) Router create: 304
+2024-07-09 00:28:49.6989 (RouterComponentSystem.cs:607) router new: outerConn: 820688874 innerConn: 0 127.0.0.1:57208
+2024-07-09 00:28:49.6989 (RouterComponentSystem.cs:246) router create: 127.0.0.1:30003 820688874 0 127.0.0.1:57208
+2024-07-09 00:28:49.7771 (RouterComponentSystem.cs:343) kcp router syn: 820688874 0 127.0.0.1:30003 127.0.0.1:57208
+2024-07-09 00:28:49.7771 (RouterComponentSystem.cs:513) kcp router ack: 820688874 2147483650 127.0.0.1:57208
+2024-07-09 00:29:45.2485 (RouterComponentSystem.cs:380) kcp router outer fin: 820688874 2147483650 127.0.0.1:30003
+2024-07-09 00:29:45.2485 (RouterComponentSystem.cs:380) kcp router outer fin: 820688874 2147483650 127.0.0.1:30003
+2024-07-09 00:29:45.2485 (RouterComponentSystem.cs:380) kcp router outer fin: 820688874 2147483650 127.0.0.1:30003
+2024-07-09 00:30:39.0125 (FiberInit_Router.cs:15) Router create: 304
+2024-07-09 00:30:57.8282 (RouterComponentSystem.cs:607) router new: outerConn: 968759207 innerConn: 0 127.0.0.1:57816
+2024-07-09 00:30:57.8282 (RouterComponentSystem.cs:246) router create: 127.0.0.1:30002 968759207 0 127.0.0.1:57816
+2024-07-09 00:30:57.8880 (RouterComponentSystem.cs:343) kcp router syn: 968759207 0 127.0.0.1:30002 127.0.0.1:57816
+2024-07-09 00:30:57.9281 (RouterComponentSystem.cs:513) kcp router ack: 968759207 2147483649 127.0.0.1:57816
+2024-07-09 00:30:58.1377 (RouterComponentSystem.cs:380) kcp router outer fin: 968759207 2147483649 127.0.0.1:30002
+2024-07-09 00:30:58.1377 (RouterComponentSystem.cs:380) kcp router outer fin: 968759207 2147483649 127.0.0.1:30002
+2024-07-09 00:30:58.1377 (RouterComponentSystem.cs:380) kcp router outer fin: 968759207 2147483649 127.0.0.1:30002
+2024-07-09 00:31:39.1106 (RouterComponentSystem.cs:620) router node remove: 968759207 2147483649 110401
+2024-07-09 00:31:39.1106 (RouterComponentSystem.cs:632) router remove: 968759207 outerConn: 968759207 innerConn: 2147483649

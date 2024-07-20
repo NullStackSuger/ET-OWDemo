@@ -1,0 +1,24 @@
+2024-06-29 09:00:45.6000 (Init.cs:35) server start........................ 
+2024-06-29 09:00:48.3479 (ExcelExporter.cs:215) System.Exception: 动态编译失败:
+Invalid token '{' in class, record, struct, or interface member declaration
+Invalid token '{' in class, record, struct, or interface member declaration
+Invalid token ';' in class, record, struct, or interface member declaration
+Invalid token ';' in class, record, struct, or interface member declaration
+Invalid token ';' in class, record, struct, or interface member declaration
+Invalid token ';' in class, record, struct, or interface member declaration
+Type or namespace definition, or end-of-file expected
+
+   at ET.ExcelExporter.DynamicBuild(ConfigType configType) in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 353
+   at ET.ExcelExporter.Export() in D:\ToolSoft\U3D\Project\ETs\ET-BattleSystem8.1\Share\Tool\ExcelExporter\ExcelExporter.cs:line 194
+2024-06-29 09:01:34.2245 (Init.cs:35) server start........................ 
+2024-06-29 09:01:37.4594 (ExcelExporter.cs:211) Export Excel Sucess!
+2024-06-29 09:16:18.1428 (Init.cs:35) server start........................ 
+2024-06-29 09:16:21.5533 (ExcelExporter.cs:211) Export Excel Sucess!
+2024-06-29 09:40:02.5111 (Init.cs:35) server start........................ 
+2024-06-29 09:40:06.4543 (ExcelExporter.cs:211) Export Excel Sucess!
+2024-06-29 09:43:53.2274 (Init.cs:35) server start........................ 
+2024-06-29 09:43:56.9202 (ExcelExporter.cs:211) Export Excel Sucess!
+2024-06-29 09:47:23.8044 (Init.cs:35) server start........................ 
+2024-06-29 09:47:28.9124 (ExcelExporter.cs:211) Export Excel Sucess!
+2024-06-29 09:48:05.3913 (Init.cs:35) server start........................ 
+2024-06-29 09:48:11.5684 (ExcelExporter.cs:211) Export Excel Sucess!

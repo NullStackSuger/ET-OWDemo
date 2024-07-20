@@ -1,0 +1,12 @@
+2024-07-09 11:21:20.4517 (AsyncETVoidMethodBuilder.cs:33) System.Exception: entity already has component: ET.Server.PlayerRoomComponent
+   at ET.Entity.AddComponentWithId[K](Int64 id, Boolean isFromPool) in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Unity\Assets\Scripts\Core\Entity\Entity.cs:line 763
+   at ET.Entity.AddComponent[K](Boolean isFromPool) in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Unity\Assets\Scripts\Core\Entity\Entity.cs:line 828
+   at ET.Server.Match2G_NotifyMatchSuccessHandler.Run(Player player, Match2G_NotifyMatchSuccess message) in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Unity\Assets\Scripts\Hotfix\Server\LockStep\Gate\Match2G_NotifyMatchSuccessHandler.cs:line 11
+   at ET.ETTask.GetResult() in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Unity\Assets\Scripts\ThirdParty\ETTask\ETTask.cs:line 126
+   at ET.MessageHandler`2.Handle(Entity entity, Address fromAddress, MessageObject actorMessage) in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Unity\Assets\Scripts\Hotfix\Share\Module\Actor\MessageHandler.cs:line 23
+   at ET.ETTask.GetResult() in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Unity\Assets\Scripts\ThirdParty\ETTask\ETTask.cs:line 126
+   at ET.MessageDispatcher.Handle(Entity entity, Address fromAddress, MessageObject message) in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Unity\Assets\Scripts\Core\World\Module\Actor\MessageDispatcher.cs:line 103
+   at ET.ETTask.GetResult() in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Unity\Assets\Scripts\ThirdParty\ETTask\ETTask.cs:line 126
+   at ET.MailBoxType_UnOrderedMessageHandler.HandleAsync(MailBoxInvoker args) in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Unity\Assets\Scripts\Hotfix\Share\Module\Actor\MailBoxType_UnOrderedMessageHandler.cs:line 17
+   at ET.ETTask.GetResult() in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Unity\Assets\Scripts\ThirdParty\ETTask\ETTask.cs:line 126
+   at ET.ETTask.InnerCoroutine() in D:\ToolSoft\U3D\Project\ETs\ET-OWDemo\Unity\Assets\Scripts\ThirdParty\ETTask\ETTask.cs:line 71

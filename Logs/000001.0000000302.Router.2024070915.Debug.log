@@ -1,0 +1,19 @@
+2024-07-09 15:06:29.4004 (FiberInit_Router.cs:15) Router create: 302
+2024-07-09 15:06:41.1509 (RouterComponentSystem.cs:607) router new: outerConn: 475885691 innerConn: 0 127.0.0.1:64867
+2024-07-09 15:06:41.1509 (RouterComponentSystem.cs:246) router create: 127.0.0.1:30002 475885691 0 127.0.0.1:64867
+2024-07-09 15:06:41.2031 (RouterComponentSystem.cs:343) kcp router syn: 475885691 0 127.0.0.1:30002 127.0.0.1:64867
+2024-07-09 15:06:41.2304 (RouterComponentSystem.cs:513) kcp router ack: 475885691 2147483649 127.0.0.1:64867
+2024-07-09 15:06:41.4217 (RouterComponentSystem.cs:380) kcp router outer fin: 475885691 2147483649 127.0.0.1:30002
+2024-07-09 15:06:41.4217 (RouterComponentSystem.cs:380) kcp router outer fin: 475885691 2147483649 127.0.0.1:30002
+2024-07-09 15:06:41.4217 (RouterComponentSystem.cs:380) kcp router outer fin: 475885691 2147483649 127.0.0.1:30002
+2024-07-09 15:07:21.5152 (RouterComponentSystem.cs:620) router node remove: 475885691 2147483649 110401
+2024-07-09 15:07:21.5152 (RouterComponentSystem.cs:632) router remove: 475885691 outerConn: 475885691 innerConn: 2147483649
+2024-07-09 15:10:17.4374 (FiberInit_Router.cs:15) Router create: 302
+2024-07-09 15:10:57.1837 (RouterComponentSystem.cs:607) router new: outerConn: 1274706690 innerConn: 0 127.0.0.1:60251
+2024-07-09 15:10:57.1837 (RouterComponentSystem.cs:246) router create: 127.0.0.1:30002 1274706690 0 127.0.0.1:60251
+2024-07-09 15:10:57.2270 (RouterComponentSystem.cs:343) kcp router syn: 1274706690 0 127.0.0.1:30002 127.0.0.1:60251
+2024-07-09 15:10:57.2436 (RouterComponentSystem.cs:513) kcp router ack: 1274706690 2147483649 127.0.0.1:60251
+2024-07-09 15:10:57.4090 (RouterComponentSystem.cs:380) kcp router outer fin: 1274706690 2147483649 127.0.0.1:30002
+2024-07-09 15:10:57.4090 (RouterComponentSystem.cs:380) kcp router outer fin: 1274706690 2147483649 127.0.0.1:30002
+2024-07-09 15:10:57.4090 (RouterComponentSystem.cs:380) kcp router outer fin: 1274706690 2147483649 127.0.0.1:30002
+2024-07-09 15:13:46.8885 (FiberInit_Router.cs:15) Router create: 302

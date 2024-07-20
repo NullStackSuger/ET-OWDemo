@@ -1,0 +1,12 @@
+2024-07-11 16:39:17.0691 (KChannel.cs:89) channel create: 2147483650 854776024 127.0.0.1:50194 Accept
+2024-07-11 16:39:17.0691 (Session.cs:51) session create: zone: 1 id: 2147483650 1720687157071 
+2024-07-11 16:39:17.0691 (KService.cs:319) kservice syn: 2147483650 854776024 2147483650 127.0.0.1:50194
+2024-07-11 16:39:17.0861 (NetComponentSystem.cs:77) { "_t" : "C2G_LoginGate", "RpcId" : 1, "Key" : NumberLong("6335219681075834889"), "GateId" : NumberLong(2) }
+2024-07-11 16:39:17.1033 (LocationProxyComponentSystem.cs:15) location proxy add 1209462980345857, 1:2:342274349069238357 1720687157103
+2024-07-11 16:39:17.1228 (LocationProxyComponentSystem.cs:15) location proxy add 1209462980345857, 1:2:342274349069238356 1720687157128
+2024-07-11 16:39:17.1355 (Session.cs:153) { "_t" : "G2C_LoginGate", "RpcId" : 1, "Error" : 0, "Message" : null, "PlayerId" : NumberLong("1209462980345857") }
+2024-07-11 16:39:20.0833 (NetComponentSystem.cs:77) { "_t" : "C2G_Match", "RpcId" : 3 }
+2024-07-11 16:39:20.0993 (Session.cs:153) { "_t" : "G2C_Match", "RpcId" : 3, "Error" : 0, "Message" : null }
+2024-07-11 16:39:20.1409 (Session.cs:153) { "_t" : "Match2G_NotifyMatchSuccess", "RpcId" : 0, "ActorId" : { "Address" : { "Process" : 1, "Fiber" : 10000001 }, "InstanceId" : NumberLong(1) } }
+2024-07-11 16:39:20.9573 (NetComponentSystem.cs:77) { "_t" : "C2Room_ChangeSceneFinish", "PlayerId" : NumberLong(0) }
+2024-07-11 16:39:22.1226 (Session.cs:153) { "_t" : "Room2C_Start", "StartTime" : NumberLong("1720687161962"), "UnitInfo" : [{ "PlayerId" : NumberLong("1209462980345857"), "Position" : { "x" : { "_serializedValue" : NumberLong("128849018880") }, "y" : { "_serializedValue" : NumberLong(0) }, "z" : { "_serializedValue" : NumberLong("-42949672960") } }, "Rotation" : { "x" : { "_serializedValue" : NumberLong(0) }, "y" : { "_serializedValue" : NumberLong(0) }, "z" : { "_serializedValue" : NumberLong(0) }, "w" : { "_serializedValue" : NumberLong("4294967296") } }, "ActionGroup" : 6 }] }

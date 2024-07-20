@@ -1,0 +1,136 @@
+2024-07-09 22:24:25.6752 C2Room_ChangeSceneFinishHandler
+2024-07-09 22:24:25.7897 FrameMessage < AuthorityFrame discard: { "_t" : "FrameMessage", "Frame" : 0, "PlayerId" : NumberLong("1209303498227713"), "Input" : { "V" : { "x" : { "_serializedValue" : NumberLong(0) }, "y" : { "_serializedValue" : NumberLong(0) } }, "Button" : 0 } }
+2024-07-09 22:24:25.7897 FrameMessage < AuthorityFrame discard: { "_t" : "FrameMessage", "Frame" : 1, "PlayerId" : NumberLong("1209303498227713"), "Input" : { "V" : { "x" : { "_serializedValue" : NumberLong(0) }, "y" : { "_serializedValue" : NumberLong(0) } }, "Button" : 0 } }
+2024-07-09 22:24:25.7897 FrameMessage < AuthorityFrame discard: { "_t" : "FrameMessage", "Frame" : 2, "PlayerId" : NumberLong("1209303498227713"), "Input" : { "V" : { "x" : { "_serializedValue" : NumberLong(0) }, "y" : { "_serializedValue" : NumberLong(0) } }, "Button" : 0 } }
+2024-07-09 22:57:06.7459 C2Room_ChangeSceneFinishHandler
+2024-07-09 22:57:06.8215 LSUpdate
+2024-07-09 22:57:06.8215 LSUpdate
+2024-07-09 22:57:06.8215 LSUpdate
+2024-07-09 22:57:06.8564 LSUpdate
+2024-07-09 22:57:06.9059 LSUpdate
+2024-07-09 22:57:06.9556 LSUpdate
+2024-07-09 22:57:07.0062 LSUpdate
+2024-07-09 22:57:07.0570 LSUpdate
+2024-07-09 22:57:07.1054 LSUpdate
+2024-07-09 22:57:07.1570 LSUpdate
+2024-07-09 22:57:07.2085 LSUpdate
+2024-07-09 22:57:07.2295 FrameMessage < AuthorityFrame discard: { "_t" : "FrameMessage", "Frame" : 0, "PlayerId" : NumberLong("1209305553436673"), "Input" : { "V" : { "x" : { "_serializedValue" : NumberLong(0) }, "y" : { "_serializedValue" : NumberLong(0) } }, "Button" : 0 } }
+2024-07-09 22:57:07.2598 LSUpdate
+2024-07-09 22:57:07.2598 FrameMessage < AuthorityFrame discard: { "_t" : "FrameMessage", "Frame" : 1, "PlayerId" : NumberLong("1209305553436673"), "Input" : { "V" : { "x" : { "_serializedValue" : NumberLong(0) }, "y" : { "_serializedValue" : NumberLong(0) } }, "Button" : 0 } }
+2024-07-09 22:57:07.2598 FrameMessage < AuthorityFrame discard: { "_t" : "FrameMessage", "Frame" : 2, "PlayerId" : NumberLong("1209305553436673"), "Input" : { "V" : { "x" : { "_serializedValue" : NumberLong(0) }, "y" : { "_serializedValue" : NumberLong(0) } }, "Button" : 0 } }
+2024-07-09 22:57:07.2598 FrameMessage < AuthorityFrame discard: { "_t" : "FrameMessage", "Frame" : 3, "PlayerId" : NumberLong("1209305553436673"), "Input" : { "V" : { "x" : { "_serializedValue" : NumberLong(0) }, "y" : { "_serializedValue" : NumberLong(0) } }, "Button" : 0 } }
+2024-07-09 22:57:07.2598 FrameMessage < AuthorityFrame discard: { "_t" : "FrameMessage", "Frame" : 4, "PlayerId" : NumberLong("1209305553436673"), "Input" : { "V" : { "x" : { "_serializedValue" : NumberLong(0) }, "y" : { "_serializedValue" : NumberLong(0) } }, "Button" : 0 } }
+2024-07-09 22:57:07.2598 FrameMessage < AuthorityFrame discard: { "_t" : "FrameMessage", "Frame" : 5, "PlayerId" : NumberLong("1209305553436673"), "Input" : { "V" : { "x" : { "_serializedValue" : NumberLong(0) }, "y" : { "_serializedValue" : NumberLong(0) } }, "Button" : 0 } }
+2024-07-09 22:57:07.2598 FrameMessage < AuthorityFrame discard: { "_t" : "FrameMessage", "Frame" : 6, "PlayerId" : NumberLong("1209305553436673"), "Input" : { "V" : { "x" : { "_serializedValue" : NumberLong(0) }, "y" : { "_serializedValue" : NumberLong(0) } }, "Button" : 0 } }
+2024-07-09 22:57:07.2598 FrameMessage < AuthorityFrame discard: { "_t" : "FrameMessage", "Frame" : 7, "PlayerId" : NumberLong("1209305553436673"), "Input" : { "V" : { "x" : { "_serializedValue" : NumberLong(0) }, "y" : { "_serializedValue" : NumberLong(0) } }, "Button" : 0 } }
+2024-07-09 22:57:07.2598 FrameMessage < AuthorityFrame discard: { "_t" : "FrameMessage", "Frame" : 8, "PlayerId" : NumberLong("1209305553436673"), "Input" : { "V" : { "x" : { "_serializedValue" : NumberLong(0) }, "y" : { "_serializedValue" : NumberLong(0) } }, "Button" : 0 } }
+2024-07-09 22:57:07.2598 FrameMessage < AuthorityFrame discard: { "_t" : "FrameMessage", "Frame" : 9, "PlayerId" : NumberLong("1209305553436673"), "Input" : { "V" : { "x" : { "_serializedValue" : NumberLong(0) }, "y" : { "_serializedValue" : NumberLong(0) } }, "Button" : 0 } }
+2024-07-09 22:57:07.2598 FrameMessage < AuthorityFrame discard: { "_t" : "FrameMessage", "Frame" : 10, "PlayerId" : NumberLong("1209305553436673"), "Input" : { "V" : { "x" : { "_serializedValue" : NumberLong(0) }, "y" : { "_serializedValue" : NumberLong(0) } }, "Button" : 0 } }
+2024-07-09 22:57:07.3068 LSUpdate
+2024-07-09 22:57:07.3566 LSUpdate
+2024-07-09 22:57:07.4055 LSUpdate
+2024-07-09 22:57:07.4563 LSUpdate
+2024-07-09 22:57:07.5093 LSUpdate
+2024-07-09 22:57:07.5569 LSUpdate
+2024-07-09 22:57:07.6071 LSUpdate
+2024-07-09 22:57:07.6524 LSUpdate
+2024-07-09 22:57:07.7058 LSUpdate
+2024-07-09 22:57:07.7566 LSUpdate
+2024-07-09 22:57:07.8066 LSUpdate
+2024-07-09 22:57:07.8576 LSUpdate
+2024-07-09 22:57:07.9056 LSUpdate
+2024-07-09 22:57:07.9553 LSUpdate
+2024-07-09 22:57:08.0058 LSUpdate
+2024-07-09 22:57:08.0576 LSUpdate
+2024-07-09 22:57:08.1081 LSUpdate
+2024-07-09 22:57:08.1563 LSUpdate
+2024-07-09 22:57:08.2064 LSUpdate
+2024-07-09 22:57:08.2555 LSUpdate
+2024-07-09 22:57:08.3062 LSUpdate
+2024-07-09 22:57:08.3568 LSUpdate
+2024-07-09 22:57:08.4058 LSUpdate
+2024-07-09 22:57:08.4566 LSUpdate
+2024-07-09 22:57:08.5053 LSUpdate
+2024-07-09 22:57:08.5561 LSUpdate
+2024-07-09 22:57:08.6064 LSUpdate
+2024-07-09 22:57:08.6568 LSUpdate
+2024-07-09 22:57:08.7065 LSUpdate
+2024-07-09 22:57:08.7571 LSUpdate
+2024-07-09 22:57:08.8060 LSUpdate
+2024-07-09 22:57:08.8564 LSUpdate
+2024-07-09 22:57:08.9057 LSUpdate
+2024-07-09 22:57:08.9564 LSUpdate
+2024-07-09 22:57:09.0059 LSUpdate
+2024-07-09 22:57:09.0563 LSUpdate
+2024-07-09 22:57:09.1058 LSUpdate
+2024-07-09 22:57:09.1564 LSUpdate
+2024-07-09 22:57:09.2064 LSUpdate
+2024-07-09 22:57:09.2554 LSUpdate
+2024-07-09 22:57:09.3070 LSUpdate
+2024-07-09 22:57:09.3563 LSUpdate
+2024-07-09 22:57:09.3994 LSUpdate
+2024-07-09 22:57:09.4450 LSUpdate
+2024-07-09 22:57:09.5012 LSUpdate
+2024-07-09 22:57:09.5553 LSUpdate
+2024-07-09 22:57:09.6028 LSUpdate
+2024-07-09 22:57:09.6559 LSUpdate
+2024-07-09 22:57:09.7036 LSUpdate
+2024-07-09 22:57:09.7430 LSUpdate
+2024-07-09 22:57:09.8101 LSUpdate
+2024-07-09 22:57:09.8568 LSUpdate
+2024-07-09 22:57:09.9017 LSUpdate
+2024-07-09 22:57:09.9585 LSUpdate
+2024-07-09 22:57:10.0064 LSUpdate
+2024-07-09 22:57:10.0560 LSUpdate
+2024-07-09 22:57:10.1064 LSUpdate
+2024-07-09 22:57:10.1560 LSUpdate
+2024-07-09 22:57:10.1981 LSUpdate
+2024-07-09 22:57:10.2562 LSUpdate
+2024-07-09 22:57:10.3064 LSUpdate
+2024-07-09 22:57:10.3586 LSUpdate
+2024-07-09 22:57:10.4080 LSUpdate
+2024-07-09 22:57:10.4583 LSUpdate
+2024-07-09 22:57:10.5075 LSUpdate
+2024-07-09 22:57:10.5563 LSUpdate
+2024-07-09 22:57:10.6058 LSUpdate
+2024-07-09 22:57:10.6567 LSUpdate
+2024-07-09 22:57:10.7064 LSUpdate
+2024-07-09 22:57:10.7569 LSUpdate
+2024-07-09 22:57:10.8062 LSUpdate
+2024-07-09 22:57:10.8567 LSUpdate
+2024-07-09 22:57:10.9066 LSUpdate
+2024-07-09 22:57:10.9577 LSUpdate
+2024-07-09 22:57:11.0077 LSUpdate
+2024-07-09 22:57:11.0587 LSUpdate
+2024-07-09 22:57:11.1053 LSUpdate
+2024-07-09 22:57:11.1561 LSUpdate
+2024-07-09 22:57:11.2059 LSUpdate
+2024-07-09 22:57:11.2567 LSUpdate
+2024-07-09 22:57:11.3077 LSUpdate
+2024-07-09 22:57:11.3567 LSUpdate
+2024-07-09 22:57:11.4060 LSUpdate
+2024-07-09 22:57:11.4560 LSUpdate
+2024-07-09 22:57:11.5055 LSUpdate
+2024-07-09 22:57:11.5571 LSUpdate
+2024-07-09 22:57:11.6079 LSUpdate
+2024-07-09 22:57:11.6558 LSUpdate
+2024-07-09 22:57:11.7054 LSUpdate
+2024-07-09 22:57:11.7564 LSUpdate
+2024-07-09 22:57:11.8064 LSUpdate
+2024-07-09 22:57:11.8564 LSUpdate
+2024-07-09 22:57:11.9073 LSUpdate
+2024-07-09 22:57:11.9575 LSUpdate
+2024-07-09 22:57:12.0106 LSUpdate
+2024-07-09 22:57:12.0587 LSUpdate
+2024-07-09 22:57:12.1053 LSUpdate
+2024-07-09 22:57:12.1561 LSUpdate
+2024-07-09 22:57:12.2090 LSUpdate
+2024-07-09 22:57:12.2556 LSUpdate
+2024-07-09 22:57:12.3071 LSUpdate
+2024-07-09 22:57:12.3573 LSUpdate
+2024-07-09 22:57:12.4077 LSUpdate
+2024-07-09 22:59:24.9200 C2Room_ChangeSceneFinishHandler
+2024-07-09 22:59:25.1107 FrameMessage < AuthorityFrame discard: { "_t" : "FrameMessage", "Frame" : 0, "PlayerId" : NumberLong("1209305699188737"), "Input" : { "V" : { "x" : { "_serializedValue" : NumberLong(0) }, "y" : { "_serializedValue" : NumberLong(0) } }, "Button" : 0 } }
+2024-07-09 22:59:25.1321 FrameMessage < AuthorityFrame discard: { "_t" : "FrameMessage", "Frame" : 1, "PlayerId" : NumberLong("1209305699188737"), "Input" : { "V" : { "x" : { "_serializedValue" : NumberLong(0) }, "y" : { "_serializedValue" : NumberLong(0) } }, "Button" : 0 } }
+2024-07-09 22:59:25.1321 FrameMessage < AuthorityFrame discard: { "_t" : "FrameMessage", "Frame" : 2, "PlayerId" : NumberLong("1209305699188737"), "Input" : { "V" : { "x" : { "_serializedValue" : NumberLong(0) }, "y" : { "_serializedValue" : NumberLong(0) } }, "Button" : 0 } }
+2024-07-09 22:59:25.1321 FrameMessage < AuthorityFrame discard: { "_t" : "FrameMessage", "Frame" : 3, "PlayerId" : NumberLong("1209305699188737"), "Input" : { "V" : { "x" : { "_serializedValue" : NumberLong(0) }, "y" : { "_serializedValue" : NumberLong(0) } }, "Button" : 0 } }
