@@ -19,8 +19,8 @@ namespace ET
             LSUnit castUnit = cast.Unit;
             
             B3CollisionComponent collision = castUnit.GetComponent<B3CollisionComponent>();
-            collision.Body.ApplyForce(new Vector3(0, 0, 700), Vector3.Zero);
-
+            collision.Body.ApplyForce(new Vector3(0, 0, 1000), Vector3.Zero);
+            
             // 范围检测
         }
     }

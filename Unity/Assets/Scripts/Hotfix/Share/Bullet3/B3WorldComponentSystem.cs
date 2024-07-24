@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.IO;
 using BulletSharp;
 using BulletSharp.Math;
 
@@ -16,6 +18,22 @@ namespace ET
             var BroadPhase = new DbvtBroadphase();
             self.World = new DiscreteDynamicsWorld(Dispatcher, BroadPhase, null, CollisionConf);
             self.World.Gravity = new Vector3(0, 0, 0);
+            
+            string path = "D:\\Map.rigidbody";
+            if (!File.Exists(path)) return;
+            byte[] bytes = File.ReadAllBytes(path);
+            List<MeshInfo> infos = MemoryPackHelper.Deserialize(typeof(List<MeshInfo>), bytes, 0, bytes.Length) as List<MeshInfo>;
+            self.CreatScene(infos).Coroutine();
+        }
+
+        private static async ETTask CreatScene(this B3WorldComponent self, List<MeshInfo> infos)
+        {
+            // TODO: 这里加载时间>200s RPC会断开, 需要处理
+            foreach (MeshInfo info in infos)
+            {
+                self.AddBody(info.Points, info.Position, info.Mass);
+                await ETTask.CompletedTask;
+            }
         }
 
         [EntitySystem]
@@ -43,7 +61,35 @@ namespace ET
         {
             RigidBody body = new RigidBody(info);
             self.World.AddRigidBody(body);
+            if (info.Mass == 0)
+            {
+                body.CollisionFlags |= CollisionFlags.KinematicObject;
+                body.ActivationState = ActivationState.DisableDeactivation;
+            }
+            
             if(callback != null) self.Callbacks.Add(body, callback);
+            return body;
+        }
+
+        /// <summary>
+        /// 场景中物体会使用这个来创建碰撞
+        /// </summary>
+        public static RigidBody AddBody(this B3WorldComponent self, Vector3[] points, Vector3 position, float mass = 0)
+        {
+            ConvexHullShape shape = new(points);
+            shape.InitializePolyhedralFeatures();
+            DefaultMotionState motionState = new DefaultMotionState(Matrix.Translation(position));
+            Vector3 localInertia = Vector3.Zero;
+            if (mass != 0) shape.CalculateLocalInertia(mass, out localInertia);
+            RigidBodyConstructionInfo rbInfo = new RigidBodyConstructionInfo(0, motionState, shape, localInertia);
+            RigidBody body = new(rbInfo);
+            if (mass == 0)
+            {
+                body.CollisionFlags |= CollisionFlags.KinematicObject;
+                body.ActivationState = ActivationState.DisableDeactivation;
+            }
+            self.World.AddRigidBody(body);
+
             return body;
         }
     }

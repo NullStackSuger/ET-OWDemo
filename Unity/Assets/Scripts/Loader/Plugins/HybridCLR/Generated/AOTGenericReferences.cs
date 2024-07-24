@@ -187,6 +187,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// ET.StructBsonSerialize<object>
 	// ET.UnOrderMultiMap<object,object>
 	// ET.UpdateSystem<object>
+	// MemoryPack.Formatters.ArrayFormatter<BulletSharp.Math.Vector3>
 	// MemoryPack.Formatters.ArrayFormatter<ET.LSInput>
 	// MemoryPack.Formatters.ArrayFormatter<byte>
 	// MemoryPack.Formatters.ArrayFormatter<object>
@@ -254,8 +255,11 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Action<object,long>
 	// System.Action<object,object>
 	// System.Action<object>
+	// System.ArraySegment.Enumerator<BulletSharp.Math.Vector3>
 	// System.ArraySegment.Enumerator<byte>
+	// System.ArraySegment<BulletSharp.Math.Vector3>
 	// System.ArraySegment<byte>
+	// System.ByReference<BulletSharp.Math.Vector3>
 	// System.ByReference<byte>
 	// System.Collections.Concurrent.ConcurrentDictionary.<GetEnumerator>d__35<object,object>
 	// System.Collections.Concurrent.ConcurrentDictionary.DictionaryEnumerator<object,object>
@@ -670,7 +674,9 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Predicate<long>
 	// System.Predicate<object>
 	// System.Predicate<ushort>
+	// System.ReadOnlySpan.Enumerator<BulletSharp.Math.Vector3>
 	// System.ReadOnlySpan.Enumerator<byte>
+	// System.ReadOnlySpan<BulletSharp.Math.Vector3>
 	// System.ReadOnlySpan<byte>
 	// System.Runtime.CompilerServices.AsyncTaskMethodBuilder<object>
 	// System.Runtime.CompilerServices.ConfiguredTaskAwaitable.ConfiguredTaskAwaiter<byte>
@@ -682,7 +688,9 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Runtime.CompilerServices.TaskAwaiter<byte>
 	// System.Runtime.CompilerServices.TaskAwaiter<object>
 	// System.Runtime.CompilerServices.TrueReadOnlyCollection<object>
+	// System.Span.Enumerator<BulletSharp.Math.Vector3>
 	// System.Span.Enumerator<byte>
+	// System.Span<BulletSharp.Math.Vector3>
 	// System.Span<byte>
 	// System.Threading.Tasks.ContinuationTaskFromResultTask<byte>
 	// System.Threading.Tasks.ContinuationTaskFromResultTask<object>
@@ -819,7 +827,9 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Collections.Generic.List<object> MemoryPack.Formatters.ListFormatter.DeserializePackable<object>(MemoryPack.MemoryPackReader&)
 		// System.Void MemoryPack.Formatters.ListFormatter.DeserializePackable<object>(MemoryPack.MemoryPackReader&,System.Collections.Generic.List<object>&)
 		// System.Void MemoryPack.Formatters.ListFormatter.SerializePackable<object>(MemoryPack.MemoryPackWriter&,System.Collections.Generic.List<object>&)
+		// BulletSharp.Math.Vector3[] MemoryPack.Internal.MemoryMarshalEx.AllocateUninitializedArray<BulletSharp.Math.Vector3>(int,bool)
 		// byte[] MemoryPack.Internal.MemoryMarshalEx.AllocateUninitializedArray<byte>(int,bool)
+		// BulletSharp.Math.Vector3& MemoryPack.Internal.MemoryMarshalEx.GetArrayDataReference<BulletSharp.Math.Vector3>(BulletSharp.Math.Vector3[])
 		// byte& MemoryPack.Internal.MemoryMarshalEx.GetArrayDataReference<byte>(byte[])
 		// MemoryPack.MemoryPackFormatter<byte> MemoryPack.MemoryPackFormatterProvider.GetFormatter<byte>()
 		// MemoryPack.MemoryPackFormatter<long> MemoryPack.MemoryPackFormatterProvider.GetFormatter<long>()
@@ -828,6 +838,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// bool MemoryPack.MemoryPackFormatterProvider.IsRegistered<object>()
 		// System.Void MemoryPack.MemoryPackFormatterProvider.Register<ET.LSInput>(MemoryPack.MemoryPackFormatter<ET.LSInput>)
 		// System.Void MemoryPack.MemoryPackFormatterProvider.Register<object>(MemoryPack.MemoryPackFormatter<object>)
+		// BulletSharp.Math.Vector3[] MemoryPack.MemoryPackReader.DangerousReadUnmanagedArray<BulletSharp.Math.Vector3>()
+		// System.Void MemoryPack.MemoryPackReader.DangerousReadUnmanagedArray<BulletSharp.Math.Vector3>(BulletSharp.Math.Vector3[]&)
 		// System.Void MemoryPack.MemoryPackReader.DangerousReadUnmanagedArray<byte>(byte[]&)
 		// byte[] MemoryPack.MemoryPackReader.DangerousReadUnmanagedArray<byte>()
 		// MemoryPack.IMemoryPackFormatter<byte> MemoryPack.MemoryPackReader.GetFormatter<byte>()
@@ -835,6 +847,8 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// MemoryPack.IMemoryPackFormatter<object> MemoryPack.MemoryPackReader.GetFormatter<object>()
 		// System.Void MemoryPack.MemoryPackReader.ReadPackable<object>(object&)
 		// object MemoryPack.MemoryPackReader.ReadPackable<object>()
+		// System.Void MemoryPack.MemoryPackReader.ReadUnmanaged<BulletSharp.Math.Vector3,float>(BulletSharp.Math.Vector3&,float&)
+		// System.Void MemoryPack.MemoryPackReader.ReadUnmanaged<BulletSharp.Math.Vector3>(BulletSharp.Math.Vector3&)
 		// System.Void MemoryPack.MemoryPackReader.ReadUnmanaged<ET.ActorId>(ET.ActorId&)
 		// System.Void MemoryPack.MemoryPackReader.ReadUnmanaged<ET.LSInput>(ET.LSInput&)
 		// System.Void MemoryPack.MemoryPackReader.ReadUnmanaged<TrueSync.TSQuaternion>(TrueSync.TSQuaternion&)
@@ -863,6 +877,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void MemoryPack.MemoryPackReader.ReadUnmanaged<byte,long>(byte&,long&)
 		// System.Void MemoryPack.MemoryPackReader.ReadUnmanaged<byte,uint>(byte&,uint&)
 		// System.Void MemoryPack.MemoryPackReader.ReadUnmanaged<byte>(byte&)
+		// System.Void MemoryPack.MemoryPackReader.ReadUnmanaged<float>(float&)
 		// System.Void MemoryPack.MemoryPackReader.ReadUnmanaged<int,ET.ActorId>(int&,ET.ActorId&)
 		// System.Void MemoryPack.MemoryPackReader.ReadUnmanaged<int>(int&)
 		// System.Void MemoryPack.MemoryPackReader.ReadUnmanaged<long,ET.LSInput,int>(long&,ET.LSInput&,int&)
@@ -871,17 +886,21 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void MemoryPack.MemoryPackReader.ReadUnmanaged<long,long>(long&,long&)
 		// System.Void MemoryPack.MemoryPackReader.ReadUnmanaged<long>(long&)
 		// System.Void MemoryPack.MemoryPackReader.ReadUnmanaged<uint>(uint&)
+		// BulletSharp.Math.Vector3[] MemoryPack.MemoryPackReader.ReadUnmanagedArray<BulletSharp.Math.Vector3>()
+		// System.Void MemoryPack.MemoryPackReader.ReadUnmanagedArray<BulletSharp.Math.Vector3>(BulletSharp.Math.Vector3[]&)
 		// System.Void MemoryPack.MemoryPackReader.ReadUnmanagedArray<byte>(byte[]&)
 		// byte[] MemoryPack.MemoryPackReader.ReadUnmanagedArray<byte>()
 		// System.Void MemoryPack.MemoryPackReader.ReadValue<object>(object&)
 		// byte MemoryPack.MemoryPackReader.ReadValue<byte>()
 		// long MemoryPack.MemoryPackReader.ReadValue<long>()
 		// object MemoryPack.MemoryPackReader.ReadValue<object>()
+		// System.Void MemoryPack.MemoryPackWriter.DangerousWriteUnmanagedArray<BulletSharp.Math.Vector3>(BulletSharp.Math.Vector3[])
 		// System.Void MemoryPack.MemoryPackWriter.DangerousWriteUnmanagedArray<byte>(byte[])
 		// MemoryPack.IMemoryPackFormatter<byte> MemoryPack.MemoryPackWriter.GetFormatter<byte>()
 		// MemoryPack.IMemoryPackFormatter<long> MemoryPack.MemoryPackWriter.GetFormatter<long>()
 		// MemoryPack.IMemoryPackFormatter<object> MemoryPack.MemoryPackWriter.GetFormatter<object>()
 		// System.Void MemoryPack.MemoryPackWriter.WritePackable<object>(object&)
+		// System.Void MemoryPack.MemoryPackWriter.WriteUnmanaged<BulletSharp.Math.Vector3,float>(BulletSharp.Math.Vector3&,float&)
 		// System.Void MemoryPack.MemoryPackWriter.WriteUnmanaged<ET.ActorId>(ET.ActorId&)
 		// System.Void MemoryPack.MemoryPackWriter.WriteUnmanaged<ET.LSInput>(ET.LSInput&)
 		// System.Void MemoryPack.MemoryPackWriter.WriteUnmanaged<Unity.Mathematics.quaternion,int>(Unity.Mathematics.quaternion&,int&)
@@ -892,6 +911,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void MemoryPack.MemoryPackWriter.WriteUnmanaged<long,TrueSync.TSVector,TrueSync.TSQuaternion>(long&,TrueSync.TSVector&,TrueSync.TSQuaternion&)
 		// System.Void MemoryPack.MemoryPackWriter.WriteUnmanaged<long,long>(long&,long&)
 		// System.Void MemoryPack.MemoryPackWriter.WriteUnmanaged<long>(long&)
+		// System.Void MemoryPack.MemoryPackWriter.WriteUnmanagedArray<BulletSharp.Math.Vector3>(BulletSharp.Math.Vector3[])
 		// System.Void MemoryPack.MemoryPackWriter.WriteUnmanagedArray<byte>(byte[])
 		// System.Void MemoryPack.MemoryPackWriter.WriteUnmanagedWithObjectHeader<byte,int,ET.ActorId>(byte,byte&,int&,ET.ActorId&)
 		// System.Void MemoryPack.MemoryPackWriter.WriteUnmanagedWithObjectHeader<byte,int,Unity.Mathematics.float3>(byte,byte&,int&,Unity.Mathematics.float3&)
@@ -930,6 +950,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Threading.Tasks.Task<MongoDB.Driver.ReplaceOneResult> MongoDB.Driver.IMongoCollectionExtensions.ReplaceOneAsync<object>(MongoDB.Driver.IMongoCollection<object>,System.Linq.Expressions.Expression<System.Func<object,bool>>,object,MongoDB.Driver.ReplaceOptions,System.Threading.CancellationToken)
 		// MongoDB.Driver.IMongoCollection<object> MongoDB.Driver.IMongoDatabase.GetCollection<object>(string,MongoDB.Driver.MongoCollectionSettings)
 		// object System.Activator.CreateInstance<object>()
+		// BulletSharp.Math.Vector3[] System.Array.Empty<BulletSharp.Math.Vector3>()
 		// byte[] System.Array.Empty<byte>()
 		// object[] System.Array.Empty<object>()
 		// System.Collections.ObjectModel.ReadOnlyCollection<object> System.Dynamic.Utils.CollectionExtensions.ToReadOnly<object>(System.Collections.Generic.IEnumerable<object>)
@@ -951,14 +972,17 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Linq.Expressions.Expression<object> System.Linq.Expressions.Expression.Lambda<object>(System.Linq.Expressions.Expression,System.Linq.Expressions.ParameterExpression[])
 		// System.Linq.Expressions.Expression<object> System.Linq.Expressions.Expression.Lambda<object>(System.Linq.Expressions.Expression,bool,System.Collections.Generic.IEnumerable<System.Linq.Expressions.ParameterExpression>)
 		// System.Linq.Expressions.Expression<object> System.Linq.Expressions.Expression.Lambda<object>(System.Linq.Expressions.Expression,string,bool,System.Collections.Generic.IEnumerable<System.Linq.Expressions.ParameterExpression>)
+		// System.Span<BulletSharp.Math.Vector3> System.MemoryExtensions.AsSpan<BulletSharp.Math.Vector3>(BulletSharp.Math.Vector3[])
 		// System.Span<byte> System.MemoryExtensions.AsSpan<byte>(byte[])
 		// System.Void System.Runtime.CompilerServices.AsyncTaskMethodBuilder<object>.Start<object>(object&)
 		// byte& System.Runtime.CompilerServices.Unsafe.Add<byte>(byte&,int)
+		// byte& System.Runtime.CompilerServices.Unsafe.As<BulletSharp.Math.Vector3,byte>(BulletSharp.Math.Vector3&)
 		// byte& System.Runtime.CompilerServices.Unsafe.As<byte,byte>(byte&)
 		// object& System.Runtime.CompilerServices.Unsafe.As<object,object>(object&)
 		// byte& System.Runtime.CompilerServices.Unsafe.AsRef<byte>(byte&)
 		// long& System.Runtime.CompilerServices.Unsafe.AsRef<long>(long&)
 		// object& System.Runtime.CompilerServices.Unsafe.AsRef<object>(object&)
+		// BulletSharp.Math.Vector3 System.Runtime.CompilerServices.Unsafe.ReadUnaligned<BulletSharp.Math.Vector3>(byte&)
 		// ET.ActorId System.Runtime.CompilerServices.Unsafe.ReadUnaligned<ET.ActorId>(byte&)
 		// ET.LSInput System.Runtime.CompilerServices.Unsafe.ReadUnaligned<ET.LSInput>(byte&)
 		// TrueSync.TSQuaternion System.Runtime.CompilerServices.Unsafe.ReadUnaligned<TrueSync.TSQuaternion>(byte&)
@@ -966,9 +990,11 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// Unity.Mathematics.float3 System.Runtime.CompilerServices.Unsafe.ReadUnaligned<Unity.Mathematics.float3>(byte&)
 		// Unity.Mathematics.quaternion System.Runtime.CompilerServices.Unsafe.ReadUnaligned<Unity.Mathematics.quaternion>(byte&)
 		// byte System.Runtime.CompilerServices.Unsafe.ReadUnaligned<byte>(byte&)
+		// float System.Runtime.CompilerServices.Unsafe.ReadUnaligned<float>(byte&)
 		// int System.Runtime.CompilerServices.Unsafe.ReadUnaligned<int>(byte&)
 		// long System.Runtime.CompilerServices.Unsafe.ReadUnaligned<long>(byte&)
 		// uint System.Runtime.CompilerServices.Unsafe.ReadUnaligned<uint>(byte&)
+		// int System.Runtime.CompilerServices.Unsafe.SizeOf<BulletSharp.Math.Vector3>()
 		// int System.Runtime.CompilerServices.Unsafe.SizeOf<ET.ActorId>()
 		// int System.Runtime.CompilerServices.Unsafe.SizeOf<ET.LSInput>()
 		// int System.Runtime.CompilerServices.Unsafe.SizeOf<TrueSync.TSQuaternion>()
@@ -976,9 +1002,11 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// int System.Runtime.CompilerServices.Unsafe.SizeOf<Unity.Mathematics.float3>()
 		// int System.Runtime.CompilerServices.Unsafe.SizeOf<Unity.Mathematics.quaternion>()
 		// int System.Runtime.CompilerServices.Unsafe.SizeOf<byte>()
+		// int System.Runtime.CompilerServices.Unsafe.SizeOf<float>()
 		// int System.Runtime.CompilerServices.Unsafe.SizeOf<int>()
 		// int System.Runtime.CompilerServices.Unsafe.SizeOf<long>()
 		// int System.Runtime.CompilerServices.Unsafe.SizeOf<uint>()
+		// System.Void System.Runtime.CompilerServices.Unsafe.WriteUnaligned<BulletSharp.Math.Vector3>(byte&,BulletSharp.Math.Vector3)
 		// System.Void System.Runtime.CompilerServices.Unsafe.WriteUnaligned<ET.ActorId>(byte&,ET.ActorId)
 		// System.Void System.Runtime.CompilerServices.Unsafe.WriteUnaligned<ET.LSInput>(byte&,ET.LSInput)
 		// System.Void System.Runtime.CompilerServices.Unsafe.WriteUnaligned<TrueSync.TSQuaternion>(byte&,TrueSync.TSQuaternion)
@@ -986,9 +1014,11 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void System.Runtime.CompilerServices.Unsafe.WriteUnaligned<Unity.Mathematics.float3>(byte&,Unity.Mathematics.float3)
 		// System.Void System.Runtime.CompilerServices.Unsafe.WriteUnaligned<Unity.Mathematics.quaternion>(byte&,Unity.Mathematics.quaternion)
 		// System.Void System.Runtime.CompilerServices.Unsafe.WriteUnaligned<byte>(byte&,byte)
+		// System.Void System.Runtime.CompilerServices.Unsafe.WriteUnaligned<float>(byte&,float)
 		// System.Void System.Runtime.CompilerServices.Unsafe.WriteUnaligned<int>(byte&,int)
 		// System.Void System.Runtime.CompilerServices.Unsafe.WriteUnaligned<long>(byte&,long)
 		// System.Void System.Runtime.CompilerServices.Unsafe.WriteUnaligned<uint>(byte&,uint)
+		// BulletSharp.Math.Vector3& System.Runtime.InteropServices.MemoryMarshal.GetReference<BulletSharp.Math.Vector3>(System.Span<BulletSharp.Math.Vector3>)
 		// byte& System.Runtime.InteropServices.MemoryMarshal.GetReference<byte>(System.Span<byte>)
 		// System.Threading.Tasks.Task<object> System.Threading.Tasks.TaskFactory.StartNew<object>(System.Func<object>,System.Threading.CancellationToken)
 		// object UnityEngine.GameObject.GetComponent<object>()

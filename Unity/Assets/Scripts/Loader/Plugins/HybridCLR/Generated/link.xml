@@ -62,11 +62,14 @@
     <type fullname="MongoDB.Driver.IAsyncCursor`1" preserve="all" />
   </assembly>
   <assembly fullname="System">
+    <type fullname="System.CodeDom.Compiler.GeneratedCodeAttribute" preserve="all" />
     <type fullname="System.Collections.Generic.Queue`1" preserve="all" />
     <type fullname="System.Collections.Generic.SortedDictionary`2" preserve="all" />
     <type fullname="System.Collections.Generic.SortedDictionary`2/Enumerator" preserve="all" />
     <type fullname="System.Collections.Generic.SortedDictionary`2/ValueCollection" preserve="all" />
     <type fullname="System.Collections.Generic.SortedDictionary`2/ValueCollection/Enumerator" preserve="all" />
+    <type fullname="System.ComponentModel.EditorBrowsableAttribute" preserve="all" />
+    <type fullname="System.ComponentModel.EditorBrowsableState" preserve="all" />
     <type fullname="System.Diagnostics.Process" preserve="all" />
     <type fullname="System.Net.EndPoint" preserve="all" />
     <type fullname="System.Net.HttpListener" preserve="all" />
@@ -246,15 +249,18 @@
     <type fullname="Unity.Mathematics.quaternion" preserve="all" />
   </assembly>
   <assembly fullname="Unity.ThirdParty">
+    <type fullname="BulletSharp.ActivationState" preserve="all" />
     <type fullname="BulletSharp.BroadphaseInterface" preserve="all" />
     <type fullname="BulletSharp.CollisionConfiguration" preserve="all" />
     <type fullname="BulletSharp.CollisionDispatcher" preserve="all" />
+    <type fullname="BulletSharp.CollisionFlags" preserve="all" />
     <type fullname="BulletSharp.CollisionObject" preserve="all" />
     <type fullname="BulletSharp.CollisionObjectWrapper" preserve="all" />
     <type fullname="BulletSharp.CollisionShape" preserve="all" />
     <type fullname="BulletSharp.CollisionWorld" preserve="all" />
     <type fullname="BulletSharp.ConstraintSolver" preserve="all" />
     <type fullname="BulletSharp.ContactResultCallback" preserve="all" />
+    <type fullname="BulletSharp.ConvexHullShape" preserve="all" />
     <type fullname="BulletSharp.DbvtBroadphase" preserve="all" />
     <type fullname="BulletSharp.DefaultCollisionConfiguration" preserve="all" />
     <type fullname="BulletSharp.DefaultMotionState" preserve="all" />
@@ -266,6 +272,7 @@
     <type fullname="BulletSharp.Math.Quaternion" preserve="all" />
     <type fullname="BulletSharp.Math.Vector3" preserve="all" />
     <type fullname="BulletSharp.MotionState" preserve="all" />
+    <type fullname="BulletSharp.PolyhedralConvexShape" preserve="all" />
     <type fullname="BulletSharp.RigidBody" preserve="all" />
     <type fullname="BulletSharp.RigidBodyConstructionInfo" preserve="all" />
     <type fullname="BulletSharp.SphereShape" preserve="all" />
@@ -401,9 +408,9 @@
     <type fullname="System.Runtime.CompilerServices.IAsyncStateMachine" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.IsReadOnlyAttribute" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.RuntimeCompatibilityAttribute" preserve="all" />
+    <type fullname="System.Runtime.CompilerServices.RuntimeHelpers" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.TaskAwaiter" preserve="all" />
     <type fullname="System.Runtime.CompilerServices.TaskAwaiter`1" preserve="all" />
-    <type fullname="System.Runtime.Versioning.TargetFrameworkAttribute" preserve="all" />
     <type fullname="System.RuntimeFieldHandle" preserve="all" />
     <type fullname="System.RuntimeMethodHandle" preserve="all" />
     <type fullname="System.RuntimeTypeHandle" preserve="all" />

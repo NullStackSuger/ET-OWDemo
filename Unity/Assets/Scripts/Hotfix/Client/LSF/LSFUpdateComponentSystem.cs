@@ -17,7 +17,7 @@ namespace ET.Client
         private static void Destroy(this LSFUpdateComponent self)
         {
             Room room = self.GetParent<Room>();
-            if (!room.IsReplay) room.SaveReplay("D:\\RP.replay");
+            //if (!room.IsReplay) room.SaveReplay("D:\\RP.replay");
         }
 
         [EntitySystem]
