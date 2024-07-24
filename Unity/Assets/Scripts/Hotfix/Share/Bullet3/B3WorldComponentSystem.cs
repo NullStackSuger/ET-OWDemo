@@ -18,16 +18,19 @@ namespace ET
             var BroadPhase = new DbvtBroadphase();
             self.World = new DiscreteDynamicsWorld(Dispatcher, BroadPhase, null, CollisionConf);
             self.World.Gravity = new Vector3(0, 0, 0);
-            
-            string path = "D:\\Map.rigidbody";
-            if (!File.Exists(path)) return;
-            byte[] bytes = File.ReadAllBytes(path);
-            List<MeshInfo> infos = MemoryPackHelper.Deserialize(typeof(List<MeshInfo>), bytes, 0, bytes.Length) as List<MeshInfo>;
-            self.CreatScene(infos).Coroutine();
+
+            LSWorld world = self.GetParent<LSWorld>();
+            Room room = world.GetParent<Room>();
+            self.CreatSceneRb(room.Name).Coroutine();
         }
 
-        private static async ETTask CreatScene(this B3WorldComponent self, List<MeshInfo> infos)
+        private static async ETTask CreatSceneRb(this B3WorldComponent self, string name)
         {
+            string path = $"D:\\{name}.bytes";
+            if (!File.Exists(path)) return;
+            byte[] bytes = await File.ReadAllBytesAsync(path);
+            List<MeshInfo> infos = MemoryPackHelper.Deserialize(typeof(List<MeshInfo>), bytes, 0, bytes.Length) as List<MeshInfo>;
+            
             // TODO: 这里加载时间>200s RPC会断开, 需要处理
             foreach (MeshInfo info in infos)
             {

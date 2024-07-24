@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.IO;
-using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ET
 {
@@ -28,7 +28,7 @@ namespace ET
 
             if (infos.Count <= 0) return;
 
-            string path = "D://Map.rigidbody";
+            string path = $"D:\\{SceneManager.GetActiveScene().name}.bytes";
             byte[] bytes = MemoryPackHelper.Serialize(infos);
             File.WriteAllBytes(path, bytes);
             

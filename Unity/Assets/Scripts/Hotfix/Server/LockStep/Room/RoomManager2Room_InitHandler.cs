@@ -7,7 +7,7 @@ namespace ET.Server
     {
         protected override async ETTask Run(Scene root, RoomManager2Room_Init request, Room2RoomManager_Init response)
         {
-            Room room = root.AddComponent<Room, string>("Server");
+            Room room = root.AddComponent<Room, string>("Map1");
             await ETTask.CompletedTask;
         }
     }
