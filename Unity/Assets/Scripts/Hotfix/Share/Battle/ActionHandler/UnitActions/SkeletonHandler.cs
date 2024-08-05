@@ -48,7 +48,7 @@ namespace ET
             inputComponent.PressCastFrame = room.AuthorityFrame;
             
             CastComponent castComponent = unit.GetComponent<CastComponent>();
-            Cast cast = castComponent.Creat(1003, new TestContact());
+            Cast cast = castComponent.Creat(1003);
         }
     }
 }

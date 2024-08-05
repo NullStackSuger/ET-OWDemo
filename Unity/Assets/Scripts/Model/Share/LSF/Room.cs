@@ -75,5 +75,10 @@ namespace ET
         
         public bool IsReplay { get; set; }
         public Replay Replay { get; set; }
+
+        /// <summary>
+        /// 为了断线重连而添加的
+        /// </summary>
+        public long StartTime { get; set; }
     }
 }

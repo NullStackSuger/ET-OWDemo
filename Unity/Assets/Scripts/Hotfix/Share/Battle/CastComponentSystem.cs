@@ -14,7 +14,7 @@ namespace ET
 
         }
         
-        public static Cast Creat(this CastComponent self, int configId, ContactResultCallback callback = null)
+        public static Cast Creat(this CastComponent self, int configId)
         {
             LSUnit player = self.GetParent<LSUnit>();
             
@@ -31,7 +31,9 @@ namespace ET
             // 这个必须在设置unit位置后
             CastConfig castConfig = CastConfigCategory.Instance.Get(configId);
             using var rb = RigidBodyConfigCategory.Instance.Clone(castConfig.RigidBody);
-            unit.AddComponent<B3CollisionComponent, RigidBodyConstructionInfo, ContactResultCallback>(rb, callback);
+            RigidBodyConfig rigidBodyConfig = RigidBodyConfigCategory.Instance.Get(castConfig.RigidBody);
+            ACollisionCallback callback = CollisionCallbackDispatcherComponent.Instance[rigidBodyConfig.Callback];
+            unit.AddComponent<B3CollisionComponent, RigidBodyConstructionInfo, ACollisionCallback>(rb, callback);
 
             self.Casts.Add(cast);
             

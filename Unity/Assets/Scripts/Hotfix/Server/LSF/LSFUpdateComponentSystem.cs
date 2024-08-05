@@ -91,6 +91,8 @@ namespace ET.Server
 
                 self.PlayerIds.Add(info.PlayerId);
             }
+
+            self.StartTime = startTime;
         }
 
         public static void Update(this ET.Room self, OneFrameInputs inputs)

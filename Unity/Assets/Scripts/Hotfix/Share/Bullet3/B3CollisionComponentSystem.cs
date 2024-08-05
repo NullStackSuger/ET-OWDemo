@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using BulletSharp;
 using BulletSharp.Math;
 using TrueSync;
@@ -14,15 +15,24 @@ namespace ET
         private static void Awake(this B3CollisionComponent self, RigidBody body)
         {
             self.Body = body;
+            body.UserObject = self;
         }
 
         [EntitySystem]
-        private static void Awake(this B3CollisionComponent self, RigidBodyConstructionInfo info, ContactResultCallback callback = null)
+        private static void Awake(this B3CollisionComponent self, RigidBodyConstructionInfo info, ACollisionCallback callback = null)
         {
+            RigidBody body = new RigidBody(info);
+            if (info.Mass == 0)
+            {
+                body.CollisionFlags |= CollisionFlags.KinematicObject;
+                body.ActivationState = ActivationState.DisableDeactivation;
+            }
+            self.Body = body;
+            body.UserObject = self;
+         
             LSWorld world = self.IScene as LSWorld;
             B3WorldComponent worldComponent = world.GetComponent<B3WorldComponent>();
-
-            self.Body = worldComponent.AddBody(info, callback);
+            worldComponent.NotifyToAdd(body, callback);
 
             LSUnit unit = self.GetParent<LSUnit>();
             self.Body.WorldTransform += Matrix.Translation((float)unit.Position.x, (float)unit.Position.y, (float)unit.Position.z);
@@ -34,9 +44,8 @@ namespace ET
         {
             LSWorld world = self.IScene as LSWorld;
             B3WorldComponent worldComponent = world.GetComponent<B3WorldComponent>();
-            worldComponent.Callbacks.Remove(self.Body);
+            worldComponent.NotifyToRemove(self.Body);
             
-            self.Body.Dispose();
             self.Body = null;
         }
 

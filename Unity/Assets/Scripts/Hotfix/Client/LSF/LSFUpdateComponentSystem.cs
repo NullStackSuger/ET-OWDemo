@@ -98,7 +98,7 @@ namespace ET.Client
                 unit.AddComponent<LSFInputComponent>();
                 self.PlayerIds.Add(info.PlayerId);
             }
-
+            
             self.IsReplay = self.Replay != null;
             if (!self.IsReplay)
             {
@@ -113,6 +113,8 @@ namespace ET.Client
                     unitComponent.Creat(info);
                 }
             }
+
+            self.StartTime = startTime;
         }
 
         public static void Update(this ET.Room self, OneFrameInputs inputs)

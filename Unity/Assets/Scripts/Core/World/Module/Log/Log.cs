@@ -39,11 +39,12 @@ namespace ET
 
         public static void Info(string msg)
         {
-            if (Options.Instance.LogLevel > InfoLevel)
+            /*if (Options.Instance.LogLevel > InfoLevel)
             {
                 return;
             }
-            GetLog().Info(msg);
+            GetLog().Info(msg);*/
+            System.Console.WriteLine(msg);
         }
 
         public static void TraceInfo(string msg)

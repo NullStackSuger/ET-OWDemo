@@ -1,4 +1,4 @@
-/*using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace ET.Server
 {
@@ -7,9 +7,9 @@ namespace ET.Server
     {
         protected override async ETTask Run(Scene root, G2Room_Reconnect request, Room2G_Reconnect response)
         {
-            ET.Room room = root.GetComponent<ET.Room>();
+            Room room = root.GetComponent<Room>();
             response.StartTime = room.StartTime;
-            LSUnitComponent lsUnitComponent = room.LSWorld.GetComponent<LSUnitComponent>();
+            LSUnitComponent lsUnitComponent = room.AuthorityWorld.GetComponent<LSUnitComponent>();
             foreach (long playerId in room.PlayerIds)
             {
                 LSUnit lsUnit = lsUnitComponent.GetChild<LSUnit>(playerId);
@@ -17,11 +17,11 @@ namespace ET.Server
                 lockStepUnitInfo.PlayerId = playerId;
                 lockStepUnitInfo.Position = lsUnit.Position;
                 lockStepUnitInfo.Rotation = lsUnit.Rotation;
-                response.UnitInfos.Add(lockStepUnitInfo);    
+                response.UnitInfos.Add(lockStepUnitInfo);
             }
 
             response.Frame = room.AuthorityFrame;
             await ETTask.CompletedTask;
         }
     }
-}*/
+}

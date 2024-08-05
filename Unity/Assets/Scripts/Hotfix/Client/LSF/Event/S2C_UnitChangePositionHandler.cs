@@ -7,10 +7,18 @@ namespace ET.Client
         {
             Room room = entity.GetComponent<Room>();
             LSWorld world = room.AuthorityWorld;
-            if (world == null) return;
+            if (world == null)
+            {
+                Log.Warning($"缺少World, 第{room.AuthorityFrame}帧");
+                return;
+            }
             LSUnitComponent unitComponent = world.GetComponent<LSUnitComponent>();
             LSUnit unit = unitComponent.GetChild<LSUnit>(message.UnitId);
-            if (unit == null) return;
+            if (unit == null)
+            {
+                Log.Warning($"缺少Unit: {message.UnitId}, 第{room.AuthorityFrame}帧");
+                return;
+            }
             unit.Position = message.NewPosition;
             // unit位置改变会触发UnitChangePosition, 这里就不需要做其他的了
             // message.OldPos可能会在AOI用到

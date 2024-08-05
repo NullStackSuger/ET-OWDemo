@@ -24,14 +24,11 @@ namespace ET.Client
             
             IPEndPoint realmAddress = routerAddressComponent.GetRealmAddress(account);
 
-            R2C_Login r2CLogin;
-            using (Session session = await netComponent.CreateRouterSession(realmAddress, account, password))
-            {
-                C2R_Login c2RLogin = C2R_Login.Create();
-                c2RLogin.Account = account;
-                c2RLogin.Password = password;
-                r2CLogin = (R2C_Login)await session.Call(c2RLogin);
-            }
+            using Session session = await netComponent.CreateRouterSession(realmAddress, account, password);
+            C2R_Login c2RLogin = C2R_Login.Create();
+            c2RLogin.Account = account;
+            c2RLogin.Password = password;
+            R2C_Login r2CLogin = await session.Call(c2RLogin) as R2C_Login;
 
             // 创建一个gate Session,并且保存到SessionComponent中
             Session gateSession = await netComponent.CreateRouterSession(NetworkHelper.ToIPEndPoint(r2CLogin.Address), account, password);

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using BulletSharp;
 using BulletSharp.Math;
 
@@ -8,6 +9,7 @@ namespace ET
     [EntitySystemOf(typeof(B3WorldComponent))]
     [LSEntitySystemOf(typeof(B3WorldComponent))]
     [FriendOf(typeof(B3WorldComponent))]
+    [FriendOf(typeof(B3CollisionComponent))]
     public static partial class B3WorldComponentSystem
     {
         [EntitySystem]
@@ -17,25 +19,26 @@ namespace ET
             var Dispatcher = new CollisionDispatcher(CollisionConf);
             var BroadPhase = new DbvtBroadphase();
             self.World = new DiscreteDynamicsWorld(Dispatcher, BroadPhase, null, CollisionConf);
+            self.World.Broadphase.OverlappingPairCache.SetInternalGhostPairCallback(new GhostPairCallback());
             self.World.Gravity = new Vector3(0, 0, 0);
 
             LSWorld world = self.GetParent<LSWorld>();
             Room room = world.GetParent<Room>();
-            self.CreatSceneRb(room.Name).Coroutine();
-        }
+            CreatSceneRb(self, room.Name).Coroutine();
 
-        private static async ETTask CreatSceneRb(this B3WorldComponent self, string name)
-        {
-            string path = $"D:\\{name}.bytes";
-            if (!File.Exists(path)) return;
-            byte[] bytes = await File.ReadAllBytesAsync(path);
-            List<MeshInfo> infos = MemoryPackHelper.Deserialize(typeof(List<MeshInfo>), bytes, 0, bytes.Length) as List<MeshInfo>;
-            
-            // TODO: 这里加载时间>200s RPC会断开, 需要处理
-            foreach (MeshInfo info in infos)
+            async ETTask CreatSceneRb(B3WorldComponent self, string name)
             {
-                self.AddBody(info.Points, info.Position, info.Mass);
-                await ETTask.CompletedTask;
+                string path = $"D:\\{name}.bytes";
+                if (!File.Exists(path)) return;
+                byte[] bytes = await File.ReadAllBytesAsync(path);
+                List<MeshInfo> infos = MemoryPackHelper.Deserialize(typeof(List<MeshInfo>), bytes, 0, bytes.Length) as List<MeshInfo>;
+
+                // TODO: 这里加载时间>200s RPC会断开, 需要处理
+                foreach (MeshInfo info in infos)
+                {
+                    self.AddBody(info.Points, info.Position, info.Mass);
+                    await ETTask.CompletedTask;
+                }
             }
         }
 
@@ -51,33 +54,110 @@ namespace ET
         {
             LSWorld world = self.GetParent<LSWorld>();
             Room room = world.GetParent<Room>();
-            
+
+            // 模拟物理
             self.World.StepSimulation(1.0f / room.FixedTimeCounter.Interval);
-                    
-            foreach (var pair in self.Callbacks)
+
+            // 处理碰撞
+            self.LastCollisionInfos.Clear();
+            self.LastCollisionInfos = self.NowCollisionInfos;
+            self.NowCollisionInfos = new();
+
+            List<PersistentManifold> enterObjects = new();
+            List<PersistentManifold> exitObjects = new();
+            
+            // TODO 这里存在一个问题 不同客户端碰撞信息的index可能不同, 导致不同步
+            Dispatcher dispatcher = self.World.Dispatcher;
+            int count = dispatcher.NumManifolds;
+            for (int i = 0; i < count; i++)
             {
-                self.World.ContactTest(pair.Key, pair.Value);
+                PersistentManifold contactManifold = dispatcher.GetManifoldByIndexInternal(i);
+                if (contactManifold.NumContacts <= 0) continue;
+                
+                CollisionObject a = contactManifold.Body0;
+                CollisionObject b = contactManifold.Body1;
+                // 在Callbacks里存在说明是B3CollisionComponent并有回调
+                if (self.Callbacks.ContainsKey(a))
+                {
+                    self.NowCollisionInfos.Add((a, b));
+                }
+                if (self.Callbacks.ContainsKey(b))
+                {
+                    self.NowCollisionInfos.Add((b, a));
+                }
+            }
+
+            FixedHandler();
+
+            // 更新碰撞列表
+            while (self.WaitToAdds.TryDequeue(out var pair))
+            {
+                CollisionObject collisionObject = pair.Item1;
+                ACollisionCallback callback = pair.Item2;
+                self.World.AddCollisionObject(collisionObject);
+                if (callback != null) self.Callbacks.Add(collisionObject, callback);
+            }
+            while (self.WaitToRemoves.TryDequeue(out CollisionObject collisionObject))
+            {
+                self.World.RemoveCollisionObject(collisionObject);
+                if (self.Callbacks.ContainsKey(collisionObject)) self.Callbacks.Remove(collisionObject);
+                collisionObject.Dispose();
+            }
+            
+            void FixedHandler()
+            {
+                // 取Now差集是Enter
+                var enter = self.NowCollisionInfos.Except(self.LastCollisionInfos);
+                foreach (var pair in enter)
+                {
+                    CollisionObject a = pair.Item1;
+                    CollisionObject b = pair.Item2;
+
+                    ACollisionCallback callback = self.Callbacks[a];
+                    callback.CollisionCallbackEnter(a, b);
+                }
+                // 取交集是Stay
+                var stay = self.LastCollisionInfos.Intersect(self.NowCollisionInfos);
+                foreach (var pair in stay)
+                {
+                    CollisionObject a = pair.Item1;
+                    CollisionObject b = pair.Item2;
+                    
+                    ACollisionCallback callback = self.Callbacks[a];
+                    callback.CollisionCallbackStay(a, b);
+                }
+                // 取Last差集是Exit
+                var exit = self.LastCollisionInfos.Except(self.NowCollisionInfos);
+                foreach (var pair in exit)
+                {
+                    CollisionObject a = pair.Item1;
+                    CollisionObject b = pair.Item2;
+                    
+                    ACollisionCallback callback = self.Callbacks[a];
+                    callback.CollisionCallbackExit(a, b);
+                }
             }
         }
-        
-        public static RigidBody AddBody(this B3WorldComponent self, RigidBodyConstructionInfo info, ContactResultCallback callback = null)
+
+        /// <summary>
+        /// 需要生成的刚体
+        /// </summary>
+        public static void NotifyToAdd(this B3WorldComponent self, CollisionObject collision, ACollisionCallback callback = null)
         {
-            RigidBody body = new RigidBody(info);
-            self.World.AddRigidBody(body);
-            if (info.Mass == 0)
-            {
-                body.CollisionFlags |= CollisionFlags.KinematicObject;
-                body.ActivationState = ActivationState.DisableDeactivation;
-            }
-            
-            if(callback != null) self.Callbacks.Add(body, callback);
-            return body;
+            self.WaitToAdds.Enqueue((collision, callback));
+        }
+        /// <summary>
+        /// 需要销毁的刚体
+        /// </summary>
+        public static void NotifyToRemove(this B3WorldComponent self, CollisionObject collision)
+        {
+            self.WaitToRemoves.Enqueue(collision);
         }
 
         /// <summary>
         /// 场景中物体会使用这个来创建碰撞
         /// </summary>
-        public static RigidBody AddBody(this B3WorldComponent self, Vector3[] points, Vector3 position, float mass = 0)
+        private static RigidBody AddBody(this B3WorldComponent self, Vector3[] points, Vector3 position, float mass = 0)
         {
             ConvexHullShape shape = new(points);
             shape.InitializePolyhedralFeatures();
@@ -91,9 +171,25 @@ namespace ET
                 body.CollisionFlags |= CollisionFlags.KinematicObject;
                 body.ActivationState = ActivationState.DisableDeactivation;
             }
-            self.World.AddRigidBody(body);
+            self.NotifyToAdd(body);
 
             return body;
         }
+
+        /*public static GhostObject AddTrigger(this B3WorldComponent self, CollisionShape shape, Vector3 position, ContactResultCallback callback = null)
+        {
+            var go = self.AddTrigger(shape, Matrix.Translation(position), callback);
+            return go;
+        }
+        public static GhostObject AddTrigger(this B3WorldComponent self, CollisionShape shape, Matrix transform, ContactResultCallback callback = null)
+        {
+            PairCachingGhostObject go = new();
+            go.CollisionShape = shape;
+            go.WorldTransform = transform;
+            self.World.AddCollisionObject(go);
+            
+            if (callback != null) self.Callbacks.Add(go, callback);
+            return go;
+        }*/
     }
 }

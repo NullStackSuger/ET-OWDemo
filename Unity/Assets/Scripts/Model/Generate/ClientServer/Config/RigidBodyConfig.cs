@@ -73,6 +73,8 @@ namespace ET
 		public string Shape { get; set; }
 		/// <summary>Args</summary>
 		public long[] Args { get; set; }
+		/// <summary>Callback</summary>
+		public string Callback { get; set; }
 
 	}
 }

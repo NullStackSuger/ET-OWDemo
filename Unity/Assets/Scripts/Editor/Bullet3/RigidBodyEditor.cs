@@ -3,6 +3,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Vector3 = BulletSharp.Math.Vector3;
 
 namespace ET
 {
@@ -19,8 +20,8 @@ namespace ET
                 MeshFilter filter = go.GetComponent<MeshFilter>();
                 if (filter.sharedMesh == null) return;
 
-                BulletSharp.Math.Vector3[] points = RigidBodyHelper.ToBullet(filter.sharedMesh.vertices);
-                BulletSharp.Math.Vector3 position = RigidBodyHelper.ToBullet(go.transform.position);
+                BulletSharp.Math.Vector3[] points = filter.sharedMesh.vertices.ToBullet();
+                BulletSharp.Math.Vector3 position = go.transform.position.ToBullet();
                 float mass = collider.Mass;
                 MeshInfo info = new() { Points = points, Position = position, Mass = mass };
                 infos.Add(info);
@@ -33,6 +34,24 @@ namespace ET
             File.WriteAllBytes(path, bytes);
             
             Debug.Log("生成场景碰撞完成");
+        }
+
+        private static Vector3[] ToBullet(this UnityEngine.Vector3[] self)
+        {
+            Vector3[] arr = new Vector3[self.Length];
+            for (int i = 0; i < self.Length; i++)
+            {
+                UnityEngine.Vector3 v = self[i];
+                arr[i].X = v.x;
+                arr[i].Y = v.y;
+                arr[i].Z = v.z;
+            }
+            return arr;
+        }
+
+        private static Vector3 ToBullet(this UnityEngine.Vector3 self)
+        {
+            return new Vector3(self.x, self.y, self.z);
         }
     }
 }

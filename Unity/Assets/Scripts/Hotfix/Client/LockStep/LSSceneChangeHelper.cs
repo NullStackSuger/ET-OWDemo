@@ -24,9 +24,7 @@ namespace ET.Client
             room.AddComponent<LSFUpdateComponent>();
             
             // 这个事件中可以订阅取消loading
-            EventSystem.Instance.Publish(root, new LSFSceneInit());
-
-            await ETTask.CompletedTask;
+            await EventSystem.Instance.PublishAsync(root, new LSFSceneInit());
         }
         
         // 回放
@@ -43,27 +41,25 @@ namespace ET.Client
 
             room.AddComponent<ReplayUpdateComponent>();
             
-            EventSystem.Instance.Publish(root, new LSFSceneInit());
+            await EventSystem.Instance.PublishAsync(root, new LSFSceneInit());
         }
         
         // 重连
-        /*public static async ETTask SceneChangeToReconnect(Scene root, G2C_Reconnect message)
+        public static async ETTask SceneChangeToReconnect(Scene root, G2C_Reconnect message, string sceneName)
         {
-            root.RemoveComponent<ET.Room>();
+            root.RemoveComponent<Room>();
+            long playerId = root.GetComponent<PlayerComponent>().MyId;
 
-            ET.Room room = root.AddComponent<ET.Room>();
-            room.Name = "Map1";
-            
-            room.LSWorld = new LSWorld(SceneType.LockStepClient);
-            room.Init(message.UnitInfos, message.StartTime, message.Frame);
+            Room room = root.AddComponent<Room, string>(sceneName);
             
             // 等待表现层订阅的事件完成
-            await EventSystem.Instance.PublishAsync(root, new LSSceneChangeStart() {Room = room});
+            await EventSystem.Instance.PublishAsync(root, new LSFSceneChange() {Room = room});
+            
+            room.Init(playerId, message.UnitInfos, message.StartTime, message.Frame);
+            
+            room.AddComponent<LSFUpdateComponent>();
 
-
-            room.AddComponent<LSClientUpdater>();
-            // 这个事件中可以订阅取消loading
-            EventSystem.Instance.Publish(root, new LSSceneInitFinish());
-        }*/
+            await EventSystem.Instance.PublishAsync(root, new LSFSceneInit());
+        }
     }
 }

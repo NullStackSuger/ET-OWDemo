@@ -10,9 +10,15 @@ namespace ET.Server
             MessageLocationSenderComponent messageLocationSenderComponent = room.Root().GetComponent<MessageLocationSenderComponent>();
             foreach (var id in room.PlayerIds)
             {
-                //if (!pair.Value) continue;
                 messageLocationSenderComponent.Get(LocationType.GateSession).Send(id, message);
             }
+        }
+
+        public static void Send(this ET.Room room, long playerId, IMessage message)
+        {
+            (message as MessageObject).IsFromPool = false;
+            MessageLocationSenderComponent messageLocationSenderComponent = room.Root().GetComponent<MessageLocationSenderComponent>();
+            messageLocationSenderComponent.Get(LocationType.GateSession).Send(playerId, message);
         }
     }
 }
