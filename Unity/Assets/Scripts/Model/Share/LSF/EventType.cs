@@ -21,4 +21,9 @@ namespace ET
         public LSUnit Unit;
         public Cast Cast;
     }
+
+    public struct UnitRemoveCast
+    {
+        public Cast Cast;
+    }
 }

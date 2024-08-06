@@ -37,6 +37,12 @@ namespace ET.Client
         private static void Update(this LSFUnitView self)
         {
             LSUnit unit = self.GetUnit();
+            if (unit == null)
+            {
+                LSFUnitViewComponent viewComponent = self.GetParent<LSFUnitViewComponent>();
+                viewComponent.RemoveChild(self.Id);
+                return;
+            }
             
             Vector3 position = unit.Position.ToVector();
             Quaternion rotation = unit.Rotation.ToQuaternion();
@@ -67,7 +73,7 @@ namespace ET.Client
             self.TotalTime = 0;
         }
 
-        public static LSUnit GetUnit(this LSFUnitView self)
+        private static LSUnit GetUnit(this LSFUnitView self)
         {
             LSUnit unit = self.Unit;
             if (unit != null) return unit;

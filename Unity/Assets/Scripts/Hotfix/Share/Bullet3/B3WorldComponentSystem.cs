@@ -62,9 +62,6 @@ namespace ET
             self.LastCollisionInfos.Clear();
             self.LastCollisionInfos = self.NowCollisionInfos;
             self.NowCollisionInfos = new();
-
-            List<PersistentManifold> enterObjects = new();
-            List<PersistentManifold> exitObjects = new();
             
             // TODO 这里存在一个问题 不同客户端碰撞信息的index可能不同, 导致不同步
             Dispatcher dispatcher = self.World.Dispatcher;
@@ -86,9 +83,9 @@ namespace ET
                     self.NowCollisionInfos.Add((b, a));
                 }
             }
-
+            
             FixedHandler();
-
+            
             // 更新碰撞列表
             while (self.WaitToAdds.TryDequeue(out var pair))
             {
@@ -113,8 +110,8 @@ namespace ET
                     CollisionObject a = pair.Item1;
                     CollisionObject b = pair.Item2;
 
-                    ACollisionCallback callback = self.Callbacks[a];
-                    callback.CollisionCallbackEnter(a, b);
+                    if (self.Callbacks.TryGetValue(a, out var callback))
+                        callback.CollisionCallbackEnter(a, b);
                 }
                 // 取交集是Stay
                 var stay = self.LastCollisionInfos.Intersect(self.NowCollisionInfos);
@@ -123,8 +120,8 @@ namespace ET
                     CollisionObject a = pair.Item1;
                     CollisionObject b = pair.Item2;
                     
-                    ACollisionCallback callback = self.Callbacks[a];
-                    callback.CollisionCallbackStay(a, b);
+                    if (self.Callbacks.TryGetValue(a, out var callback))
+                        callback.CollisionCallbackStay(a, b);
                 }
                 // 取Last差集是Exit
                 var exit = self.LastCollisionInfos.Except(self.NowCollisionInfos);
@@ -133,8 +130,8 @@ namespace ET
                     CollisionObject a = pair.Item1;
                     CollisionObject b = pair.Item2;
                     
-                    ACollisionCallback callback = self.Callbacks[a];
-                    callback.CollisionCallbackExit(a, b);
+                    if (self.Callbacks.TryGetValue(a, out var callback))
+                        callback.CollisionCallbackExit(a, b);
                 }
             }
         }
