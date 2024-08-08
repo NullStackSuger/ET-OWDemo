@@ -1,6 +1,5 @@
 using MemoryPack;
 using System.Collections.Generic;
-using TrueSync;
 
 namespace ET
 {
@@ -473,6 +472,35 @@ namespace ET
         }
     }
 
+    [MemoryPackable]
+    [Message(LockStepOuter.S2C_UnitRemoveCast)]
+    public partial class S2C_UnitRemoveCast : MessageObject, IMessage
+    {
+        public static S2C_UnitRemoveCast Create(bool isFromPool = false)
+        {
+            return ObjectPool.Instance.Fetch(typeof(S2C_UnitRemoveCast), isFromPool) as S2C_UnitRemoveCast;
+        }
+
+        [MemoryPackOrder(0)]
+        public long UnitId { get; set; }
+
+        [MemoryPackOrder(1)]
+        public long CastUnitId { get; set; }
+
+        public override void Dispose()
+        {
+            if (!this.IsFromPool)
+            {
+                return;
+            }
+
+            this.UnitId = default;
+            this.CastUnitId = default;
+
+            ObjectPool.Instance.Recycle(this);
+        }
+    }
+
     public static class LockStepOuter
     {
         public const ushort C2G_Match = 11002;
@@ -490,5 +518,6 @@ namespace ET
         public const ushort S2C_UnitChangePosition = 11014;
         public const ushort S2C_UnitChangeRotation = 11015;
         public const ushort S2C_UnitUseCast = 11016;
+        public const ushort S2C_UnitRemoveCast = 11017;
     }
 }

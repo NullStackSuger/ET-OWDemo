@@ -39,8 +39,8 @@ namespace ET.Client
             LSUnit unit = self.GetUnit();
             if (unit == null)
             {
-                LSFUnitViewComponent viewComponent = self.GetParent<LSFUnitViewComponent>();
-                viewComponent.RemoveChild(self.Id);
+                LSFUnitViewComponent unitViewComponent = self.GetParent<LSFUnitViewComponent>();
+                unitViewComponent.Remove(self.Id);
                 return;
             }
             

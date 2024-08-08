@@ -24,6 +24,7 @@ namespace ET
 
     public struct UnitRemoveCast
     {
+        public LSUnit Unit;
         public Cast Cast;
     }
 }
