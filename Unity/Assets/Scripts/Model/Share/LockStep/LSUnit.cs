@@ -21,6 +21,7 @@ namespace ET
             {
                 TSVector oldPos = this.position;
                 this.position = value;
+                if (this.IScene == null) return;
                 EventSystem.Instance.Publish(this.IScene as LSWorld, new UnitChangePosition() { Unit = this, OldPosition = oldPos, NewPosition = value });
             }
         }
@@ -44,6 +45,7 @@ namespace ET
             {
                 TSQuaternion oldRot = this.rotation;
                 this.rotation = value;
+                if (this.IScene == null) return;
                 EventSystem.Instance.Publish(this.IScene as LSWorld, new UnitChangeRotation() { Unit = this, OldRotation = oldRot, NewRotation = value });
             }
         }

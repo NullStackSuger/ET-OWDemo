@@ -62,7 +62,12 @@ namespace ET
             castUnit.Position = player.Position;
             castUnit.Rotation = player.Rotation;
             
-            // 根据castUnitId创建的不需要物理系统
+            // 添加碰撞
+            if (config.RigidBody == 0) return;
+            using var rb = RigidBodyConfigCategory.Instance.Clone(config.RigidBody);
+            RigidBodyConfig rigidBodyConfig = RigidBodyConfigCategory.Instance.Get(config.RigidBody);
+            ACollisionCallback callback = CollisionCallbackDispatcherComponent.Instance[rigidBodyConfig.Callback];
+            castUnit.AddComponent<B3CollisionComponent, RigidBodyConstructionInfo, ACollisionCallback>(rb, callback);
         }
 
         [EntitySystem]

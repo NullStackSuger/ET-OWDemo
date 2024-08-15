@@ -6,7 +6,6 @@ namespace ET.Client
     {
         protected override async ETTask Run(LSWorld world, UnitRemoveCast a)
         {
-            Log.Warning($"Prediction 移除UnitView");
             await ETTask.CompletedTask;
         }
     }
@@ -17,7 +16,6 @@ namespace ET.Client
     {
         protected override async ETTask Run(LSWorld world, UnitRemoveCast a)
         {
-            Log.Warning($"Authority 移除UnitView");
             await ETTask.CompletedTask;
         }
     }

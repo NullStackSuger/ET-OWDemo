@@ -12,7 +12,7 @@ namespace ET.Client
             Cast cast = a.Cast;
             LSUnit castUnit = cast.Unit;
             LSFUnitViewComponent unitViewComponent = world.GetComponent<LSFUnitViewComponent>();
-            unitViewComponent.Add(castUnit.Id, "Unit/FireBall.prefab", "FireBall", AnimatorType.FireBall, owner).Coroutine();
+            //unitViewComponent.Add(castUnit.Id, "Unit/FireBall.prefab", "FireBall", AnimatorType.FireBall, owner).Coroutine();
 
             await ETTask.CompletedTask;
         }
@@ -28,7 +28,7 @@ namespace ET.Client
             Cast cast = a.Cast;
             LSUnit castUnit = cast.Unit;
             LSFUnitViewComponent unitViewComponent = world.GetComponent<LSFUnitViewComponent>();
-            unitViewComponent.Add(castUnit.Id, "Unit/FireBall.prefab", "FireBall", owner).Coroutine();
+            //unitViewComponent.Add(castUnit.Id, "Unit/FireBall.prefab", "FireBall", owner).Coroutine();
 
             await ETTask.CompletedTask;
         }

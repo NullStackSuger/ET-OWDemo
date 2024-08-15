@@ -10,14 +10,14 @@ namespace ET.Client
         {
             Room room = scene.GetComponent<Room>();
 
-            await room.PredictionWorld.AddComponent<LSFUnitViewComponent>().InitPlayerAsync("Unit/Unit.prefab", "Skeleton", AnimatorType.Skeleton);
+            //await room.PredictionWorld.AddComponent<LSFUnitViewComponent>().InitPlayerAsync("Unit/Unit.prefab", "Skeleton", AnimatorType.Skeleton);
 
-            room.AddComponent<LSFCameraComponent>();
+            //room.AddComponent<LSFCameraComponent>();
 
             if (!room.IsReplay)
             {
                 room.AddComponent<LSFOperaComponent>();
-                await room.AuthorityWorld.AddComponent<LSFUnitViewComponent>().InitPlayerAsync("Unit/Unit.prefab", "Skeleton");
+                //await room.AuthorityWorld.AddComponent<LSFUnitViewComponent>().InitPlayerAsync("Unit/Unit.prefab", "Skeleton");
             }
         }
     }

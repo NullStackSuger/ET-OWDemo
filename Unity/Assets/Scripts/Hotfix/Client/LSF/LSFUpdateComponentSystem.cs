@@ -106,7 +106,7 @@ namespace ET.Client
                 self.Replay.UnitInfos = unitInfos;
 
                 self.AuthorityWorld = new LSWorld(2, SceneType.LSFClientAuthority);
-
+                self.AuthorityWorld.AddComponent<B3WorldComponent>();
                 unitComponent = self.AuthorityWorld.AddComponent<LSUnitComponent>();
                 foreach (var info in unitInfos)
                 {
@@ -130,7 +130,7 @@ namespace ET.Client
                 inputComponent.Input = pair.Value;
             }
             
-            if (!self.IsReplay) self.SaveWorld(self.PredictionFrame);
+            //if (!self.IsReplay) self.SaveWorld(self.PredictionFrame);
             
             // 调用World的UpdateSystem
             world.Update();
@@ -140,7 +140,7 @@ namespace ET.Client
         {
             // 更换世界
             self.PredictionWorld.Dispose();
-            self.PredictionWorld = self.GetWorld(self.AuthorityFrame);
+            self.PredictionWorld = self.AuthorityWorld.Clone();
             self.PredictionWorld.SceneType = SceneType.RollBack;
 
             // 获取输入
@@ -185,26 +185,15 @@ namespace ET.Client
             }
         }
 
-        private static void SaveWorld(this ET.Room self, int frame)
+        private static LSWorld Clone(this LSWorld self)
         {
-            MemoryBuffer memoryBuffer = self.FrameBuffer.Snapshot(frame);
+            using MemoryBuffer memoryBuffer = new(10240);
             memoryBuffer.Seek(0, SeekOrigin.Begin);
             memoryBuffer.SetLength(0);
+            MemoryPackHelper.Serialize(self, memoryBuffer);
             
-            MemoryPackHelper.Serialize(self.PredictionWorld, memoryBuffer);
-            memoryBuffer.Seek(0, SeekOrigin.Begin);
-
-            long hash = memoryBuffer.GetBuffer().Hash(0, (int) memoryBuffer.Length);
-            
-            self.FrameBuffer.SetHash(frame, hash);
-        }
-        
-        private static LSWorld GetWorld(this ET.Room self, int frame)
-        {
-            MemoryBuffer memoryBuffer = self.FrameBuffer.Snapshot(frame);
             memoryBuffer.Seek(0, SeekOrigin.Begin);
             LSWorld lsWorld = MemoryPackHelper.Deserialize(typeof (LSWorld), memoryBuffer) as LSWorld;
-            memoryBuffer.Seek(0, SeekOrigin.Begin);
             return lsWorld;
         }
 
