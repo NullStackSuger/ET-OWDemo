@@ -12,7 +12,7 @@ namespace ET.Client
         private static void Awake(this LSFCameraComponent self)
         {
             Room room = self.GetParent<Room>();
-            LSFUnitView unitView = room.PredictionWorld.GetComponent<LSFUnitViewComponent>().Children.First().Value as LSFUnitView;
+            LSFUnitView unitView = room.GetComponent<LSFUnitViewComponent>().Children.First().Value as LSFUnitView;
 
             self.Camera = Camera.main;
             self.LookAt = unitView.Transform;

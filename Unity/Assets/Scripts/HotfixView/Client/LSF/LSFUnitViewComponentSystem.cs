@@ -20,8 +20,7 @@ namespace ET.Client
 
         public static async ETTask InitPlayerAsync(this LSFUnitViewComponent self, string bundlePath, string assetName, AnimatorType type)
         {
-            LSWorld world = self.GetParent<LSWorld>();
-            Room room = world.GetParent<Room>();
+            Room room = self.GetParent<Room>();
 
             await self.Add(room.PlayerIds, bundlePath, assetName, type);
         }
@@ -34,13 +33,12 @@ namespace ET.Client
             await self.Add(room.PlayerIds, bundlePath, assetName);
         }
 
-        public static async ETTask<LSFUnitView> Add(this LSFUnitViewComponent self, long unitId, string bundlePath, string assetName, AnimatorType type, LSUnit Owner = null)
+        public static async ETTask<LSFUnitView> Add(this LSFUnitViewComponent self, long unitId, string bundlePath, string assetName, AnimatorType type)
         {
             Scene root = self.Root();
             GlobalComponent globalComponent = root.GetComponent<GlobalComponent>();
-            LSWorld world = self.GetParent<LSWorld>();
-            Room room = world.GetParent<Room>();
-            LSUnitComponent unitComponent = world.GetComponent<LSUnitComponent>();
+            Room room = self.GetParent<Room>();
+            LSUnitComponent unitComponent = room.PredictionWorld.GetComponent<LSUnitComponent>();
             
             string assetsName = $"Assets/Bundles/{bundlePath}";
             GameObject bundleGameObject = await room.GetComponent<ResourcesLoaderComponent>().LoadAssetAsync<GameObject>(assetsName);
@@ -50,16 +48,15 @@ namespace ET.Client
             LSUnit unit = unitComponent.GetChild<LSUnit>(unitId);
             unitGo.transform.position = unit.Position.ToVector();
 
-            return self.AddChildWithId<LSFUnitView, AnimatorType, GameObject, LSUnit>(unit.Id, type, unitGo, Owner);
+            return self.AddChildWithId<LSFUnitView, AnimatorType, GameObject, LSUnit>(unit.Id, type, unitGo, unit);
         }
 
-        public static async ETTask Add(this LSFUnitViewComponent self, List<long> unitIds, string bundlePath, string assetName, AnimatorType type, LSUnit Owner = null)
+        public static async ETTask Add(this LSFUnitViewComponent self, List<long> unitIds, string bundlePath, string assetName, AnimatorType type)
         {
             Scene root = self.Root();
             GlobalComponent globalComponent = root.GetComponent<GlobalComponent>();
-            LSWorld world = self.GetParent<LSWorld>();
-            Room room = world.GetParent<Room>();
-            LSUnitComponent unitComponent = world.GetComponent<LSUnitComponent>();
+            Room room = self.GetParent<Room>();
+            LSUnitComponent unitComponent = room.PredictionWorld.GetComponent<LSUnitComponent>();
             
             string assetsName = $"Assets/Bundles/{bundlePath}";
             GameObject bundleGameObject = await room.GetComponent<ResourcesLoaderComponent>().LoadAssetAsync<GameObject>(assetsName);
@@ -71,17 +68,16 @@ namespace ET.Client
                 LSUnit unit = unitComponent.GetChild<LSUnit>(id);
                 unitGo.transform.position = unit.Position.ToVector();
                 
-                self.AddChildWithId<LSFUnitView, AnimatorType, GameObject, LSUnit>(unit.Id, type, unitGo, Owner);
+                self.AddChildWithId<LSFUnitView, AnimatorType, GameObject, LSUnit>(unit.Id, type, unitGo, unit);
             }
         }
 
-        public static async ETTask<LSFUnitView> Add(this LSFUnitViewComponent self, long unitId, string bundlePath, string assetName, LSUnit Owner = null)
+        public static async ETTask<LSFUnitView> Add(this LSFUnitViewComponent self, long unitId, string bundlePath, string assetName)
         {
             Scene root = self.Root();
             GlobalComponent globalComponent = root.GetComponent<GlobalComponent>();
-            LSWorld world = self.GetParent<LSWorld>();
-            Room room = world.GetParent<Room>();
-            LSUnitComponent unitComponent = world.GetComponent<LSUnitComponent>();
+            Room room = self.GetParent<Room>();
+            LSUnitComponent unitComponent = room.PredictionWorld.GetComponent<LSUnitComponent>();
             
             string assetsName = $"Assets/Bundles/{bundlePath}";
             GameObject bundleGameObject = await room.GetComponent<ResourcesLoaderComponent>().LoadAssetAsync<GameObject>(assetsName);
@@ -91,16 +87,15 @@ namespace ET.Client
             LSUnit unit = unitComponent.GetChild<LSUnit>(unitId);
             unitGo.transform.position = unit.Position.ToVector();
 
-            return self.AddChildWithId<LSFUnitView, GameObject, LSUnit>(unit.Id, unitGo, Owner);
+            return self.AddChildWithId<LSFUnitView, GameObject, LSUnit>(unit.Id, unitGo, unit);
         }
         
-        public static async ETTask Add(this LSFUnitViewComponent self, List<long> unitIds, string bundlePath, string assetName, LSUnit Owner = null)
+        public static async ETTask Add(this LSFUnitViewComponent self, List<long> unitIds, string bundlePath, string assetName)
         {
             Scene root = self.Root();
             GlobalComponent globalComponent = root.GetComponent<GlobalComponent>();
-            LSWorld world = self.GetParent<LSWorld>();
-            Room room = world.GetParent<Room>();
-            LSUnitComponent unitComponent = world.GetComponent<LSUnitComponent>();
+            Room room = self.GetParent<Room>();
+            LSUnitComponent unitComponent = room.PredictionWorld.GetComponent<LSUnitComponent>();
             
             string assetsName = $"Assets/Bundles/{bundlePath}";
             GameObject bundleGameObject = await room.GetComponent<ResourcesLoaderComponent>().LoadAssetAsync<GameObject>(assetsName);
@@ -112,7 +107,7 @@ namespace ET.Client
                 LSUnit unit = unitComponent.GetChild<LSUnit>(id);
                 unitGo.transform.position = unit.Position.ToVector();
                 
-                self.AddChildWithId<LSFUnitView, GameObject, LSUnit>(unit.Id, unitGo, Owner);
+                self.AddChildWithId<LSFUnitView, GameObject, LSUnit>(unit.Id, unitGo, unit);
             }
         }
         

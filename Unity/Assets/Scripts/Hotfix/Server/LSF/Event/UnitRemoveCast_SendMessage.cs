@@ -11,6 +11,7 @@ namespace ET.Server
             var message = S2C_UnitRemoveCast.Create();
             message.UnitId = a.Unit.Id;
             LSUnit castUnit = a.Cast.Unit;
+            if (castUnit == null) return;
             message.CastUnitId = castUnit.Id;
             room.BroadCast(message);
 

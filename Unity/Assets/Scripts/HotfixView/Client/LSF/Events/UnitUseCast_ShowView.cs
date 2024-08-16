@@ -8,11 +8,12 @@ namespace ET.Client
     {
         protected override async ETTask Run(LSWorld world, UnitUseCast a)
         {
-            LSUnit owner = a.Unit;
+            Room room = world.GetParent<Room>();
+            
             Cast cast = a.Cast;
             LSUnit castUnit = cast.Unit;
-            LSFUnitViewComponent unitViewComponent = world.GetComponent<LSFUnitViewComponent>();
-            //unitViewComponent.Add(castUnit.Id, "Unit/FireBall.prefab", "FireBall", AnimatorType.FireBall, owner).Coroutine();
+            LSFUnitViewComponent unitViewComponent = room.GetComponent<LSFUnitViewComponent>();
+            unitViewComponent.Add(castUnit.Id, "Unit/FireBall.prefab", "FireBall", AnimatorType.FireBall).Coroutine();
 
             await ETTask.CompletedTask;
         }
@@ -24,12 +25,6 @@ namespace ET.Client
     {
         protected override async ETTask Run(LSWorld world, UnitUseCast a)
         {
-            LSUnit owner = a.Unit;
-            Cast cast = a.Cast;
-            LSUnit castUnit = cast.Unit;
-            LSFUnitViewComponent unitViewComponent = world.GetComponent<LSFUnitViewComponent>();
-            //unitViewComponent.Add(castUnit.Id, "Unit/FireBall.prefab", "FireBall", owner).Coroutine();
-
             await ETTask.CompletedTask;
         }
     }

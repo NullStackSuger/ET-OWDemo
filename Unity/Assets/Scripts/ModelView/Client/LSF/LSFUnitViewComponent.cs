@@ -1,7 +1,7 @@
 namespace ET.Client
 {
-    [ComponentOf(typeof(LSWorld))]
-    public class LSFUnitViewComponent : LSEntity, IAwake, IDestroy
+    [ComponentOf(typeof(Room))]
+    public class LSFUnitViewComponent : Entity, IAwake, IDestroy
     {
 
     }

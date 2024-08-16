@@ -5,9 +5,33 @@ namespace ET.Client
     [ChildOf(typeof(LSFUnitViewComponent))]
     public class LSFUnitView : Entity, IAwake<AnimatorType, GameObject, LSUnit>, IAwake<GameObject, LSUnit>, IUpdate, IDestroy, ILSRollback
     {
-        public EntityRef<LSUnit> Owner;
-        
-        public EntityRef<LSUnit> Unit;
+        private EntityRef<LSUnit> unit;
+
+        public EntityRef<LSUnit> Unit
+        {
+            get
+            {
+                LSUnit unit = this.unit;
+                if (unit != null) return unit;
+                
+                unit = (this.IScene as Room).PredictionWorld.GetComponent<LSUnitComponent>().GetChild<LSUnit>(this.Id);
+                if (unit != null)
+                {
+                    this.Unit = unit;
+                    return unit;
+                }
+
+                return null;
+            }
+            set
+            {
+                LSUnit newUnit = value;
+                LSUnit oldUnit = this.unit;
+                if (newUnit == null) Log.Error("值不能为空");
+                if (newUnit == oldUnit) return;
+                this.unit = value;
+            }
+        }
         public GameObject GameObject;
         public Transform Transform;
 

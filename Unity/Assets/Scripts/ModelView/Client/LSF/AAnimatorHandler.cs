@@ -13,6 +13,6 @@ namespace ET.Client
     
     public abstract class AAnimatorHandler : HandlerObject
     {
-        public abstract void Update(LSFAnimatorComponent animatorComponent, LSInput input);
+        public abstract void Update(LSFAnimatorComponent animatorComponent, LSUnit unit);
     }
 }

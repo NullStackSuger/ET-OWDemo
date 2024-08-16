@@ -9,22 +9,26 @@ namespace ET.Client
     public static partial class LSFUnitViewSystem
     {
         [EntitySystem]
-        private static void Awake(this LSFUnitView self, AnimatorType type, GameObject obj, LSUnit owner)
+        private static void Awake(this LSFUnitView self, AnimatorType type, GameObject obj, LSUnit unit)
         {
+            obj.transform.position = unit.Position.ToVector();
+            obj.transform.rotation = unit.Rotation.ToQuaternion();
+            
             self.GameObject = obj;
             self.Transform = obj.transform;
+            self.Unit = unit;
             self.AddComponent<LSFAnimatorComponent, AnimatorType>(type);
-
-            self.Owner = owner ?? self.GetUnit();
         }
         
         [EntitySystem]
-        private static void Awake(this LSFUnitView self, GameObject obj, LSUnit owner)
+        private static void Awake(this LSFUnitView self, GameObject obj, LSUnit unit)
         {
+            obj.transform.position = unit.Position.ToVector();
+            obj.transform.rotation = unit.Rotation.ToQuaternion();
+            
             self.GameObject = obj;
             self.Transform = obj.transform;
-
-            self.Owner = owner ?? self.GetUnit();
+            self.Unit = unit;
         }
         
         [EntitySystem]
@@ -36,7 +40,7 @@ namespace ET.Client
         [EntitySystem]
         private static void Update(this LSFUnitView self)
         {
-            LSUnit unit = self.GetUnit();
+            LSUnit unit = self.Unit;
             if (unit == null)
             {
                 LSFUnitViewComponent unitViewComponent = self.GetParent<LSFUnitViewComponent>();
@@ -66,20 +70,11 @@ namespace ET.Client
         [LSEntitySystem]
         private static void LSRollback(this LSFUnitView self)
         {
-            LSUnit unit = self.GetUnit();
+            LSUnit unit = self.Unit;
             self.Transform.position = unit.Position.ToVector();
             self.Transform.rotation = unit.Rotation.ToQuaternion();
             self.Time = 0;
             self.TotalTime = 0;
-        }
-
-        private static LSUnit GetUnit(this LSFUnitView self)
-        {
-            LSUnit unit = self.Unit;
-            if (unit != null) return unit;
-
-            self.Unit = (self.IScene as LSWorld).GetComponent<LSUnitComponent>().GetChild<LSUnit>(self.Id);
-            return self.Unit;
         }
     }
 }

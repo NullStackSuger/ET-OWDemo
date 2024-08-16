@@ -41,10 +41,8 @@ namespace ET.Client
         [EntitySystem]
         private static void Update(this LSFAnimatorComponent self)
         {
-            LSUnit player = self.GetParent<LSFUnitView>().Owner;
-            LSInput input= player.GetComponent<LSFInputComponent>().Input;
-            
-            AnimatorDispatcherComponent.Instance[self.Type].Update(self, input);
+            LSUnit unit = self.GetParent<LSFUnitView>().Unit;
+            AnimatorDispatcherComponent.Instance[self.Type].Update(self, unit);
         }
 
         private static bool HasParameter(this LSFAnimatorComponent self, string parameter)
