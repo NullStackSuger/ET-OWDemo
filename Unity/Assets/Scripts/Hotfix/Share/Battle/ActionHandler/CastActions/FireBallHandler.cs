@@ -1,6 +1,5 @@
-using System.Reflection;
+using BulletSharp;
 using BulletSharp.Math;
-using TrueSync;
 
 namespace ET
 {
@@ -19,7 +18,7 @@ namespace ET
             LSUnit castUnit = cast.Unit;
             
             B3CollisionComponent collision = castUnit.GetComponent<B3CollisionComponent>();
-            collision.Body.ApplyForce(new Vector3(0, 0, 1000), Vector3.Zero);
+            collision.Body.ApplyForce(castUnit.Forward.ToVector() * 1000, Vector3.Zero);
         }
     }
 }
