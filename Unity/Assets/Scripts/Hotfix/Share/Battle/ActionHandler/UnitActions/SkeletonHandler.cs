@@ -1,8 +1,9 @@
+using System.Linq;
 using TrueSync;
 
 namespace ET
 {
-
+    [FriendOfAttribute(typeof(ET.BuffComponent))]
     public class SkeletonHandler : AActionHandler
     {
         public override bool Check(ActionComponent actionComponent, ActionConfig config)
@@ -20,7 +21,7 @@ namespace ET
             MoveHandler(input, unit);
             CastHandler(input, unit);
         }
-        
+
         private static void MoveHandler(LSInput input, LSUnit unit)
         {
             TSVector2 v2 = input.V * 6 * 50 / 1000;
@@ -32,11 +33,11 @@ namespace ET
             unit.Position += new TSVector(v2.x, 0, v2.y);
             unit.Forward = unit.Position - oldPos;
         }
-        
+
         private static void CastHandler(LSInput input, LSUnit unit)
         {
             if (input.Button == 0) return;
-            
+
             LSWorld world = unit.IScene as LSWorld;
             Room room = world.GetParent<Room>();
             LSFInputComponent inputComponent = unit.GetComponent<LSFInputComponent>();
@@ -46,9 +47,17 @@ namespace ET
             if (now - last < 1000) return;
 
             inputComponent.PressCastFrame = room.AuthorityFrame;
-            
-            CastComponent castComponent = unit.GetComponent<CastComponent>();
-            Cast cast = castComponent.Creat(1003);
+
+            /*CastComponent castComponent = unit.GetComponent<CastComponent>();
+            Cast cast = castComponent.Creat(1003);*/
+            BuffComponent buffComponent = unit.GetComponent<BuffComponent>();
+            if (buffComponent.Buffs.Count <= 0)
+                buffComponent.Creat(1003);
+            else
+            {
+                Buff buff = buffComponent.Buffs.First();
+                buffComponent.Remove(buff.Id);
+            }
         }
     }
 }

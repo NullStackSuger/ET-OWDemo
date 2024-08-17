@@ -23,13 +23,6 @@ namespace ET
             return cast;
         }
 
-        public static Cast Creat(this CastComponent self, int configId, long castUnitId)
-        {
-            Cast cast = self.AddChild<Cast, int, long>(configId, castUnitId);
-            self.Casts.Add(cast);
-            return cast;
-        }
-
         public static void Remove(this CastComponent self, Cast cast)
         {
             self.Casts.Remove(cast);

@@ -454,9 +454,6 @@ namespace ET
         [MemoryPackOrder(1)]
         public int CastConfigId { get; set; }
 
-        [MemoryPackOrder(2)]
-        public long CastUnitId { get; set; }
-
         public override void Dispose()
         {
             if (!this.IsFromPool)
@@ -466,7 +463,6 @@ namespace ET
 
             this.UnitId = default;
             this.CastConfigId = default;
-            this.CastUnitId = default;
 
             ObjectPool.Instance.Recycle(this);
         }
@@ -501,6 +497,64 @@ namespace ET
         }
     }
 
+    [MemoryPackable]
+    [Message(LockStepOuter.S2C_UnitUseBuff)]
+    public partial class S2C_UnitUseBuff : MessageObject, IMessage
+    {
+        public static S2C_UnitUseBuff Create(bool isFromPool = false)
+        {
+            return ObjectPool.Instance.Fetch(typeof(S2C_UnitUseBuff), isFromPool) as S2C_UnitUseBuff;
+        }
+
+        [MemoryPackOrder(0)]
+        public long UnitId { get; set; }
+
+        [MemoryPackOrder(1)]
+        public int BuffConfigId { get; set; }
+
+        public override void Dispose()
+        {
+            if (!this.IsFromPool)
+            {
+                return;
+            }
+
+            this.UnitId = default;
+            this.BuffConfigId = default;
+
+            ObjectPool.Instance.Recycle(this);
+        }
+    }
+
+    [MemoryPackable]
+    [Message(LockStepOuter.S2C_UnitRemoveBuff)]
+    public partial class S2C_UnitRemoveBuff : MessageObject, IMessage
+    {
+        public static S2C_UnitRemoveBuff Create(bool isFromPool = false)
+        {
+            return ObjectPool.Instance.Fetch(typeof(S2C_UnitRemoveBuff), isFromPool) as S2C_UnitRemoveBuff;
+        }
+
+        [MemoryPackOrder(0)]
+        public long UnitId { get; set; }
+
+        [MemoryPackOrder(1)]
+        public long BuffId { get; set; }
+
+        public override void Dispose()
+        {
+            if (!this.IsFromPool)
+            {
+                return;
+            }
+
+            this.UnitId = default;
+            this.BuffId = default;
+
+            ObjectPool.Instance.Recycle(this);
+        }
+    }
+
     public static class LockStepOuter
     {
         public const ushort C2G_Match = 11002;
@@ -519,5 +573,7 @@ namespace ET
         public const ushort S2C_UnitChangeRotation = 11015;
         public const ushort S2C_UnitUseCast = 11016;
         public const ushort S2C_UnitRemoveCast = 11017;
+        public const ushort S2C_UnitUseBuff = 11018;
+        public const ushort S2C_UnitRemoveBuff = 11019;
     }
 }

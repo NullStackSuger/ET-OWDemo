@@ -49,6 +49,7 @@ namespace ET
             self.World = null;
         }
 
+        //TODO: 有个问题, 权威World中Update不会被调用
         [LSEntitySystem]
         private static void LSUpdate(this B3WorldComponent self)
         {

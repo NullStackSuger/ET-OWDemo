@@ -22,6 +22,7 @@ namespace ET
         private static void Awake(this B3CollisionComponent self, RigidBodyConstructionInfo info, ACollisionCallback callback = null)
         {
             RigidBody body = new RigidBody(info);
+            //GhostObject body = new GhostObject();
             if (info.Mass == 0)
             {
                 body.CollisionFlags |= CollisionFlags.KinematicObject;

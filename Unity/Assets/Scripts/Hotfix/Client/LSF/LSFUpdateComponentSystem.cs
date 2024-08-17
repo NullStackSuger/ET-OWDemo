@@ -110,7 +110,8 @@ namespace ET.Client
                 unitComponent = self.AuthorityWorld.AddComponent<LSUnitComponent>();
                 foreach (var info in unitInfos)
                 {
-                    unitComponent.Creat(info);
+                    LSUnit unit = unitComponent.Creat(info);
+                    unit.AddComponent<LSFInputComponent>();
                 }
             }
 

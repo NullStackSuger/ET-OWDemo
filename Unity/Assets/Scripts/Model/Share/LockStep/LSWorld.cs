@@ -46,8 +46,7 @@ namespace ET
         public LSWorld(long id, SceneType sceneType)
         {
             this.Id = id;
-
-            this.idGenerator = id;
+            this.GetId();
             
             this.SceneType = sceneType;
         }

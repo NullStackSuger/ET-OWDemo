@@ -18,13 +18,37 @@ namespace ET
 
     public struct UnitUseCast
     {
+        /// <summary>
+        /// 释放技能的人
+        /// </summary>
         public LSUnit Unit;
         public Cast Cast;
     }
 
     public struct UnitRemoveCast
     {
+        /// <summary>
+        /// 释放技能的人
+        /// </summary>
         public LSUnit Unit;
         public Cast Cast;
+    }
+
+    public struct UnitUseBuff
+    {
+        /// <summary>
+        /// 受到Buff的人
+        /// </summary>
+        public LSUnit Unit;
+        public Buff Buff;
+    }
+
+    public struct UnitRemoveBuff
+    {
+        /// <summary>
+        /// 受到Buff的人
+        /// </summary>
+        public LSUnit Unit;
+        public Buff Buff;
     }
 }

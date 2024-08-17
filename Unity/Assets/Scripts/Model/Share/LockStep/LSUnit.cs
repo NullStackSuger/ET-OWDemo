@@ -51,7 +51,6 @@ namespace ET
         }
 
         //TODO 这里不确定对不对
-        //[MemoryPackAllowSerialize]
         [MemoryPackIgnore]
         [BsonIgnore]
         public EntityRef<Entity> Owner { get; set; }
