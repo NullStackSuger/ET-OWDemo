@@ -28,5 +28,34 @@ namespace ET
             self.Casts.Remove(cast);
             self.RemoveChild(cast.Id);
         }
+
+        public static void Remove(this CastComponent self, long castId)
+        {
+            Cast cast = self.GetChild<Cast>(castId);
+            if (cast == null) Log.Error($"{self.IScene.SceneType}: 未找到{castId}Cast");
+            self.Remove(cast);
+        }
+
+        public static void Remove(this CastComponent self, LSUnit unit)
+        {
+            Cast cast = self.Find(unit);
+            if (cast == null) Log.Error("未找到Unit对应技能");
+            self.Remove(cast);
+        }
+
+        public static Cast Find(this CastComponent self, LSUnit unit)
+        {
+            if (unit == null) Log.Error($"无法找到为空的技能");
+            
+            foreach (Cast cast in self.Casts)
+            {
+                if (unit == (LSUnit)cast.Unit)
+                {
+                    return cast;
+                }
+            }
+
+            return null;
+        }
     }
 }

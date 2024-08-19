@@ -48,16 +48,10 @@ namespace ET
 
             inputComponent.PressCastFrame = room.AuthorityFrame;
 
-            /*CastComponent castComponent = unit.GetComponent<CastComponent>();
-            Cast cast = castComponent.Creat(1003);*/
-            BuffComponent buffComponent = unit.GetComponent<BuffComponent>();
-            if (buffComponent.Buffs.Count <= 0)
-                buffComponent.Creat(1003);
-            else
-            {
-                Buff buff = buffComponent.Buffs.First();
-                buffComponent.Remove(buff.Id);
-            }
+            CastComponent castComponent = unit.GetComponent<CastComponent>();
+            castComponent.Creat(1003);
+            /*BuffComponent buffComponent = unit.GetComponent<BuffComponent>();
+            buffComponent.Creat(1003);*/
         }
     }
 }

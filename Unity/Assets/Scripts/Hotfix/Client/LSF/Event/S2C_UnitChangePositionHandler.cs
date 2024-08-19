@@ -5,6 +5,8 @@ namespace ET.Client
     {
         protected override async ETTask Run(Scene entity, S2C_UnitChangePosition message)
         {
+            using var _ = message; // 方法结束时回收消息
+            
             Room room = entity.GetComponent<Room>();
             LSWorld world = room.AuthorityWorld;
             if (world == null)
@@ -20,8 +22,6 @@ namespace ET.Client
                 return;
             }
             unit.Position = message.NewPosition;
-            // unit位置改变会触发UnitChangePosition, 这里就不需要做其他的了
-            // message.OldPos可能会在AOI用到
             
             await ETTask.CompletedTask;
         }

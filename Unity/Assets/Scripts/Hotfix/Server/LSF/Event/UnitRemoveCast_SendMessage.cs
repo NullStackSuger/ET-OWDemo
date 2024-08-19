@@ -9,10 +9,10 @@ namespace ET.Server
             Room room = world.GetParent<Room>();
 
             var message = S2C_UnitRemoveCast.Create();
-            message.UnitId = a.Unit.Id;
             LSUnit castUnit = a.Cast.Unit;
             if (castUnit == null) return;
-            message.CastUnitId = castUnit.Id;
+            message.UnitId = castUnit.Id;
+            message.CastId = a.Cast.Id;
             room.BroadCast(message);
 
             await ETTask.CompletedTask;

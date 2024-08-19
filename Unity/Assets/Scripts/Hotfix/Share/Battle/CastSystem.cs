@@ -15,7 +15,7 @@ namespace ET
             // 创建Unit
             LSUnitComponent unitComponent = (self.IScene as Entity).GetComponent<LSUnitComponent>();
             LSUnit castUnit = unitComponent.Creat();
-            castUnit.Owner = self;
+            castUnit.Owner = player;
             
             self.ConfigId = configId;
             self.Unit = castUnit;

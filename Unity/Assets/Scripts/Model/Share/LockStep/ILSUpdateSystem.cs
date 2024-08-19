@@ -11,6 +11,9 @@ namespace ET
         void Run(LSEntity o);
     }
 
+    /// <summary>
+    /// 权威World中Update不会被调用
+    /// </summary>
     [LSEntitySystem]
     public abstract class LSUpdateSystem<T>: SystemObject, ILSUpdateSystem where T: LSEntity, ILSUpdate
     {

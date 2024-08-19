@@ -482,7 +482,7 @@ namespace ET
         public long UnitId { get; set; }
 
         [MemoryPackOrder(1)]
-        public long CastUnitId { get; set; }
+        public long CastId { get; set; }
 
         public override void Dispose()
         {
@@ -492,7 +492,7 @@ namespace ET
             }
 
             this.UnitId = default;
-            this.CastUnitId = default;
+            this.CastId = default;
 
             ObjectPool.Instance.Recycle(this);
         }

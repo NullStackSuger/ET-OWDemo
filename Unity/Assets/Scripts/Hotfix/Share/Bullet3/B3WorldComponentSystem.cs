@@ -48,8 +48,7 @@ namespace ET
             self.World.Dispose();
             self.World = null;
         }
-
-        //TODO: 有个问题, 权威World中Update不会被调用
+        
         [LSEntitySystem]
         private static void LSUpdate(this B3WorldComponent self)
         {
@@ -110,9 +109,30 @@ namespace ET
                 {
                     CollisionObject a = pair.Item1;
                     CollisionObject b = pair.Item2;
+                    
+                    // collisionA collisionB 不为空 且 unitA unitB 的TeamTag不同
+                    
+                    B3CollisionComponent collisionA = a.UserObject as B3CollisionComponent;
+                    B3CollisionComponent collisionB = b.UserObject as B3CollisionComponent;
 
-                    if (self.Callbacks.TryGetValue(a, out var callback))
-                        callback.CollisionCallbackEnter(a, b);
+                    if (collisionA == null || collisionB == null)
+                    {
+                        if (self.Callbacks.TryGetValue(a, out var callback))
+                            callback.CollisionCallbackEnter(a, b);
+                        
+                        continue;
+                    }
+                    
+                    TeamTag tagA = collisionA.GetParent<LSUnit>().Tag;
+                    TeamTag tagB = collisionB.GetParent<LSUnit>().Tag;
+
+                    if (tagA != tagB /*&& tagA != TeamTag.None*/)
+                    {
+                        if (self.Callbacks.TryGetValue(a, out var callback))
+                            callback.CollisionCallbackEnter(a, b);
+                        
+                        continue;
+                    }
                 }
                 // 取交集是Stay
                 var stay = self.LastCollisionInfos.Intersect(self.NowCollisionInfos);
@@ -121,8 +141,29 @@ namespace ET
                     CollisionObject a = pair.Item1;
                     CollisionObject b = pair.Item2;
                     
-                    if (self.Callbacks.TryGetValue(a, out var callback))
-                        callback.CollisionCallbackStay(a, b);
+                    // collisionA collisionB 不为空 且 unitA unitB 的TeamTag不同
+                    
+                    B3CollisionComponent collisionA = a.UserObject as B3CollisionComponent;
+                    B3CollisionComponent collisionB = b.UserObject as B3CollisionComponent;
+
+                    if (collisionA == null || collisionB == null)
+                    {
+                        if (self.Callbacks.TryGetValue(a, out var callback))
+                            callback.CollisionCallbackStay(a, b);
+                        
+                        continue;
+                    }
+                    
+                    TeamTag tagA = collisionA.GetParent<LSUnit>().Tag;
+                    TeamTag tagB = collisionB.GetParent<LSUnit>().Tag;
+
+                    if (tagA != tagB /*&& tagA != TeamTag.None*/)
+                    {
+                        if (self.Callbacks.TryGetValue(a, out var callback))
+                            callback.CollisionCallbackStay(a, b);
+                        
+                        continue;
+                    }
                 }
                 // 取Last差集是Exit
                 var exit = self.LastCollisionInfos.Except(self.NowCollisionInfos);
@@ -130,9 +171,29 @@ namespace ET
                 {
                     CollisionObject a = pair.Item1;
                     CollisionObject b = pair.Item2;
+                    // collisionA collisionB 不为空 且 unitA unitB 的TeamTag不同
                     
-                    if (self.Callbacks.TryGetValue(a, out var callback))
-                        callback.CollisionCallbackExit(a, b);
+                    B3CollisionComponent collisionA = a.UserObject as B3CollisionComponent;
+                    B3CollisionComponent collisionB = b.UserObject as B3CollisionComponent;
+
+                    if (collisionA == null || collisionB == null)
+                    {
+                        if (self.Callbacks.TryGetValue(a, out var callback))
+                            callback.CollisionCallbackExit(a, b);
+                        
+                        continue;
+                    }
+                    
+                    TeamTag tagA = collisionA.GetParent<LSUnit>().Tag;
+                    TeamTag tagB = collisionB.GetParent<LSUnit>().Tag;
+
+                    if (tagA != tagB /*&& tagA != TeamTag.None*/)
+                    {
+                        if (self.Callbacks.TryGetValue(a, out var callback))
+                            callback.CollisionCallbackExit(a, b);
+                        
+                        continue;
+                    }
                 }
             }
         }

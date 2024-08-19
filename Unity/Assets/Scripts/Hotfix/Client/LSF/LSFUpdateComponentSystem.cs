@@ -94,7 +94,7 @@ namespace ET.Client
             
             foreach (var info in unitInfos)
             {
-                LSUnit unit = unitComponent.Creat(info);
+                LSUnit unit = unitComponent.Creat(info, TeamTag.TeamA);
                 unit.AddComponent<LSFInputComponent>();
                 self.PlayerIds.Add(info.PlayerId);
             }
@@ -110,7 +110,7 @@ namespace ET.Client
                 unitComponent = self.AuthorityWorld.AddComponent<LSUnitComponent>();
                 foreach (var info in unitInfos)
                 {
-                    LSUnit unit = unitComponent.Creat(info);
+                    LSUnit unit = unitComponent.Creat(info, TeamTag.TeamA);
                     unit.AddComponent<LSFInputComponent>();
                 }
             }

@@ -7,6 +7,8 @@ namespace ET.Client
     {
         protected override async ETTask Run(Scene entity, Room2C_AdjustUpdateTime message)
         {
+            using var _ = message; // 方法结束时回收消息
+            
             Room room = entity.GetComponent<Room>();
             int newInterval = (1000 + (message.DiffTime - LSFConfig.NormalTickRate)) * LSFConfig.NormalTickRate / 1000;
             

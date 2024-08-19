@@ -25,7 +25,7 @@ namespace ET
             return unit;
         }
 
-        public static LSUnit Creat(this LSUnitComponent self, LockStepUnitInfo playerInfo)
+        public static LSUnit Creat(this LSUnitComponent self, LockStepUnitInfo playerInfo, TeamTag tag)
         {
             LSUnit unit = self.AddChildWithId<LSUnit>(playerInfo.PlayerId);
             
@@ -34,6 +34,7 @@ namespace ET
             unit.AddComponent<ActionComponent, int>(playerInfo.ActionGroup); 
             unit.AddComponent<BuffComponent>();
             unit.AddComponent<CastComponent>();
+            unit.Tag = tag;
             
             return unit;
         }

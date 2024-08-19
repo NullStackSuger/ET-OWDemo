@@ -105,7 +105,7 @@ message S2C_UnitUseCast // IMessage
 message S2C_UnitRemoveCast // IMessage
 {
 	int64 UnitId = 1;
-	int64 CastUnitId = 2;
+	int64 CastId = 2;
 }
 
 message S2C_UnitUseBuff // IMessage

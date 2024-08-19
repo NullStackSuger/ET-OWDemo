@@ -8,9 +8,9 @@ namespace ET
         {
             B3CollisionComponent collision = self.UserObject as B3CollisionComponent;
             LSUnit castUnit = collision.GetParent<LSUnit>();
-            Cast cast = (Cast)castUnit.Owner;
-            CastComponent castComponent = cast.GetParent<CastComponent>();
-            castComponent.Remove(cast);
+            LSUnit owner = castUnit.Owner;
+            CastComponent castComponent = owner.GetComponent<CastComponent>();
+            castComponent.Remove(castUnit);
         }
 
         public override void CollisionCallbackStay(CollisionObject self, CollisionObject other)

@@ -86,7 +86,7 @@ namespace ET.Server
 
             foreach (var info in unitInfos)
             {
-                LSUnit unit = unitComponent.Creat(info);
+                LSUnit unit = unitComponent.Creat(info, TeamTag.TeamA);
                 unit.AddComponent<LSFInputComponent>();
 
                 self.PlayerIds.Add(info.PlayerId);

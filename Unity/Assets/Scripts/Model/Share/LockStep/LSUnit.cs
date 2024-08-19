@@ -6,6 +6,11 @@ using Unity.Mathematics;
 
 namespace ET
 {
+    public enum TeamTag
+    {
+        None, TeamA, TeamB, Neutral // 中立
+    }
+    
     [ChildOf(typeof(LSUnitComponent))]
     [MemoryPackable]
     public partial class LSUnit: LSEntity, IAwake, IDestroy, ISerializeToEntity
@@ -53,6 +58,24 @@ namespace ET
         //TODO 这里不确定对不对
         [MemoryPackIgnore]
         [BsonIgnore]
-        public EntityRef<Entity> Owner { get; set; }
+        public EntityRef<LSUnit> Owner { get; set; }
+
+        private TeamTag tag = TeamTag.None;
+        public TeamTag Tag
+        {
+            get
+            {
+                LSUnit unit = this.Owner;
+                if (this.tag == TeamTag.None && unit != null)
+                {
+                    this.tag = unit.Tag;
+                }
+                return this.tag;
+            }
+            set
+            {
+                this.tag = value;
+            }
+        }
     }
 }
