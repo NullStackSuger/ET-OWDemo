@@ -61,18 +61,6 @@ namespace ET
 	{
 		/// <summary>Id</summary>
 		public int Id { get; set; }
-		/// <summary>Mass</summary>
-		public float Mass { get; set; }
-		/// <summary>PosX</summary>
-		public float X { get; set; }
-		/// <summary>PosY</summary>
-		public float Y { get; set; }
-		/// <summary>PosZ</summary>
-		public float Z { get; set; }
-		/// <summary>Shape</summary>
-		public string Shape { get; set; }
-		/// <summary>Args</summary>
-		public long[] Args { get; set; }
 		/// <summary>Callback</summary>
 		public string Callback { get; set; }
 

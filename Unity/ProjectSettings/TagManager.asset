@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Collider_Polygon
+  - Collider_Cube
+  - Collider_Sphere
+  - Collider_Mesh
   layers:
   - Default
   - TransparentFX

@@ -61,8 +61,12 @@ namespace ET
 	{
 		/// <summary>Id</summary>
 		public int Id { get; set; }
-		/// <summary>Name</summary>
-		public string Name { get; set; }
+		/// <summary>PosX</summary>
+		public float X { get; set; }
+		/// <summary>PosY</summary>
+		public float Y { get; set; }
+		/// <summary>PosZ</summary>
+		public float Z { get; set; }
 		/// <summary>Action分组</summary>
 		public int ActionGroup { get; set; }
 		/// <summary>碰撞体种类</summary>

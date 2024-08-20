@@ -91,6 +91,7 @@ namespace ET
             {
                 CollisionObject collisionObject = pair.Item1;
                 ACollisionCallback callback = pair.Item2;
+                
                 self.World.AddCollisionObject(collisionObject);
                 if (callback != null) self.Callbacks.Add(collisionObject, callback);
             }

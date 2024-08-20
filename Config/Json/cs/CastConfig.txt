@@ -1,5 +1,5 @@
 {"dict": [
-[1001, {"_t":"CastConfig","_id":1001,"Name":"TestCast1001","ActionGroup":3,"RigidBody":1}],
-[1002, {"_t":"CastConfig","_id":1002,"Name":"TestCast1002","ActionGroup":2,"RigidBody":1}],
-[1003, {"_t":"CastConfig","_id":1003,"Name":"FireBall","ActionGroup":4,"RigidBody":1}],
+[1001, {"_t":"CastConfig","_id":1001,"X":0,"Y":0,"Z":0,"ActionGroup":3,"RigidBody":1}],
+[1002, {"_t":"CastConfig","_id":1002,"X":0,"Y":0,"Z":0,"ActionGroup":2,"RigidBody":1}],
+[1003, {"_t":"CastConfig","_id":1003,"X":0,"Y":0,"Z":1,"ActionGroup":4,"RigidBody":1}],
 ]}

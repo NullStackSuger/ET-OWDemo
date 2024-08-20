@@ -1,4 +1,5 @@
 using BulletSharp;
+using TrueSync;
 
 namespace ET
 {
@@ -26,8 +27,9 @@ namespace ET
             // 发布事件: 创建技能
             EventSystem.Instance.Publish(self.IScene as LSWorld, new UnitUseCast() { Unit = player, Cast = self });
             
-            // 这个必须要在创建Cast消息发送后再移动
-            castUnit.Position = player.Position;
+            // 设置Unit位置 这个必须要在创建Cast消息发送后再移动
+            TSVector offset = new TSVector(config.X, config.Y, config.Z);
+            castUnit.Position = player.Position + offset;
             castUnit.Rotation = player.Rotation;
             
             // 添加碰撞
