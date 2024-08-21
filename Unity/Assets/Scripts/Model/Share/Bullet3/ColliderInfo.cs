@@ -6,6 +6,7 @@ namespace ET
 {
     [MemoryPackable]
     // TODO: 这里应该类似MongoRegister, 自动注册
+    // 但是没找到不用泛型的注册方式, 可能要自己写一个
     [MemoryPackUnion(0, typeof(PolygonInfo))]
     [MemoryPackUnion(1, typeof(MeshInfo))]
     [MemoryPackUnion(2, typeof(CubeInfo))]

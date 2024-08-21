@@ -4,6 +4,7 @@ using System.IO;
 using System.Numerics;
 using BulletSharp;
 using BulletSharp.Math;
+using MemoryPack;
 using MongoDB.Bson.Serialization.Attributes;
 using Vector3 = BulletSharp.Math.Vector3;
 
@@ -17,6 +18,8 @@ namespace ET
         public override void EndInit()
         {
             base.EndInit();
+            
+            MemoryPackFormatterProvider.RegisterGenericType(typeof(ColliderInfo), typeof(SphereInfo));
             
             string path = $"D:\\ColliderInfos.bytes";
             if (!File.Exists(path)) return;
