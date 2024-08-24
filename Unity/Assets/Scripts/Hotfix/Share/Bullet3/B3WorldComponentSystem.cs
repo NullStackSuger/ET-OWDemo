@@ -24,6 +24,8 @@ namespace ET
 
             LSWorld world = self.GetParent<LSWorld>();
             Room room = world.GetParent<Room>();
+
+            self.AddTrigger(new SphereShape(5), Matrix.Translation(40, 0, 0), new TriggerTestCollisionCallBack());
             CreatSceneRb(self, room.Name).Coroutine();
 
             async ETTask CreatSceneRb(B3WorldComponent self, string name)
@@ -236,20 +238,22 @@ namespace ET
             return body;
         }
 
-        /*public static GhostObject AddTrigger(this B3WorldComponent self, CollisionShape shape, Vector3 position, ContactResultCallback callback = null)
+        public static GhostObject AddTrigger(this B3WorldComponent self, CollisionShape shape, Vector3 position, ACollisionCallback callback = null)
         {
             var go = self.AddTrigger(shape, Matrix.Translation(position), callback);
             return go;
         }
-        public static GhostObject AddTrigger(this B3WorldComponent self, CollisionShape shape, Matrix transform, ContactResultCallback callback = null)
+        public static GhostObject AddTrigger(this B3WorldComponent self, CollisionShape shape, Matrix transform, ACollisionCallback callback = null)
         {
-            PairCachingGhostObject go = new();
+            GhostObject go = new();
             go.CollisionShape = shape;
             go.WorldTransform = transform;
+            // 不加这个标签触发器不生效
+            go.CollisionFlags |= CollisionFlags.NoContactResponse;
             self.World.AddCollisionObject(go);
             
             if (callback != null) self.Callbacks.Add(go, callback);
             return go;
-        }*/
+        }
     }
 }

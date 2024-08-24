@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Vector3 = BulletSharp.Math.Vector3;
@@ -16,7 +17,7 @@ namespace ET
             List<MeshInfo> infos = new();
             foreach (GameObject go in gos)
             {
-                if (!go.CompareTag("Collider_Mesh")) continue;
+                if (!go.CompareTag("Collision_Mesh")) continue;
 
                 MeshFilter filter = go.GetComponent<MeshFilter>();
                 Rigidbody rb = go.GetComponent<Rigidbody>();
@@ -43,16 +44,18 @@ namespace ET
         [MenuItem("Tools/Generate Collider Infos", false)]
         public static void GenerateColliderInfo()
         {
+            EditorSceneManager.OpenScene("Assets/Scenes/Collision.unity");
+            
             GameObject[] gos = Resources.FindObjectsOfTypeAll<GameObject>();
 
-            List<ColliderInfo> infos = new();
+            List<CollisionInfo> infos = new();
 
             foreach (GameObject go in gos)
             {
-                ColliderInfo info;
+                CollisionInfo info;
                 switch (go.tag)
                 {
-                    case "Collider_Polygon":
+                    case "Collision_Polygon":
                         LineRenderer renderer = go.GetComponent<LineRenderer>();
                         UnityEngine.Vector3[] points = new UnityEngine.Vector3[renderer.positionCount];
                         renderer.GetPositions(points);
@@ -62,19 +65,19 @@ namespace ET
                             Points = points.ToBullet(),
                         };
                         break;
-                    case "Collider_Mesh":
+                    case "Collision_Mesh":
                         info = new MeshInfo()
                         {
                             Points = go.GetComponent<MeshFilter>().sharedMesh.vertices.ToBullet(),
                         };
                         break;
-                    case "Collider_Cube":
+                    case "Collision_Cube":
                         info = new CubeInfo()
                         {
                             Size = go.GetComponent<BoxCollider>().size.ToBullet(),
                         };
                         break;
-                    case "Collider_Sphere":
+                    case "Collision_Sphere":
                         info = new SphereInfo()
                         {
                             R = go.GetComponent<SphereCollider>().radius,

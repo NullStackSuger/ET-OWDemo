@@ -5,8 +5,8 @@ using BulletSharp.Math;
 namespace ET
 {
     [ComponentOf(typeof(LSUnit))]
-    public class B3CollisionComponent : LSEntity, IAwake<RigidBody>, IAwake<RigidBodyConstructionInfo, ACollisionCallback>, IDestroy, ILSUpdate
+    public class B3CollisionComponent : LSEntity, IAwake<int>, IAwake<GhostObject>, IDestroy, ILSUpdate
     {
-        public RigidBody Body;
+        public CollisionObject Collision;
     }
 }

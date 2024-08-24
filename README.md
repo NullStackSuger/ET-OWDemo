@@ -73,6 +73,7 @@
  1.目前分为Polyhedron Mesh Cube Sphere
 
  2.创建一个GameObject, 为它添加相应标签
+
    ①Polyhedron碰撞体需要LineRenderer LineRendererHelper(可选)
 
    ②Mesh碰撞体需要MeshFilter

@@ -12,32 +12,28 @@ namespace ET
     public static partial class B3CollisionComponentSystem
     {
         [EntitySystem]
-        private static void Awake(this B3CollisionComponent self, RigidBody body)
+        private static void Awake(this B3CollisionComponent self, int configId)
         {
-            self.Body = body;
-            body.UserObject = self;
-        }
-
-        [EntitySystem]
-        private static void Awake(this B3CollisionComponent self, RigidBodyConstructionInfo info, ACollisionCallback callback = null)
-        {
-            RigidBody body = new RigidBody(info);
-            //GhostObject body = new GhostObject();
-            if (info.Mass == 0)
-            {
-                body.CollisionFlags |= CollisionFlags.KinematicObject;
-                body.ActivationState = ActivationState.DisableDeactivation;
-            }
-            self.Body = body;
-            body.UserObject = self;
+            CollisionConfig config = CollisionConfigCategory.Instance.Get(configId);
+            ACollisionCallback callback = CollisionCallbackDispatcherComponent.Instance[config.Callback];
+            CollisionObject co = CollisionConfigCategory.Instance.Clone(configId);
+            
+            self.Collision = co;
+            co.UserObject = self;
          
             LSWorld world = self.IScene as LSWorld;
             B3WorldComponent worldComponent = world.GetComponent<B3WorldComponent>();
-            worldComponent.NotifyToAdd(body, callback);
+            worldComponent.NotifyToAdd(co, callback);
 
             LSUnit unit = self.GetParent<LSUnit>();
-            self.Body.WorldTransform += Matrix.Translation((float)unit.Position.x, (float)unit.Position.y, (float)unit.Position.z);
+            self.Collision.WorldTransform += Matrix.Translation((float)unit.Position.x, (float)unit.Position.y, (float)unit.Position.z);
             //self.Body.Orientation += new Quaternion((float)unit.Rotation.x, (float)unit.Rotation.y, (float)unit.Rotation.z, (float)unit.Rotation.w);
+        }
+
+        [EntitySystem]
+        private static void Awake(this B3CollisionComponent self, GhostObject go)
+        {
+            
         }
         
         [EntitySystem]
@@ -45,15 +41,15 @@ namespace ET
         {
             LSWorld world = self.IScene as LSWorld;
             B3WorldComponent worldComponent = world.GetComponent<B3WorldComponent>();
-            worldComponent.NotifyToRemove(self.Body);
+            worldComponent.NotifyToRemove(self.Collision);
             
-            self.Body = null;
+            self.Collision = null;
         }
 
         [LSEntitySystem]
         private static void LSUpdate(this B3CollisionComponent self)
         {
-            self.Body.GetWorldTransform(out Matrix transform);
+            self.Collision.GetWorldTransform(out Matrix transform);
             LSUnit unit = self.GetParent<LSUnit>();
 
             unit.Position = new TSVector(transform.Origin.X, transform.Origin.Y, transform.Origin.Z);

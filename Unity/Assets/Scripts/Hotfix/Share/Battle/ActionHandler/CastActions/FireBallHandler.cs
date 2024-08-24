@@ -19,7 +19,7 @@ namespace ET
             LSUnit castUnit = cast.Unit;
 
             B3CollisionComponent collision = castUnit.GetComponent<B3CollisionComponent>();
-            collision.Body.ApplyForce(castUnit.Forward.ToVector() * 1000, Vector3.Zero);
+            (collision.Collision as RigidBody).ApplyForce(castUnit.Forward.ToVector() * 1000, Vector3.Zero);
             //collision.Body.WorldTransform += Matrix.Translation(0, 0, 10);
         }
     }
