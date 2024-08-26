@@ -1,0 +1,11 @@
+{"dict": [
+[0, {"_t":"ActionConfig","_id":0,"Name":"DefaultActionHandler","Group":0,"RunningType":"Repeat"}],
+[1001, {"_t":"ActionConfig","_id":1001,"Name":"TestAction1001Handler","Group":1,"RunningType":"Once"}],
+[1002, {"_t":"ActionConfig","_id":1002,"Name":"TestAction1002Handler","Group":1,"RunningType":"Repeat"}],
+[3001, {"_t":"ActionConfig","_id":3001,"Name":"TestCastAction3001Handler","Group":3,"RunningType":"Repeat"}],
+[4001, {"_t":"ActionConfig","_id":4001,"Name":"FireBallInitHandler","Group":4,"RunningType":"Once"}],
+[4002, {"_t":"ActionConfig","_id":4002,"Name":"FireBallHandler","Group":4,"RunningType":"Repeat"}],
+[5001, {"_t":"ActionConfig","_id":5001,"Name":"BurnInitHandler","Group":5,"RunningType":"Once"}],
+[5002, {"_t":"ActionConfig","_id":5002,"Name":"BurnHandler","Group":5,"RunningType":"Repeat"}],
+[6001, {"_t":"ActionConfig","_id":6001,"Name":"SkeletonHandler","Group":6,"RunningType":"Repeat"}],
+]}

@@ -9,7 +9,5 @@ namespace ET
         public CollisionObject Collision { get; set; }
 
         public TSVector Offset { get; set; }
-
-        public CollisionMaskType Mask { get; set; }
     }
 }

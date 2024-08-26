@@ -123,37 +123,7 @@ namespace ET
                     CollisionObject a = pair.Item1;
                     CollisionObject b = pair.Item2;
                     
-                    B3CollisionComponent collisionA = a.UserObject as B3CollisionComponent;
-                    B3CollisionComponent collisionB = b.UserObject as B3CollisionComponent;
-                    CollisionMaskType mask = collisionA.Mask;
-                    bool needInvoke = false;
-                    switch (mask)
-                    {
-                        case CollisionMaskType.True:
-                            needInvoke = true;
-                            break;
-                        case CollisionMaskType.False:
-                            needInvoke = false;
-                            break;
-                        case CollisionMaskType.Self:
-                            if (collisionB == null)
-                            {
-                                needInvoke = false;
-                                break;
-                            }
-                            needInvoke = collisionA.GetParent<LSUnit>().Tag == collisionB.GetParent<LSUnit>().Tag;
-                            break;
-                        case CollisionMaskType.SelfDiff:
-                            if (collisionB == null)
-                            {
-                                needInvoke = true;
-                                break;
-                            }
-                            needInvoke = collisionA.GetParent<LSUnit>().Tag != collisionB.GetParent<LSUnit>().Tag;
-                            break;
-                    }
-
-                    if (needInvoke && self.Callbacks.TryGetValue(a, out var callback))
+                    if (self.Callbacks.TryGetValue(a, out var callback))
                         callback.CollisionCallbackEnter(a, b);
                 }
                 // 取交集是Stay
@@ -163,37 +133,7 @@ namespace ET
                     CollisionObject a = pair.Item1;
                     CollisionObject b = pair.Item2;
                     
-                    B3CollisionComponent collisionA = a.UserObject as B3CollisionComponent;
-                    B3CollisionComponent collisionB = b.UserObject as B3CollisionComponent;
-                    CollisionMaskType mask = collisionA.Mask;
-                    bool needInvoke = false;
-                    switch (mask)
-                    {
-                        case CollisionMaskType.True:
-                            needInvoke = true;
-                            break;
-                        case CollisionMaskType.False:
-                            needInvoke = false;
-                            break;
-                        case CollisionMaskType.Self:
-                            if (collisionB == null)
-                            {
-                                needInvoke = false;
-                                break;
-                            }
-                            needInvoke = collisionA.GetParent<LSUnit>().Tag == collisionB.GetParent<LSUnit>().Tag;
-                            break;
-                        case CollisionMaskType.SelfDiff:
-                            if (collisionB == null)
-                            {
-                                needInvoke = true;
-                                break;
-                            }
-                            needInvoke = collisionA.GetParent<LSUnit>().Tag != collisionB.GetParent<LSUnit>().Tag;
-                            break;
-                    }
-
-                    if (needInvoke && self.Callbacks.TryGetValue(a, out var callback))
+                    if (self.Callbacks.TryGetValue(a, out var callback))
                         callback.CollisionCallbackStay(a, b);
                 }
                 // 取Last差集是Exit
@@ -203,37 +143,7 @@ namespace ET
                     CollisionObject a = pair.Item1;
                     CollisionObject b = pair.Item2;
                     
-                    B3CollisionComponent collisionA = a.UserObject as B3CollisionComponent;
-                    B3CollisionComponent collisionB = b.UserObject as B3CollisionComponent;
-                    CollisionMaskType mask = collisionA.Mask;
-                    bool needInvoke = false;
-                    switch (mask)
-                    {
-                        case CollisionMaskType.True:
-                            needInvoke = true;
-                            break;
-                        case CollisionMaskType.False:
-                            needInvoke = false;
-                            break;
-                        case CollisionMaskType.Self:
-                            if (collisionB == null)
-                            {
-                                needInvoke = false;
-                                break;
-                            }
-                            needInvoke = collisionA.GetParent<LSUnit>().Tag == collisionB.GetParent<LSUnit>().Tag;
-                            break;
-                        case CollisionMaskType.SelfDiff:
-                            if (collisionB == null)
-                            {
-                                needInvoke = true;
-                                break;
-                            }
-                            needInvoke = collisionA.GetParent<LSUnit>().Tag != collisionB.GetParent<LSUnit>().Tag;
-                            break;
-                    }
-
-                    if (needInvoke && self.Callbacks.TryGetValue(a, out var callback))
+                    if (self.Callbacks.TryGetValue(a, out var callback))
                         callback.CollisionCallbackExit(a, b);
                 }
                 

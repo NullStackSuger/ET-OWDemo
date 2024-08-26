@@ -1,0 +1,4 @@
+{"dict": [
+[1, {"_t":"CollisionConfig","_id":1,"IsTrigger":0,"Callback":"FireBallCollisionCallback"}],
+[5, {"_t":"CollisionConfig","_id":5,"IsTrigger":0,"Callback":""}],
+]}

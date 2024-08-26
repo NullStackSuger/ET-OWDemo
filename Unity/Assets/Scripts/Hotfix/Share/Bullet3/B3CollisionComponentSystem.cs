@@ -21,8 +21,6 @@ namespace ET
             self.Collision = co;
             co.UserObject = self;
             self.Offset = info.Position.ToTSVector();
-            Log.Warning($"{self.Mask}");
-            self.Mask = config.Mask;
          
             LSWorld world = self.IScene as LSWorld;
             B3WorldComponent worldComponent = world.GetComponent<B3WorldComponent>();
