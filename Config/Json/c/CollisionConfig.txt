@@ -1,3 +1,0 @@
-{"dict": [
-[1, {"_t":"CollisionConfig","_id":1,"IsTrigger":0,"Callback":"FireBallCollisionCallback"}],
-]}

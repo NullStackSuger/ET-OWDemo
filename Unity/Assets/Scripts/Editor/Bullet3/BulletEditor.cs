@@ -44,6 +44,7 @@ namespace ET
         [MenuItem("Tools/Generate Collider Infos", false)]
         public static void GenerateColliderInfo()
         {
+            EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
             EditorSceneManager.OpenScene("Assets/Scenes/Collision.unity");
             
             GameObject[] gos = Resources.FindObjectsOfTypeAll<GameObject>();
@@ -81,6 +82,22 @@ namespace ET
                         info = new SphereInfo()
                         {
                             R = go.GetComponent<SphereCollider>().radius,
+                        };
+                        break;
+                    case "Collision_Capsule":
+                        var collider = go.GetComponent<CapsuleCollider>();
+                        info = new CapsuleInfo()
+                        {
+                            R = collider.radius,
+                            Height = collider.height,
+                        };
+                        break;
+                    case "Collision_RayTest":
+                        var lineRenderer = go.GetComponent<LineRenderer>();
+                        info = new RayTestInfo()
+                        {
+                            StartPos = lineRenderer.GetPosition(0).ToBullet(),
+                            EndPos = lineRenderer.GetPosition(1).ToBullet(),
                         };
                         break;
                     default:

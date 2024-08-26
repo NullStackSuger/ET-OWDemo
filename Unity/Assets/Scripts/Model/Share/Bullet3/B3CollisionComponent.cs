@@ -1,12 +1,15 @@
-using System.Collections.Generic;
 using BulletSharp;
-using BulletSharp.Math;
+using TrueSync;
 
 namespace ET
 {
     [ComponentOf(typeof(LSUnit))]
-    public class B3CollisionComponent : LSEntity, IAwake<int>, IAwake<GhostObject>, IDestroy, ILSUpdate
+    public class B3CollisionComponent : LSEntity, IAwake<int>, IDestroy, ILSUpdate
     {
-        public CollisionObject Collision;
+        public CollisionObject Collision { get; set; }
+
+        public TSVector Offset { get; set; }
+
+        public CollisionMaskType Mask { get; set; }
     }
 }

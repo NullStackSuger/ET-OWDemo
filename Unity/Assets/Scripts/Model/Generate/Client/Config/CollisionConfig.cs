@@ -63,6 +63,8 @@ namespace ET
 		public int Id { get; set; }
 		/// <summary>IsTrigger</summary>
 		public int IsTrigger { get; set; }
+		/// <summary>Mask</summary>
+		public CollisionMaskType Mask { get; set; }
 		/// <summary>Callback</summary>
 		public string Callback { get; set; }
 

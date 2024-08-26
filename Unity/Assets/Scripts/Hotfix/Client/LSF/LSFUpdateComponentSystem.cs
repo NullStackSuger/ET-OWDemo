@@ -96,6 +96,9 @@ namespace ET.Client
             {
                 LSUnit unit = unitComponent.Creat(info, TeamTag.TeamA);
                 unit.AddComponent<LSFInputComponent>();
+                unit.AddComponent<B3CollisionComponent, int>(5);
+                unit.AddComponent<DataModifierComponent>();
+                
                 self.PlayerIds.Add(info.PlayerId);
             }
             
@@ -112,6 +115,7 @@ namespace ET.Client
                 {
                     LSUnit unit = unitComponent.Creat(info, TeamTag.TeamA);
                     unit.AddComponent<LSFInputComponent>();
+                    unit.AddComponent<B3CollisionComponent, int>(5);
                 }
             }
 

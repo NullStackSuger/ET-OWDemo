@@ -13,7 +13,7 @@ namespace ET
         [EntitySystem]
         private static void Awake(this CastComponent self)
         {
-
+            
         }
 
         public static Cast Creat(this CastComponent self, int configId)

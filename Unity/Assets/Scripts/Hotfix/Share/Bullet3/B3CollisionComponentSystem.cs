@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using BulletSharp;
 using BulletSharp.Math;
 using TrueSync;
@@ -16,10 +15,14 @@ namespace ET
         {
             CollisionConfig config = CollisionConfigCategory.Instance.Get(configId);
             ACollisionCallback callback = CollisionCallbackDispatcherComponent.Instance[config.Callback];
-            CollisionObject co = CollisionConfigCategory.Instance.Clone(configId);
+            CollisionInfo info = CollisionInfoDispatcherComponent.Instance.Infos[configId];
+            CollisionObject co = CollisionInfoDispatcherComponent.Instance.Clone(configId);
             
             self.Collision = co;
             co.UserObject = self;
+            self.Offset = info.Position.ToTSVector();
+            Log.Warning($"{self.Mask}");
+            self.Mask = config.Mask;
          
             LSWorld world = self.IScene as LSWorld;
             B3WorldComponent worldComponent = world.GetComponent<B3WorldComponent>();
@@ -28,12 +31,6 @@ namespace ET
             LSUnit unit = self.GetParent<LSUnit>();
             self.Collision.WorldTransform += Matrix.Translation((float)unit.Position.x, (float)unit.Position.y, (float)unit.Position.z);
             //self.Body.Orientation += new Quaternion((float)unit.Rotation.x, (float)unit.Rotation.y, (float)unit.Rotation.z, (float)unit.Rotation.w);
-        }
-
-        [EntitySystem]
-        private static void Awake(this B3CollisionComponent self, GhostObject go)
-        {
-            
         }
         
         [EntitySystem]
@@ -52,7 +49,7 @@ namespace ET
             self.Collision.GetWorldTransform(out Matrix transform);
             LSUnit unit = self.GetParent<LSUnit>();
 
-            unit.Position = new TSVector(transform.Origin.X, transform.Origin.Y, transform.Origin.Z);
+            unit.Position = new TSVector(transform.Origin.X, transform.Origin.Y, transform.Origin.Z) - self.Offset;
             unit.Rotation = new TSQuaternion(transform.Orientation.X, transform.Orientation.Y, transform.Orientation.Z, transform.Orientation.W);
         }
     }

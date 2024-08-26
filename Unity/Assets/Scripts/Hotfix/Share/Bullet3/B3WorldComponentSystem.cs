@@ -99,6 +99,7 @@ namespace ET
             }
             while (self.WaitToRemoves.TryDequeue(out CollisionObject collisionObject))
             {
+                if (collisionObject == null) continue;
                 self.World.RemoveCollisionObject(collisionObject);
                 if (self.Callbacks.ContainsKey(collisionObject)) self.Callbacks.Remove(collisionObject);
                 collisionObject.Dispose();
@@ -106,6 +107,15 @@ namespace ET
             
             void FixedHandler()
             {
+                // 先遍历CollisionTestStart
+                for (int i = self.World.CollisionObjectArray.Count - 1; i >= 0; --i)
+                {
+                    CollisionObject co = self.World.CollisionObjectArray[i];
+                    if (co == null) continue;
+                    if (!self.Callbacks.TryGetValue(co, out var callback)) continue;
+                    callback.CollisionTestStart();
+                }
+                
                 // 取Now差集是Enter
                 var enter = self.NowCollisionInfos.Except(self.LastCollisionInfos);
                 foreach (var pair in enter)
@@ -113,29 +123,38 @@ namespace ET
                     CollisionObject a = pair.Item1;
                     CollisionObject b = pair.Item2;
                     
-                    // collisionA collisionB 不为空 且 unitA unitB 的TeamTag不同
-                    
                     B3CollisionComponent collisionA = a.UserObject as B3CollisionComponent;
                     B3CollisionComponent collisionB = b.UserObject as B3CollisionComponent;
-
-                    if (collisionA == null || collisionB == null)
+                    CollisionMaskType mask = collisionA.Mask;
+                    bool needInvoke = false;
+                    switch (mask)
                     {
-                        if (self.Callbacks.TryGetValue(a, out var callback))
-                            callback.CollisionCallbackEnter(a, b);
-                        
-                        continue;
+                        case CollisionMaskType.True:
+                            needInvoke = true;
+                            break;
+                        case CollisionMaskType.False:
+                            needInvoke = false;
+                            break;
+                        case CollisionMaskType.Self:
+                            if (collisionB == null)
+                            {
+                                needInvoke = false;
+                                break;
+                            }
+                            needInvoke = collisionA.GetParent<LSUnit>().Tag == collisionB.GetParent<LSUnit>().Tag;
+                            break;
+                        case CollisionMaskType.SelfDiff:
+                            if (collisionB == null)
+                            {
+                                needInvoke = true;
+                                break;
+                            }
+                            needInvoke = collisionA.GetParent<LSUnit>().Tag != collisionB.GetParent<LSUnit>().Tag;
+                            break;
                     }
-                    
-                    TeamTag tagA = collisionA.GetParent<LSUnit>().Tag;
-                    TeamTag tagB = collisionB.GetParent<LSUnit>().Tag;
 
-                    if (tagA != tagB /*&& tagA != TeamTag.None*/)
-                    {
-                        if (self.Callbacks.TryGetValue(a, out var callback))
-                            callback.CollisionCallbackEnter(a, b);
-                        
-                        continue;
-                    }
+                    if (needInvoke && self.Callbacks.TryGetValue(a, out var callback))
+                        callback.CollisionCallbackEnter(a, b);
                 }
                 // 取交集是Stay
                 var stay = self.LastCollisionInfos.Intersect(self.NowCollisionInfos);
@@ -144,29 +163,38 @@ namespace ET
                     CollisionObject a = pair.Item1;
                     CollisionObject b = pair.Item2;
                     
-                    // collisionA collisionB 不为空 且 unitA unitB 的TeamTag不同
-                    
                     B3CollisionComponent collisionA = a.UserObject as B3CollisionComponent;
                     B3CollisionComponent collisionB = b.UserObject as B3CollisionComponent;
-
-                    if (collisionA == null || collisionB == null)
+                    CollisionMaskType mask = collisionA.Mask;
+                    bool needInvoke = false;
+                    switch (mask)
                     {
-                        if (self.Callbacks.TryGetValue(a, out var callback))
-                            callback.CollisionCallbackStay(a, b);
-                        
-                        continue;
+                        case CollisionMaskType.True:
+                            needInvoke = true;
+                            break;
+                        case CollisionMaskType.False:
+                            needInvoke = false;
+                            break;
+                        case CollisionMaskType.Self:
+                            if (collisionB == null)
+                            {
+                                needInvoke = false;
+                                break;
+                            }
+                            needInvoke = collisionA.GetParent<LSUnit>().Tag == collisionB.GetParent<LSUnit>().Tag;
+                            break;
+                        case CollisionMaskType.SelfDiff:
+                            if (collisionB == null)
+                            {
+                                needInvoke = true;
+                                break;
+                            }
+                            needInvoke = collisionA.GetParent<LSUnit>().Tag != collisionB.GetParent<LSUnit>().Tag;
+                            break;
                     }
-                    
-                    TeamTag tagA = collisionA.GetParent<LSUnit>().Tag;
-                    TeamTag tagB = collisionB.GetParent<LSUnit>().Tag;
 
-                    if (tagA != tagB /*&& tagA != TeamTag.None*/)
-                    {
-                        if (self.Callbacks.TryGetValue(a, out var callback))
-                            callback.CollisionCallbackStay(a, b);
-                        
-                        continue;
-                    }
+                    if (needInvoke && self.Callbacks.TryGetValue(a, out var callback))
+                        callback.CollisionCallbackStay(a, b);
                 }
                 // 取Last差集是Exit
                 var exit = self.LastCollisionInfos.Except(self.NowCollisionInfos);
@@ -174,29 +202,48 @@ namespace ET
                 {
                     CollisionObject a = pair.Item1;
                     CollisionObject b = pair.Item2;
-                    // collisionA collisionB 不为空 且 unitA unitB 的TeamTag不同
                     
                     B3CollisionComponent collisionA = a.UserObject as B3CollisionComponent;
                     B3CollisionComponent collisionB = b.UserObject as B3CollisionComponent;
-
-                    if (collisionA == null || collisionB == null)
+                    CollisionMaskType mask = collisionA.Mask;
+                    bool needInvoke = false;
+                    switch (mask)
                     {
-                        if (self.Callbacks.TryGetValue(a, out var callback))
-                            callback.CollisionCallbackExit(a, b);
-                        
-                        continue;
+                        case CollisionMaskType.True:
+                            needInvoke = true;
+                            break;
+                        case CollisionMaskType.False:
+                            needInvoke = false;
+                            break;
+                        case CollisionMaskType.Self:
+                            if (collisionB == null)
+                            {
+                                needInvoke = false;
+                                break;
+                            }
+                            needInvoke = collisionA.GetParent<LSUnit>().Tag == collisionB.GetParent<LSUnit>().Tag;
+                            break;
+                        case CollisionMaskType.SelfDiff:
+                            if (collisionB == null)
+                            {
+                                needInvoke = true;
+                                break;
+                            }
+                            needInvoke = collisionA.GetParent<LSUnit>().Tag != collisionB.GetParent<LSUnit>().Tag;
+                            break;
                     }
-                    
-                    TeamTag tagA = collisionA.GetParent<LSUnit>().Tag;
-                    TeamTag tagB = collisionB.GetParent<LSUnit>().Tag;
 
-                    if (tagA != tagB /*&& tagA != TeamTag.None*/)
-                    {
-                        if (self.Callbacks.TryGetValue(a, out var callback))
-                            callback.CollisionCallbackExit(a, b);
-                        
-                        continue;
-                    }
+                    if (needInvoke && self.Callbacks.TryGetValue(a, out var callback))
+                        callback.CollisionCallbackExit(a, b);
+                }
+                
+                // 最后遍历CollisionTestFinish
+                for (int i = self.World.CollisionObjectArray.Count - 1; i >= 0; --i)
+                {
+                    CollisionObject co = self.World.CollisionObjectArray[i];
+                    if (co == null) continue;
+                    if (!self.Callbacks.TryGetValue(co, out var callback)) continue;
+                    callback.CollisionTestFinish();
                 }
             }
         }
@@ -214,6 +261,33 @@ namespace ET
         public static void NotifyToRemove(this B3WorldComponent self, CollisionObject collision)
         {
             self.WaitToRemoves.Enqueue(collision);
+        }
+
+        /// <summary>
+        /// 获取第一个命中的目标
+        /// </summary>
+        public static bool RayTestFirst(this B3WorldComponent self, int collisionInfoId, out CollisionObject co)
+        {
+            RayTestInfo info = CollisionInfoDispatcherComponent.Instance.Infos[collisionInfoId] as RayTestInfo;
+            Vector3 from = info.StartPos;
+            Vector3 to = info.EndPos;
+            ClosestRayResultCallback callback = new ClosestRayResultCallback(ref from, ref to);
+            self.World.RayTest(from, to, callback);
+            co = callback.CollisionObject;
+            return callback.HasHit;
+        }
+        /// <summary>
+        /// 获取所有命中的目标
+        /// </summary>
+        public static bool RayTestAll(this B3WorldComponent self, int collisionInfoId, out List<CollisionObject> cos)
+        {
+            RayTestInfo info = CollisionInfoDispatcherComponent.Instance.Infos[collisionInfoId] as RayTestInfo;
+            Vector3 from = info.StartPos;
+            Vector3 to = info.EndPos;
+            AllHitsRayResultCallback callback = new AllHitsRayResultCallback(from, to);
+            self.World.RayTest(from, to, callback);
+            cos = callback.CollisionObjects;
+            return callback.HasHit;
         }
 
         /// <summary>

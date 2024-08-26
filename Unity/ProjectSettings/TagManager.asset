@@ -8,6 +8,8 @@ TagManager:
   - Collision_Sphere
   - Collision_Cube
   - Collision_Polygon
+  - Collision_Capsule
+  - Collision_RayTest
   layers:
   - Default
   - TransparentFX

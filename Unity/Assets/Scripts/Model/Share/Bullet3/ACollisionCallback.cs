@@ -15,5 +15,8 @@ namespace ET
         public abstract void CollisionCallbackEnter(CollisionObject self, CollisionObject other);
         public abstract void CollisionCallbackStay(CollisionObject self, CollisionObject other);
         public abstract void CollisionCallbackExit(CollisionObject self, CollisionObject other);
+
+        public abstract void CollisionTestStart();
+        public abstract void CollisionTestFinish();
     }
 }

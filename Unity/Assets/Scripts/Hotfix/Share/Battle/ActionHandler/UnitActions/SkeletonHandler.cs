@@ -1,4 +1,6 @@
 using System.Linq;
+using BulletSharp;
+using BulletSharp.Math;
 using TrueSync;
 
 namespace ET
@@ -29,9 +31,11 @@ namespace ET
             {
                 return;
             }
-            TSVector oldPos = unit.Position;
-            unit.Position += new TSVector(v2.x, 0, v2.y);
-            unit.Forward = unit.Position - oldPos;
+
+            RigidBody body = unit.GetComponent<B3CollisionComponent>().Collision as RigidBody;
+            body.ApplyImpulse(new Vector3((float)v2.x, (float)unit.Position.y, (float)v2.y), body.CenterOfMassPosition);
+
+            unit.Forward = new TSVector(v2.x, 0, v2.y);
         }
 
         private static void CastHandler(LSInput input, LSUnit unit)

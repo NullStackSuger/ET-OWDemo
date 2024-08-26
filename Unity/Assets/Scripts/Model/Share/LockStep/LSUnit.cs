@@ -6,9 +6,12 @@ using Unity.Mathematics;
 
 namespace ET
 {
-    public enum TeamTag
+    public static class TeamTag
     {
-        None, TeamA, TeamB, Neutral // 中立
+        public const string None = "None";
+        public const string TeamA = "TeamA";
+        public const string TeamB = "TeamB";
+        public const string Neutral = "Neutral"; // 中立
     }
     
     [ChildOf(typeof(LSUnitComponent))]
@@ -60,8 +63,8 @@ namespace ET
         [BsonIgnore]
         public EntityRef<LSUnit> Owner { get; set; }
 
-        private TeamTag tag = TeamTag.None;
-        public TeamTag Tag
+        private string tag = TeamTag.None;
+        public string Tag
         {
             get
             {

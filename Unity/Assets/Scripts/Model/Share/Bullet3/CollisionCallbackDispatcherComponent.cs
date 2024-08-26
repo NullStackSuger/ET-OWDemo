@@ -6,7 +6,7 @@ namespace ET
     [Code]
     public class CollisionCallbackDispatcherComponent : Singleton<CollisionCallbackDispatcherComponent>, ISingletonAwake
     {
-        private readonly Dictionary<string, ACollisionCallback> Handlers = new();
+        private readonly Dictionary<string, ACollisionCallback> CollisionHandlers = new();
         
         public void Awake()
         {
@@ -19,7 +19,7 @@ namespace ET
                     Log.Error($"{nameof(ACollisionCallback)} is Null: {type.Name}");
                     continue;
                 }
-                this.Handlers.Add(type.Name, handler);
+                this.CollisionHandlers.Add(type.Name, handler);
             }
         }
         
@@ -27,7 +27,7 @@ namespace ET
         {
             get
             {
-                return Handlers[key];
+                return this.CollisionHandlers.ContainsKey(key) ? this.CollisionHandlers[key] : null;
             }
         }
     }

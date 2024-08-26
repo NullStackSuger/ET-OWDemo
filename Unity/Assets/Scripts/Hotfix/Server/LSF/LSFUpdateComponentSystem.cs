@@ -81,14 +81,14 @@ namespace ET.Server
 
             self.AuthorityWorld = new LSWorld(SceneType.LSFServer);
             LSWorld world = self.AuthorityWorld;
-            B3WorldComponent worldComponent = world.AddComponent<B3WorldComponent>();
+            world.AddComponent<B3WorldComponent>();
             LSUnitComponent unitComponent = world.AddComponent<LSUnitComponent>();
 
             foreach (var info in unitInfos)
             {
                 LSUnit unit = unitComponent.Creat(info, TeamTag.TeamA);
                 unit.AddComponent<LSFInputComponent>();
-
+                unit.AddComponent<B3CollisionComponent, int>(5);
                 self.PlayerIds.Add(info.PlayerId);
             }
 
