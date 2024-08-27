@@ -6,11 +6,40 @@ namespace ET
     {
         public override void CollisionCallbackEnter(CollisionObject self, CollisionObject other)
         {
-            B3CollisionComponent collision = self.UserObject as B3CollisionComponent;
-            LSUnit castUnit = collision.GetParent<LSUnit>();
-            LSUnit owner = castUnit.Owner;
-            CastComponent castComponent = owner.GetComponent<CastComponent>();
-            castComponent.Remove(castUnit);
+            // 获取A数值
+            B3CollisionComponent collisionA = self.UserObject as B3CollisionComponent;
+            LSUnit unitA = collisionA.GetParent<LSUnit>();
+            string tagA = unitA.Tag;
+            LSUnit ownerA = unitA.Owner;
+            DataModifierComponent modifierComponentA = ownerA.GetComponent<DataModifierComponent>();
+            CastComponent castComponentA = ownerA.GetComponent<CastComponent>();
+
+            // 获取B数值
+            B3CollisionComponent collisionB = other.UserObject as B3CollisionComponent;
+            if (collisionB == null)
+            {
+                castComponentA.Remove(unitA);
+                return;
+            }
+            LSUnit unitB = collisionB.GetParent<LSUnit>();
+            string tagB = unitB.Tag;
+            if (tagA == tagB && (tagB == TeamTag.TeamA || tagB == TeamTag.TeamB))
+            {
+                castComponentA.Remove(unitA);
+                return;
+            }
+            LSUnit ownerB = unitB.Owner;
+            DataModifierComponent modifierComponentB = ownerB.GetComponent<DataModifierComponent>();
+            
+            // 处理战斗公式(Hp = Hp - Atk)
+            // TODO 这里正常是用DataModifierHelper.DefaultBattle, 还没来得及测试
+            // Add - [FinalAdd - (Atk) / (1 + FinalPct)] / (1 + Pct)
+            long atk = modifierComponentA.Get(DataModifierType.Atk);
+            modifierComponentB.Add(new Default_Hp_ConstantModifier(-atk));
+            
+            // 这里可以添加一些如距离衰减等FinalXXX操作
+            
+            castComponentA.Remove(unitA);
         }
 
         public override void CollisionCallbackStay(CollisionObject self, CollisionObject other)

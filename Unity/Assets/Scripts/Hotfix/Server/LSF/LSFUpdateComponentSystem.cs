@@ -89,6 +89,14 @@ namespace ET.Server
                 LSUnit unit = unitComponent.Creat(info, TeamTag.TeamA);
                 unit.AddComponent<LSFInputComponent>();
                 unit.AddComponent<B3CollisionComponent, int>(5);
+                DataModifierComponent dataModifierComponent = unit.AddComponent<DataModifierComponent>();
+                dataModifierComponent.Add(new Default_Hp_FinalMaxModifier(100));
+                dataModifierComponent.Add(new Default_Hp_FinalMinModifier(0));
+                dataModifierComponent.Add(new Default_Hp_ConstantModifier(10));
+                //dataModifierComponent.Add(new Default_MaxAtk_Modifier(10));
+                //dataModifierComponent.Add(new Default_MinAtk_Modifier(0));
+                dataModifierComponent.Add(new Default_Atk_ConstantModifier(5));
+                
                 self.PlayerIds.Add(info.PlayerId);
             }
 

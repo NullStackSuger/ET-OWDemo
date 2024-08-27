@@ -6,6 +6,7 @@ using TrueSync;
 namespace ET
 {
     [FriendOfAttribute(typeof(ET.BuffComponent))]
+    [FriendOfAttribute(typeof(ET.DataModifierComponent))]
     public class SkeletonHandler : AActionHandler
     {
         public override bool Check(ActionComponent actionComponent, ActionConfig config)
@@ -52,10 +53,14 @@ namespace ET
 
             inputComponent.PressCastFrame = room.AuthorityFrame;
 
-            CastComponent castComponent = unit.GetComponent<CastComponent>();
-            castComponent.Creat(1003);
+            /*CastComponent castComponent = unit.GetComponent<CastComponent>();
+            castComponent.Creat(1003);*/
             /*BuffComponent buffComponent = unit.GetComponent<BuffComponent>();
             buffComponent.Creat(1003);*/
+            DataModifierComponent dataModifierComponent = unit.GetComponent<DataModifierComponent>();
+            long atk = dataModifierComponent.Get(DataModifierType.Atk);
+            dataModifierComponent.Add(new Default_Hp_ConstantModifier(-atk));
+            Log.Warning($"完成Atk, 当前生命为{dataModifierComponent.Get(DataModifierType.Hp)}");
         }
     }
 }
