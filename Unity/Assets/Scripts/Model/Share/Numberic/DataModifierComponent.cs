@@ -206,7 +206,7 @@ namespace ET
         /// <summary>
         /// 清理指定类型的多余数据, 使集合长度更短, Get速度更快
         /// </summary>
-        public static void Clear(this DataModifierComponent self, int dataModifierType, ref ADataModifier addModifier, ref ADataModifier finalAddModifier)
+        public static void Clear(this DataModifierComponent self, int dataModifierType, ref ConstantModifier addModifier, ref FinalConstantModifier  finalAddModifier)
         {
             if (!self.NumericDic.TryGetValue(dataModifierType, out var modifiers))
             {
@@ -254,13 +254,14 @@ namespace ET
     [FriendOf(typeof(DataModifierComponent))]
     public static class DataModifierHelper
     {
+        //TODO 这里写的比较乱 以后要改
         /// <summary>
         /// 处理默认战斗相关
         /// </summary>
         /// <param name="value">攻击值</param>
         /// <param name="b">被攻击方</param>
         /// <param name="dataModifierTypeB">生命或护盾类型</param>
-        /// <returns></returns>
+        /// <returns>剩余值</returns>
         public static long DefaultBattle(long value, DataModifierComponent b, int dataModifierTypeB)
         {
             if (!b.NumericDic.ContainsKey(dataModifierTypeB))
@@ -276,31 +277,41 @@ namespace ET
             long finalAdd = values.Item7;
             long finalAddMin = values.Item9;
             long finalPct = values.Item10;
-
+            
             long tmp = finalAdd - finalAddMin;
             value *= (1 / (1 + finalPct));
             if (value > tmp)
             {
-                b.Add(new Default_Hp_FinalConstantModifier(-tmp));
-                value -= tmp;
+                if (tmp != 0)
+                {
+                    b.Add(new Default_Hp_FinalConstantModifier() { Value = -value });
+                    value -= tmp;
+                    Log.Warning($"Atk可以把FinalAdd打空, Value:{value} FinalAdd:{finalAdd} FinalAddMin:{finalAddMin} Tmp:{tmp} Add:{add}");
+                }
 
                 tmp = add - addMin;
-                value *= (1 / (1 + pct));
-                if (value > tmp)
+                if (tmp != 0)
                 {
-                    b.Add(new Default_Hp_ConstantModifier(-tmp));
-                    value -= tmp;
-                }
-                else
-                {
-                    b.Add(new Default_Hp_ConstantModifier(-value));
-                    value = 0;
+                    value *= (1 / (1 + pct));
+                    if (value > tmp)
+                    {
+                        b.Add(new Default_Hp_ConstantModifier() { Value = -value });
+                        value -= tmp;
+                        Log.Warning($"Atk能把Add打空, Value:{value} Add:{add} AddMin:{addMin} Tmp:{tmp} FinalAdd:{finalAdd}");
+                    }
+                    else
+                    {
+                        b.Add(new Default_Hp_ConstantModifier() { Value = -value });
+                        value = 0;
+                        Log.Warning($"Atk不能把Add打空, Value:{value} Add:{add} AddMin:{addMin} Tmp:{tmp} FinalAdd:{finalAdd}");
+                    }
                 }
             }
             else
             {
-                b.Add(new Default_Hp_FinalConstantModifier(-value));
+                b.Add(new Default_Hp_FinalConstantModifier() { Value = -value });
                 value = 0;
+                Log.Warning($"Atk不能把FinalAdd打空, Value:{value} FinalAdd:{finalAdd} FinalAddMin:{finalAddMin} Tmp:{tmp} Add:{add}");
             }
 
             return value;

@@ -82,6 +82,13 @@ namespace ET
         public abstract int Key { get; }
 
         private long value;
+        public long Value
+        {
+            set
+            {
+                Set(value);       
+            }
+        }
 
         public bool NeedClear { get; set; }
 
@@ -94,11 +101,6 @@ namespace ET
         {
             return this.value;
         }
-
-        protected ADataModifier(long value)
-        {
-            this.value = value;
-        }
         
         public virtual void Dispose()
         {
@@ -110,28 +112,16 @@ namespace ET
     public abstract class ConstantModifier : ADataModifier
     {
         public override ModifierType ModifierType { get; } = ModifierType.Constant;
-
-        protected ConstantModifier(long value) : base(value)
-        {
-        }
     }
     
     public abstract class ConstantMaxModifier : ADataModifier
     {
         public override ModifierType ModifierType { get; } = ModifierType.ConstantMax;
-
-        protected ConstantMaxModifier(long value) : base(value)
-        {
-        }
     }
     
     public abstract class ConstantMinModifier : ADataModifier
     {
         public override ModifierType ModifierType { get; } = ModifierType.ConstantMin;
-
-        protected ConstantMinModifier(long value) : base(value)
-        {
-        }
     }
     #endregion
 
@@ -139,28 +129,16 @@ namespace ET
     public abstract class PercentageModifier : ADataModifier
     {
         public override ModifierType ModifierType { get; } = ModifierType.Percentage;
-
-        protected PercentageModifier(long value) : base(value)
-        {
-        }
     }
     
     public abstract class PercentageMaxModifier : ADataModifier
     {
         public override ModifierType ModifierType { get; } = ModifierType.PercentageMax;
-
-        protected PercentageMaxModifier(long value) : base(value)
-        {
-        }
     }
     
     public abstract class PercentageMinModifier : ADataModifier
     {
         public override ModifierType ModifierType { get; } = ModifierType.PercentageMin;
-
-        protected PercentageMinModifier(long value) : base(value)
-        {
-        }
     }
     #endregion
 
@@ -168,28 +146,16 @@ namespace ET
     public abstract class FinalConstantModifier : ADataModifier
     {
         public override ModifierType ModifierType { get; } = ModifierType.FinalConstant;
-
-        protected FinalConstantModifier(long value) : base(value)
-        {
-        }
     }
     
     public abstract class FinalConstantModifierMax : ADataModifier
     {
         public override ModifierType ModifierType { get; } = ModifierType.FinalConstantMax;
-
-        protected FinalConstantModifierMax(long value) : base(value)
-        {
-        }
     }
     
     public abstract class FinalConstantModifierMin : ADataModifier
     {
         public override ModifierType ModifierType { get; } = ModifierType.FinalConstantMin;
-
-        protected FinalConstantModifierMin(long value) : base(value)
-        {
-        }
     }
     #endregion
 
@@ -197,46 +163,26 @@ namespace ET
     public abstract class FinalPercentageModifier : ADataModifier
     {
         public override ModifierType ModifierType { get; } = ModifierType.FinalPercentage;
-
-        protected FinalPercentageModifier(long value) : base(value)
-        {
-        }
     }
     
     public abstract class FinalPercentageMaxModifier : ADataModifier
     {
         public override ModifierType ModifierType { get; } = ModifierType.FinalPercentageMax;
-
-        protected FinalPercentageMaxModifier(long value) : base(value)
-        {
-        }
     }
     
     public abstract class FinalPercentageMinModifier : ADataModifier
     {
         public override ModifierType ModifierType { get; } = ModifierType.FinalPercentageMin;
-
-        protected FinalPercentageMinModifier(long value) : base(value)
-        {
-        }
     }
     #endregion
     
     public abstract class FinalMaxModifier : ADataModifier
     {
         public override ModifierType ModifierType { get; } = ModifierType.FinalMax;
-        
-        protected FinalMaxModifier(long value) : base(value)
-        {
-        }
     }
     
     public abstract class FinalMinModifier : ADataModifier
     {
         public override ModifierType ModifierType { get; } = ModifierType.FinalMin;
-        
-        protected FinalMinModifier(long value) : base(value)
-        {
-        }
     }
 }

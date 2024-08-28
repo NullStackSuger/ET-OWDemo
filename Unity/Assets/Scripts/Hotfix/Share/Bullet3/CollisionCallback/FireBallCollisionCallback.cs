@@ -31,11 +31,10 @@ namespace ET
             LSUnit ownerB = unitB.Owner;
             DataModifierComponent modifierComponentB = ownerB.GetComponent<DataModifierComponent>();
             
-            // 处理战斗公式(Hp = Hp - Atk)
-            // TODO 这里正常是用DataModifierHelper.DefaultBattle, 还没来得及测试
+            // 处理战斗公式
             // Add - [FinalAdd - (Atk) / (1 + FinalPct)] / (1 + Pct)
             long atk = modifierComponentA.Get(DataModifierType.Atk);
-            modifierComponentB.Add(new Default_Hp_ConstantModifier(-atk));
+            DataModifierHelper.DefaultBattle(atk, modifierComponentB, DataModifierType.Hp);
             
             // 这里可以添加一些如距离衰减等FinalXXX操作
             

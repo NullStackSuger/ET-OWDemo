@@ -59,8 +59,13 @@ namespace ET
             buffComponent.Creat(1003);*/
             DataModifierComponent dataModifierComponent = unit.GetComponent<DataModifierComponent>();
             long atk = dataModifierComponent.Get(DataModifierType.Atk);
-            dataModifierComponent.Add(new Default_Hp_ConstantModifier(-atk));
-            Log.Warning($"完成Atk, 当前生命为{dataModifierComponent.Get(DataModifierType.Hp)}");
+            DataModifierHelper.DefaultBattle(atk, dataModifierComponent, DataModifierType.Hp);
+
+            ConstantModifier hpAdd = new Default_Hp_ConstantModifier();
+            FinalConstantModifier hpFinalAdd = new Default_Hp_FinalConstantModifier();
+            dataModifierComponent.Clear(DataModifierType.Hp, ref hpAdd, ref hpFinalAdd);
+            
+            Log.Warning($"完成Atk, 当前生命为{dataModifierComponent.Get(DataModifierType.Hp)}, 当前数目为{dataModifierComponent.NumericDic[DataModifierType.Hp].Count}");
         }
     }
 }
