@@ -19,18 +19,16 @@ public class ETDataModifierGenerator : ISourceGenerator
         {
             return;
         }
-
-        context.AddSource($"L_Result_{receiver.L}.g.cs", "");
         
-        /*foreach (string modifierName in receiver.ModifierTypes)
+        foreach (string modifierName in receiver.ModifierTypes)
         {
             string code = GenerateCode1("ET", modifierName);
             context.AddSource($"ET.{modifierName}Modifier.g.cs", code);
 
             foreach (var pair in receiver.DataModifierTypes)
             {
-                string namespaceName = pair.Key;
-                string dataModifierName = pair.Value;
+                string namespaceName = pair.Item1;
+                string dataModifierName = pair.Item2;
                 
                 code = GenerateCode2(namespaceName, modifierName, dataModifierName);
                 context.AddSource($"{namespaceName}.{dataModifierName}_{modifierName}Modifier.g.cs", code);
@@ -38,7 +36,7 @@ public class ETDataModifierGenerator : ISourceGenerator
                 code = GenerateCode3(namespaceName, modifierName, dataModifierName);
                 context.AddSource($"{namespaceName}.Default_{dataModifierName}_{modifierName}Modifier.g.cs", code);
             }
-        }*/
+        }
     }
 
     /// <summary>
@@ -67,7 +65,7 @@ public class ETDataModifierGenerator : ISourceGenerator
                  {
                      public abstract class {{dataModifierName}}_{{modifierName}}Modifier : {{modifierName}}Modifier
                      {
-                         public override int Key { get; } = DataModifier.{{dataModifierName}};
+                         public override int Key { get; } = ET.DataModifierType.{{dataModifierName}};
                      }
                  }
                  """;
@@ -102,16 +100,16 @@ public class ETDataModifierGenerator : ISourceGenerator
         /// <summary>
         /// key:namespace value:DataModifierType
         /// </summary>
-        public readonly Dictionary<string, string> DataModifierTypes = new();
+        public readonly List<(string, string)> DataModifierTypes = new();
 
         public readonly List<string> ModifierTypes = new();
-
-        public int L = 0;
-
-        public int R = 0;
         
         public void OnVisitSyntaxNode(GeneratorSyntaxContext context)
         {
+            // 这里面有2个坑
+            // 1.不能直接用字典Add, 但可以参考ETSystemGenerator中dic[key] = value
+            // 2.不能在这个函数里嵌套函数
+            
             SyntaxNode node = context.Node;
             
             if (node is not ClassDeclarationSyntax classDeclarationSyntax) return;
@@ -128,7 +126,6 @@ public class ETDataModifierGenerator : ISourceGenerator
             var dataModifierAttrData = classTypeSymbol.GetFirstAttribute(Definition.DataModifierAttribute);
             if (dataModifierAttrData != null)
             {
-                ++L;
                 foreach (var childNode in classTypeSymbol.GetMembers())
                 {
                     if (childNode is not IFieldSymbol fieldSymbol) continue;
@@ -137,7 +134,7 @@ public class ETDataModifierGenerator : ISourceGenerator
 
                     if (name == "Max" || name == "Min") continue;
 
-                    DataModifierTypes.Add(nameSpace, name);
+                    DataModifierTypes.Add((nameSpace, name));
                 }
             }
 
@@ -145,7 +142,6 @@ public class ETDataModifierGenerator : ISourceGenerator
             var modifierAttrData = classTypeSymbol.GetFirstAttribute(Definition.ModifierAttribute);
             if (modifierAttrData != null)
             {
-                ++R;
                 foreach (var childNode in classTypeSymbol.GetMembers())
                 {
                     if (childNode is not IFieldSymbol fieldSymbol) continue;
