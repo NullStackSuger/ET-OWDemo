@@ -11,5 +11,7 @@ namespace ET
         public CollisionObject Collision { get; set; }
 
         public TSVector Offset { get; set; }
+
+        public int FollowUnitType { get; set; }
     }
 }

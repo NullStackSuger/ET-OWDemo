@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ET.Client
 {
     [Event(SceneType.LockStepFrame)]
-    public class LSFSceneInit_AddComponent : AEvent<Scene, LSFSceneInit>
+    public class LSFSceneInit_AddView : AEvent<Scene, LSFSceneInit>
     {
         protected override async ETTask Run(Scene scene, LSFSceneInit a)
         {
@@ -16,6 +16,7 @@ namespace ET.Client
 
             if (!room.IsReplay)
             {
+                // TODO 这里要根据是真人还是玩家, 添加不同的OperaComponent
                 room.AddComponent<LSFOperaComponent>();
             }
         }

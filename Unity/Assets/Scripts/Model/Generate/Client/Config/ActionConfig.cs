@@ -63,8 +63,6 @@ namespace ET
 		public int Id { get; set; }
 		/// <summary>Name</summary>
 		public string Name { get; set; }
-		/// <summary>所属分组</summary>
-		public int Group { get; set; }
 		/// <summary>执行类型</summary>
 		public string RunningType { get; set; }
 

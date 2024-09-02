@@ -39,6 +39,7 @@ namespace ET
             self.Current = 0;
         }
 
+        
         private static void Check(this AIComponent self)
         {
             Fiber fiber = self.Fiber();

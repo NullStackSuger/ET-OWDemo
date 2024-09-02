@@ -41,7 +41,7 @@ namespace ET.Client
             LSUnitComponent unitComponent = room.PredictionWorld.GetComponent<LSUnitComponent>();
             
             string assetsName = $"Assets/Bundles/{bundlePath}";
-            GameObject bundleGameObject = await room.GetComponent<ResourcesLoaderComponent>().LoadAssetAsync<GameObject>(assetsName);
+            GameObject bundleGameObject = await room.GetParent<Scene>().GetComponent<ResourcesLoaderComponent>().LoadAssetAsync<GameObject>(assetsName);
             GameObject prefab = bundleGameObject.Get<GameObject>($"{assetName}");
             
             GameObject unitGo = UnityEngine.Object.Instantiate(prefab, globalComponent.Unit, true);
@@ -59,7 +59,7 @@ namespace ET.Client
             LSUnitComponent unitComponent = room.PredictionWorld.GetComponent<LSUnitComponent>();
             
             string assetsName = $"Assets/Bundles/{bundlePath}";
-            GameObject bundleGameObject = await room.GetComponent<ResourcesLoaderComponent>().LoadAssetAsync<GameObject>(assetsName);
+            GameObject bundleGameObject = await room.GetParent<Scene>().GetComponent<ResourcesLoaderComponent>().LoadAssetAsync<GameObject>(assetsName);
             GameObject prefab = bundleGameObject.Get<GameObject>($"{assetName}");
 
             foreach (long id in unitIds)
@@ -80,7 +80,7 @@ namespace ET.Client
             LSUnitComponent unitComponent = room.PredictionWorld.GetComponent<LSUnitComponent>();
             
             string assetsName = $"Assets/Bundles/{bundlePath}";
-            GameObject bundleGameObject = await room.GetComponent<ResourcesLoaderComponent>().LoadAssetAsync<GameObject>(assetsName);
+            GameObject bundleGameObject = await room.GetParent<Scene>().GetComponent<ResourcesLoaderComponent>().LoadAssetAsync<GameObject>(assetsName);
             GameObject prefab = bundleGameObject.Get<GameObject>($"{assetName}");
             
             GameObject unitGo = UnityEngine.Object.Instantiate(prefab, globalComponent.Unit, true);
@@ -98,7 +98,7 @@ namespace ET.Client
             LSUnitComponent unitComponent = room.PredictionWorld.GetComponent<LSUnitComponent>();
             
             string assetsName = $"Assets/Bundles/{bundlePath}";
-            GameObject bundleGameObject = await room.GetComponent<ResourcesLoaderComponent>().LoadAssetAsync<GameObject>(assetsName);
+            GameObject bundleGameObject = await room.GetParent<Scene>().GetComponent<ResourcesLoaderComponent>().LoadAssetAsync<GameObject>(assetsName);
             GameObject prefab = bundleGameObject.Get<GameObject>($"{assetName}");
 
             foreach (long id in unitIds)

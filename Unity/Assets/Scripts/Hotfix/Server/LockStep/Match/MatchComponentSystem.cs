@@ -12,6 +12,7 @@ namespace ET.Server
             // 防止一个人点2次算2个玩家
             if (self.WaitMatchPlayers.Contains(playerId))
             {
+                Log.Warning($"{playerId}重复匹配");
                 return;
             }
 
@@ -19,7 +20,10 @@ namespace ET.Server
 
             if (self.WaitMatchPlayers.Count < LSFConfig.MatchCount)
             {
-                Log.Info($"等待匹配({self.WaitMatchPlayers.Count}/{LSFConfig.MatchCount})");
+                Log.Warning($"等待匹配({self.WaitMatchPlayers.Count}/{LSFConfig.MatchCount})");
+                RobotManagerComponent robotManagerComponent =
+                        self.Root().GetComponent<RobotManagerComponent>() ?? self.Root().AddComponent<RobotManagerComponent>();
+                await robotManagerComponent.NewRobot($"Robot{self.WaitMatchPlayers.Count}");
                 return;
             }
             

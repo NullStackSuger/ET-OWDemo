@@ -13,7 +13,7 @@ namespace ET.Client
             Room room = root.AddComponentWithId<Room, string>(sceneInstanceId, sceneName);
             
             // 等待表现层订阅的事件完成
-            await EventSystem.Instance.PublishAsync(root, new LSFSceneChange() {Room = room});
+            await EventSystem.Instance.PublishAsync(root, new LSFSceneChange());
             
             root.GetComponent<ClientSenderComponent>().Send(C2Room_ChangeSceneFinish.Create());
             
@@ -37,7 +37,7 @@ namespace ET.Client
             room.Replay = replay;
             room.Init(playerId, replay.UnitInfos, TimeInfo.Instance.ServerFrameTime());
 
-            await EventSystem.Instance.PublishAsync(root, new LSFSceneChange() { Room = room });
+            await EventSystem.Instance.PublishAsync(root, new LSFSceneChange());
 
             room.AddComponent<ReplayUpdateComponent>();
             
@@ -53,7 +53,7 @@ namespace ET.Client
             Room room = root.AddComponent<Room, string>(sceneName);
             
             // 等待表现层订阅的事件完成
-            await EventSystem.Instance.PublishAsync(root, new LSFSceneChange() {Room = room});
+            await EventSystem.Instance.PublishAsync(root, new LSFSceneChange());
             
             room.Init(playerId, message.UnitInfos, message.StartTime, message.Frame);
             

@@ -10,6 +10,7 @@ namespace ET
     public abstract class AAIHandler: HandlerObject
     {
         // 检查是否满足条件
+        /// <returns>0为true</returns>
         public abstract int Check(AIComponent aiComponent, AIConfig aiConfig);
 
         // 协程编写必须可以取消

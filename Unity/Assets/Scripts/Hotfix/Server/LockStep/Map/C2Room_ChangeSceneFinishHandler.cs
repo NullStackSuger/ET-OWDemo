@@ -16,8 +16,11 @@ namespace ET.Server
             Room room = root.GetComponent<Room>();
             
             waitChangeSceneComponent.PlayerIds.Add(message.PlayerId);
-            
-            if (waitChangeSceneComponent.PlayerIds.Count < LSFConfig.MatchCount) return;
+
+            if (waitChangeSceneComponent.PlayerIds.Count < LSFConfig.MatchCount)
+            {
+                return;
+            }
             
             await room.Fiber.Root.GetComponent<TimerComponent>().WaitAsync(1000);
             
@@ -29,7 +32,7 @@ namespace ET.Server
                 lockStepUnitInfo.PlayerId = id;
                 lockStepUnitInfo.Position = new TSVector(30, 0, -10);
                 lockStepUnitInfo.Rotation = TSQuaternion.identity;
-                lockStepUnitInfo.ActionGroup = 6;
+                lockStepUnitInfo.ActionGroup = 3;
                 room2CStart.UnitInfo.Add(lockStepUnitInfo);
             }
             

@@ -3,6 +3,11 @@ using TrueSync;
 
 namespace ET
 {
+    public struct AfterCreatRobot
+    {
+        
+    }
+    
     public struct UnitChangePosition
     {
         public LSUnit Unit;

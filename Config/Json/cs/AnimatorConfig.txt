@@ -1,0 +1,4 @@
+{"dict": [
+[1, {"_t":"AnimatorConfig","_id":1,"Name":"TestAnim","Tag":"None"}],
+[2, {"_t":"AnimatorConfig","_id":2,"Name":"TestAnim1","Tag":"None"}],
+]}

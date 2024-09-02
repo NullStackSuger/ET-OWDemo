@@ -36,7 +36,7 @@ namespace ET.Client
             string path = "D:\\RP.replay";
             if (File.Exists(path))
             {
-                byte[] bytes = File.ReadAllBytes(path);
+                byte[] bytes = await File.ReadAllBytesAsync(path);
                 Replay replay = MemoryPackHelper.Deserialize(typeof(Replay), bytes, 0, bytes.Length) as Replay;
                 LSSceneChangeHelper.SceneChangeToReplay(self.Root(), replay).Coroutine();
                 await ETTask.CompletedTask;

@@ -21,6 +21,7 @@ namespace ET
             self.Collision = co;
             co.UserObject = self;
             self.Offset = info.Position.ToTSVector();
+            self.FollowUnitType = config.FollowUnitType;
          
             LSWorld world = self.IScene as LSWorld;
             B3WorldComponent worldComponent = world.GetComponent<B3WorldComponent>();
@@ -44,11 +45,22 @@ namespace ET
         [LSEntitySystem]
         private static void LSUpdate(this B3CollisionComponent self)
         {
+            // TODO 这里还是有问题 移动 约束 mask
+            
+            if (self.FollowUnitType == 0) return;
+
             self.Collision.GetWorldTransform(out Matrix transform);
             LSUnit unit = self.GetParent<LSUnit>();
 
-            unit.Position = new TSVector(transform.Origin.X, transform.Origin.Y, transform.Origin.Z) - self.Offset;
-            unit.Rotation = new TSQuaternion(transform.Orientation.X, transform.Orientation.Y, transform.Orientation.Z, transform.Orientation.W);
+            if (self.FollowUnitType == -1)
+            {
+                unit.Position = new TSVector(transform.Origin.X, transform.Origin.Y, transform.Origin.Z) - self.Offset;
+                unit.Rotation = new TSQuaternion(transform.Orientation.X, transform.Orientation.Y, transform.Orientation.Z, transform.Orientation.W);
+            }
+            else if (self.FollowUnitType == 1)
+            {
+                self.Collision.WorldTransform = Matrix.Translation(unit.Position.ToBullet());
+            }
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace ET.Client
+﻿//可以引用client代码, 然后在服务器里面启动多个robot
+
+namespace ET.Client
 {
     [Invoke((long)SceneType.Robot)]
     public class FiberInit_Robot: AInvokeHandler<FiberInit, ETTask>
@@ -6,23 +8,27 @@
         public override async ETTask Handle(FiberInit fiberInit)
         {
             Scene root = fiberInit.Fiber.Root;
+            root.SceneType = SceneType.LockStepFrame;
+            
+            root.AddComponent<GlobalComponent>();
             root.AddComponent<MailBoxComponent, MailBoxType>(MailBoxType.UnOrderedMessage);
             root.AddComponent<TimerComponent>();
             root.AddComponent<CoroutineLockComponent>();
             root.AddComponent<ProcessInnerSender>();
-            root.AddComponent<PlayerComponent>();
-            root.AddComponent<CurrentScenesComponent>();
             root.AddComponent<ObjectWait>();
             
-            root.SceneType = SceneType.Demo;
+            root.AddComponent<PlayerComponent>();
+            root.AddComponent<CurrentScenesComponent>();
+            
+            await EventSystem.Instance.PublishAsync(root, new AfterCreatRobot());
 
             await EventSystem.Instance.PublishAsync(root, new AppStartInitFinish());
             
-            await LoginHelper.Login(root, root.Name, "");
+            await LoginHelper.Login(root, root.Name, root.Name);
             
-            await EnterMapHelper.EnterMapAsync(root);
+            await EnterMapHelper.Match(root.Fiber);
             
-            root.AddComponent<AIComponent, int>(1);
+            root.AddComponent<AIComponent, int>(3);
         }
     }
 }

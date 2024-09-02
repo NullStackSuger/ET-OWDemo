@@ -22,10 +22,11 @@ namespace ET
             foreach (var pair in this.GetAll())
             {
                 SortedDictionary<int, ActionConfig> group;
-                if (!this.Groups.TryGetValue(pair.Value.Group, out group))
+                int groupId = pair.Key / 1000;
+                if (!this.Groups.TryGetValue(groupId, out group))
                 {
                     group = new();
-                    this.Groups.Add(pair.Value.Group, group);
+                    this.Groups.Add(groupId, group);
                 }
                 
                 group.Add(pair.Key, pair.Value);
