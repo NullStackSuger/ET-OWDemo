@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using MongoDB.Bson;
 
 namespace ET.Client
 {
@@ -39,12 +41,10 @@ namespace ET.Client
 
                 ++room.PredictionFrame;
 
-                // Update
                 OneFrameInputs inputs = GetInputs(room, room.PredictionFrame);
                 room.Update(inputs);
                 //room.SendHash(room.Frame);
-
-                // Send
+                
                 FrameMessage frameMessage = FrameMessage.Create();
                 frameMessage.Frame = room.PredictionFrame;
                 frameMessage.Input = room.Input;

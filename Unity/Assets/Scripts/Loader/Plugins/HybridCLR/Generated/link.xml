@@ -17,14 +17,20 @@
     <type fullname="MemoryPack.MemoryPackOrderAttribute" preserve="all" />
     <type fullname="MemoryPack.MemoryPackReader" preserve="all" />
     <type fullname="MemoryPack.MemoryPackSerializationException" preserve="all" />
+    <type fullname="MemoryPack.MemoryPackUnionAttribute" preserve="all" />
     <type fullname="MemoryPack.MemoryPackWriter" preserve="all" />
     <type fullname="MemoryPack.MemoryPackableAttribute" preserve="all" />
   </assembly>
   <assembly fullname="MongoDB.Bson">
+    <type fullname="MongoDB.Bson.BsonExtensionMethods" preserve="all" />
+    <type fullname="MongoDB.Bson.IO.JsonWriterSettings" preserve="all" />
     <type fullname="MongoDB.Bson.Serialization.Attributes.BsonDictionaryOptionsAttribute" preserve="all" />
     <type fullname="MongoDB.Bson.Serialization.Attributes.BsonElementAttribute" preserve="all" />
     <type fullname="MongoDB.Bson.Serialization.Attributes.BsonIgnoreAttribute" preserve="all" />
     <type fullname="MongoDB.Bson.Serialization.BsonClassMap" preserve="all" />
+    <type fullname="MongoDB.Bson.Serialization.BsonSerializationArgs" preserve="all" />
+    <type fullname="MongoDB.Bson.Serialization.BsonSerializationContext" preserve="all" />
+    <type fullname="MongoDB.Bson.Serialization.BsonSerializationContext/Builder" preserve="all" />
     <type fullname="MongoDB.Bson.Serialization.BsonSerializer" preserve="all" />
     <type fullname="MongoDB.Bson.Serialization.Conventions.ConventionPack" preserve="all" />
     <type fullname="MongoDB.Bson.Serialization.Conventions.ConventionRegistry" preserve="all" />
@@ -32,10 +38,15 @@
     <type fullname="MongoDB.Bson.Serialization.Conventions.IConventionPack" preserve="all" />
     <type fullname="MongoDB.Bson.Serialization.Conventions.IgnoreExtraElementsConvention" preserve="all" />
     <type fullname="MongoDB.Bson.Serialization.IBsonSerializer" preserve="all" />
+    <type fullname="MongoDB.Bson.Serialization.IBsonSerializer`1" preserve="all" />
     <type fullname="MongoDB.Bson.Serialization.Options.DictionaryRepresentation" preserve="all" />
   </assembly>
   <assembly fullname="System">
     <type fullname="System.CodeDom.Compiler.GeneratedCodeAttribute" preserve="all" />
+    <type fullname="System.Collections.Generic.LinkedListNode`1" preserve="all" />
+    <type fullname="System.Collections.Generic.LinkedList`1" preserve="all" />
+    <type fullname="System.Collections.Generic.LinkedList`1/Enumerator" preserve="all" />
+    <type fullname="System.Collections.Generic.Queue`1" preserve="all" />
     <type fullname="System.Collections.Generic.SortedDictionary`2" preserve="all" />
     <type fullname="System.Collections.Generic.SortedDictionary`2/Enumerator" preserve="all" />
     <type fullname="System.Collections.Generic.SortedDictionary`2/ValueCollection" preserve="all" />
@@ -198,16 +209,20 @@
   </assembly>
   <assembly fullname="Unity.ThirdParty">
     <type fullname="BulletSharp.ActivationState" preserve="all" />
+    <type fullname="BulletSharp.AlignedCollisionObjectArray" preserve="all" />
+    <type fullname="BulletSharp.AllHitsRayResultCallback" preserve="all" />
+    <type fullname="BulletSharp.BoxShape" preserve="all" />
     <type fullname="BulletSharp.BroadphaseInterface" preserve="all" />
+    <type fullname="BulletSharp.BulletHelper" preserve="all" />
+    <type fullname="BulletSharp.CapsuleShape" preserve="all" />
+    <type fullname="BulletSharp.ClosestRayResultCallback" preserve="all" />
     <type fullname="BulletSharp.CollisionConfiguration" preserve="all" />
     <type fullname="BulletSharp.CollisionDispatcher" preserve="all" />
     <type fullname="BulletSharp.CollisionFlags" preserve="all" />
     <type fullname="BulletSharp.CollisionObject" preserve="all" />
-    <type fullname="BulletSharp.CollisionObjectWrapper" preserve="all" />
     <type fullname="BulletSharp.CollisionShape" preserve="all" />
     <type fullname="BulletSharp.CollisionWorld" preserve="all" />
     <type fullname="BulletSharp.ConstraintSolver" preserve="all" />
-    <type fullname="BulletSharp.ContactResultCallback" preserve="all" />
     <type fullname="BulletSharp.ConvexHullShape" preserve="all" />
     <type fullname="BulletSharp.DbvtBroadphase" preserve="all" />
     <type fullname="BulletSharp.DefaultCollisionConfiguration" preserve="all" />
@@ -217,15 +232,15 @@
     <type fullname="BulletSharp.DynamicsWorld" preserve="all" />
     <type fullname="BulletSharp.GhostObject" preserve="all" />
     <type fullname="BulletSharp.GhostPairCallback" preserve="all" />
-    <type fullname="BulletSharp.ManifoldPoint" preserve="all" />
     <type fullname="BulletSharp.Math.Matrix" preserve="all" />
     <type fullname="BulletSharp.Math.Quaternion" preserve="all" />
     <type fullname="BulletSharp.Math.Vector3" preserve="all" />
     <type fullname="BulletSharp.MotionState" preserve="all" />
     <type fullname="BulletSharp.OverlappingPairCache" preserve="all" />
     <type fullname="BulletSharp.OverlappingPairCallback" preserve="all" />
-    <type fullname="BulletSharp.PairCachingGhostObject" preserve="all" />
+    <type fullname="BulletSharp.PersistentManifold" preserve="all" />
     <type fullname="BulletSharp.PolyhedralConvexShape" preserve="all" />
+    <type fullname="BulletSharp.RayResultCallback" preserve="all" />
     <type fullname="BulletSharp.RigidBody" preserve="all" />
     <type fullname="BulletSharp.RigidBodyConstructionInfo" preserve="all" />
     <type fullname="BulletSharp.SphereShape" preserve="all" />
@@ -317,9 +332,11 @@
     <type fullname="System.Collections.Generic.Dictionary`2/ValueCollection" preserve="all" />
     <type fullname="System.Collections.Generic.Dictionary`2/ValueCollection/Enumerator" preserve="all" />
     <type fullname="System.Collections.Generic.IEnumerable`1" preserve="all" />
+    <type fullname="System.Collections.Generic.IEnumerator`1" preserve="all" />
     <type fullname="System.Collections.Generic.KeyValuePair`2" preserve="all" />
     <type fullname="System.Collections.Generic.List`1" preserve="all" />
     <type fullname="System.Collections.Generic.List`1/Enumerator" preserve="all" />
+    <type fullname="System.Collections.IEnumerator" preserve="all" />
     <type fullname="System.Console" preserve="all" />
     <type fullname="System.Diagnostics.DebuggableAttribute" preserve="all" />
     <type fullname="System.Diagnostics.DebuggableAttribute/DebuggingModes" preserve="all" />
@@ -344,6 +361,7 @@
     <type fullname="System.Int64" preserve="all" />
     <type fullname="System.Math" preserve="all" />
     <type fullname="System.Object" preserve="all" />
+    <type fullname="System.Random" preserve="all" />
     <type fullname="System.Reflection.BindingFlags" preserve="all" />
     <type fullname="System.Reflection.DefaultMemberAttribute" preserve="all" />
     <type fullname="System.Reflection.MemberInfo" preserve="all" />
@@ -376,6 +394,8 @@
     <type fullname="System.UInt16" preserve="all" />
     <type fullname="System.UInt32" preserve="all" />
     <type fullname="System.ValueTuple`2" preserve="all" />
+    <type fullname="System.ValueTuple`7" preserve="all" />
+    <type fullname="System.ValueTuple`8" preserve="all" />
     <type fullname="System.ValueType" preserve="all" />
   </assembly>
 </linker>

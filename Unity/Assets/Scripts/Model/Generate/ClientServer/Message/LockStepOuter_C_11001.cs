@@ -237,8 +237,11 @@ namespace ET
             return ObjectPool.Instance.Fetch(typeof(OneFrameInputs), isFromPool) as OneFrameInputs;
         }
 
-        [MongoDB.Bson.Serialization.Attributes.BsonDictionaryOptions(MongoDB.Bson.Serialization.Options.DictionaryRepresentation.ArrayOfArrays)]
         [MemoryPackOrder(1)]
+        public int Frame { get; set; }
+
+        [MongoDB.Bson.Serialization.Attributes.BsonDictionaryOptions(MongoDB.Bson.Serialization.Options.DictionaryRepresentation.ArrayOfArrays)]
+        [MemoryPackOrder(2)]
         public Dictionary<long, LSInput> Inputs { get; set; } = new();
         public override void Dispose()
         {

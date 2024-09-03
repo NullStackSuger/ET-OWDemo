@@ -42,6 +42,8 @@ namespace ET.Server
                 Log.Error($"FrameMessageHandler get frame is null: {message.Frame}, max frame: {frameBuffer.MaxFrame}");
                 return;
             }
+            
+            //Log.Warning($"收到{message.PlayerId}第{message.Frame}帧输入{message.Input.V}");
             oneFrameInputs.Inputs[message.PlayerId] = message.Input;
             
             await ETTask.CompletedTask;

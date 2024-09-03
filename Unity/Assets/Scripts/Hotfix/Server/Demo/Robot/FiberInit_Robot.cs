@@ -10,7 +10,6 @@ namespace ET.Client
             Scene root = fiberInit.Fiber.Root;
             root.SceneType = SceneType.LockStepFrame;
             
-            root.AddComponent<GlobalComponent>();
             root.AddComponent<MailBoxComponent, MailBoxType>(MailBoxType.UnOrderedMessage);
             root.AddComponent<TimerComponent>();
             root.AddComponent<CoroutineLockComponent>();
@@ -27,8 +26,9 @@ namespace ET.Client
             await LoginHelper.Login(root, root.Name, root.Name);
             
             await EnterMapHelper.Match(root.Fiber);
-            
-            root.AddComponent<AIComponent, int>(3);
+
+            //LSUnit unit = LSFUnitHelper.GetMyUnit(root);
+            //unit.AddChild<ActionComponent, int>(4);
         }
     }
 }

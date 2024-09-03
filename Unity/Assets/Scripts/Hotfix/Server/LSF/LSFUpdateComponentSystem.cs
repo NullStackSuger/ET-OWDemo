@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BulletSharp;
 using BulletSharp.Math;
+using MongoDB.Bson;
 
 namespace ET.Server
 {
@@ -31,6 +32,7 @@ namespace ET.Server
             // 广播输入
             OneFrameInputs sendInputs = OneFrameInputs.Create();
             inputs.CopyTo(sendInputs);
+            sendInputs.Frame = room.AuthorityFrame;
             room.BroadCast(sendInputs);
 
             // 处理输入
@@ -45,7 +47,7 @@ namespace ET.Server
             frameBuffer.MoveForward(frame);
 
             // 输入数 == 匹配玩家数 正常
-            if (inputs.Inputs.Count == 1) return inputs;
+            if (inputs.Inputs.Count == LSFConfig.MatchCount) return inputs;
 
             // 输入数 != 匹配玩家数 缺的用上帧的补上
             OneFrameInputs lastInputs = null;

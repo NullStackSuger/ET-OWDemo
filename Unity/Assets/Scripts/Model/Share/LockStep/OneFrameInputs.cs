@@ -16,6 +16,11 @@ namespace ET
             foreach (var kv in this.Inputs)
             {
                 to.Inputs.Add(kv.Key, kv.Value);
+
+                /*if (this.Inputs[kv.Key] != to.Inputs[kv.Key])
+                {
+                    Log.Warning($"Clone不一致");
+                }*/
             }
         }
 
