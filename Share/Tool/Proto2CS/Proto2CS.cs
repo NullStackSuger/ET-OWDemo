@@ -68,6 +68,7 @@ namespace ET
 
             StringBuilder sb = new();
             sb.Append("using MemoryPack;\n");
+            sb.Append("using TrueSync;\n");
             sb.Append("using System.Collections.Generic;\n\n");
             sb.Append($"namespace ET\n");
             sb.Append("{\n");
