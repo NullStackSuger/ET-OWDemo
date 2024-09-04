@@ -18,15 +18,20 @@ namespace ET.Client
                 Log.Warning($"{entity.Name}未初始化");
                 return;
             }
-            
-            ++room.AuthorityFrame;
 
             // 这里防止因为些奇怪的操作导致客户端和服务端包对不上
             // 我这里好像因为加了个人机, 电脑卡了, 导致服务端比客户端快了1帧
             while (room.AuthorityFrame < input.Frame)
             {
-                Log.Warning($"当前客户端{entity.Name}的权威帧{room.AuthorityFrame}<服务端发包的帧数{input.Frame}");
                 ++room.AuthorityFrame;
+            }
+
+            // TODO KCP为什么发包顺序不对?
+            // 防止因为发包的顺序不对
+            if (input.Frame < room.AuthorityFrame)
+            {
+                OneFrameInputs authorityFrame = frameBuffer.FrameInputs(room.AuthorityFrame);
+                input.CopyTo(authorityFrame);
             }
             
             // 服务端返回的消息比预测的还早
@@ -43,6 +48,7 @@ namespace ET.Client
                 // 对比失败
                 if (input != authorityFrame)
                 {
+                    // 每次print回滚会打印2次是正常的, 因为我们没有实际执行回滚代码
                     Log.Warning($"回滚 {entity.Name}:{room.AuthorityFrame}\r\n" +
                         $"Client: {authorityFrame.Inputs.Values.ToArray().ToJson()}\r\n" +
                         $"ClientLast: {frameBuffer.FrameInputs(room.AuthorityFrame - 1).Inputs.Values.ToArray().ToJson()}\r\n" +
