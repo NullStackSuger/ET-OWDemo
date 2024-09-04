@@ -15,7 +15,6 @@ namespace ET
         public static LSUnit Creat(this LSUnitComponent self)
         {
             LSUnit unit = self.AddChild<LSUnit>();
-            
             return unit;
         }
 

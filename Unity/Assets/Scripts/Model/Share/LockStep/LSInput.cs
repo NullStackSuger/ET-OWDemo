@@ -46,5 +46,11 @@ namespace ET
         {
             return !(a == b);
         }
+
+        public void Clear()
+        {
+            // V不清理, 因为移动需要连续, 其他的不用
+            this.Button = 0;
+        }
     }
 }

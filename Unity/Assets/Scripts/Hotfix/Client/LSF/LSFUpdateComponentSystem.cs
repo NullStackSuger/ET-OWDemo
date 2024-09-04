@@ -50,6 +50,8 @@ namespace ET.Client
                 frameMessage.Input = room.Input;
                 root.GetComponent<ClientSenderComponent>().Send(frameMessage);
 
+                room.Input.Clear();
+
                 // 单次update时间>5ms 就留到下次update再做
                 // 避免单次update时间太长 卡住
                 long now2 = TimeInfo.Instance.ServerNow();

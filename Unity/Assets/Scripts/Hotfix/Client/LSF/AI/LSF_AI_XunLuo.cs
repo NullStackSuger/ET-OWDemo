@@ -8,15 +8,12 @@ namespace ET.Client
     {
         public override int Check(AIComponent aiComponent, AIConfig aiConfig)
         {
-            long sec = TimeInfo.Instance.ClientNow() / 1000 % 15;
-            if (sec < 10)
+            long sec = TimeInfo.Instance.ClientNow() / 1000 % 30;
+            if (sec < 20)
             {
                 return 0;
             }
             
-            // 退出时要记得把输入复原
-            Room room = aiComponent.Root().GetComponent<Room>();
-            room.Input.V = TSVector2.zero;
             return 1;
         }
 
@@ -33,20 +30,24 @@ namespace ET.Client
                 switch (random.Next(0, 4))
                 {
                     case 0 :
-                        room.Input.V = TSVector2.up;
+                        room.Input.V  = TSVector2.up;
                         break;
                     case 1:
-                        room.Input.V = TSVector2.down;
+                        room.Input.V  = TSVector2.down;
                         break;
                     case 2:
-                        room.Input.V = TSVector2.left;
+                        room.Input.V  = TSVector2.left;
                         break;
                     case 3:
                         room.Input.V = TSVector2.right;
                         break;
                 }
-
+                
                 await timerComponent.WaitAsync(1000, cancellationToken);
+                
+                // TODO 这里的时间不能和Check里面正好, 要不会WaitAsync没执行完就报错了
+                room.Input.V = TSVector2.zero;
+                await timerComponent.WaitAsync(2000, cancellationToken);
             }
         }
     }

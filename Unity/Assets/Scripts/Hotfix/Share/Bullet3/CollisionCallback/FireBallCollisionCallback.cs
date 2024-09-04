@@ -1,3 +1,4 @@
+using System;
 using BulletSharp;
 
 namespace ET
@@ -22,13 +23,6 @@ namespace ET
                 return;
             }
             LSUnit unitB = collisionB.GetParent<LSUnit>();
-            if (unitB == null)
-            {
-                // TODO 按理说这里可以不用检查空, 但是确实会报空. 还没找到原因
-                //Log.Warning($"{collisionB.Id} {collisionB.InstanceId}");
-                castComponentA.Remove(unitA);
-                return;
-            }
             string tagB = unitB.Tag;
             if (tagA == tagB && (tagB == TeamTag.TeamA || tagB == TeamTag.TeamB))
             {

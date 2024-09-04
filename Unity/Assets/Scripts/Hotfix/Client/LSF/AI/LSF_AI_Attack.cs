@@ -7,14 +7,12 @@ namespace ET.Client
     {
         public override int Check(AIComponent aiComponent, AIConfig aiConfig)
         {
-            long sec = TimeInfo.Instance.ClientNow() / 1000 % 15;
-            if (sec >= 10)
+            long sec = TimeInfo.Instance.ClientNow() / 1000 % 30;
+            if (sec >= 20)
             {
                 return 0;
             }
             
-            Room room = aiComponent.Root().GetComponent<Room>();
-            room.Input.Button = 0;
             return 1;
         }
 
@@ -23,7 +21,15 @@ namespace ET.Client
             await ETTask.CompletedTask;
 
             Room room = aiComponent.Root().GetComponent<Room>();
-            //room.Input.Button = 113;
+            TimerComponent timerComponent = aiComponent.Root().GetComponent<TimerComponent>();
+            while (!cancellationToken.IsCancel())
+            {
+                room.Input.Button = 113;
+                
+                await timerComponent.WaitAsync(5000, cancellationToken);
+            }
+
+            room.Input.Button = 0;
         }
     }
 }
