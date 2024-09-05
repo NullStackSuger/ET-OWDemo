@@ -254,7 +254,6 @@ namespace ET
     [FriendOf(typeof(DataModifierComponent))]
     public static class DataModifierHelper
     {
-        //TODO 这里写的比较乱 以后要改
         /// <summary>
         /// 处理默认战斗相关
         /// </summary>

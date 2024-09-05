@@ -10,6 +10,7 @@
         "Unity.Model",
         "Unity.Hotfix",
         "Unity.ModelView",
+        "Unity.InputSystem",
         "YooAsset"
     ],
     "includePlatforms": [],

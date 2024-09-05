@@ -57,8 +57,7 @@ namespace ET
                 EventSystem.Instance.Publish(this.IScene as LSWorld, new UnitChangeRotation() { Unit = this, OldRotation = oldRot, NewRotation = value });
             }
         }
-
-        //TODO 这里不确定对不对
+        
         [MemoryPackIgnore]
         [BsonIgnore]
         public EntityRef<LSUnit> Owner { get; set; }

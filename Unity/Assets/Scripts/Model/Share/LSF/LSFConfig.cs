@@ -2,7 +2,7 @@ namespace ET
 {
     public static class LSFConfig
     {
-        public const int MatchCount = 2;
+        public const int MatchCount = 1;
         
         public const int MaxTickRate = 66;
         public const int NormalTickRate = 50;

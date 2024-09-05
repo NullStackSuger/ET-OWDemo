@@ -3,6 +3,7 @@
     "rootNamespace": "ET",
     "references": [
         "Unity.ThirdParty",
+        "Unity.InputSystem",
         "Unity.Core",
         "HybridCLR.Runtime",
         "MemoryPack",

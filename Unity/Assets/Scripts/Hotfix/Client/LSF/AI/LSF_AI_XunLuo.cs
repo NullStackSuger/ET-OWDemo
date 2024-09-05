@@ -45,7 +45,7 @@ namespace ET.Client
                 
                 await timerComponent.WaitAsync(1000, cancellationToken);
                 
-                // TODO 这里的时间不能和Check里面正好, 要不会WaitAsync没执行完就报错了
+                // 这里的时间不能和Check里面正好, 要不会WaitAsync没执行完就报错了
                 room.Input.V = TSVector2.zero;
                 await timerComponent.WaitAsync(2000, cancellationToken);
             }

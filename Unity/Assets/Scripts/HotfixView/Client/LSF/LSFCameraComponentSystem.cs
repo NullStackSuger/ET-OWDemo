@@ -13,8 +13,8 @@ namespace ET.Client
         {
             Room room = self.GetParent<Room>();
             LSUnit unit = LSFUnitHelper.GetMyUnit(room.Root());
-            //LSFUnitView unitView = room.GetComponent<LSFUnitViewComponent>().GetChild<LSFUnitView>(unit.Id);
-            LSFUnitView unitView = room.GetComponent<LSFUnitViewComponent>().Children.First().Value as LSFUnitView;
+            LSFUnitView unitView = room.GetComponent<LSFUnitViewComponent>().GetChild<LSFUnitView>(unit.Id);
+            //LSFUnitView unitView = room.GetComponent<LSFUnitViewComponent>().Children.First().Value as LSFUnitView;
 
             self.Camera = Camera.main;
             self.LookAt = unitView.Transform;
