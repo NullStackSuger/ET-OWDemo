@@ -100,7 +100,7 @@ namespace ET.Client
                 unit.AddComponent<LSFInputComponent>();
                 unit.AddComponent<B3CollisionComponent, int>(5);
                 DataModifierComponent dataModifierComponent = unit.AddComponent<DataModifierComponent>();
-                dataModifierComponent.Add(new Default_Speed_ConstantModifier() { Value = 1 });
+                dataModifierComponent.Add(new Default_Speed_ConstantModifier() { Value = 100 });
                 dataModifierComponent.Add(new Default_Hp_FinalMaxModifier() { Value = 100 });
                 dataModifierComponent.Add(new Default_Hp_FinalMinModifier() { Value = 0 });
                 dataModifierComponent.Add(new Default_Hp_ConstantModifier() { Value = 10 });
@@ -127,7 +127,7 @@ namespace ET.Client
                     unit.AddComponent<LSFInputComponent>();
                     unit.AddComponent<B3CollisionComponent, int>(5);
                     DataModifierComponent dataModifierComponent = unit.AddComponent<DataModifierComponent>();
-                    dataModifierComponent.Add(new Default_Speed_ConstantModifier() { Value = 1 });
+                    dataModifierComponent.Add(new Default_Speed_ConstantModifier() { Value = 100 });
                     dataModifierComponent.Add(new Default_Hp_FinalMaxModifier() { Value = 100 });
                     dataModifierComponent.Add(new Default_Hp_FinalMinModifier() { Value = 0 });
                     dataModifierComponent.Add(new Default_Hp_ConstantModifier() { Value = 10 });

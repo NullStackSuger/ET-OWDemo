@@ -16,5 +16,10 @@ namespace ET
         public List<(CollisionObject, CollisionObject)> NowCollisionInfos = new();
         // 上一帧 所有有回调的刚体的接触物理列表
         public List<(CollisionObject, CollisionObject)> LastCollisionInfos = new();
+
+        public static implicit operator CollisionWorld(B3WorldComponent worldComponent)
+        {
+            return worldComponent.World;
+        }
     }
 }

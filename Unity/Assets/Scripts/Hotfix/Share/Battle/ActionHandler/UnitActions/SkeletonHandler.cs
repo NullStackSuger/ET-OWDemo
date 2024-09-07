@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using BulletSharp;
 using BulletSharp.Math;
@@ -11,9 +12,10 @@ namespace ET
     {
         public override bool Check(ActionComponent actionComponent, ActionConfig config)
         {
-            LSUnit unit = actionComponent.GetParent<LSUnit>();
+            /*LSUnit unit = actionComponent.GetParent<LSUnit>();
             LSInput input = unit.GetComponent<LSFInputComponent>().Input;
-            return input.V != TSVector2.zero || input.Button != 0;
+            return input.V != TSVector2.zero || input.Button != 0;*/
+            return true;
         }
 
         public override void Update(ActionComponent actionComponent, ActionConfig config)
@@ -27,22 +29,25 @@ namespace ET
 
         private static void MoveHandler(LSInput input, LSUnit unit)
         {
+            RigidBody body = unit.GetComponent<B3CollisionComponent>().Collision as RigidBody;
+            
             TSVector2 v2 = input.V * 6 * 50 / 1000;
-            if (v2.LengthSquared() < 0.0001f)
+            if (TSMath.Abs(v2.x) < 0.1f && TSMath.Abs(v2.y) < 0.1f)
             {
+                body.LinearVelocity = Vector3.Zero;
                 return;
             }
             
             DataModifierComponent dataModifierComponent = unit.GetComponent<DataModifierComponent>();
 
-            TSVector oldPos = unit.Position;
+            /*TSVector oldPos = unit.Position;
             unit.Position += new TSVector(v2.x, 0, v2.y) * dataModifierComponent.Get(DataModifierType.Speed);
             unit.Forward = unit.Position - oldPos;
-
-            /*RigidBody body = unit.GetComponent<B3CollisionComponent>().Collision as RigidBody;
-            body.ApplyImpulse(new Vector3((float)v2.x, (float)unit.Position.y, (float)v2.y), body.CenterOfMassPosition);
-
             unit.Forward = new TSVector(v2.x, 0, v2.y);*/
+            
+            body.LinearVelocity = new Vector3((float)v2.x, (float)unit.Position.y, (float)v2.y) * dataModifierComponent.Get(DataModifierType.Speed);
+            //body.LinearVelocity = Vector3.Zero;
+            //body.ApplyCentralForce(new Vector3((float)v2.x, (float)unit.Position.y, (float)v2.y) * dataModifierComponent.Get(DataModifierType.Speed));
         }
 
         private static void CastHandler(LSInput input, LSUnit unit)

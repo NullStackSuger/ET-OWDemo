@@ -12,6 +12,9 @@ namespace ET
 
         public TSVector Offset { get; set; }
 
-        public int FollowUnitType { get; set; }
+        public static implicit operator CollisionObject(B3CollisionComponent collisionComponent)
+        {
+            return collisionComponent.Collision;
+        }
     }
 }

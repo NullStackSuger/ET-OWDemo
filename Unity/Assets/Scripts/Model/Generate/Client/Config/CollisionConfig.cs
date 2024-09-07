@@ -63,8 +63,10 @@ namespace ET
 		public int Id { get; set; }
 		/// <summary>IsTrigger</summary>
 		public int IsTrigger { get; set; }
-		/// <summary>跟随Unit类型</summary>
-		public int FollowUnitType { get; set; }
+		/// <summary>逆转张量</summary>
+		public string InvInertiaDiagLocal { get; set; }
+		/// <summary>阻尼 * 100</summary>
+		public int Damping { get; set; }
 		/// <summary>Callback</summary>
 		public string Callback { get; set; }
 

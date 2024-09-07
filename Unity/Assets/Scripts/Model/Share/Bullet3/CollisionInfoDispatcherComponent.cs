@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using BulletSharp;
@@ -6,10 +7,11 @@ using BulletSharp.Math;
 namespace ET
 {
     [Code]
+    [FriendOfAttribute(typeof(ET.B3WorldComponent))]
     public class CollisionInfoDispatcherComponent : Singleton<CollisionInfoDispatcherComponent>, ISingletonAwake
     {
         public readonly Dictionary<int, CollisionInfo> Infos = new();
-        
+
         public void Awake()
         {
             string path = $"D:\\ColliderInfos.bytes";
@@ -23,7 +25,7 @@ namespace ET
                 this.Infos.Add(info.Id, info);
             }
         }
-        
+
         public CollisionObject Clone(int configId)
         {
             CollisionConfig config = CollisionConfigCategory.Instance.Get(configId);
@@ -78,19 +80,26 @@ namespace ET
                     body.CollisionFlags |= CollisionFlags.KinematicObject;
                     body.ActivationState = ActivationState.DisableDeactivation;
                 }
-
-                /*// 设置旋转约束
-                // TODO 这个存在时角色会被弹飞(似乎是以000为原点了, 被锁到000了), 同时无法移动
-                // 暂时只有锁Y
-                if (config.Constraint == "Y")
+                
+                // 设置旋转约束(逆惯性张量)
+                switch (config.InvInertiaDiagLocal)
                 {
-                    /*Matrix rotateZ = Matrix.Identity;
-                    rotateZ.Basis *= Matrix.RotationAxis(Vector3.UnitX, (float)Math.PI * 0.25f);#1#
-                    Generic6DofConstraint constraint = new Generic6DofConstraint(body, Matrix.Identity, true);
-                    constraint.AngularLowerLimit = Vector3.UnitX;
-                    constraint.AngularUpperLimit = -Vector3.UnitX;
-                    worldComponent.World.AddConstraint(constraint);
-                }*/
+                    case "X":
+                        body.InvInertiaDiagLocal = new Vector3(1, 0, 0);
+                        break;
+                    case "Y":
+                        body.InvInertiaDiagLocal = new Vector3(0, 1, 0);
+                        break;
+                    case "Z":
+                        body.InvInertiaDiagLocal = new Vector3(0, 0, 1);
+                        break;
+                }
+                
+                // 设置阻尼
+                if (config.Damping > 0)
+                {
+                    body.SetDamping(config.Damping * 0.01f, 0);
+                }
 
                 co = body;
             }

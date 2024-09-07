@@ -1,4 +1,4 @@
 {"dict": [
-[1, {"_t":"CollisionConfig","_id":1,"IsTrigger":0,"FollowUnitType":-1,"Callback":"FireBallCollisionCallback"}],
-[5, {"_t":"CollisionConfig","_id":5,"IsTrigger":0,"FollowUnitType":1,"Callback":"SkeletonCollisionCallback"}],
+[1, {"_t":"CollisionConfig","_id":1,"IsTrigger":0,"InvInertiaDiagLocal":"None","Damping":0,"Callback":"FireBallCollisionCallback"}],
+[5, {"_t":"CollisionConfig","_id":5,"IsTrigger":0,"InvInertiaDiagLocal":"Y","Damping":30,"Callback":"SkeletonCollisionCallback"}],
 ]}
