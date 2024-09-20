@@ -2,9 +2,9 @@ namespace ET.Client
 {
     public class AnimatorHandlerAttribute : BaseAttribute
     {
-        public AnimatorType Type;
+        public string Type;
 
-        public AnimatorHandlerAttribute(AnimatorType type)
+        public AnimatorHandlerAttribute(string type)
         {
             this.Type = type;
         }

@@ -9,22 +9,26 @@ namespace ET.Client
     public static partial class LSFUnitViewSystem
     {
         [EntitySystem]
-        private static void Awake(this LSFUnitView self, AnimatorType type, GameObject obj, LSUnit unit)
+        private static void Awake(this LSFUnitView self, string type, GameObject obj, LSUnit unit)
         {
             obj.transform.position = unit.Position.ToVector();
-            obj.transform.rotation = unit.Rotation.ToQuaternion();
+            obj.transform.rotation = Quaternion.Euler(0, (float)unit.Rotation, 0);
             
             self.GameObject = obj;
             self.Transform = obj.transform;
             self.Unit = unit;
-            self.AddComponent<LSFAnimatorComponent, AnimatorType>(type);
+
+            if (obj.TryGetComponent<Animator>(out Animator animator))
+            {
+                self.AddComponent<LSFAnimatorComponent, string>(type);
+            }
         }
         
         [EntitySystem]
         private static void Awake(this LSFUnitView self, GameObject obj, LSUnit unit)
         {
             obj.transform.position = unit.Position.ToVector();
-            obj.transform.rotation = unit.Rotation.ToQuaternion();
+            obj.transform.rotation = Quaternion.Euler(0, (float)unit.Rotation, 0);
             
             self.GameObject = obj;
             self.Transform = obj.transform;
@@ -49,22 +53,19 @@ namespace ET.Client
             }
             
             Vector3 position = unit.Position.ToVector();
-            Quaternion rotation = unit.Rotation.ToQuaternion();
 
-            if (position != self.Transform.position /*因为转向必须移动, 这里不用判断旋转*/)
+            if (position != self.Position)
             {
                 float distance = (position - self.Position).magnitude;
                 self.TotalTime = distance / LSFConfig.Speed;
                 self.Time = 0;
                 
                 self.Position = position;
-                self.Rotation = rotation;
             }
-
+            
             self.Time += Time.deltaTime;
-            // 会看见权威Unit来回闪是因为KCP丢包导致下一个先到了 改变位置, 而因为重发机制 又把当前包重发 把Unit拉回来了 下第2个包没丢导致位置跨度比较大
             self.Transform.position = Vector3.Lerp(self.Transform.position, self.Position, self.Time / self.TotalTime);
-            self.Transform.rotation = Quaternion.Lerp(self.Transform.rotation, self.Rotation, self.Time / 1f);
+            self.Transform.rotation = Quaternion.Lerp(self.Transform.rotation, Quaternion.Euler(0, (float)unit.Rotation, 0), self.Time / 0.51f);
         }
 
         [LSEntitySystem]
@@ -72,7 +73,7 @@ namespace ET.Client
         {
             LSUnit unit = self.Unit;
             self.Transform.position = unit.Position.ToVector();
-            self.Transform.rotation = unit.Rotation.ToQuaternion();
+            self.Transform.rotation =  Quaternion.Euler(0, (float)unit.Rotation, 0);
             self.Time = 0;
             self.TotalTime = 0;
         }

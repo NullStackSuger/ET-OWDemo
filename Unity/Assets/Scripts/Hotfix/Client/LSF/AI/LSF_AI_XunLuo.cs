@@ -22,7 +22,7 @@ namespace ET.Client
         {
             await ETTask.CompletedTask;
             
-            Room room = aiComponent.Root().GetComponent<Room>();
+            /*Room room = aiComponent.Root().GetComponent<Room>();
             TimerComponent timerComponent = aiComponent.Root().GetComponent<TimerComponent>();
             Random random = new();
             while (!cancellationToken.IsCancel())
@@ -48,7 +48,7 @@ namespace ET.Client
                 // 这里的时间不能和Check里面正好, 要不会WaitAsync没执行完就报错了
                 room.Input.V = TSVector2.zero;
                 await timerComponent.WaitAsync(2000, cancellationToken);
-            }
+            }*/
         }
     }
 }

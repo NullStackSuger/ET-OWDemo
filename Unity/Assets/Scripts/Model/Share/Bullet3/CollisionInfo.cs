@@ -13,6 +13,7 @@ namespace ET
     [MemoryPackUnion(3, typeof(SphereInfo))]
     [MemoryPackUnion(4, typeof(CapsuleInfo))]
     [MemoryPackUnion(5, typeof(RayTestInfo))]
+    [MemoryPackUnion(6, typeof(CylinderInfo))]
     public abstract partial class CollisionInfo : Object
     {
         public int Id { get; set; }
@@ -55,7 +56,7 @@ namespace ET
         {
             this.Tag = "Collision_Cube";
         }
-        public Vector3 Size { get; set; }
+        public Vector3 HalfSize { get; set; }
     }
     
     [MemoryPackable]
@@ -90,5 +91,17 @@ namespace ET
 
         public Vector3 StartPos { get; set; }
         public Vector3 EndPos { get; set; }
+    }
+    
+    [MemoryPackable]
+    public partial class CylinderInfo : CollisionInfo
+    {
+        public CylinderInfo()
+        {
+            this.Tag = "Collision_Cylinder";
+        }
+
+        public float R { get; set; }
+        public float Height { get; set; }
     }
 }

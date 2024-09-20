@@ -20,12 +20,11 @@ namespace ET
             var BroadPhase = new DbvtBroadphase();
             self.World = new DiscreteDynamicsWorld(Dispatcher, BroadPhase, null, CollisionConf);
             self.World.Broadphase.OverlappingPairCache.SetInternalGhostPairCallback(new GhostPairCallback());
-            self.World.Gravity = new Vector3(0, 0, 0);
+            self.World.Gravity = new Vector3(0, -100, 0);
 
             LSWorld world = self.GetParent<LSWorld>();
             Room room = world.GetParent<Room>();
-
-            self.AddTrigger(new SphereShape(5), Matrix.Translation(40, 0, 0), new TriggerTestCollisionCallBack());
+            
             CreatSceneRb(self, room.Name).Coroutine();
 
             async ETTask CreatSceneRb(B3WorldComponent self, string name)
@@ -56,7 +55,7 @@ namespace ET
         {
             LSWorld world = self.GetParent<LSWorld>();
             Room room = world.GetParent<Room>();
-
+            
             // 模拟物理
             self.World.StepSimulation(1.0f / room.FixedTimeCounter.Interval);
 
@@ -113,7 +112,7 @@ namespace ET
                     CollisionObject co = self.World.CollisionObjectArray[i];
                     if (co == null) continue;
                     if (!self.Callbacks.TryGetValue(co, out var callback)) continue;
-                    callback.CollisionTestStart();
+                    callback.CollisionTestStart(co);
                 }
                 
                 // 取Now差集是Enter
@@ -153,7 +152,7 @@ namespace ET
                     CollisionObject co = self.World.CollisionObjectArray[i];
                     if (co == null) continue;
                     if (!self.Callbacks.TryGetValue(co, out var callback)) continue;
-                    callback.CollisionTestFinish();
+                    callback.CollisionTestFinish(co);
                 }
             }
         }
@@ -186,6 +185,13 @@ namespace ET
             co = callback.CollisionObject;
             return callback.HasHit;
         }
+        public static bool RayTestFirst(this B3WorldComponent self, Vector3 from, Vector3 to, out CollisionObject co)
+        {
+            ClosestRayResultCallback callback = new ClosestRayResultCallback(ref from, ref to);
+            self.World.RayTest(from, to, callback);
+            co = callback.CollisionObject;
+            return callback.HasHit;
+        }
         /// <summary>
         /// 获取所有命中的目标
         /// </summary>
@@ -194,6 +200,13 @@ namespace ET
             RayTestInfo info = CollisionInfoDispatcherComponent.Instance.Infos[collisionInfoId] as RayTestInfo;
             Vector3 from = info.StartPos;
             Vector3 to = info.EndPos;
+            AllHitsRayResultCallback callback = new AllHitsRayResultCallback(from, to);
+            self.World.RayTest(from, to, callback);
+            cos = callback.CollisionObjects;
+            return callback.HasHit;
+        }
+        public static bool RayTestAll(this B3WorldComponent self, Vector3 from, Vector3 to, out List<CollisionObject> cos)
+        {
             AllHitsRayResultCallback callback = new AllHitsRayResultCallback(from, to);
             self.World.RayTest(from, to, callback);
             cos = callback.CollisionObjects;

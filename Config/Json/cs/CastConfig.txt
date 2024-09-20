@@ -1,3 +1,13 @@
 {"dict": [
-[1001, {"_t":"CastConfig","_id":1001,"X":0,"Y":0.75,"Z":1,"ActionGroup":1,"RigidBody":1}],
+[1001, {"_t":"CastConfig","_id":1001,"Name":"FireBall","X":0,"Y":1,"Z":1,"Tag":"","ActionGroup":1,"RigidBody":1}],
+[1002, {"_t":"CastConfig","_id":1002,"Name":"HpStick","X":0,"Y":0,"Z":0,"Tag":"","ActionGroup":4,"RigidBody":6}],
+[1003, {"_t":"CastConfig","_id":1003,"Name":"Grenade","X":0,"Y":1,"Z":1,"Tag":"","ActionGroup":5,"RigidBody":7}],
+[1004, {"_t":"CastConfig","_id":1004,"Name":"EMP","X":0,"Y":0,"Z":0,"Tag":"","ActionGroup":0,"RigidBody":8}],
+[1005, {"_t":"CastConfig","_id":1005,"Name":"Portal","X":0,"Y":0,"Z":1,"Tag":"","ActionGroup":0,"RigidBody":9}],
+[1006, {"_t":"CastConfig","_id":1006,"Name":"Portal","X":0,"Y":0,"Z":5,"Tag":"","ActionGroup":0,"RigidBody":9}],
+[1007, {"_t":"CastConfig","_id":1007,"Name":"Fort","X":0,"Y":0,"Z":1.5,"Tag":"Player","ActionGroup":8,"RigidBody":10}],
+[1008, {"_t":"CastConfig","_id":1008,"Name":"FortBullet","X":0,"Y":"1.1","Z":"1.2","Tag":"","ActionGroup":9,"RigidBody":11}],
+[1009, {"_t":"CastConfig","_id":1009,"Name":"Shield","X":0,"Y":1,"Z":1,"Tag":"Shield","ActionGroup":10,"RigidBody":12}],
+[1010, {"_t":"CastConfig","_id":1010,"Name":"Bounce","X":0,"Y":1,"Z":1,"Tag":"","ActionGroup":0,"RigidBody":13}],
+[1011, {"_t":"CastConfig","_id":1011,"Name":"Armageddon","X":0,"Y":0,"Z":0,"Tag":"CastPreview","ActionGroup":11,"RigidBody":0}],
 ]}

@@ -18,7 +18,7 @@ namespace ET.Client
             
         }
 
-        public static async ETTask InitPlayerAsync(this LSFUnitViewComponent self, string bundlePath, string assetName, AnimatorType type)
+        public static async ETTask InitPlayerAsync(this LSFUnitViewComponent self, string bundlePath, string assetName, string type)
         {
             Room room = self.GetParent<Room>();
 
@@ -33,7 +33,7 @@ namespace ET.Client
             await self.Add(room.PlayerIds, bundlePath, assetName);
         }
 
-        public static async ETTask<LSFUnitView> Add(this LSFUnitViewComponent self, long unitId, string bundlePath, string assetName, AnimatorType type)
+        public static async ETTask<LSFUnitView> Add(this LSFUnitViewComponent self, long unitId, string bundlePath, string assetName, string type)
         {
             Scene root = self.Root();
             GlobalComponent globalComponent = root.GetComponent<GlobalComponent>();
@@ -48,10 +48,10 @@ namespace ET.Client
             LSUnit unit = unitComponent.GetChild<LSUnit>(unitId);
             unitGo.transform.position = unit.Position.ToVector();
 
-            return self.AddChildWithId<LSFUnitView, AnimatorType, GameObject, LSUnit>(unit.Id, type, unitGo, unit);
+            return self.AddChildWithId<LSFUnitView, string, GameObject, LSUnit>(unit.Id, type, unitGo, unit);
         }
 
-        public static async ETTask Add(this LSFUnitViewComponent self, List<long> unitIds, string bundlePath, string assetName, AnimatorType type)
+        public static async ETTask Add(this LSFUnitViewComponent self, List<long> unitIds, string bundlePath, string assetName, string type)
         {
             Scene root = self.Root();
             GlobalComponent globalComponent = root.GetComponent<GlobalComponent>();
@@ -68,7 +68,7 @@ namespace ET.Client
                 LSUnit unit = unitComponent.GetChild<LSUnit>(id);
                 unitGo.transform.position = unit.Position.ToVector();
                 
-                self.AddChildWithId<LSFUnitView, AnimatorType, GameObject, LSUnit>(unit.Id, type, unitGo, unit);
+                self.AddChildWithId<LSFUnitView, string, GameObject, LSUnit>(unit.Id, type, unitGo, unit);
             }
         }
 

@@ -1,4 +1,5 @@
 using BulletSharp;
+using BulletSharp.Math;
 using MemoryPack;
 using MongoDB.Bson.Serialization.Attributes;
 using TrueSync;
@@ -10,7 +11,7 @@ namespace ET
     {
         public CollisionObject Collision { get; set; }
 
-        public TSVector Offset { get; set; }
+        public Vector3 Offset { get; set; }
 
         public static implicit operator CollisionObject(B3CollisionComponent collisionComponent)
         {

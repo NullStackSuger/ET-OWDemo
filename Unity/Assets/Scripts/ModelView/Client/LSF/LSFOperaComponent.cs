@@ -1,3 +1,4 @@
+using TrueSync;
 using UnityEngine.InputSystem;
 
 namespace ET
@@ -8,5 +9,7 @@ namespace ET
         public IInputActionCollection InputSystem;
         
         public InputAction Move;
+
+        public InputAction Look;
     }
 }

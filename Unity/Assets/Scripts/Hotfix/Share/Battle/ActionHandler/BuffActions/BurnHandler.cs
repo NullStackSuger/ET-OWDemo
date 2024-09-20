@@ -9,7 +9,6 @@ namespace ET
 
         public override void Update(ActionComponent actionComponent, ActionConfig config)
         {
-            Log.Warning($"Burn Init");
         }
     }
 
@@ -22,7 +21,6 @@ namespace ET
 
         public override void Update(ActionComponent actionComponent, ActionConfig config)
         {
-            Log.Warning($"Burning");
         }
     }
 }

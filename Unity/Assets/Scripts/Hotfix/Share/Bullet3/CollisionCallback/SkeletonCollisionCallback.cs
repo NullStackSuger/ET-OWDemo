@@ -6,25 +6,22 @@ namespace ET
     {
         public override void CollisionCallbackEnter(CollisionObject self, CollisionObject other)
         {
-            //Log.Warning($"开始碰撞");
         }
 
         public override void CollisionCallbackStay(CollisionObject self, CollisionObject other)
         {
-            //Log.Warning($"碰撞");
         }
 
         public override void CollisionCallbackExit(CollisionObject self, CollisionObject other)
         {
-            //Log.Warning($"结束碰撞");
         }
 
-        public override void CollisionTestStart()
+        public override void CollisionTestStart(CollisionObject self)
         {
             
         }
 
-        public override void CollisionTestFinish()
+        public override void CollisionTestFinish(CollisionObject self)
         {
             
         }

@@ -1,3 +1,5 @@
 {"dict": [
 [1001, {"_t":"BuffConfig","_id":1001,"Name":"Burn","ActionGroup":2}],
+[1002, {"_t":"BuffConfig","_id":1002,"Name":"Eyepiece","ActionGroup":6}],
+[1003, {"_t":"BuffConfig","_id":1003,"Name":"EMP","ActionGroup":7}],
 ]}

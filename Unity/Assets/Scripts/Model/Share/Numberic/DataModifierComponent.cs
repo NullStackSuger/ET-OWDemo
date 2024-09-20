@@ -118,11 +118,7 @@ namespace ET
         }
         public static void Get(this DataModifierComponent self, int dataModifierType, ref long result)
         {
-            if (!self.NumericDic.ContainsKey(dataModifierType))
-            {
-                Log.Error($"未找到{dataModifierType}类型");
-                return;
-            }
+            self.Contains(dataModifierType);
 
             var values = self.GetValues(dataModifierType);
 
@@ -158,10 +154,10 @@ namespace ET
         public static void Add(this DataModifierComponent self, ADataModifier modifier, bool isPublicEvent = false)
         {
             int dataModifierType = modifier.Key;
-            
+
             if (!self.NumericDic.TryGetValue(dataModifierType, out var modifiers))
             {
-                modifiers = new();
+                modifiers = new LinkedList<ADataModifier>();
                 self.NumericDic.Add(dataModifierType, modifiers);
             }
 
@@ -173,7 +169,7 @@ namespace ET
 
             if (isPublicEvent)
             {
-                EventSystem.Instance.Publish(self.Scene(), new DataModifierChange() 
+                EventSystem.Instance.Publish(self.Root(), new DataModifierChange() 
                         { Unit =  self.GetParent<LSUnit>(), DataModifierType = dataModifierType, Old = oldValue, New = newValue });
             }
         }
@@ -182,11 +178,7 @@ namespace ET
         {
             int dataModifierType = modifier.Key;
             
-            if (!self.NumericDic.TryGetValue(dataModifierType, out var modifiers))
-            {
-                modifiers = new();
-                self.NumericDic.Add(dataModifierType, modifiers);
-            }
+            self.Contains(dataModifierType, out var modifiers);
 
             long oldValue = self.Get(dataModifierType);
 
@@ -208,11 +200,7 @@ namespace ET
         /// </summary>
         public static void Clear(this DataModifierComponent self, int dataModifierType, ref ConstantModifier addModifier, ref FinalConstantModifier  finalAddModifier)
         {
-            if (!self.NumericDic.TryGetValue(dataModifierType, out var modifiers))
-            {
-                Log.Error($"未找到{dataModifierType}类型");
-                return;
-            }
+            self.Contains(dataModifierType, out var modifiers);
 
             Queue<ADataModifier> waitToClear = new();
             long add = 0;
@@ -248,6 +236,82 @@ namespace ET
                 finalAddModifier.NeedClear = true;
                 modifiers.AddLast(finalAddModifier);
             }
+        }
+
+        public static void Publish(this DataModifierComponent self, int dataModifierType)
+        {
+            self.Contains(dataModifierType);
+            
+            EventSystem.Instance.Publish(self.Root(), new DataModifierChange()
+                    { Unit = self.GetParent<LSUnit>(), DataModifierType = dataModifierType, New = self.Get(dataModifierType) });
+        }
+
+        public static bool Contains(this DataModifierComponent self, int dataModifierType)
+        {
+            return self.Contains(dataModifierType, out var values);
+        }
+        
+        public static bool Contains(this DataModifierComponent self, int dataModifierType, out LinkedList<ADataModifier> values)
+        {
+            if (!self.NumericDic.TryGetValue(dataModifierType, out values))
+            {
+                Log.Error($"未找到{dataModifierType}类型");
+                return false;
+            }
+
+            return true;
+        }
+        
+        public static void SetFirst(this DataModifierComponent self, int dataModifierType, int value)
+        {
+            self.Contains(dataModifierType, out var modifiers);
+
+            if (modifiers.Count <= 0)
+            {
+                Log.Error("Modifiers的长度<=0");
+                return;
+            }
+            
+            modifiers.First.Value.Set(value);
+        }
+
+        public static void SetLast(this DataModifierComponent self, int dataModifierType, int value)
+        {
+            self.Contains(dataModifierType, out var modifiers);
+            
+            if (modifiers.Count <= 0)
+            {
+                Log.Error("Modifiers的长度<=0");
+                return;
+            }
+            
+            modifiers.Last.Value.Set(value);
+        }
+
+        public static long GetFirst(this DataModifierComponent self, int dataModifierType)
+        {
+            self.Contains(dataModifierType, out var modifiers);
+            
+            if (modifiers.Count <= 0)
+            {
+                Log.Error("Modifiers的长度<=0");
+                return -1;
+            }
+
+            return modifiers.First.Value.Get(self);
+        }
+
+        public static long GetLast(this DataModifierComponent self, int dataModifierType)
+        {
+            self.Contains(dataModifierType, out var modifiers);
+            
+            if (modifiers.Count <= 0)
+            {
+                Log.Error("Modifiers的长度<=0");
+                return -1;
+            }
+            
+            return modifiers.Last.Value.Get(self);
         }
     }
     
@@ -314,6 +378,67 @@ namespace ET
             }
 
             return value;
+        }
+
+        public static long HpStick(long value, DataModifierComponent b, int dataModifierTypeB)
+        {
+            if (!b.NumericDic.ContainsKey(dataModifierTypeB))
+            {
+                Log.Error($"未找到{dataModifierTypeB}类型");
+                return 0;
+            }
+
+            var values = b.GetValues(dataModifierTypeB);
+            long add = values.Item1;
+            long addMax = values.Item2;
+            long pct = values.Item4;
+            long finalAdd = values.Item7;
+            long finalAddMax = values.Item8;
+            long finalPct = values.Item10;
+
+            long tmp = addMax - add;
+            value *= (1 + pct);
+            if (value > tmp)
+            {
+                if (tmp != 0)
+                {
+                    b.Add(new Default_Hp_ConstantModifier() { Value = value });
+                    value -= tmp;
+                    Log.Warning($"治疗能把Add加满, Value:{value} Add:{add} AddMax:{addMax} FinalAdd:{finalAdd} FinalAddMax:{finalAddMax} Tmp:{tmp}");
+                }
+                
+                tmp = finalAddMax - finalAdd;
+                if (tmp != 0)
+                {
+                    value *= (1 + finalPct);
+                    if (value > tmp)
+                    {
+                        b.Add(new Default_Hp_FinalConstantModifier() { Value = value });
+                        value -= tmp;
+                        Log.Warning($"治疗能把FinalAdd加满, Value:{value} Add:{add} AddMax:{addMax} FinalAdd:{finalAdd} FinalAddMax:{finalAddMax} Tmp:{tmp}");
+                    }
+                    else
+                    {
+                        b.Add(new Default_Hp_FinalConstantModifier() { Value = value });
+                        value = 0;
+                        Log.Warning($"治疗不能把FinalAdd加满, Value:{value} Add:{add} AddMax:{addMax} FinalAdd:{finalAdd} FinalAddMax:{finalAddMax} Tmp:{tmp}");
+                    }
+                }
+            }
+            else
+            {
+                b.Add(new Default_Hp_ConstantModifier() { Value = value });
+                value = 0;
+                Log.Warning($"治疗不能把Add加满, Value:{value} Add:{add} AddMax:{addMax} FinalAdd:{finalAdd} FinalAddMax:{finalAddMax} Tmp:{tmp}");
+            }
+
+            return value;
+        }
+
+        public static long Shield(long value, DataModifierComponent b, int dataModifierTypeB)
+        {
+            // TODO 写护盾扣血的逻辑
+            return -1;
         }
     }
 }

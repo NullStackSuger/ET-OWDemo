@@ -20,7 +20,7 @@ namespace ET.Client
         {
             await ETTask.CompletedTask;
 
-            Room room = aiComponent.Root().GetComponent<Room>();
+            /*Room room = aiComponent.Root().GetComponent<Room>();
             TimerComponent timerComponent = aiComponent.Root().GetComponent<TimerComponent>();
             while (!cancellationToken.IsCancel())
             {
@@ -29,7 +29,7 @@ namespace ET.Client
                 await timerComponent.WaitAsync(5000, cancellationToken);
             }
 
-            room.Input.Button = 0;
+            room.Input.Button = 0;*/
         }
     }
 }

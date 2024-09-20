@@ -75,7 +75,7 @@ namespace ET
                     case "Collision_Cube":
                         info = new CubeInfo()
                         {
-                            Size = go.GetComponent<BoxCollider>().size.ToBullet(),
+                            HalfSize = go.GetComponent<BoxCollider>().size.ToBullet() * 0.5f,
                         };
                         break;
                     case "Collision_Sphere":
@@ -89,7 +89,7 @@ namespace ET
                         info = new CapsuleInfo()
                         {
                             R = collider.radius,
-                            Height = collider.height,
+                            Height = collider.height - 2 * collider.radius,
                         };
                         break;
                     case "Collision_RayTest":
@@ -100,13 +100,20 @@ namespace ET
                             EndPos = lineRenderer.GetPosition(1).ToBullet(),
                         };
                         break;
+                    case "Collision_Cylinder":
+                        info = new CylinderInfo()
+                        {
+                            R = go.transform.localScale.x,
+                            Height = go.transform.localScale.y,
+                        };
+                        break;
                     default:
                         continue;
                 }
                 
                 info.Id = int.Parse(go.name);
                 Rigidbody rb = go.GetComponent<Rigidbody>();
-                info.Mass = (rb == null || rb.mass < 0.1) ? 0 : rb.mass;
+                info.Mass = (rb == null || rb.mass <= 0.1) ? 0 : rb.mass;
                 info.Position = go.transform.position.ToBullet();
                 
                 infos.Add(info);

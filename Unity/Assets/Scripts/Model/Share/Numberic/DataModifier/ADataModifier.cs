@@ -4,7 +4,7 @@ namespace ET
 {
     public abstract class ADataModifier : Object, IDisposable
     {
-        public abstract int ModifierType { get; }
+        public abstract string ModifierType { get; }
 
         public abstract int Key { get; }
 

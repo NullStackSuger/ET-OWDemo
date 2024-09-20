@@ -1,86 +1,137 @@
 namespace ET
 {
-    [ET.DataModifier]
-    public static class DataModifierType
+    public static partial class DataModifierType
     {
-        public const int Speed = 0001;
+        [Generate(Level = "All")]
+        public const int Speed = 1000;
 
-        public const int Atk = 0002;
+        [Generate(Level = "All")]
+        public const int Atk = 2000;
         
-        public const int Hp = 0003;
+        [Generate(Level = "FinalConstant Extremum")]
+        public const int Hp = 3000;
+        
+        [Generate(Level = "Constant")]
+        public const int BulletCount = 4000;
+
+        #region E技能 - 5000
+        
+        [Generate(Level = "All")]
+        public const int ENumeric = 5000;
+        
+        [Generate(Level = "All")]
+        public const int ECD = 5001;
+        
+        #endregion
+
+        #region Q技能 - 6000
+
+        [Generate(Level = "All")]
+        public const int QNumeric = 6000;
+        
+        [Generate(Level = "All")]
+        public const int QCD = 6001;
+
+        #endregion
+
+        #region C技能 - 7000
+
+        [Generate(Level = "Constant")]
+        public const int CNumeric = 7000;
+        
+        [Generate(Level = "Constant")]
+        public const int CCD = 7001;
+
+        #endregion
+
+        #region 炮台 - 8000
+
+        [Generate(Level = "Constant")]
+        public const int FortNumeric = 8000;
+
+        [Generate(Level = "Constant")]
+        public const int FortRate = 8001;
+
+        #endregion
+
+        #region 护盾 - 9000
+
+        [Generate(Level = "Constant")]
+        public const int Shield = 9000;
+
+        #endregion
     }
     
-    [ET.Modifier]
     public static class ModifierType
     {
         /// <summary>
         /// 常数修改器类型
         /// </summary>
-        public const int Constant = 0001;
-        
+        public const string Constant = "Constant";
+
         /// <summary>
         /// 常数修改器最大值限制
         /// </summary>
-        public const int ConstantMax = 0002;
-        
+        public const string ConstantMax = "ConstantMax";
+
         /// <summary>
         /// 常数修改器最小值限制
         /// </summary>
-        public const int ConstantMin = 0003;
+        public const string ConstantMin = "ConstantMin";
 
         /// <summary>
         /// 百分比修改器类型
         /// </summary>
-        public const int Percentage = 0004;
+        public const string Percentage = "Percentage";
 
         /// <summary>
         /// 百分比修改器最大值限制
         /// </summary>
-        public const int PercentageMax = 0005;
-        
+        public const string PercentageMax = "PercentageMax";
+
         /// <summary>
         /// 百分比修改器最小值限制
         /// </summary>
-        public const int PercentageMin = 0006;
-        
+        public const string PercentageMin = "PercentageMin";
+
         /// <summary>
         /// 最终常数修改器类型, 如西格玛大打最大生命0.5, 通常使用后要手动移除
         /// </summary>
-        public const int FinalConstant = 0007;
-        
+        public const string FinalConstant = "FinalConstant";
+
         /// <summary>
         /// 最终常数修改器最大值限制
         /// </summary>
-        public const int FinalConstantMax = 0008;
-        
+        public const string FinalConstantMax = "FinalConstantMax";
+
         /// <summary>
         /// 最终常数修改器最小值限制
         /// </summary>
-        public const int FinalConstantMin = 0009;
-        
+            public const string FinalConstantMin = "FinalConstantMin";
+
         /// <summary>
-        /// 最终百分比修改器类型, 如子弹距离衰减, 通常使用后要手动移除
+        /// 最终百分比修改器类型, 如子弹距离衰减
         /// </summary>
-        public const int FinalPercentage = 0010;
-        
+        public const string FinalPercentage = "FinalPercentage";
+
         /// <summary>
         /// 最终百分比修改器最大值限制
         /// </summary>
-        public const int FinalPercentageMax = 0011;
-        
+        public const string FinalPercentageMax = "FinalPercentageMax";
+
         /// <summary>
         /// 最终百分比修改器最小值限制
         /// </summary>
-        public const int FinalPercentageMin = 0012;
-        
+        public const string FinalPercentageMin = "FinalPercentageMin";
+
         /// <summary>
         /// 最终结果的最大值
         /// </summary>
-        public const int FinalMax = 0013;
-        
+        public const string FinalMax = "FinalMax";
+
         /// <summary>
         /// 最终结果的最小值
         /// </summary>
-        public const int FinalMin = 0014;
+        public const string FinalMin = "FinalMin";
     }
 }

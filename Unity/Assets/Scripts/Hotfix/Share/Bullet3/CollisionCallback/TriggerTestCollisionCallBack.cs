@@ -20,12 +20,12 @@ namespace ET
             
         }
 
-        public override void CollisionTestStart()
+        public override void CollisionTestStart(CollisionObject self)
         {
             
         }
 
-        public override void CollisionTestFinish()
+        public override void CollisionTestFinish(CollisionObject self)
         {
             
         }

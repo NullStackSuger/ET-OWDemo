@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using MongoDB.Bson;
+using TrueSync;
 
 namespace ET.Client
 {
@@ -42,13 +43,14 @@ namespace ET.Client
                 ++room.PredictionFrame;
 
                 OneFrameInputs inputs = GetInputs(room, room.PredictionFrame);
-                room.Update(inputs);
+                room.PredictionWorld.Update(inputs);
                 //room.SendHash(room.Frame);
                 
                 FrameMessage frameMessage = FrameMessage.Create();
                 frameMessage.Frame = room.PredictionFrame;
                 frameMessage.Input = room.Input;
                 root.GetComponent<ClientSenderComponent>().Send(frameMessage);
+                Log.Warning($"发送预测消息:{frameMessage.Frame}, {frameMessage.Input.Look}");
 
                 room.Input.Clear();
 
@@ -74,15 +76,17 @@ namespace ET.Client
             if (frameBuffer.CheckFrame(room.AuthorityFrame))
             {
                 OneFrameInputs authorityInputs = frameBuffer.FrameInputs(room.AuthorityFrame);
-                authorityInputs.CopyTo(predictionInputs);
+                authorityInputs.CopyToPrediction(predictionInputs);
             }
-            predictionInputs.Inputs[room.PlayerId] = room.Input;
+            predictionInputs.CopyEach(room.PlayerId, ref room.Input);
 
             return predictionInputs;
         }
 
         public static void Init(this ET.Room self, long playerId, List<LockStepUnitInfo> unitInfos, long startTime, int frame = -1)
         {
+            self.AddComponent<LSFTimerComponent>();
+            
             self.AuthorityFrame = frame;
             self.PredictionFrame = frame;
             self.FrameBuffer = new(frame);
@@ -96,18 +100,47 @@ namespace ET.Client
             
             foreach (var info in unitInfos)
             {
-                LSUnit unit = unitComponent.Creat(info, TeamTag.TeamA);
+                LSUnit unit = unitComponent.Creat(info, Tag.PlayerA);
                 unit.AddComponent<LSFInputComponent>();
                 unit.AddComponent<B3CollisionComponent, int>(5);
+                unit.AddComponent<CheckOnGroundComponent>();
+                
                 DataModifierComponent dataModifierComponent = unit.AddComponent<DataModifierComponent>();
-                dataModifierComponent.Add(new Default_Speed_ConstantModifier() { Value = 100 });
+                
+                dataModifierComponent.Add(new Default_Speed_ConstantModifier() { Value = 15 });
+                
                 dataModifierComponent.Add(new Default_Hp_FinalMaxModifier() { Value = 100 });
                 dataModifierComponent.Add(new Default_Hp_FinalMinModifier() { Value = 0 });
-                dataModifierComponent.Add(new Default_Hp_ConstantModifier() { Value = 10 });
-                dataModifierComponent.Add(new Default_Hp_FinalConstantModifier() { Value = 10 });
-                //dataModifierComponent.Add(new Default_MaxAtk_Modifier(10));
-                //dataModifierComponent.Add(new Default_MinAtk_Modifier(0));
+                
+                dataModifierComponent.Add(new Default_Hp_ConstantMaxModifier() { Value = 50 });
+                dataModifierComponent.Add(new Default_Hp_ConstantMinModifier() { Value = 0 });
+                dataModifierComponent.Add(new Default_Hp_ConstantModifier() { Value = 50 });
+                
+                dataModifierComponent.Add(new Default_Hp_FinalConstantMaxModifier() { Value = 50 });
+                dataModifierComponent.Add(new Default_Hp_FinalConstantMinModifier() { Value = 0 });
+                dataModifierComponent.Add(new Default_Hp_FinalConstantModifier() { Value = 50 });
+                
                 dataModifierComponent.Add(new Default_Atk_ConstantModifier() { Value = 5 });
+                
+                dataModifierComponent.Add(new Default_BulletCount_FinalMaxModifier() { Value = 150 });
+                dataModifierComponent.Add(new Default_BulletCount_FinalMinModifier() { Value = 0 });
+                dataModifierComponent.Add(new Default_BulletCount_ConstantModifier() { Value = 150 });
+                
+                dataModifierComponent.Add(new Default_Shield_FinalMaxModifier() { Value = 200 });
+                dataModifierComponent.Add(new Default_Shield_FinalMinModifier() { Value = 0 });
+                dataModifierComponent.Add(new Default_Shield_ConstantModifier() { Value = 200 });
+
+                dataModifierComponent.Add(new Default_ENumeric_ConstantModifier() { Value = 30 });
+                dataModifierComponent.Add(new Default_ECD_ConstantModifier() { Value = 1000 });
+                
+                dataModifierComponent.Add(new Default_QNumeric_ConstantModifier() { Value = 30 });
+                dataModifierComponent.Add(new Default_QCD_ConstantModifier() { Value = 1000 });
+                
+                dataModifierComponent.Add(new Default_CNumeric_ConstantModifier() { Value = 30 });
+                dataModifierComponent.Add(new Default_CCD_ConstantModifier() { Value = 1000 });
+                
+                dataModifierComponent.Publish(DataModifierType.Hp);
+                dataModifierComponent.Publish(DataModifierType.BulletCount);
                 
                 self.PlayerIds.Add(info.PlayerId);
             }
@@ -123,27 +156,56 @@ namespace ET.Client
                 unitComponent = self.AuthorityWorld.AddComponent<LSUnitComponent>();
                 foreach (var info in unitInfos)
                 {
-                    LSUnit unit = unitComponent.Creat(info, TeamTag.TeamA);
+                    LSUnit unit = unitComponent.Creat(info, Tag.PlayerA);
                     unit.AddComponent<LSFInputComponent>();
                     unit.AddComponent<B3CollisionComponent, int>(5);
+                    unit.AddComponent<CheckOnGroundComponent>();
+                    
                     DataModifierComponent dataModifierComponent = unit.AddComponent<DataModifierComponent>();
-                    dataModifierComponent.Add(new Default_Speed_ConstantModifier() { Value = 100 });
+                    
+                    dataModifierComponent.Add(new Default_Speed_ConstantModifier() { Value = 15 });
+                    
                     dataModifierComponent.Add(new Default_Hp_FinalMaxModifier() { Value = 100 });
                     dataModifierComponent.Add(new Default_Hp_FinalMinModifier() { Value = 0 });
-                    dataModifierComponent.Add(new Default_Hp_ConstantModifier() { Value = 10 });
-                    dataModifierComponent.Add(new Default_Hp_FinalConstantModifier() { Value = 10 });
-                    //dataModifierComponent.Add(new Default_MaxAtk_Modifier(10));
-                    //dataModifierComponent.Add(new Default_MinAtk_Modifier(0));
+                
+                    dataModifierComponent.Add(new Default_Hp_ConstantMaxModifier() { Value = 50 });
+                    dataModifierComponent.Add(new Default_Hp_ConstantMinModifier() { Value = 0 });
+                    dataModifierComponent.Add(new Default_Hp_ConstantModifier() { Value = 50 });
+                
+                    dataModifierComponent.Add(new Default_Hp_FinalConstantMaxModifier() { Value = 50 });
+                    dataModifierComponent.Add(new Default_Hp_FinalConstantMinModifier() { Value = 0 });
+                    dataModifierComponent.Add(new Default_Hp_FinalConstantModifier() { Value = 50 });
+                    
                     dataModifierComponent.Add(new Default_Atk_ConstantModifier() { Value = 5 });
+                    
+                    dataModifierComponent.Add(new Default_BulletCount_FinalMaxModifier() { Value = 150 });
+                    dataModifierComponent.Add(new Default_BulletCount_FinalMinModifier() { Value = 0 });
+                    dataModifierComponent.Add(new Default_BulletCount_ConstantModifier() { Value = 150 });
+                    
+                    dataModifierComponent.Add(new Default_Shield_FinalMaxModifier() { Value = 200 });
+                    dataModifierComponent.Add(new Default_Shield_FinalMinModifier() { Value = 0 });
+                    dataModifierComponent.Add(new Default_Shield_ConstantModifier() { Value = 200 });
+                    
+                    dataModifierComponent.Add(new Default_ENumeric_ConstantModifier() { Value = 30 });
+                    dataModifierComponent.Add(new Default_ECD_ConstantModifier() { Value = 1000 });
+                    
+                    dataModifierComponent.Add(new Default_QNumeric_ConstantModifier() { Value = 30 });
+                    dataModifierComponent.Add(new Default_QCD_ConstantModifier() { Value = 1000 });
+                    
+                    dataModifierComponent.Add(new Default_CNumeric_ConstantModifier() { Value = 30 });
+                    dataModifierComponent.Add(new Default_CCD_ConstantModifier() { Value = 1000 });
+                    
+                    dataModifierComponent.Publish(DataModifierType.Hp);
+                    dataModifierComponent.Publish(DataModifierType.BulletCount);
                 }
             }
 
             self.StartTime = startTime;
         }
 
-        public static void Update(this ET.Room self, OneFrameInputs inputs)
+        public static void Update(this ET.LSWorld world, OneFrameInputs inputs)
         {
-            LSWorld world = self.PredictionWorld;
+            //LSWorld world = self.PredictionWorld;
             LSUnitComponent unitComponent = world.GetComponent<LSUnitComponent>();
             
             // 更新输入
@@ -165,6 +227,7 @@ namespace ET.Client
             // 更换世界
             self.PredictionWorld.Dispose();
             self.PredictionWorld = self.AuthorityWorld.Clone();
+            // TODO self.PredictionWorld.Id = 1;
             self.PredictionWorld.SceneType = SceneType.RollBack;
 
             // 获取输入
@@ -173,7 +236,7 @@ namespace ET.Client
 
             // 先Update一次回到权威帧结束时
             // 因为SaveWorld发生在Update之前
-            self.Update(authorityInputs);
+            self.PredictionWorld.Update(authorityInputs);
             //self.SendHash(self.AuthorityFrame);
 
             // 重新预测
@@ -182,7 +245,7 @@ namespace ET.Client
                 OneFrameInputs inputs = frameBuffer.FrameInputs(i);
                 // TODO: ??? 这里为什么用最后一个权威帧输入Update
                 authorityInputs.CopyTo(inputs, self.PlayerId);
-                self.Update(inputs);
+                self.PredictionWorld.Update(inputs);
             }
 
             // RollbackSystem

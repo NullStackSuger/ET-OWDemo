@@ -30,8 +30,8 @@ namespace ET.Server
             {
                 LockStepUnitInfo lockStepUnitInfo = LockStepUnitInfo.Create();
                 lockStepUnitInfo.PlayerId = id;
-                lockStepUnitInfo.Position = new TSVector(30, 0, -10);
-                lockStepUnitInfo.Rotation = TSQuaternion.identity;
+                lockStepUnitInfo.Position = new TSVector(0, 3, 0);
+                lockStepUnitInfo.Rotation = 0;
                 lockStepUnitInfo.ActionGroup = 3;
                 room2CStart.UnitInfo.Add(lockStepUnitInfo);
             }

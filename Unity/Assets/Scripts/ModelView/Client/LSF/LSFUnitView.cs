@@ -3,10 +3,9 @@ using UnityEngine;
 namespace ET.Client
 {
     [ChildOf(typeof(LSFUnitViewComponent))]
-    public class LSFUnitView : Entity, IAwake<AnimatorType, GameObject, LSUnit>, IAwake<GameObject, LSUnit>, IUpdate, IDestroy, ILSRollback
+    public class LSFUnitView : Entity, IAwake<string, GameObject, LSUnit>, IAwake<GameObject, LSUnit>, IUpdate, IDestroy, ILSRollback
     {
         private EntityRef<LSUnit> unit;
-
         public EntityRef<LSUnit> Unit
         {
             get
@@ -34,9 +33,9 @@ namespace ET.Client
         }
         public GameObject GameObject;
         public Transform Transform;
-
+        
         public Vector3 Position;
-        public Quaternion Rotation;
+        
         public float TotalTime;
         public float Time;
     }

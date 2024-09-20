@@ -566,6 +566,16 @@ namespace TrueSync
         }
         #endregion
 
+        public static TSVector operator *(TSMatrix matrix, TSVector vector)
+        {
+            TSVector result = new TSVector(
+                matrix.M11 * vector.x + matrix.M12 * vector.y + matrix.M13 * vector.z, 
+                matrix.M21 * vector.x + matrix.M22 * vector.y + matrix.M23 * vector.z,
+                matrix.M31 * vector.x + matrix.M32 * vector.y + matrix.M33 * vector.z);
+
+            return result;
+        }
+
 
         public FP Trace()
         {

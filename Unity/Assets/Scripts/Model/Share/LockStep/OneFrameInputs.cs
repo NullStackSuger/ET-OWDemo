@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TrueSync;
 
 namespace ET
 {
@@ -16,11 +17,6 @@ namespace ET
             foreach (var kv in this.Inputs)
             {
                 to.Inputs.Add(kv.Key, kv.Value);
-
-                /*if (this.Inputs[kv.Key] != to.Inputs[kv.Key])
-                {
-                    Log.Warning($"Clone不一致");
-                }*/
             }
         }
 
@@ -35,6 +31,41 @@ namespace ET
                 to.Inputs.Add(kv.Key, kv.Value);
             }
         }
+
+        /// <summary>
+        /// 拷贝可预测的值
+        /// </summary>
+        public void CopyToPrediction(OneFrameInputs to)
+        {
+            foreach (var kv in this.Inputs)
+            {
+                if (to.Inputs.TryGetValue(kv.Key, out LSInput input))
+                {
+                    LSInput.CopyPrediction(kv.Value, ref input);
+                    
+                    to.Inputs[kv.Key] = input;
+                }
+                else
+                {
+                    to.Inputs[kv.Key] = kv.Value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 把value的Prediction值给playerInput,
+        /// 把playerInput的UnPrediction值给value
+        /// </summary>
+        public void CopyEach(long playerId, ref LSInput value)
+        {
+            this.Inputs.TryAdd(playerId, value);
+            LSInput input = this.Inputs[playerId];
+            
+            LSInput.CopyPrediction(value, ref input);
+            LSInput.CopyUnPrediction(input, ref value);
+
+            this.Inputs[playerId] = input;
+        } 
 
         public override bool Equals(object obj)
         {

@@ -43,13 +43,17 @@ namespace ET
                     ((ConvexHullShape)shape).InitializePolyhedralFeatures();
                     break;
                 case "Collision_Cube":
-                    shape = new BoxShape(((CubeInfo)info).Size);
+                    shape = new BoxShape(((CubeInfo)info).HalfSize);
                     break;
                 case "Collision_Sphere":
                     shape = new SphereShape(((SphereInfo)info).R);
                     break;
                 case "Collision_Capsule":
                     shape = new CapsuleShape(((CapsuleInfo)info).R, ((CapsuleInfo)info).Height);
+                    break;
+                case "Collision_Cylinder":
+                    CylinderInfo cylinderInfo = (CylinderInfo)info;
+                    shape = new CylinderShape(cylinderInfo.R, cylinderInfo.Height, cylinderInfo.R);
                     break;
                 default:
                     Log.Error($"未找到对{info.Tag}的处理");
@@ -74,12 +78,6 @@ namespace ET
                 Vector3 inertia = info.Mass == 0 ? Vector3.Zero : inertia = shape.CalculateLocalInertia(info.Mass);
                 RigidBodyConstructionInfo rbInfo = new(info.Mass, motionState, shape, inertia);
                 RigidBody body = new RigidBody(rbInfo);
-
-                if (info.Mass == 0)
-                {
-                    body.CollisionFlags |= CollisionFlags.KinematicObject;
-                    body.ActivationState = ActivationState.DisableDeactivation;
-                }
                 
                 // 设置旋转约束(逆惯性张量)
                 switch (config.InvInertiaDiagLocal)
@@ -95,11 +93,8 @@ namespace ET
                         break;
                 }
                 
-                // 设置阻尼
-                if (config.Damping > 0)
-                {
-                    body.SetDamping(config.Damping * 0.01f, 0);
-                }
+                // 设置弹性系数
+                body.Restitution = config.Restitution;
 
                 co = body;
             }

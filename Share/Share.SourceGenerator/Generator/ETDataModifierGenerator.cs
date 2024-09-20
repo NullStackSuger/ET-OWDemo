@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
 using ET.Analyzer;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace ET.Generator;
@@ -15,27 +17,24 @@ public class ETDataModifierGenerator : ISourceGenerator
 
     public void Execute(GeneratorExecutionContext context)
     {
-        if (context.SyntaxContextReceiver is not SyntaxContextReceiver receiver)
-        {
-            return;
-        }
-        
-        foreach (string modifierName in receiver.ModifierTypes)
-        {
-            string code = GenerateCode1("ET", modifierName);
-            context.AddSource($"ET.{modifierName}Modifier.g.cs", code);
+        if (context.SyntaxContextReceiver is not SyntaxContextReceiver receiver) return;
 
-            foreach (var pair in receiver.DataModifierTypes)
+        if (receiver.Generates.Any())
+        {
+            foreach (string modifierType in receiver.ModifierTypes)
             {
-                string namespaceName = pair.Item1;
-                string dataModifierName = pair.Item2;
-                
-                code = GenerateCode2(namespaceName, modifierName, dataModifierName);
-                context.AddSource($"{namespaceName}.{dataModifierName}_{modifierName}Modifier.g.cs", code);
-                
-                code = GenerateCode3(namespaceName, modifierName, dataModifierName);
-                context.AddSource($"{namespaceName}.Default_{dataModifierName}_{modifierName}Modifier.g.cs", code);
+                context.AddSource($"ET.{modifierType}Modifier.g.cs", GenerateCode1("ET", modifierType));
             }
+        }
+
+        foreach (var pair in receiver.Generates)
+        {
+            string nameSpace = pair.Item1;
+            string modifierType = pair.Item2;
+            string dataModifierType = pair.Item3;
+            
+            context.AddSource($"{nameSpace}.{dataModifierType}_{modifierType}Modifier.g.cs", GenerateCode2(nameSpace, modifierType, dataModifierType));
+            context.AddSource($"{nameSpace}.Default_{dataModifierType}_{modifierType}Modifier.g.cs", GenerateCode3(nameSpace, modifierType, dataModifierType));
         }
     }
 
@@ -49,7 +48,7 @@ public class ETDataModifierGenerator : ISourceGenerator
                 {
                     public abstract class {{modifierName}}Modifier : ADataModifier
                     {
-                        public override int ModifierType { get; } = ET.ModifierType.{{modifierName}};   
+                        public override string ModifierType { get; } = ET.ModifierType.{{modifierName}};   
                     }
                 }
                 """;
@@ -97,12 +96,16 @@ public class ETDataModifierGenerator : ISourceGenerator
             return new SyntaxContextReceiver();
         }
 
-        /// <summary>
-        /// key:namespace value:DataModifierType
-        /// </summary>
-        public readonly List<(string, string)> DataModifierTypes = new();
+        public readonly List<string> ModifierTypes =
+        [
+            "Constant", "ConstantMax", "ConstantMin",
+            "Percentage", "PercentageMax", "PercentageMin",
+            "FinalConstant", "FinalConstantMax", "FinalConstantMin",
+            "FinalPercentage", "FinalPercentageMax", "FinalPercentageMin",
+            "FinalMax", "FinalMin"
+        ];
 
-        public readonly List<string> ModifierTypes = new();
+        public readonly List<(string, string, string)> Generates = new();
         
         public void OnVisitSyntaxNode(GeneratorSyntaxContext context)
         {
@@ -112,46 +115,65 @@ public class ETDataModifierGenerator : ISourceGenerator
             
             SyntaxNode node = context.Node;
             
-            if (node is not ClassDeclarationSyntax classDeclarationSyntax) return;
+            if (node is not FieldDeclarationSyntax fieldDeclarationSyntax) return;
+
+            AttributeSyntax? attributeSyntax = fieldDeclarationSyntax.GetAttribute("Generate");
+            if (attributeSyntax == null) return;
             
-            if (classDeclarationSyntax.AttributeLists.Count == 0) return;
+            var attrArgs = attributeSyntax.ArgumentList?.Arguments.FirstOrDefault(args =>
+                args.NameEquals?.Name.Identifier.ValueText == "Level");
+            if (attrArgs == null || attrArgs.Expression.Kind() != SyntaxKind.StringLiteralExpression) return;
             
-            var classTypeSymbol = context.SemanticModel.GetDeclaredSymbol(classDeclarationSyntax) as INamedTypeSymbol;
-            if (classTypeSymbol == null) return;
+            string nameSpace = fieldDeclarationSyntax.GetNamespace();
             
-            string? nameSpace = classTypeSymbol.GetNameSpace();
-            if (nameSpace == null) return;
+            string dataModifierType = fieldDeclarationSyntax.Declaration.Variables.First().Identifier.ValueText;
             
-            // 筛选出含有 DataModifier标签的
-            var dataModifierAttrData = classTypeSymbol.GetFirstAttribute(Definition.DataModifierAttribute);
-            if (dataModifierAttrData != null)
+            string level = ((LiteralExpressionSyntax)attrArgs.Expression).Token.ValueText;
+            switch (level)
             {
-                foreach (var childNode in classTypeSymbol.GetMembers())
-                {
-                    if (childNode is not IFieldSymbol fieldSymbol) continue;
-
-                    string name = fieldSymbol.Name;
-
-                    if (name == "Max" || name == "Min") continue;
-
-                    DataModifierTypes.Add((nameSpace, name));
-                }
-            }
-
-            // 筛选出含有 Modifier标签的
-            var modifierAttrData = classTypeSymbol.GetFirstAttribute(Definition.ModifierAttribute);
-            if (modifierAttrData != null)
-            {
-                foreach (var childNode in classTypeSymbol.GetMembers())
-                {
-                    if (childNode is not IFieldSymbol fieldSymbol) continue;
-
-                    string name = fieldSymbol.Name;
+                case "All":
+                    foreach (string modifierType in ModifierTypes)
+                    {
+                        Generates.Add((nameSpace, modifierType, dataModifierType));
+                    }
+                    break;
+                case "Constant":
+                    Generates.Add((nameSpace, "Constant", dataModifierType));
+                    Generates.Add((nameSpace, "FinalMax", dataModifierType));
+                    Generates.Add((nameSpace, "FinalMin", dataModifierType));
+                    break;
+                case "Constant Extremum":
+                    Generates.Add((nameSpace, "Constant", dataModifierType));
+                    Generates.Add((nameSpace, "ConstantMax", dataModifierType));
+                    Generates.Add((nameSpace, "ConstantMin", dataModifierType));
+                    Generates.Add((nameSpace, "FinalMax", dataModifierType));
+                    Generates.Add((nameSpace, "FinalMin", dataModifierType));
+                    break;
+                case "FinalConstant":
+                    Generates.Add((nameSpace, "Constant", dataModifierType));
+                    Generates.Add((nameSpace, "FinalConstant", dataModifierType));
+                    Generates.Add((nameSpace, "FinalMax", dataModifierType));
+                    Generates.Add((nameSpace, "FinalMin", dataModifierType));
+                    break;
+                case "FinalConstant Extremum":
+                    Generates.Add((nameSpace, "Constant", dataModifierType));
+                    Generates.Add((nameSpace, "ConstantMax", dataModifierType));
+                    Generates.Add((nameSpace, "ConstantMin", dataModifierType));
                     
-                    if (name == "Max" || name == "Min") continue;
+                    Generates.Add((nameSpace, "FinalConstant", dataModifierType));
+                    Generates.Add((nameSpace, "FinalConstantMax", dataModifierType));
+                    Generates.Add((nameSpace, "FinalConstantMin", dataModifierType));
                     
-                    ModifierTypes.Add(name);
-                }
+                    Generates.Add((nameSpace, "FinalMax", dataModifierType));
+                    Generates.Add((nameSpace, "FinalMin", dataModifierType));
+                    break;
+                case "None":
+                    break;
+                case "":
+                    break;
+                default:
+                    Generates.Add((nameSpace, level, dataModifierType));
+                    break;
             }
         }
     }

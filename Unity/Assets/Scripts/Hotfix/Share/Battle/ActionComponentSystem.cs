@@ -17,12 +17,16 @@ namespace ET
             foreach (var config in groupConfigs.Values)
             {
                 self.Configs.Add(config);
+                self.Actives.Add(config, true);
             }
         }
 
         [EntitySystem]
         private static void Destroy(this ActionComponent self)
         {
+            self.Configs.Clear();
+            self.Actives.Clear();
+            self.Args.Clear();
         }
 
         [LSEntitySystem]
@@ -37,17 +41,32 @@ namespace ET
                     continue;
                 }
 
+                self.Actives.TryAdd(config, true);
+
                 // 未通过检查
                 if (!handler.Check(self, config)) continue;
+                
+                // 没有被激活
+                if (!self.Actives[config]) continue;
                 
                 // 执行
                 handler.Update(self, config);
 
                 // 这里运行之后就return 不循环了 所以可以直接Remove
                 if (config.RunningType == "Once")
+                {
+                    self.Actives.Remove(config);
                     self.Configs.Remove(config);
+                }
                 
-                return;
+                if (config.IsOnly == 1)
+                {
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
             }
         }
     }

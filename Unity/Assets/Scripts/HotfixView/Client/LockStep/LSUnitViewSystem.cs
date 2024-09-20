@@ -42,7 +42,7 @@ namespace ET.Client
                 self.totalTime = distance / speed2;
                 self.t = 0;
                 self.Position = unit.Position.ToVector();
-                self.Rotation = unit.Rotation.ToQuaternion();
+                //self.Rotation = unit.Rotation.ToQuaternion();
             }
 
 

@@ -161,6 +161,19 @@ namespace ET.Analyzer
             return null;
         }
 
+        public static AttributeData? GetFirstAttribute(this IFieldSymbol symbol, string AttributeName)
+        {
+            foreach (AttributeData? attributeData in symbol.GetAttributes())
+            {
+                if (attributeData.AttributeClass?.ToString() == AttributeName)
+                {
+                    return attributeData;
+                }
+            }
+
+            return null;
+        }
+
         /// <summary>
         ///     INamedTypeSymbol 是否含有指定接口
         /// </summary>
@@ -434,6 +447,24 @@ namespace ET.Analyzer
 
             return namespaceName;
         }
+        
+        public static string GetNamespace(this SyntaxNode node)  
+        {  
+            var current = node;  
+            var namespaceParts = new List<string>();  
+  
+            while (current != null && !(current is CompilationUnitSyntax))  
+            {  
+                if (current is NamespaceDeclarationSyntax namespaceDecl)  
+                {  
+                    namespaceParts.Insert(0, namespaceDecl.Name.ToString());  
+                }  
+  
+                current = current.Parent;  
+            }  
+  
+            return string.Join(".", namespaceParts);  
+        }
 
         /// <summary>
         /// 根据语义模型的文件路径 判断是否需要分析
@@ -562,6 +593,12 @@ namespace ET.Analyzer
                 }
             }
             return false;
+        }
+        
+        public static AttributeSyntax? GetAttribute(this FieldDeclarationSyntax node, string attrName)
+        {
+            return node.AttributeLists.SelectMany(al => al.Attributes).FirstOrDefault(attr =>
+                attr.Name is IdentifierNameSyntax idName && idName.Identifier.ValueText == attrName);
         }
 
         /// <summary>

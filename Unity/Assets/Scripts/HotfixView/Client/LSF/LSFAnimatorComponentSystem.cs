@@ -9,7 +9,7 @@ namespace ET.Client
     public static partial class LSFAnimatorComponentSystem
     {
         [EntitySystem]
-        private static void Awake(this LSFAnimatorComponent self, AnimatorType type)
+        private static void Awake(this LSFAnimatorComponent self, string type)
         {
             LSFUnitView unitView = self.GetParent<LSFUnitView>();
             Animator animator = unitView.GameObject.GetComponent<Animator>();

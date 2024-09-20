@@ -4,9 +4,9 @@ using UnityEngine;
 namespace ET.Client
 {
     [ComponentOf(typeof(LSFUnitView))]
-    public class LSFAnimatorComponent : Entity, IAwake<AnimatorType>, IDestroy, IUpdate
+    public class LSFAnimatorComponent : Entity, IAwake<string>, IDestroy, IUpdate
     {
-        public AnimatorType Type;
+        public string Type;
         
         /// <summary>
         /// 状态机上动画
@@ -21,9 +21,10 @@ namespace ET.Client
         public Animator Animator;
     }
 
-    public enum AnimatorType
+    public static class AnimatorType
     {
-        Skeleton,
-        FireBall,
+        public const string Skeleton = "Skeleton";
+        public const string FireBall = "FireBall";
+        public const string HpStick = "HpStick";
     }
 }

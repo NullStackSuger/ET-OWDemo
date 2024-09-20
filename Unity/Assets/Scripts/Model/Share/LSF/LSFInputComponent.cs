@@ -8,7 +8,5 @@ namespace ET
     public partial class LSFInputComponent: LSEntity, ILSUpdate, IAwake, ISerializeToEntity
     {
         public LSInput Input { get; set; }
-        
-        public int PressCastFrame { get; set; }
     }
 }

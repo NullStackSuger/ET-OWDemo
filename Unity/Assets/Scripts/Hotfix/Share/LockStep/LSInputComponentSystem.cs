@@ -26,7 +26,7 @@ namespace ET
             }
             TSVector oldPos = unit.Position;
             unit.Position += new TSVector(v2.x, 0, v2.y);
-            unit.Forward = unit.Position - oldPos;
+            //unit.Forward = unit.Position - oldPos;
         }
     }
 }

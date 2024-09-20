@@ -4,7 +4,7 @@ namespace ET.Client
     
     [Event(SceneType.LSFClientPrediction)]
     [FriendOf(typeof(Cast))]
-    public class UnitUseCast_ShowView_Prediction : AEvent<LSWorld, UnitUseCast>
+    public class UnitUseCast_ShowView : AEvent<LSWorld, UnitUseCast>
     {
         protected override async ETTask Run(LSWorld world, UnitUseCast a)
         {
@@ -13,18 +13,8 @@ namespace ET.Client
             Cast cast = a.Cast;
             LSUnit castUnit = cast.Unit;
             LSFUnitViewComponent unitViewComponent = room.GetComponent<LSFUnitViewComponent>();
-            unitViewComponent.Add(castUnit.Id, "Unit/FireBall.prefab", "FireBall", AnimatorType.FireBall).Coroutine();
+            unitViewComponent.Add(castUnit.Id, $"Unit/{a.Name}.prefab", a.Name, a.Name).Coroutine();
 
-            await ETTask.CompletedTask;
-        }
-    }
-    
-    [Event(SceneType.LSFClientAuthority)]
-    [FriendOf(typeof(Cast))]
-    public class UnitUseCast_ShowView_Authority : AEvent<LSWorld, UnitUseCast>
-    {
-        protected override async ETTask Run(LSWorld world, UnitUseCast a)
-        {
             await ETTask.CompletedTask;
         }
     }

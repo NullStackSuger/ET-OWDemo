@@ -142,7 +142,7 @@ namespace ET
         public TrueSync.TSVector Position { get; set; }
 
         [MemoryPackOrder(2)]
-        public TrueSync.TSQuaternion Rotation { get; set; }
+        public FP Rotation { get; set; }
 
         [MemoryPackOrder(3)]
         public int ActionGroup { get; set; }
@@ -377,24 +377,23 @@ namespace ET
         }
     }
 
-    // ------------------------------------------------------------------------------------------------
     [MemoryPackable]
-    [Message(LockStepOuter.S2C_UnitChangePosition)]
-    public partial class S2C_UnitChangePosition : MessageObject, IMessage
+    [Message(LockStepOuter.UnPredictionMessage)]
+    public partial class UnPredictionMessage : MessageObject, IRoomMessage
     {
-        public static S2C_UnitChangePosition Create(bool isFromPool = false)
+        public static UnPredictionMessage Create(bool isFromPool = false)
         {
-            return ObjectPool.Instance.Fetch(typeof(S2C_UnitChangePosition), isFromPool) as S2C_UnitChangePosition;
+            return ObjectPool.Instance.Fetch(typeof(UnPredictionMessage), isFromPool) as UnPredictionMessage;
         }
 
         [MemoryPackOrder(0)]
-        public long UnitId { get; set; }
+        public int Frame { get; set; }
 
         [MemoryPackOrder(1)]
-        public TSVector OldPosition { get; set; }
+        public long PlayerId { get; set; }
 
         [MemoryPackOrder(2)]
-        public TSVector NewPosition { get; set; }
+        public TSVector2 Look { get; set; }
 
         public override void Dispose()
         {
@@ -403,158 +402,9 @@ namespace ET
                 return;
             }
 
-            this.UnitId = default;
-            this.OldPosition = default;
-            this.NewPosition = default;
-
-            ObjectPool.Instance.Recycle(this);
-        }
-    }
-
-    [MemoryPackable]
-    [Message(LockStepOuter.S2C_UnitChangeRotation)]
-    public partial class S2C_UnitChangeRotation : MessageObject, IMessage
-    {
-        public static S2C_UnitChangeRotation Create(bool isFromPool = false)
-        {
-            return ObjectPool.Instance.Fetch(typeof(S2C_UnitChangeRotation), isFromPool) as S2C_UnitChangeRotation;
-        }
-
-        [MemoryPackOrder(0)]
-        public long UnitId { get; set; }
-
-        [MemoryPackOrder(1)]
-        public TSQuaternion OldRotation { get; set; }
-
-        [MemoryPackOrder(2)]
-        public TSQuaternion NewRotation { get; set; }
-
-        public override void Dispose()
-        {
-            if (!this.IsFromPool)
-            {
-                return;
-            }
-
-            this.UnitId = default;
-            this.OldRotation = default;
-            this.NewRotation = default;
-
-            ObjectPool.Instance.Recycle(this);
-        }
-    }
-
-    [MemoryPackable]
-    [Message(LockStepOuter.S2C_UnitUseCast)]
-    public partial class S2C_UnitUseCast : MessageObject, IMessage
-    {
-        public static S2C_UnitUseCast Create(bool isFromPool = false)
-        {
-            return ObjectPool.Instance.Fetch(typeof(S2C_UnitUseCast), isFromPool) as S2C_UnitUseCast;
-        }
-
-        [MemoryPackOrder(0)]
-        public long UnitId { get; set; }
-
-        [MemoryPackOrder(1)]
-        public int CastConfigId { get; set; }
-
-        public override void Dispose()
-        {
-            if (!this.IsFromPool)
-            {
-                return;
-            }
-
-            this.UnitId = default;
-            this.CastConfigId = default;
-
-            ObjectPool.Instance.Recycle(this);
-        }
-    }
-
-    [MemoryPackable]
-    [Message(LockStepOuter.S2C_UnitRemoveCast)]
-    public partial class S2C_UnitRemoveCast : MessageObject, IMessage
-    {
-        public static S2C_UnitRemoveCast Create(bool isFromPool = false)
-        {
-            return ObjectPool.Instance.Fetch(typeof(S2C_UnitRemoveCast), isFromPool) as S2C_UnitRemoveCast;
-        }
-
-        [MemoryPackOrder(0)]
-        public long UnitId { get; set; }
-
-        [MemoryPackOrder(1)]
-        public long CastId { get; set; }
-
-        public override void Dispose()
-        {
-            if (!this.IsFromPool)
-            {
-                return;
-            }
-
-            this.UnitId = default;
-            this.CastId = default;
-
-            ObjectPool.Instance.Recycle(this);
-        }
-    }
-
-    [MemoryPackable]
-    [Message(LockStepOuter.S2C_UnitUseBuff)]
-    public partial class S2C_UnitUseBuff : MessageObject, IMessage
-    {
-        public static S2C_UnitUseBuff Create(bool isFromPool = false)
-        {
-            return ObjectPool.Instance.Fetch(typeof(S2C_UnitUseBuff), isFromPool) as S2C_UnitUseBuff;
-        }
-
-        [MemoryPackOrder(0)]
-        public long UnitId { get; set; }
-
-        [MemoryPackOrder(1)]
-        public int BuffConfigId { get; set; }
-
-        public override void Dispose()
-        {
-            if (!this.IsFromPool)
-            {
-                return;
-            }
-
-            this.UnitId = default;
-            this.BuffConfigId = default;
-
-            ObjectPool.Instance.Recycle(this);
-        }
-    }
-
-    [MemoryPackable]
-    [Message(LockStepOuter.S2C_UnitRemoveBuff)]
-    public partial class S2C_UnitRemoveBuff : MessageObject, IMessage
-    {
-        public static S2C_UnitRemoveBuff Create(bool isFromPool = false)
-        {
-            return ObjectPool.Instance.Fetch(typeof(S2C_UnitRemoveBuff), isFromPool) as S2C_UnitRemoveBuff;
-        }
-
-        [MemoryPackOrder(0)]
-        public long UnitId { get; set; }
-
-        [MemoryPackOrder(1)]
-        public long BuffId { get; set; }
-
-        public override void Dispose()
-        {
-            if (!this.IsFromPool)
-            {
-                return;
-            }
-
-            this.UnitId = default;
-            this.BuffId = default;
+            this.Frame = default;
+            this.PlayerId = default;
+            this.Look = default;
 
             ObjectPool.Instance.Recycle(this);
         }
@@ -574,11 +424,6 @@ namespace ET
         public const ushort C2Room_CheckHash = 11011;
         public const ushort Room2C_CheckHashFail = 11012;
         public const ushort G2C_Reconnect = 11013;
-        public const ushort S2C_UnitChangePosition = 11014;
-        public const ushort S2C_UnitChangeRotation = 11015;
-        public const ushort S2C_UnitUseCast = 11016;
-        public const ushort S2C_UnitRemoveCast = 11017;
-        public const ushort S2C_UnitUseBuff = 11018;
-        public const ushort S2C_UnitRemoveBuff = 11019;
+        public const ushort UnPredictionMessage = 11014;
     }
 }

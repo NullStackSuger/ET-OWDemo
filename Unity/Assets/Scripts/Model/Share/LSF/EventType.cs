@@ -17,8 +17,15 @@ namespace ET
     public struct UnitChangeRotation
     {
         public LSUnit Unit;
-        public TSQuaternion OldRotation;
-        public TSQuaternion NewRotation;
+        public FP OldRotation;
+        public FP NewRotation;
+    }
+
+    public struct UnitHeadRotation
+    {
+        public LSUnit Unit;
+        public FP OldRotation;
+        public FP NewRotation;
     }
 
     public struct UnitUseCast
@@ -28,6 +35,7 @@ namespace ET
         /// </summary>
         public LSUnit Unit;
         public Cast Cast;
+        public string Name;
     }
 
     public struct UnitRemoveCast

@@ -3,6 +3,8 @@ using TrueSync;
 namespace ET.Client
 {
     [AnimatorHandler(AnimatorType.Skeleton)]
+    [FriendOf(typeof(ActionComponent))]
+    [FriendOf(typeof(CheckOnGroundComponent))]
     public class SkeletonAnimatorHandler : AAnimatorHandler
     {
         public override void Update(LSFAnimatorComponent animatorComponent, LSUnit unit)
@@ -11,6 +13,7 @@ namespace ET.Client
             if (inputComponent == null) Log.Error("未获取到InputComponent");
 
             LSInput input = inputComponent.Input;
+
             float speed = 6f;
             if (input.V != TSVector2.zero)
             {
@@ -20,6 +23,9 @@ namespace ET.Client
             {
                 animatorComponent.SetFloat("Speed", 0);
             }
+
+            CheckOnGroundComponent checkOnGroundComponent = unit.GetComponent<CheckOnGroundComponent>();
+            animatorComponent.SetBool("OnGround", checkOnGroundComponent == null || checkOnGroundComponent.OnGround);
         }
     }
 }

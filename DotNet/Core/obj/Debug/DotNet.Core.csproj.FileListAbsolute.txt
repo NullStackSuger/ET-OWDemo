@@ -34,8 +34,8 @@ D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Core\obj\Debug\DotNet.Core.Assemb
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Core\obj\Debug\DotNet.Core.AssemblyInfo.cs
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Core\obj\Debug\DotNet.Core.csproj.CoreCompileInputs.cache
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Core\obj\Debug\DotNet.Core.sourcelink.json
-D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Core\obj\Debug\DotNet.Core.csproj.CopyComplete
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Core\obj\Debug\Core.dll
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Core\obj\Debug\refint\Core.dll
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Core\obj\Debug\Core.pdb
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Core\obj\Debug\ref\Core.dll
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Core\obj\Debug\DotNet.C.0F4929AF.Up2Date

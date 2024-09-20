@@ -12,21 +12,32 @@ namespace ET.Client
         private static void Awake(this LSFCameraComponent self)
         {
             Room room = self.GetParent<Room>();
-            LSUnit unit = LSFUnitHelper.GetMyUnit(room.Root());
-            LSFUnitView unitView = room.GetComponent<LSFUnitViewComponent>().GetChild<LSFUnitView>(unit.Id);
-            //LSFUnitView unitView = room.GetComponent<LSFUnitViewComponent>().Children.First().Value as LSFUnitView;
-
+            self.Awake(room.PlayerId);
+        }
+        
+        [EntitySystem]
+        private static void Awake(this LSFCameraComponent self, long unitId)
+        {
+            Room room = self.GetParent<Room>();
+            LSFUnitView unitView = room.GetComponent<LSFUnitViewComponent>().GetChild<LSFUnitView>(unitId);
+            Transform head = unitView.GameObject.GetComponent<ReferenceCollector>().Get<GameObject>("Head").transform;
+            
+            // TODO 这里有时会出现Camera.main == null的情况
             self.Camera = Camera.main;
-            self.LookAt = unitView.Transform;
-            self.Camera.transform.rotation = Quaternion.Euler(new Vector3(20, 0, 0));
+            self.LookAt = head;
+            self.Owner = unitView.Unit;
+            
+            self.Camera.transform.parent = head;
+            self.Camera.transform.localPosition = new Vector3(0, 0.1f, -0.15f);
+            self.Camera.transform.localRotation = Quaternion.Euler(15, 0, 0);
         }
 
         [EntitySystem]
         private static void LateUpdate(this LSFCameraComponent self)
         {
-            if (self.LookAt == null) return;
+            LSUnit owner = self.Owner;
 
-            self.Camera.transform.position = self.LookAt.position + new Vector3(0, 3, -5);
+            self.LookAt.localRotation = Quaternion.Lerp(self.LookAt.localRotation, Quaternion.Euler((float)owner.HeadRotation, 0, 0), 0.61f);
         }
     }
 }

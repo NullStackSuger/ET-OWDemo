@@ -1,6 +1,7 @@
 using System.Numerics;
 using BulletSharp;
 using BulletSharp.Math;
+using TrueSync;
 
 namespace ET
 {
@@ -19,6 +20,13 @@ namespace ET
         public static Cast Creat(this CastComponent self, int configId)
         {
             Cast cast = self.AddChild<Cast, int>(configId);
+            self.Casts.Add(cast);
+            return cast;
+        }
+
+        public static Cast Creat(this CastComponent self, int configId, TSVector offset)
+        {
+            Cast cast = self.AddChild<Cast, int, TSVector>(configId, offset);
             self.Casts.Add(cast);
             return cast;
         }
@@ -46,16 +54,8 @@ namespace ET
         public static Cast Find(this CastComponent self, LSUnit unit)
         {
             if (unit == null) Log.Error($"无法找到为空的技能");
-            
-            foreach (Cast cast in self.Casts)
-            {
-                if (unit == (LSUnit)cast.Unit)
-                {
-                    return cast;
-                }
-            }
 
-            return null;
+            return self.GetChild<Cast>(unit.Id);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace ET.Client
     [Code]
     public class AnimatorDispatcherComponent : Singleton<AnimatorDispatcherComponent>, ISingletonAwake
     {
-        private readonly Dictionary<AnimatorType, AAnimatorHandler> Handlers = new();
+        private readonly Dictionary<string, AAnimatorHandler> Handlers = new();
         
         public void Awake()
         {
@@ -26,7 +26,7 @@ namespace ET.Client
             }
         }
         
-        public AAnimatorHandler this [AnimatorType key]
+        public AAnimatorHandler this [string key]
         {
             get
             {

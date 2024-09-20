@@ -1176,6 +1176,7 @@ namespace BulletSharp
         public const float SIMD_RADS_PER_DEG = (SIMD_2_PI / 360.0f);
         public const float SIMD_DEGS_PER_RAD = (360.0f / SIMD_2_PI);
 
-
+        public const float Deg2Rad = 0.017453292f;
+        public const float Rad2Deg = 57.29578f;
     }
 }

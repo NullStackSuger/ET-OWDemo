@@ -45,9 +45,9 @@ D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\Share\Tool\obj\Debug\Share.Tool.Assembly
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\Share\Tool\obj\Debug\Share.Tool.AssemblyInfo.cs
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\Share\Tool\obj\Debug\Share.Tool.csproj.CoreCompileInputs.cache
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\Share\Tool\obj\Debug\Share.Tool.sourcelink.json
-D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\Share\Tool\obj\Debug\Share.Tool.csproj.CopyComplete
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\Share\Tool\obj\Debug\Tool.dll
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\Share\Tool\obj\Debug\refint\Tool.dll
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\Share\Tool\obj\Debug\Tool.pdb
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\Share\Tool\obj\Debug\Share.Tool.genruntimeconfig.cache
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\Share\Tool\obj\Debug\ref\Tool.dll
+D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\Share\Tool\obj\Debug\Share.Tool.csproj.Up2Date

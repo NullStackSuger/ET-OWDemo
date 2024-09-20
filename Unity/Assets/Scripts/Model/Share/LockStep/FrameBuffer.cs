@@ -10,6 +10,7 @@ namespace ET
         private readonly List<OneFrameInputs> frameInputs; // 每帧输入, 客户端是自己和别人的预测输入, 服务端是所有玩家输入
         private readonly List<MemoryBuffer> snapshots; // 每帧快照
         private readonly List<long> hashs; // 每帧快照的哈希值
+        
 
         public FrameBuffer(int frame = 0, int capacity = LSConstValue.FrameCountPerSecond * 60)
         {

@@ -23,8 +23,8 @@ namespace TrueSync {
     /// <summary>
     /// Contains common math operations.
     /// </summary>
-    public sealed class TSMath {
-
+    public sealed class TSMath
+    {
         /// <summary>
         /// PI constant.
         /// </summary>
@@ -267,6 +267,37 @@ namespace TrueSync {
 
         public static FP Distance(FP value1, FP value2) {
             return FP.Abs(value1 - value2);
+        }
+
+        public static FP DistanceSquared(TSVector v1, TSVector v2)
+        {
+            FP x = v1.x - v2.x;
+            FP y = v1.y - v2.y;
+            FP z = v1.z - v2.z;
+
+            return (x * x) + (y * y) + (z * z);
+        }
+        
+        public static FP Distance(TSVector v1, TSVector v2)
+        {
+            return TSMath.Sqrt(TSMath.DistanceSquared(v1, v2));
+        }
+
+        public static TSMatrix RotationMatrix(FP angleX, FP angleY)
+        {
+            FP sinX = TSMath.Sin(angleX * Deg2Rad);
+            FP sinY = TSMath.Sin(angleY * Deg2Rad);
+            FP cosX = TSMath.Cos(angleX * Deg2Rad);
+            FP cosY = TSMath.Cos(angleY * Deg2Rad);
+            
+            TSMatrix matrix = new TSMatrix()
+            {
+                M11 = cosY, M12 = sinY * sinX, M13 = sinY * cosX,
+                M21 = 0, M22 = cosX, M23 = -sinX,
+                M31 = -sinY, M32 = cosY * sinX, M33 = cosY * cosX
+            };
+
+            return matrix;
         }
 
         public static FP Hermite(FP value1, FP tangent1, FP value2, FP tangent2, FP amount) {

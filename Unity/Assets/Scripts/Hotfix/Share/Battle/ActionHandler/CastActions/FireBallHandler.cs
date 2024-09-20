@@ -1,5 +1,7 @@
+using System;
 using BulletSharp;
-using BulletSharp.Math;
+using TrueSync;
+using Vector3 = BulletSharp.Math.Vector3;
 
 namespace ET
 {
@@ -15,12 +17,15 @@ namespace ET
 
         public override void Update(ActionComponent actionComponent, ActionConfig config)
         {
-            Cast cast = actionComponent.GetParent<Cast>();
-            LSUnit castUnit = cast.Unit;
+            LSUnit castUnit = actionComponent.GetParent<LSUnit>();
 
             B3CollisionComponent collision = castUnit.GetComponent<B3CollisionComponent>();
-            (collision.Collision as RigidBody).ApplyForce(castUnit.Forward.ToVector() * 1000, Vector3.Zero);
-            //collision.Body.WorldTransform += Matrix.Translation(0, 0, 10);
+            
+            TSMatrix matrix = TSMath.RotationMatrix(castUnit.HeadRotation, castUnit.Rotation);
+            TSVector offset = matrix * TSVector.forward * 1000;
+            RigidBody body = collision.Collision as RigidBody;
+            body.Gravity = Vector3.Zero;
+            body.ApplyCentralForce(offset.ToBullet());
         }
     }
 

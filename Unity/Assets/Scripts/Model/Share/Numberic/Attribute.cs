@@ -1,12 +1,11 @@
+using System;
+using ET;
+
 namespace ET
 {
-    public class DataModifierAttribute : BaseAttribute
+    [AttributeUsage(AttributeTargets.Field)]
+    public class GenerateAttribute : BaseAttribute
     {
-        
-    }
-
-    public class ModifierAttribute : BaseAttribute
-    {
-        
+        public string Level;
     }
 }

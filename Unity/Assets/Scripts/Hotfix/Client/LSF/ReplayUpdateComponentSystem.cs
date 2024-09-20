@@ -29,7 +29,7 @@ namespace ET.Client
                 ++room.AuthorityFrame;
 
                 OneFrameInputs inputs = room.Replay.FrameInputs[room.AuthorityFrame];
-                room.Update(inputs);
+                room.PredictionWorld.Update(inputs);
 
                 // 单次update时间>5ms 就留到下次update再做
                 // 避免单次update时间太长 卡住

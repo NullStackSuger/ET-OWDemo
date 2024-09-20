@@ -65,6 +65,8 @@ namespace ET
 		public string Name { get; set; }
 		/// <summary>执行类型</summary>
 		public string RunningType { get; set; }
+		/// <summary>同时执行单个</summary>
+		public int IsOnly { get; set; }
 
 	}
 }

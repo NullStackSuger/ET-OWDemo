@@ -15,36 +15,41 @@ namespace ET.Client
 
             if (frameBuffer == null)
             {
-                Log.Warning($"{entity.Name}未初始化");
+                Log.Error($"{entity.Name}未初始化");
                 return;
             }
 
-            // 这里防止因为些奇怪的操作导致客户端和服务端包对不上
+            /*// 这里防止因为些奇怪的操作导致客户端和服务端包对不上
             // 我这里好像因为加了个人机, 电脑卡了, 导致服务端比客户端快了1帧
             while (room.AuthorityFrame < input.Frame)
             {
                 ++room.AuthorityFrame;
             }
+            
+            OneFrameInputs authorityFrame = frameBuffer.FrameInputs(room.AuthorityFrame);
 
-            // TODO KCP为什么发包顺序不对?
             // 防止因为发包的顺序不对
             if (input.Frame < room.AuthorityFrame)
             {
-                OneFrameInputs authorityFrame = frameBuffer.FrameInputs(room.AuthorityFrame);
                 input.CopyTo(authorityFrame);
-            }
+                return;
+            }*/
+            
+            // TODO 01帧发包顺序不对
+            
+            ++room.AuthorityFrame;
+            
+            OneFrameInputs authorityFrame = frameBuffer.FrameInputs(room.AuthorityFrame);
             
             // 服务端返回的消息比预测的还早
             // 就设置Buffer里为服务器的消息
             if (room.AuthorityFrame > room.PredictionFrame)
             {
-                OneFrameInputs authorityFrame = frameBuffer.FrameInputs(room.AuthorityFrame);
                 input.CopyTo(authorityFrame);
             }
             else
             {
                 // 服务端消息和客户端权威帧比较
-                OneFrameInputs authorityFrame = frameBuffer.FrameInputs(room.AuthorityFrame);
                 // 对比失败
                 if (input != authorityFrame)
                 {
@@ -63,8 +68,9 @@ namespace ET.Client
                 }
             }
             
-            // 对比失败会调用Rollback更正结果, 3钟情况都可以记录
             room.Record(room.AuthorityFrame);
+            
+            room.AuthorityWorld.Update(authorityFrame);
             
             await ETTask.CompletedTask;
         }

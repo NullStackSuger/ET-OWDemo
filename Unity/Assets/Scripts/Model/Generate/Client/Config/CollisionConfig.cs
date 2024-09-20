@@ -65,8 +65,8 @@ namespace ET
 		public int IsTrigger { get; set; }
 		/// <summary>逆转张量</summary>
 		public string InvInertiaDiagLocal { get; set; }
-		/// <summary>阻尼 * 100</summary>
-		public int Damping { get; set; }
+		/// <summary>弹性系数</summary>
+		public float Restitution { get; set; }
 		/// <summary>Callback</summary>
 		public string Callback { get; set; }
 

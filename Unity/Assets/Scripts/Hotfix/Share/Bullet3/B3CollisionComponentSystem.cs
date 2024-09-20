@@ -24,12 +24,17 @@ namespace ET
             
             self.Collision = co;
             co.UserObject = self;
-            self.Offset = info.Position.ToTSVector();
+            self.Offset = info.Position;
             
             worldComponent.NotifyToAdd(co, callback);
-            
-            self.Collision.WorldTransform += Matrix.Translation((float)unit.Position.x, (float)unit.Position.y, (float)unit.Position.z);
-            //self.Body.Orientation += new Quaternion((float)unit.Rotation.x, (float)unit.Rotation.y, (float)unit.Rotation.z, (float)unit.Rotation.w);
+
+            self.Collision.WorldTransform += Matrix.Translation(unit.Position.ToVector());
+            /*Matrix transform = self.Collision.WorldTransform;
+            transform = Matrix.Translation(unit.Position.ToVector());
+            Quaternion quaternionY = new Quaternion(Vector3.UnitY, -MathUtil.DegToRadians((float)unit.Rotation));
+            Quaternion quaternionX = new Quaternion(Vector3.UnitX, -MathUtil.DegToRadians((float)unit.HeadRotation));
+            transform.Orientation = quaternionY * quaternionX;
+            self.Collision.WorldTransform = transform;*/
         }
         
         [EntitySystem]
@@ -45,12 +50,35 @@ namespace ET
         [LSEntitySystem]
         private static void LSUpdate(this B3CollisionComponent self)
         {
-            self.Collision.GetWorldTransform(out Matrix transform);
+            Vector3 position = self.Collision.WorldTransform.Origin;
             LSUnit unit = self.GetParent<LSUnit>();
             
-            unit.Position = new TSVector(transform.Origin.X, transform.Origin.Y, transform.Origin.Z) - self.Offset;
-            transform.Orientation = new Quaternion((float)unit.Rotation.x, (float)unit.Rotation.y, (float)unit.Rotation.z, (float)unit.Rotation.w);
-            self.Collision.WorldTransform = transform;
+            unit.Position = (position - self.Offset).ToTSVector();
         }
+
+        #region MoveTo
+        public static void MoveTo(this B3CollisionComponent self, Vector3 position)
+        {
+            self.MoveTo(Matrix.Translation(position));
+        }
+        public static void MoveTo(this B3CollisionComponent self, Vector3 position, Quaternion rotation)
+        {
+            Matrix transform = Matrix.Translation(position);
+            transform.Orientation = rotation;
+            self.MoveTo(transform);
+        }
+        public static void MoveTo(this B3CollisionComponent self, Vector3 position, float rotation, float headRotation)
+        {
+            Quaternion quaternionY = new Quaternion(Vector3.UnitY, -MathUtil.DegToRadians(rotation));
+            Quaternion quaternionX = new Quaternion(Vector3.UnitX, -MathUtil.DegToRadians(headRotation));
+            self.MoveTo(position, quaternionY * quaternionX);
+            
+            //Log.Warning($"{self.Collision.WorldTransform.Orientation}");
+        }
+        public static void MoveTo(this B3CollisionComponent self, Matrix matrix)
+        {
+            self.Collision.WorldTransform = matrix;
+        }
+        #endregion
     }
 }

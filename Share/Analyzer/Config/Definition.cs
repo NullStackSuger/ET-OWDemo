@@ -92,14 +92,10 @@
         public const string EntityRefType = "EntityRef";
         
         public const string EntityWeakRefType = "EntityWeakRef";
-
+        
         public const string DisableNewAttribute = "ET.DisableNewAttribute";
-
+        
         public const string EnableClassAttribute = "ET.EnableClassAttribute";
-
-        public const string DataModifierAttribute = "ET.DataModifierAttribute";
-
-        public const string ModifierAttribute = "ET.ModifierAttribute";
     }
 }
 

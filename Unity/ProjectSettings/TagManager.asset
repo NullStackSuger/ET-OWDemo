@@ -10,6 +10,7 @@ TagManager:
   - Collision_Polygon
   - Collision_Capsule
   - Collision_RayTest
+  - Collision_Cylinder
   layers:
   - Default
   - TransparentFX

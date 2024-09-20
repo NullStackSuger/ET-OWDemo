@@ -1,4 +1,4 @@
-using TrueSync;
+/*using TrueSync;
 
 namespace ET.Client
 {
@@ -9,4 +9,4 @@ namespace ET.Client
         {
         }
     }
-}
+}*/

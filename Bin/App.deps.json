@@ -424,7 +424,10 @@
           "ThirdParty": "1.0.0"
         },
         "runtime": {
-          "Core.dll": {}
+          "Core.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": ""
+          }
         }
       },
       "Loader/1.0.0": {
@@ -433,7 +436,10 @@
           "ThirdParty": "1.0.0"
         },
         "runtime": {
-          "Loader.dll": {}
+          "Loader.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": ""
+          }
         }
       },
       "Model/1.0.0": {
@@ -442,7 +448,10 @@
           "ThirdParty": "1.0.0"
         },
         "runtime": {
-          "Model.dll": {}
+          "Model.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": ""
+          }
         }
       },
       "ThirdParty/1.0.0": {
@@ -457,7 +466,10 @@
           "SharpZipLib": "1.3.3"
         },
         "runtime": {
-          "ThirdParty.dll": {}
+          "ThirdParty.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": ""
+          }
         }
       },
       "Core.Reference/1.0.0.0": {
