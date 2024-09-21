@@ -43,7 +43,6 @@ namespace ET.Server
                 return;
             }
             
-            Log.Warning($"收到预测消息:{message.Frame}, {message.Input.Look}");
             oneFrameInputs.Inputs[message.PlayerId] = message.Input;
             
             await ETTask.CompletedTask;

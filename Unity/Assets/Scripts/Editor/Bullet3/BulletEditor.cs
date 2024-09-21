@@ -10,50 +10,9 @@ namespace ET
 {
     public static class BulletEditor
     {
-        [MenuItem("Tools/Generate Map Infos", false)]
-        public static void GenerateMapInfos()
+        private static CollisionInfo GenerateInfo(GameObject go)
         {
-            GameObject[] gos = Resources.FindObjectsOfTypeAll<GameObject>();
-            List<MeshInfo> infos = new();
-            foreach (GameObject go in gos)
-            {
-                if (!go.CompareTag("Collision_Mesh")) continue;
-
-                MeshFilter filter = go.GetComponent<MeshFilter>();
-                Rigidbody rb = go.GetComponent<Rigidbody>();
-                if (filter.sharedMesh == null)
-                {
-                    Debug.LogWarning($"{go.name}的模型不存在");
-                    continue;
-                }
-
-                float mass = (rb == null || rb.mass < 0.1) ? 0 : rb.mass;
-                BulletSharp.Math.Vector3[] points = filter.sharedMesh.vertices.ToBullet();
-                BulletSharp.Math.Vector3 position = go.transform.position.ToBullet();
-                MeshInfo info = new() { Points = points, Position = position, Mass = mass };
-                infos.Add(info);
-            }
-
-            string path = $"D:\\{SceneManager.GetActiveScene().name}.bytes";
-            byte[] bytes = MemoryPackHelper.Serialize(infos);
-            File.WriteAllBytes(path, bytes);
-            
-            Debug.Log("生成场景碰撞完成");
-        }
-
-        [MenuItem("Tools/Generate Collider Infos", false)]
-        public static void GenerateColliderInfo()
-        {
-            EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
-            EditorSceneManager.OpenScene("Assets/Scenes/Collision.unity");
-            
-            GameObject[] gos = Resources.FindObjectsOfTypeAll<GameObject>();
-
-            List<CollisionInfo> infos = new();
-
-            foreach (GameObject go in gos)
-            {
-                CollisionInfo info;
+            CollisionInfo info;
                 switch (go.tag)
                 {
                     case "Collision_Polygon":
@@ -107,14 +66,54 @@ namespace ET
                             Height = go.transform.localScale.y,
                         };
                         break;
+                    case "Untagged":
+                        return null;
                     default:
-                        continue;
+                        Debug.LogError($"未实现{go.tag}");
+                        return null;
                 }
-                
-                info.Id = int.Parse(go.name);
+            
                 Rigidbody rb = go.GetComponent<Rigidbody>();
                 info.Mass = (rb == null || rb.mass <= 0.1) ? 0 : rb.mass;
                 info.Position = go.transform.position.ToBullet();
+
+                return info;
+        }
+        
+        [MenuItem("Tools/Generate Map Infos", false)]
+        public static void GenerateMapInfos()
+        {
+            GameObject[] gos = Resources.FindObjectsOfTypeAll<GameObject>();
+            List<CollisionInfo> infos = new();
+            foreach (GameObject go in gos)
+            {
+                var info = GenerateInfo(go);
+                if (info == null) continue;
+                infos.Add(info);
+            }
+
+            string path = $"D:\\{SceneManager.GetActiveScene().name}.bytes";
+            byte[] bytes = MemoryPackHelper.Serialize(infos);
+            File.WriteAllBytes(path, bytes);
+            
+            Debug.Log("生成场景碰撞完成");
+        }
+
+        [MenuItem("Tools/Generate Collider Infos", false)]
+        public static void GenerateColliderInfos()
+        {
+            EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
+            EditorSceneManager.OpenScene("Assets/Scenes/Collision.unity");
+            
+            GameObject[] gos = Resources.FindObjectsOfTypeAll<GameObject>();
+
+            List<CollisionInfo> infos = new();
+
+            foreach (GameObject go in gos)
+            {
+                var info = GenerateInfo(go);
+                if (info == null) continue;
+                info.Id = int.Parse(go.name);
                 
                 infos.Add(info);
             }

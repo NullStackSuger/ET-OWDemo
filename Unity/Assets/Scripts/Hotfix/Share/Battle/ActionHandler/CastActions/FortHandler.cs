@@ -12,6 +12,9 @@ namespace ET
         public override void Update(ActionComponent actionComponent, ActionConfig config)
         {
             LSUnit unit = actionComponent.GetParent<LSUnit>();
+            
+            // 因为没做炮台口上下旋转, 这里就直接平射了
+            unit.HeadRotation = 0;
 
             DataModifierComponent dataModifierComponent = unit.GetComponent<DataModifierComponent>();
 

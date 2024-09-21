@@ -67,6 +67,8 @@ namespace ET
 		public string InvInertiaDiagLocal { get; set; }
 		/// <summary>弹性系数</summary>
 		public float Restitution { get; set; }
+		/// <summary>SetRotation</summary>
+		public int SetRotation { get; set; }
 		/// <summary>Callback</summary>
 		public string Callback { get; set; }
 

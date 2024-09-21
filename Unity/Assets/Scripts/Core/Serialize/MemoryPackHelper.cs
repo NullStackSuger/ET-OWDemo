@@ -34,6 +34,11 @@ namespace ET
             return o;
         }
 
+        public static T Deserialize<T>(byte[] bytes) where T : class
+        {
+            return Deserialize(typeof(T), bytes, 0, bytes.Length) as T;
+        }
+
         public static object Deserialize(Type type, byte[] bytes, int index, int count, ref object o)
         {
             MemoryPackSerializer.Deserialize(type, bytes.AsSpan(index, count), ref o);

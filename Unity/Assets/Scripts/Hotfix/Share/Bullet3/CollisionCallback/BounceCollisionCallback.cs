@@ -6,8 +6,6 @@ namespace ET
     {
         public override void CollisionCallbackEnter(CollisionObject self, CollisionObject other)
         {
-            // TODO 这里为什么碰撞不上? 护盾也是
-            Log.Warning($"1");
             B3CollisionComponent collisionA = self.UserObject as B3CollisionComponent;
             LSUnit unitA = collisionA.GetParent<LSUnit>();
             string tagA = unitA.Tag;
@@ -22,15 +20,12 @@ namespace ET
             // 碰撞到建筑
             if (collisionB == null)
             {
-                Log.Warning($"2");
                 return;
             }
             
             LSUnit unitB = collisionB.GetParent<LSUnit>();
             string tagB = unitB.Tag;
-            Log.Warning($"3");
             if (Tag.IsFriend(tagA, tagB)) return;
-            Log.Warning($"4");
             if (!tagB.StartsWith(Tag.Cast)) return;
 
             other.InterpolationLinearVelocity *= -1;

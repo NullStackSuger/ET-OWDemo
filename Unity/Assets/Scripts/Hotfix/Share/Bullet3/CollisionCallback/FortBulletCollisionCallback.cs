@@ -7,6 +7,7 @@ namespace ET
     {
         public override void CollisionCallbackEnter(CollisionObject self, CollisionObject other)
         {
+            Log.Warning($"碰撞");
             B3CollisionComponent collisionA = self.UserObject as B3CollisionComponent;
             LSUnit unitA = collisionA.GetParent<LSUnit>();
             string tagA = unitA.Tag;
@@ -39,17 +40,17 @@ namespace ET
                 DataModifierComponent modifierComponentB = ownerB.GetComponent<DataModifierComponent>();
                 long atk = modifierComponentA.Get(DataModifierType.FortNumeric);
                 DataModifierHelper.Shield(atk, modifierComponentB, DataModifierType.Shield);
-                
+
                 castComponentA.Remove(unitA);
             }
             else if (tagB.StartsWith(Tag.Player))
             {
                 Log.Warning($"碰到玩家");
                 DataModifierComponent modifierComponentB = unitB.GetComponent<DataModifierComponent>();
-                
+
                 long atk = modifierComponentA.Get(DataModifierType.FortNumeric);
                 DataModifierHelper.DefaultBattle(atk, modifierComponentB, DataModifierType.Hp);
-                castComponentA.Remove(unitA);   
+                castComponentA.Remove(unitA);
             }
         }
 

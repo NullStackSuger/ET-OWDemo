@@ -15,10 +15,12 @@ namespace ET
         [EntitySystem]
         private static void Awake(this B3WorldComponent self)
         {
-            var CollisionConf = new DefaultCollisionConfiguration();
-            var Dispatcher = new CollisionDispatcher(CollisionConf);
-            var BroadPhase = new DbvtBroadphase();
-            self.World = new DiscreteDynamicsWorld(Dispatcher, BroadPhase, null, CollisionConf);
+            var collisionConf = new DefaultCollisionConfiguration();
+            var dispatcher = new CollisionDispatcher(collisionConf);
+            var broadPhase = new AxisSweep3(Vector3.One * -1000, Vector3.One * 1000);
+            var solver = new SequentialImpulseConstraintSolver();
+            self.World = new DiscreteDynamicsWorld(dispatcher, broadPhase, solver, collisionConf);
+            self.World.DispatchInfo.AllowedCcdPenetration = 0.0001f;
             self.World.Broadphase.OverlappingPairCache.SetInternalGhostPairCallback(new GhostPairCallback());
             self.World.Gravity = new Vector3(0, -100, 0);
 
@@ -32,12 +34,13 @@ namespace ET
                 string path = $"D:\\{name}.bytes";
                 if (!File.Exists(path)) return;
                 byte[] bytes = await File.ReadAllBytesAsync(path);
-                List<MeshInfo> infos = MemoryPackHelper.Deserialize(typeof(List<MeshInfo>), bytes, 0, bytes.Length) as List<MeshInfo>;
+                List<CollisionInfo> infos = MemoryPackHelper.Deserialize<List<CollisionInfo>>(bytes);
 
                 // TODO: 这里加载时间>200s RPC会断开, 需要处理
-                foreach (MeshInfo info in infos)
+                foreach (CollisionInfo info in infos)
                 {
-                    self.AddBody(info.Points, info.Position, info.Mass);
+                    CollisionObject co = CollisionInfoDispatcherComponent.Instance.GenerateCollisionObject(info);
+                    self.NotifyToAdd(co);
                     await ETTask.CompletedTask;
                 }
             }

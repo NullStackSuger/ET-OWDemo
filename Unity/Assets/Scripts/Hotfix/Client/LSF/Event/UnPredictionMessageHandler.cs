@@ -19,8 +19,6 @@ namespace ET.Client
             LSInput.CopyUnPrediction(message, ref input);
             frameInputs.Inputs[message.PlayerId] = input;
             
-            Log.Warning($"收到不预测消息:{message.Frame}, {message.Look}");
-            
             await ETTask.CompletedTask;
         }
     }

@@ -29,7 +29,7 @@ namespace ET
             // 需要在Check里检查技能是否还存在
             CastComponent castComponent = unit.GetComponent<CastComponent>();
             castComponent.Creat(1009);
-            actionComponent.Args.Add("ShieldId", castComponent.Id);
+            //actionComponent.Args.Add("ShieldId", castComponent.Id);
             
             /*CastComponent castComponent = unit.GetComponent<CastComponent>();
             Cast cast = castComponent.Creat(1010);*/

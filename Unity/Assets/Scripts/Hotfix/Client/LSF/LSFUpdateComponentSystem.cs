@@ -50,7 +50,6 @@ namespace ET.Client
                 frameMessage.Frame = room.PredictionFrame;
                 frameMessage.Input = room.Input;
                 root.GetComponent<ClientSenderComponent>().Send(frameMessage);
-                Log.Warning($"发送预测消息:{frameMessage.Frame}, {frameMessage.Input.Look}");
 
                 room.Input.Clear();
 

@@ -31,6 +31,11 @@ namespace ET
             CollisionConfig config = CollisionConfigCategory.Instance.Get(configId);
             CollisionInfo info = this.Infos[configId];
 
+            return GenerateCollisionObject(info, config.IsTrigger, config.InvInertiaDiagLocal, config.Restitution);
+        }
+
+        public CollisionObject GenerateCollisionObject(CollisionInfo info, int isTrigger = 0, string invInertiaDiagLocal = "None", float restitution = 0)
+        {
             CollisionShape shape = null;
             switch (info.Tag)
             {
@@ -63,7 +68,7 @@ namespace ET
             CollisionObject co;
 
             // 设置触发器
-            if (config.IsTrigger == 1)
+            if (isTrigger == 1)
             {
                 GhostObject go = new GhostObject();
                 go.CollisionShape = shape;
@@ -80,7 +85,7 @@ namespace ET
                 RigidBody body = new RigidBody(rbInfo);
                 
                 // 设置旋转约束(逆惯性张量)
-                switch (config.InvInertiaDiagLocal)
+                switch (invInertiaDiagLocal)
                 {
                     case "X":
                         body.InvInertiaDiagLocal = new Vector3(1, 0, 0);
@@ -94,7 +99,7 @@ namespace ET
                 }
                 
                 // 设置弹性系数
-                body.Restitution = config.Restitution;
+                body.Restitution = restitution;
 
                 co = body;
             }

@@ -83,7 +83,6 @@ namespace ET.Client
             unPredictionMessage.PlayerId = room.PlayerId;
             unPredictionMessage.Look = look;
             root.GetComponent<ClientSenderComponent>().Send(unPredictionMessage);
-            Log.Warning($"发送不预测消息:{unPredictionMessage.Frame}, {unPredictionMessage.Look}");   
         }
     }
 }

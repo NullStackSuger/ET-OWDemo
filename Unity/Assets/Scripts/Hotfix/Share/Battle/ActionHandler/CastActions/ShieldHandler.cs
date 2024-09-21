@@ -14,11 +14,11 @@ namespace ET
 
         public override void Update(ActionComponent actionComponent, ActionConfig config)
         {
-            LSUnit unit = actionComponent.GetParent<LSUnit>();
+            /*LSUnit unit = actionComponent.GetParent<LSUnit>();
             LSUnit owner = unit.Owner;
             Cast cast = owner.GetComponent<CastComponent>().GetChild<Cast>(unit.Id);
             CastConfig castConfig = CastConfigCategory.Instance.Get(cast.ConfigId);
-            actionComponent.Args.Add("Offset", new TSVector(castConfig.X, castConfig.Y, castConfig.Z));
+            actionComponent.Args.Add("Offset", new TSVector(castConfig.X, castConfig.Y, castConfig.Z));*/
         }
     }
     [FriendOf(typeof(ActionComponent))]
@@ -26,9 +26,9 @@ namespace ET
     {
         public override bool Check(ActionComponent actionComponent, ActionConfig config)
         {
-            LSUnit unit = actionComponent.GetParent<LSUnit>();
+            /*LSUnit unit = actionComponent.GetParent<LSUnit>();
             LSUnit owner = unit.Owner;
-            CastComponent castComponent = owner.GetComponent<CastComponent>();
+            CastComponent castComponent = owner.GetComponent<CastComponent>();*/
 
             /*LSInput input = owner.GetComponent<LSFInputComponent>().Input;
             if (input.Button != 113)
@@ -37,21 +37,21 @@ namespace ET
                 return false;
             }*/
             
-            DataModifierComponent dataModifierComponent = owner.GetComponent<DataModifierComponent>();
+            /*DataModifierComponent dataModifierComponent = owner.GetComponent<DataModifierComponent>();
             if (dataModifierComponent.Get(DataModifierType.Shield) <= 0)
             {
                 castComponent.Remove(unit.Id);
                 return false;
-            }
+            }*/
 
             return true;
         }
 
         public override void Update(ActionComponent actionComponent, ActionConfig config)
         {
-            LSUnit unit = actionComponent.GetParent<LSUnit>();
+            /*LSUnit unit = actionComponent.GetParent<LSUnit>();
             LSUnit owner = unit.Owner;
-            B3CollisionComponent collisionComponent = unit.GetComponent<B3CollisionComponent>();
+            B3CollisionComponent collisionComponent = unit.GetComponent<B3CollisionComponent>();*/
 
             /*unit.Rotation = owner.Rotation;
             unit.HeadRotation = owner.HeadRotation;

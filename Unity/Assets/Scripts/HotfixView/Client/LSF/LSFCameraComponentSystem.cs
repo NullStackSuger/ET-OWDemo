@@ -22,7 +22,6 @@ namespace ET.Client
             LSFUnitView unitView = room.GetComponent<LSFUnitViewComponent>().GetChild<LSFUnitView>(unitId);
             Transform head = unitView.GameObject.GetComponent<ReferenceCollector>().Get<GameObject>("Head").transform;
             
-            // TODO 这里有时会出现Camera.main == null的情况
             self.Camera = Camera.main;
             self.LookAt = head;
             self.Owner = unitView.Unit;
