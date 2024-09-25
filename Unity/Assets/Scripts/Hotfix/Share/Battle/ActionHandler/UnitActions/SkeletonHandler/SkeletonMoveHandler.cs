@@ -30,9 +30,10 @@ namespace ET
             RigidBody body = unit.GetComponent<B3CollisionComponent>().Collision as RigidBody;
             
             TSMatrix matrix = TSMath.RotationMatrix(unit.HeadRotation, unit.Rotation);
-            TSVector offset = matrix * new TSVector(input.V.x, 0, input.V.y) * dataModifierComponent.Get(DataModifierType.Speed);
+            float speed = dataModifierComponent.Get(DataModifierType.Speed);
+            TSVector offset = matrix * new TSVector(input.V.x, 0, input.V.y) * speed;
             offset.y = body.LinearVelocity.Y;
-            body.LinearVelocity = offset.ToBullet();
+            body.LinearVelocity = offset.ToBullet(); 
         }
     }
 }

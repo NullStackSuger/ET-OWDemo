@@ -8,5 +8,7 @@ namespace ET.Client
 	    public const string LSF_UILogin = "LSF_UILogin";
 	    public const string LSF_UILobby = "LSF_UILobby";
 	    public const string LSF_UIRoom = "LSF_UIRoom";
+
+	    public const string Snipe = "Snipe";
     }
 }

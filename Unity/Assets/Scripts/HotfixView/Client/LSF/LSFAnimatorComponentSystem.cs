@@ -45,7 +45,21 @@ namespace ET.Client
             AnimatorDispatcherComponent.Instance[self.Type].Update(self, unit);
         }
 
-        private static bool HasParameter(this LSFAnimatorComponent self, string parameter)
+        public static bool HasClip(this LSFAnimatorComponent self, string clipName)
+        {
+            return self.Clips.ContainsKey(clipName);
+        }
+        public static AnimationClip GetClip(this LSFAnimatorComponent self, string clipName)
+        {
+            return self.Clips[clipName];
+        }
+
+        public static bool TryGetClip(this LSFAnimatorComponent self, string clipName, out AnimationClip clip)
+        {
+            return self.Clips.TryGetValue(clipName, out clip);
+        }
+        
+        public static bool HasParameter(this LSFAnimatorComponent self, string parameter)
         {
             return self.Parameter.Contains(parameter);
         }

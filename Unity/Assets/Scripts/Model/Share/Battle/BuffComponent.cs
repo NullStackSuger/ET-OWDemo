@@ -5,6 +5,6 @@ namespace ET
     [ComponentOf(typeof(LSUnit))]
     public class BuffComponent : LSEntity, IAwake
     {
-        public List<EntityRef<Buff>> Buffs = new();
+        public Dictionary<string, EntityRef<Buff>> Buffs = new();
     }
 }

@@ -5,8 +5,8 @@
 [2002, {"_t":"ActionConfig","_id":2002,"Name":"BurnHandler","RunningType":"Repeat","IsOnly":1}],
 [3001, {"_t":"ActionConfig","_id":3001,"Name":"SkeletonInitHandler","RunningType":"Once","IsOnly":1}],
 [3002, {"_t":"ActionConfig","_id":3002,"Name":"SkeletonLookHandler","RunningType":"Repeat","IsOnly":0}],
-[3003, {"_t":"ActionConfig","_id":3003,"Name":"SkeletonJumpHandler","RunningType":"Repeat","IsOnly":0}],
-[3004, {"_t":"ActionConfig","_id":3004,"Name":"SkeletonMoveHandler","RunningType":"Repeat","IsOnly":0}],
+[3003, {"_t":"ActionConfig","_id":3003,"Name":"SkeletonJumpHandler","RunningType":"Repeat","IsOnly":1}],
+[3004, {"_t":"ActionConfig","_id":3004,"Name":"SkeletonMoveHandler","RunningType":"Repeat","IsOnly":1}],
 [3005, {"_t":"ActionConfig","_id":3005,"Name":"SkeletonChangeBulletHandler","RunningType":"Repeat","IsOnly":1}],
 [3006, {"_t":"ActionConfig","_id":3006,"Name":"SkeletonCastCHandler","RunningType":"Repeat","IsOnly":1}],
 [3007, {"_t":"ActionConfig","_id":3007,"Name":"SkeletonCastEHandler","RunningType":"Repeat","IsOnly":1}],
@@ -32,4 +32,7 @@
 [11003, {"_t":"ActionConfig","_id":11003,"Name":"ArmageddonMoveHandler","RunningType":"Repeat","IsOnly":0}],
 [11004, {"_t":"ActionConfig","_id":11004,"Name":"ArmageddonCastHandler","RunningType":"Repeat","IsOnly":0}],
 [11005, {"_t":"ActionConfig","_id":11005,"Name":"ArmageddonEndHandler","RunningType":"Once","IsOnly":1}],
+[12001, {"_t":"ActionConfig","_id":12001,"Name":"GrapplerInitHandler","RunningType":"Once","IsOnly":1}],
+[12002, {"_t":"ActionConfig","_id":12002,"Name":"GrapplerHandler","RunningType":"Repeat","IsOnly":1}],
+[12003, {"_t":"ActionConfig","_id":12003,"Name":"GrapplerEndHandler","RunningType":"Once","IsOnly":1}],
 ]}

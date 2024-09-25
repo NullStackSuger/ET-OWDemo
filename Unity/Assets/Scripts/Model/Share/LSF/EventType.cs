@@ -21,7 +21,7 @@ namespace ET
         public FP NewRotation;
     }
 
-    public struct UnitHeadRotation
+    public struct UnitChangeHeadRotation
     {
         public LSUnit Unit;
         public FP OldRotation;
@@ -63,5 +63,10 @@ namespace ET
         /// </summary>
         public LSUnit Unit;
         public Buff Buff;
+    }
+
+    public struct UnitChangeSnipe
+    {
+        
     }
 }

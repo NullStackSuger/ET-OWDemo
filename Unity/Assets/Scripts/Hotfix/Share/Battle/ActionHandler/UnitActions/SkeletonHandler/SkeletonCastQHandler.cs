@@ -28,8 +28,8 @@ namespace ET
             // 释放技能
             LSUnit unit = actionComponent.GetParent<LSUnit>();
             
-            /*CastComponent castComponent = unit.GetComponent<CastComponent>();
-            castComponent.Creat(1011);*/
+            CastComponent castComponent = unit.GetComponent<CastComponent>();
+            castComponent.Creat(1011);
             
             // 传送门
             /*CastComponent castComponent = unit.GetComponent<CastComponent>();
@@ -38,8 +38,8 @@ namespace ET
             portalA.AddComponent<PortalComponent, TSVector>(portalB.Position);
             portalB.AddComponent<PortalComponent, TSVector>(portalA.Position);*/
             
-            CastComponent castComponent = unit.GetComponent<CastComponent>();
-            castComponent.Creat(1007);
+            /*CastComponent castComponent = unit.GetComponent<CastComponent>();
+            castComponent.Creat(1004);*/
             
             // 需要在Check里检查技能是否还存在
             /*CastComponent castComponent = unit.GetComponent<CastComponent>();

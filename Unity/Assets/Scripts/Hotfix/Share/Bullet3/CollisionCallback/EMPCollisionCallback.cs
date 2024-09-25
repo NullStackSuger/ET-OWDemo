@@ -4,7 +4,7 @@ namespace ET
 {
     public class EMPCollisionCallback : ACollisionCallback
     {
-        public override void CollisionCallbackEnter(CollisionObject self, CollisionObject other)
+        public override void CollisionCallbackEnter(CollisionObject self, CollisionObject other, PersistentManifold persistentManifold)
         {
             B3CollisionComponent collisionA = self.UserObject as B3CollisionComponent;
             LSUnit unitA = collisionA.GetParent<LSUnit>();
@@ -21,7 +21,7 @@ namespace ET
             
             LSUnit unitB = collisionB.GetParent<LSUnit>();
             string tagB = unitB.Tag;
-            if (Tag.IsFriend(tagA, tagB)) return;
+            //if (Tag.IsFriend(tagA, tagB)) return;
 
             if (tagB.StartsWith(Tag.Shield))
             {
@@ -37,12 +37,12 @@ namespace ET
             }
         }
 
-        public override void CollisionCallbackStay(CollisionObject self, CollisionObject other)
+        public override void CollisionCallbackStay(CollisionObject self, CollisionObject other, PersistentManifold persistentManifold)
         {
             
         }
 
-        public override void CollisionCallbackExit(CollisionObject self, CollisionObject other)
+        public override void CollisionCallbackExit(CollisionObject self, CollisionObject other, PersistentManifold persistentManifold)
         {
             
         }

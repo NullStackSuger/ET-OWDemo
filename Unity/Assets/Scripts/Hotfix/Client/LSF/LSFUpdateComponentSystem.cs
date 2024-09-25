@@ -70,14 +70,20 @@ namespace ET.Client
             // 预测
             OneFrameInputs predictionInputs = frameBuffer.FrameInputs(frame);
             frameBuffer.MoveForward(frame);
+            
             // 其他人用权威帧输入, 自己预测输入
             // 没有权威帧输入的话 服务端会new
             if (frameBuffer.CheckFrame(room.AuthorityFrame))
             {
                 OneFrameInputs authorityInputs = frameBuffer.FrameInputs(room.AuthorityFrame);
+                
+                //authorityInputs.CopyTo(predictionInputs);
                 authorityInputs.CopyToPrediction(predictionInputs);
             }
+            //predictionInputs.Inputs[room.PlayerId] = room.Input;
             predictionInputs.CopyEach(room.PlayerId, ref room.Input);
+            
+            predictionInputs.Frame = room.PredictionFrame;
 
             return predictionInputs;
         }

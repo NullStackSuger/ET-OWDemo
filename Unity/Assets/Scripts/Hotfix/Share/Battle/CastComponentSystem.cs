@@ -40,14 +40,14 @@ namespace ET
         public static void Remove(this CastComponent self, long castId)
         {
             Cast cast = self.GetChild<Cast>(castId);
-            if (cast == null) Log.Error($"{self.IScene.SceneType}: 未找到{castId}Cast");
+            if (cast == null) return;
             self.Remove(cast);
         }
 
         public static void Remove(this CastComponent self, LSUnit unit)
         {
             Cast cast = self.Find(unit);
-            if (cast == null) Log.Error("未找到Unit对应技能");
+            if (cast == null) return;
             self.Remove(cast);
         }
 

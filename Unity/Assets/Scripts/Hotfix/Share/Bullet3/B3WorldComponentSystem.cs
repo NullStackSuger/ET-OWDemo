@@ -80,11 +80,11 @@ namespace ET
                 // 在Callbacks里存在说明是B3CollisionComponent并有回调
                 if (self.Callbacks.ContainsKey(a))
                 {
-                    self.NowCollisionInfos.Add((a, b));
+                    self.NowCollisionInfos.Add((a, b, contactManifold));
                 }
                 if (self.Callbacks.ContainsKey(b))
                 {
-                    self.NowCollisionInfos.Add((b, a));
+                    self.NowCollisionInfos.Add((b, a, contactManifold));
                 }
             }
             
@@ -124,9 +124,10 @@ namespace ET
                 {
                     CollisionObject a = pair.Item1;
                     CollisionObject b = pair.Item2;
+                    PersistentManifold persistentManifold = pair.Item3;
                     
                     if (self.Callbacks.TryGetValue(a, out var callback))
-                        callback.CollisionCallbackEnter(a, b);
+                        callback.CollisionCallbackEnter(a, b, persistentManifold);
                 }
                 // 取交集是Stay
                 var stay = self.LastCollisionInfos.Intersect(self.NowCollisionInfos);
@@ -134,9 +135,10 @@ namespace ET
                 {
                     CollisionObject a = pair.Item1;
                     CollisionObject b = pair.Item2;
+                    PersistentManifold persistentManifold = pair.Item3;
                     
                     if (self.Callbacks.TryGetValue(a, out var callback))
-                        callback.CollisionCallbackStay(a, b);
+                        callback.CollisionCallbackStay(a, b, persistentManifold);
                 }
                 // 取Last差集是Exit
                 var exit = self.LastCollisionInfos.Except(self.NowCollisionInfos);
@@ -144,9 +146,10 @@ namespace ET
                 {
                     CollisionObject a = pair.Item1;
                     CollisionObject b = pair.Item2;
+                    PersistentManifold persistentManifold = pair.Item3;
                     
                     if (self.Callbacks.TryGetValue(a, out var callback))
-                        callback.CollisionCallbackExit(a, b);
+                        callback.CollisionCallbackExit(a, b, persistentManifold);
                 }
                 
                 // 最后遍历CollisionTestFinish
@@ -183,16 +186,18 @@ namespace ET
             RayTestInfo info = CollisionInfoDispatcherComponent.Instance.Infos[collisionInfoId] as RayTestInfo;
             Vector3 from = info.StartPos;
             Vector3 to = info.EndPos;
-            ClosestRayResultCallback callback = new ClosestRayResultCallback(ref from, ref to);
-            self.World.RayTest(from, to, callback);
-            co = callback.CollisionObject;
-            return callback.HasHit;
+            return self.RayTestFirst(from, to, out co);
         }
         public static bool RayTestFirst(this B3WorldComponent self, Vector3 from, Vector3 to, out CollisionObject co)
         {
-            ClosestRayResultCallback callback = new ClosestRayResultCallback(ref from, ref to);
-            self.World.RayTest(from, to, callback);
+            bool res = self.RayTestFirst(from, to, out ClosestRayResultCallback callback);
             co = callback.CollisionObject;
+            return res;
+        }
+        public static bool RayTestFirst(this B3WorldComponent self, Vector3 from, Vector3 to, out ClosestRayResultCallback callback)
+        {
+            callback = new ClosestRayResultCallback(ref from, ref to);
+            self.World.RayTest(from, to, callback);
             return callback.HasHit;
         }
         /// <summary>

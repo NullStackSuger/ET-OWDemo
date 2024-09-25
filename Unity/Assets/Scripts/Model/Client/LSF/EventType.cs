@@ -8,4 +8,10 @@ namespace ET.Client
     {
         
     }
+
+    public struct LSFPlayAnimator
+    {
+        public long UnitId;
+        public string AnimatorName;
+    }
 }

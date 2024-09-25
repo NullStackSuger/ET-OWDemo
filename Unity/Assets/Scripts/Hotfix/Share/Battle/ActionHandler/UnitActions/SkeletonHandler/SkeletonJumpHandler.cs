@@ -22,7 +22,8 @@ namespace ET{
         {
             LSUnit unit = actionComponent.GetParent<LSUnit>();
             RigidBody body = unit.GetComponent<B3CollisionComponent>().Collision as RigidBody;
-            body.LinearVelocity = Vector3.UnitY * 20;
+            float speed = 20;
+            body.LinearVelocity = Vector3.UnitY * speed;
         }
     }
 }

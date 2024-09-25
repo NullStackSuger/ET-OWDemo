@@ -68,7 +68,7 @@ namespace ET
                 return false;
             }
 
-            if (a.Look != b.Look)
+            if (/*a.Look != b.Look*/TSVector2.Distance(a.Look, b.Look) > 0.05)
             {
                 return false;
             }

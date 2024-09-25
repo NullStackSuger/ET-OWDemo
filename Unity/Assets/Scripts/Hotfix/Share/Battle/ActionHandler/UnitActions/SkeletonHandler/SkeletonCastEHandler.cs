@@ -25,14 +25,15 @@ namespace ET
             LSUnit unit = actionComponent.GetParent<LSUnit>();
             /*CastComponent castComponent = unit.GetComponent<CastComponent>();
             castComponent.Creat(1002);*/
-            
+
             // 需要在Check里检查技能是否还存在
             CastComponent castComponent = unit.GetComponent<CastComponent>();
-            castComponent.Creat(1009);
-            //actionComponent.Args.Add("ShieldId", castComponent.Id);
-            
+            castComponent.Creat(1012);
+
             /*CastComponent castComponent = unit.GetComponent<CastComponent>();
             Cast cast = castComponent.Creat(1010);*/
+
+            //EventSystem.Instance.Publish(actionComponent.IScene as LSWorld, new UnitChangeSnipe());
         }
     }
 }

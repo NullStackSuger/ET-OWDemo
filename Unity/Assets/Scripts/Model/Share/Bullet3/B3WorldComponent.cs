@@ -13,9 +13,9 @@ namespace ET
         public Queue<CollisionObject> WaitToRemoves = new();
 
         // 所有有回调的刚体的接触物理列表
-        public List<(CollisionObject, CollisionObject)> NowCollisionInfos = new();
+        public List<(CollisionObject, CollisionObject, PersistentManifold)> NowCollisionInfos = new();
         // 上一帧 所有有回调的刚体的接触物理列表
-        public List<(CollisionObject, CollisionObject)> LastCollisionInfos = new();
+        public List<(CollisionObject, CollisionObject, PersistentManifold)> LastCollisionInfos = new();
 
         public static implicit operator CollisionWorld(B3WorldComponent worldComponent)
         {

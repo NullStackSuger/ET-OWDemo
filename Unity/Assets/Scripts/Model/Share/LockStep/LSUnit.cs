@@ -106,7 +106,7 @@ namespace ET
                 this.rotation.x = TSMath.Clamp(value % 360, -90, 90);
                 
                 if (this.IScene == null) return;
-                EventSystem.Instance.Publish(this.IScene as LSWorld, new UnitHeadRotation() { Unit = this, OldRotation = oldRot, NewRotation = value });
+                EventSystem.Instance.Publish(this.IScene as LSWorld, new UnitChangeHeadRotation() { Unit = this, OldRotation = oldRot, NewRotation = value });
             }
         }
         

@@ -5,11 +5,11 @@ namespace ET
     [FriendOf(typeof(PortalComponent))]
     public class PortalCollisionCallback : ACollisionCallback
     {
-        public override void CollisionCallbackEnter(CollisionObject self, CollisionObject other)
+        public override void CollisionCallbackEnter(CollisionObject self, CollisionObject other, PersistentManifold persistentManifold)
         {
         }
 
-        public override void CollisionCallbackStay(CollisionObject self, CollisionObject other)
+        public override void CollisionCallbackStay(CollisionObject self, CollisionObject other, PersistentManifold persistentManifold)
         {
             B3CollisionComponent collisionA = self.UserObject as B3CollisionComponent;
             LSUnit unitA = collisionA.GetParent<LSUnit>();
@@ -34,7 +34,7 @@ namespace ET
             collisionB.MoveTo(unitA.GetComponent<PortalComponent>().Other.ToVector());
         }
 
-        public override void CollisionCallbackExit(CollisionObject self, CollisionObject other)
+        public override void CollisionCallbackExit(CollisionObject self, CollisionObject other, PersistentManifold persistentManifold)
         {
 
         }
