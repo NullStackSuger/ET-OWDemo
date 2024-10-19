@@ -34,6 +34,7 @@ message LockStepUnitInfo
 	TrueSync.TSVector Position = 2;
 	FP Rotation = 3;
 	int32 ActionGroup = 4;
+	int32 RigidBodyId = 5;
 }
 
 /// 房间通知客户端进入战斗
@@ -81,9 +82,77 @@ message G2C_Reconnect // IMessage
 	int32 Frame = 3;
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// 类似Rot这种 连续的 不易预测的 需要预测的 消息使用
 message UnPredictionMessage // IRoomMessage
 {
 	int32 Frame = 1;
 	int64 PlayerId = 2;
 	TSVector2 Look = 3;
+}
+
+message OneFrameDeltaEvents // IMessage
+{
+	int32 Frame = 1;
+	map<string, MessageObject> Events = 2;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+message S2C_UnitChangePosition // IMessage
+{
+	int64 UnitId = 1;
+	TSVector Position = 2;
+}
+
+message S2C_UnitChangeRotation // IMessage
+{
+	int64 UnitId = 1;
+	FP Rotation = 2;
+}
+
+message S2C_UnitChangeHeadRotation // IMessage
+{
+	int64 UnitId = 1;
+	FP HeadRotation = 2;
+}
+
+message S2C_UnitUseCast // IMessage
+{
+	int64 OwnerId = 1;
+	int64 CastId = 2;
+	int32 ConfigId = 3;
+}
+
+message S2C_UnitRemoveCast // IMessage
+{
+	int64 OwnerId = 1;
+	int64 CastId = 2;
+}
+
+message S2C_UnitUseBuff // IMessage
+{
+	int64 OwnerId = 1;
+	int64 BuffId = 2;
+	int32 ConfigId = 3;
+}
+
+message S2C_UnitRemoveBuff // IMessage
+{
+	int64 OwnerId = 1;
+	int64 BuffId = 2;
+}
+
+message S2C_UnitChangeDataModifier // IMessage
+{
+	int64 UnitId = 1;
+	int32 DataModifierType = 2;
+	int64 Value = 3;
+}
+
+message S2C_UnitOnGround // IMessage
+{
+	int64 UnitId = 1;
+	bool OnGround = 2;
 }

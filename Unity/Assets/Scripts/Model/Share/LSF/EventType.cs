@@ -14,6 +14,7 @@ namespace ET
         public TSVector OldPosition;
         public TSVector NewPosition;
     }
+    
     public struct UnitChangeRotation
     {
         public LSUnit Unit;
@@ -33,7 +34,7 @@ namespace ET
         /// <summary>
         /// 释放技能的人
         /// </summary>
-        public LSUnit Unit;
+        public LSUnit Owner;
         public Cast Cast;
         public string Name;
     }
@@ -43,7 +44,7 @@ namespace ET
         /// <summary>
         /// 释放技能的人
         /// </summary>
-        public LSUnit Unit;
+        public LSUnit Owner;
         public Cast Cast;
     }
 
@@ -52,7 +53,7 @@ namespace ET
         /// <summary>
         /// 受到Buff的人
         /// </summary>
-        public LSUnit Unit;
+        public LSUnit Owner;
         public Buff Buff;
     }
 
@@ -61,12 +62,24 @@ namespace ET
         /// <summary>
         /// 受到Buff的人
         /// </summary>
-        public LSUnit Unit;
+        public LSUnit Owner;
         public Buff Buff;
     }
 
     public struct UnitChangeSnipe
     {
         
+    }
+
+    public struct UnitOnGround
+    {
+        public LSUnit Unit;
+        public bool OnGround;
+    }
+
+    public struct UnitChangeMoveSpeed
+    {
+        public LSUnit Unit;
+        public float Speed;
     }
 }

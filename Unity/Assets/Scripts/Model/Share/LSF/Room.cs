@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace ET
@@ -23,6 +24,7 @@ namespace ET
         /// </summary>
         public FixedTimeCounter FixedTimeCounter { get; set; }
         
+        public long PlayerId { get; set; }
         /// <summary>
         /// 房间中所有玩家
         /// </summary>
@@ -70,8 +72,8 @@ namespace ET
             }
         }
         
-        public long PlayerId { get; set; }
         public LSInput Input = new();
+        public MultiDictionary<long, Type, MessageObject> DeltaEvents = new();
         
         public bool IsReplay { get; set; }
         public Replay Replay { get; set; }

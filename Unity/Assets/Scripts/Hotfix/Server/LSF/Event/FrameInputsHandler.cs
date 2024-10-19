@@ -1,5 +1,3 @@
-using System.Linq;
-
 namespace ET.Server
 {
     [MessageHandler(SceneType.RoomRoot)]
@@ -12,6 +10,11 @@ namespace ET.Server
             // 获取第一个Room
             Room room = entity.GetComponent<Room>();
             FrameBuffer frameBuffer = room.FrameBuffer;
+            
+            if (room.FrameBuffer == null)
+            {
+                return;
+            }
             
             // 判断每秒钟执行一次
             if (message.Frame % (1000 / LSConstValue.UpdateInterval) == 0)

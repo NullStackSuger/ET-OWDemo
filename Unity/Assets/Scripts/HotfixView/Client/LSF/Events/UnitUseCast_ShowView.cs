@@ -1,7 +1,5 @@
 namespace ET.Client
 {
-    // 如果要改动记得一起改
-    
     [Event(SceneType.LSFClientPrediction)]
     [FriendOf(typeof(Cast))]
     public class UnitUseCast_ShowView : AEvent<LSWorld, UnitUseCast>
@@ -13,7 +11,7 @@ namespace ET.Client
             Cast cast = a.Cast;
             LSUnit castUnit = cast.Unit;
             LSFUnitViewComponent unitViewComponent = room.GetComponent<LSFUnitViewComponent>();
-            unitViewComponent.Add(castUnit.Id, $"Unit/{a.Name}.prefab", a.Name, a.Name).Coroutine();
+            unitViewComponent.Add(castUnit.Id, $"Unit/{a.Name}.prefab", a.Name).Coroutine();
 
             await ETTask.CompletedTask;
         }

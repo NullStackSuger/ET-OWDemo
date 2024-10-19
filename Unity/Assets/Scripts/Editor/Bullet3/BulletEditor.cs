@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Vector3 = BulletSharp.Math.Vector3;
 
-namespace ET
+namespace ET.Server
 {
     public static class BulletEditor
     {

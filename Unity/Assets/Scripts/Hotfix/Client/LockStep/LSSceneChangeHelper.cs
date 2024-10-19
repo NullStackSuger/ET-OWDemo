@@ -16,7 +16,6 @@ namespace ET.Client
             await EventSystem.Instance.PublishAsync(root, new LSFSceneChange());
             
             root.GetComponent<ClientSenderComponent>().Send(C2Room_ChangeSceneFinish.Create());
-            
             // 等待Room2C_EnterMap消息
             WaitType.Wait_Room2C_Start waitRoom2CStart = await root.GetComponent<ObjectWait>().Wait<WaitType.Wait_Room2C_Start>();
             

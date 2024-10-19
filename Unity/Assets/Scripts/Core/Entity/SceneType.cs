@@ -25,7 +25,6 @@ namespace ET
 		RoomRoot = 1 << 18,
 		Watcher = 1 << 19,
 		LSFServer = 1 << 20, // Server World
-		//LSFClient = 1 << 21, // Client World
 		LSFClientPrediction = 1 << 21, // Client Prediction World
 		LSFClientAuthority = 1 << 22, // Client Authority World
 		RollBack = 1 << 23,

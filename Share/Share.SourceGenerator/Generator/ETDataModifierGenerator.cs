@@ -23,7 +23,7 @@ public class ETDataModifierGenerator : ISourceGenerator
         {
             foreach (string modifierType in receiver.ModifierTypes)
             {
-                context.AddSource($"ET.{modifierType}Modifier.g.cs", GenerateCode1("ET", modifierType));
+                context.AddSource($"ET.Server.{modifierType}Modifier.g.cs", GenerateCode1("ET.Server", modifierType));
             }
         }
 
@@ -48,7 +48,7 @@ public class ETDataModifierGenerator : ISourceGenerator
                 {
                     public abstract class {{modifierName}}Modifier : ADataModifier
                     {
-                        public override string ModifierType { get; } = ET.ModifierType.{{modifierName}};   
+                        public override string ModifierType { get; } = ET.Server.ModifierType.{{modifierName}};   
                     }
                 }
                 """;
@@ -64,7 +64,7 @@ public class ETDataModifierGenerator : ISourceGenerator
                  {
                      public abstract class {{dataModifierName}}_{{modifierName}}Modifier : {{modifierName}}Modifier
                      {
-                         public override int Key { get; } = ET.DataModifierType.{{dataModifierName}};
+                         public override int Key { get; } = ET.Server.DataModifierType.{{dataModifierName}};
                      }
                  }
                  """;

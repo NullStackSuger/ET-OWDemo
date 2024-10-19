@@ -1,5 +1,6 @@
 using MongoDB.Bson.Serialization.Attributes;
 using System;
+using System.IO;
 using MemoryPack;
 using TrueSync;
 
@@ -49,6 +50,18 @@ namespace ET
             this.GetId();
             
             this.SceneType = sceneType;
+        }
+        
+        public LSWorld Clone()
+        {
+            using MemoryBuffer memoryBuffer = new(10240);
+            memoryBuffer.Seek(0, SeekOrigin.Begin);
+            memoryBuffer.SetLength(0);
+            MemoryPackHelper.Serialize(this, memoryBuffer);
+            
+            memoryBuffer.Seek(0, SeekOrigin.Begin);
+            LSWorld lsWorld = MemoryPackHelper.Deserialize(typeof (LSWorld), memoryBuffer) as LSWorld;
+            return lsWorld;
         }
 
         private readonly LSUpdater updater = new();

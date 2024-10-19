@@ -8,11 +8,13 @@ namespace ET
         public const int NormalTickRate = 50;
         public const int MinTickRate = 40;
 
-        public const int FrameCountPreSecond = 1000 / NormalTickRate;
-        public const int FrameCountPreMinute = 60 * FrameCountPreSecond;
+        public const int FrameCountPerSecond = 1000 / NormalTickRate;
+        public const int FrameCountPerMinute = 60 * FrameCountPerSecond;
 
-        public const int RecordWorldRate = FrameCountPreMinute;
+        public const float SecondPreFrame = 1f / NormalTickRate;
 
-        public const int Speed = 6;
+        public const int RecordWorldRate = FrameCountPerMinute;
+
+        public const int G = -100;
     }
 }

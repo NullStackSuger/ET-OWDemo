@@ -2,6 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Security;
 using BulletSharp.Math;
+using MemoryPack;
 
 namespace BulletSharp
 {
@@ -48,8 +49,8 @@ namespace BulletSharp
 		UserType = 32,
 		FeatherstoneLink = 64
 	}
-
-	public class CollisionObject : IDisposable
+	
+	public partial class CollisionObject : IDisposable
 	{
 		internal IntPtr _native;
         private bool _isDisposed;
@@ -195,7 +196,7 @@ namespace BulletSharp
 			}
             set { btCollisionObject_setAnisotropicFriction(_native, ref value); }
 		}
-
+		
 		public BroadphaseProxy BroadphaseHandle
 		{
 			get { return _broadphaseHandle; }
@@ -228,7 +229,7 @@ namespace BulletSharp
 			get { return btCollisionObject_getCollisionFlags(_native); }
 			set { btCollisionObject_setCollisionFlags(_native, value); }
 		}
-
+        
 		public CollisionShape CollisionShape
 		{
 			get { return _collisionShape; }

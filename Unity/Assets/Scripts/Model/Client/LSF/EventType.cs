@@ -9,9 +9,11 @@ namespace ET.Client
         
     }
 
-    public struct LSFPlayAnimator
+    /// <summary>
+    /// 获取输入结束的事件
+    /// </summary>
+    public struct InputFinish
     {
-        public long UnitId;
-        public string AnimatorName;
+        
     }
 }

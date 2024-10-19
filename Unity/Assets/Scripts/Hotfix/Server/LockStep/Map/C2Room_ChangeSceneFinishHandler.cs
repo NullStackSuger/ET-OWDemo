@@ -33,13 +33,15 @@ namespace ET.Server
                 lockStepUnitInfo.Position = new TSVector(0, 3, 0);
                 lockStepUnitInfo.Rotation = 0;
                 lockStepUnitInfo.ActionGroup = 3;
+                lockStepUnitInfo.RigidBodyId = 5;
                 room2CStart.UnitInfo.Add(lockStepUnitInfo);
             }
+            room.BroadCast(room2CStart, waitChangeSceneComponent.PlayerIds);
+            
+            await room.Fiber.Root.GetComponent<TimerComponent>().WaitAsync(1000);
             
             room.Init(room2CStart.UnitInfo, room2CStart.StartTime);
             room.AddComponent<LSFUpdateComponent>();
-            
-            room.BroadCast(room2CStart);
             
             root.RemoveComponent<WaitChangeSceneComponent>();
 

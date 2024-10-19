@@ -16,7 +16,7 @@ namespace ET
         /// 所有帧输入
         /// </summary>
         [MemoryPackOrder(2)]
-        public List<OneFrameInputs> FrameInputs = new();
+        public List<OneFrameDeltaEvents> DeltaEvents = new();
         
         /// <summary>
         /// 每分钟快照

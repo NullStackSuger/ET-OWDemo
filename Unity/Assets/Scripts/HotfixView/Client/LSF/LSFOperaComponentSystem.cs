@@ -75,14 +75,11 @@ namespace ET.Client
 
             TSVector2 look = self.Look.ReadValue<Vector2>().ToTSVector2().normalized;
             look.y *= -1;
+            room.Input.Look = look;
             
             // 发送消息
             Scene root = room.Root();
-            UnPredictionMessage unPredictionMessage = UnPredictionMessage.Create();
-            unPredictionMessage.Frame = room.PredictionFrame + 2;
-            unPredictionMessage.PlayerId = room.PlayerId;
-            unPredictionMessage.Look = look;
-            root.GetComponent<ClientSenderComponent>().Send(unPredictionMessage);
+            EventSystem.Instance.Publish(root, new InputFinish());
         }
     }
 }

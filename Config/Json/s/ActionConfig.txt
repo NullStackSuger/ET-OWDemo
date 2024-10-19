@@ -1,8 +1,6 @@
 {"dict": [
 [1001, {"_t":"ActionConfig","_id":1001,"Name":"FireBallInitHandler","RunningType":"Once","IsOnly":1}],
 [1002, {"_t":"ActionConfig","_id":1002,"Name":"FireBallHandler","RunningType":"Repeat","IsOnly":1}],
-[2001, {"_t":"ActionConfig","_id":2001,"Name":"BurnInitHandler","RunningType":"Once","IsOnly":1}],
-[2002, {"_t":"ActionConfig","_id":2002,"Name":"BurnHandler","RunningType":"Repeat","IsOnly":1}],
 [3001, {"_t":"ActionConfig","_id":3001,"Name":"SkeletonInitHandler","RunningType":"Once","IsOnly":1}],
 [3002, {"_t":"ActionConfig","_id":3002,"Name":"SkeletonLookHandler","RunningType":"Repeat","IsOnly":0}],
 [3003, {"_t":"ActionConfig","_id":3003,"Name":"SkeletonJumpHandler","RunningType":"Repeat","IsOnly":1}],

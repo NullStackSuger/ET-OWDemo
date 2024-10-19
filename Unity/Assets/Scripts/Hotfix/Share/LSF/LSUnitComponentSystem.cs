@@ -34,7 +34,7 @@ namespace ET
             return unit;
         }
 
-        public static LSUnit Creat(this LSUnitComponent self, LockStepUnitInfo playerInfo, string tag)
+        /*public static LSUnit Creat(this LSUnitComponent self, LockStepUnitInfo playerInfo, string tag)
         {
             LSUnit unit = self.AddChildWithId<LSUnit>(playerInfo.PlayerId);
 
@@ -46,7 +46,7 @@ namespace ET
             unit.Tag = tag;
 
             return unit;
-        }
+        }*/
 
         public static void WaitToRemove(this LSUnitComponent self, long id)
         {

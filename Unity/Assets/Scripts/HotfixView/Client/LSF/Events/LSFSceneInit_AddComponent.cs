@@ -11,9 +11,9 @@ namespace ET.Client
         {
             Room room = scene.GetComponent<Room>();
 
-            await room.AddComponent<LSFUnitViewComponent>().InitPlayerAsync("Unit/Unit.prefab", "Skeleton", AnimatorType.Skeleton);
+            await room.AddComponent<LSFUnitViewComponent>().InitPlayerAsync("Unit/Unit.prefab", "Skeleton");
 
-            room.AddComponent<LSFCameraComponent>();
+            room.GetComponent<LSFUnitViewComponent>().GetChild<LSFUnitView>(room.PlayerId).AddComponent<LSFCameraComponent>();
 
             bool isRobot = scene.Name.StartsWith("Robot");
             
@@ -24,7 +24,8 @@ namespace ET.Client
 
             if (isRobot)
             {
-                scene.AddComponent<AIComponent, int>(3);
+                AIComponent aiComponent = scene.AddComponent<AIComponent, int>(3);
+                aiComponent.AddComponent<RobotInputFinishComponent>();
             }
         }
     }

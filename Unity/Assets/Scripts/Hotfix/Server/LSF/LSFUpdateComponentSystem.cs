@@ -1,19 +1,40 @@
 using System.Collections.Generic;
-using System.Linq;
-using BulletSharp;
-using BulletSharp.Math;
-using MongoDB.Bson;
 
 namespace ET.Server
 {
     [EntitySystemOf(typeof(LSFUpdateComponent))]
-    [FriendOfAttribute(typeof(ET.B3WorldComponent))]
+    [FriendOfAttribute(typeof(B3WorldComponent))]
+    [FriendOfAttribute(typeof(ET.Room))]
     public static partial class LSFUpdateComponentSystem
     {
         [EntitySystem]
         private static void Awake(this LSFUpdateComponent self)
         {
         }
+
+        public static void Init(this Room self, List<LockStepUnitInfo> unitInfos, long startTime, int frame = -1)
+        {
+            self.AddComponent<LSFTimerComponent>();
+
+            self.AuthorityFrame = frame;
+            self.FrameBuffer = new(frame);
+            self.FixedTimeCounter = new(startTime, 0, LSFConfig.NormalTickRate);
+            foreach (var info in unitInfos)
+            {
+                self.PlayerIds.Add(info.PlayerId);
+            }
+            self.StartTime = startTime;
+            
+            self.AuthorityWorld = new LSWorld(SceneType.LSFServer);
+            LSWorld world = self.AuthorityWorld;
+            world.AddComponent<B3WorldComponent>();
+            LSUnitComponent unitComponent = world.AddComponent<LSUnitComponent>();
+            foreach (var info in unitInfos)
+            {
+                unitComponent.Creat(info, Tag.PlayerA);
+            }
+        }
+
 
         [EntitySystem]
         private static void Update(this LSFUpdateComponent self)
@@ -34,12 +55,37 @@ namespace ET.Server
             inputs.CopyTo(sendInputs);
             sendInputs.Frame = room.AuthorityFrame;
             room.BroadCast(sendInputs);
-
             // 处理输入
-            // Server To Client 是状态同步, 直接在LSUpdate里RoomMessageHelper.BroadCast
             room.Update(inputs);
+            
+            // 获取消息
+            OneFrameDeltaEvents deltaEvents = GetDeltaEvents(room, room.AuthorityFrame);
+            // 广播消息
+            OneFrameDeltaEvents sendDeltaEvents = OneFrameDeltaEvents.Create();
+            deltaEvents.CopyTo(sendDeltaEvents);
+            room.BroadCast(deltaEvents);
+
+            room.FrameBuffer.MoveForward(room.AuthorityFrame);
+            room.DeltaEvents.Clear();
         }
 
+        public static void Update(this ET.Room self, OneFrameInputs inputs)
+        {
+            LSWorld world = self.AuthorityWorld;
+            LSUnitComponent unitComponent = world.GetComponent<LSUnitComponent>();
+
+            // 更新输入
+            foreach (var pair in inputs.Inputs)
+            {
+                LSUnit unit = unitComponent.GetChild<LSUnit>(pair.Key);
+                LSFInputComponent inputComponent = unit.GetComponent<LSFInputComponent>();
+                inputComponent.Input = pair.Value;
+            }
+
+            // 调用World的UpdateSystem
+            world.Update();
+        }
+        
         private static OneFrameInputs GetInputs(ET.Room room, int frame)
         {
             FrameBuffer frameBuffer = room.FrameBuffer;
@@ -71,88 +117,28 @@ namespace ET.Server
                     inputs.Inputs[id] = new();
                 }
             }
+            
+            inputs.Frame = frame;
 
             return inputs;
         }
 
-        public static void Init(this ET.Room self, List<LockStepUnitInfo> unitInfos, long startTime, int frame = -1)
+        private static OneFrameDeltaEvents GetDeltaEvents(ET.Room room, int frame)
         {
-            self.AddComponent<LSFTimerComponent>();
-            
-            self.AuthorityFrame = frame;
-            self.FrameBuffer = new(frame);
-            self.FixedTimeCounter = new(startTime, 0, LSFConfig.NormalTickRate);
+            FrameBuffer frameBuffer = room.FrameBuffer;
 
-            self.AuthorityWorld = new LSWorld(SceneType.LSFServer);
-            LSWorld world = self.AuthorityWorld;
-            world.AddComponent<B3WorldComponent>();
-            LSUnitComponent unitComponent = world.AddComponent<LSUnitComponent>();
-
-            foreach (var info in unitInfos)
+            OneFrameDeltaEvents deltaEvents = frameBuffer.DeltaEvents(frame);
+            deltaEvents.Clear();
+            foreach (var kv1 in room.DeltaEvents)
             {
-                LSUnit unit = unitComponent.Creat(info, Tag.PlayerA);
-                unit.AddComponent<LSFInputComponent>();
-                unit.AddComponent<B3CollisionComponent, int>(5);
-                unit.AddComponent<CheckOnGroundComponent>();
-                
-                DataModifierComponent dataModifierComponent = unit.AddComponent<DataModifierComponent>();
-                
-                dataModifierComponent.Add(new Default_Speed_ConstantModifier() { Value = 15 });
-                
-                dataModifierComponent.Add(new Default_Hp_FinalMaxModifier() { Value = 100 });
-                dataModifierComponent.Add(new Default_Hp_FinalMinModifier() { Value = 0 });
-                
-                dataModifierComponent.Add(new Default_Hp_ConstantMaxModifier() { Value = 50 });
-                dataModifierComponent.Add(new Default_Hp_ConstantMinModifier() { Value = 0 });
-                dataModifierComponent.Add(new Default_Hp_ConstantModifier() { Value = 50 });
-                
-                dataModifierComponent.Add(new Default_Hp_FinalConstantMaxModifier() { Value = 50 });
-                dataModifierComponent.Add(new Default_Hp_FinalConstantMinModifier() { Value = 0 });
-                dataModifierComponent.Add(new Default_Hp_FinalConstantModifier() { Value = 50 });
-                
-                dataModifierComponent.Add(new Default_Atk_ConstantModifier() { Value = 5 });
-                
-                dataModifierComponent.Add(new Default_BulletCount_FinalMaxModifier() { Value = 150 });
-                dataModifierComponent.Add(new Default_BulletCount_FinalMinModifier() { Value = 0 });
-                dataModifierComponent.Add(new Default_BulletCount_ConstantModifier() { Value = 150 });
-                
-                dataModifierComponent.Add(new Default_Shield_FinalMaxModifier() { Value = 200 });
-                dataModifierComponent.Add(new Default_Shield_FinalMinModifier() { Value = 0 });
-                dataModifierComponent.Add(new Default_Shield_ConstantModifier() { Value = 200 });
-                
-                dataModifierComponent.Add(new Default_ENumeric_ConstantModifier() { Value = 30 });
-                dataModifierComponent.Add(new Default_ECD_ConstantModifier() { Value = 1000 });
-                
-                dataModifierComponent.Add(new Default_QNumeric_ConstantModifier() { Value = 30 });
-                dataModifierComponent.Add(new Default_QCD_ConstantModifier() { Value = 1000 });
-                
-                dataModifierComponent.Add(new Default_CNumeric_ConstantModifier() { Value = 30 });
-                dataModifierComponent.Add(new Default_CCD_ConstantModifier() { Value = 1000 });
-                
-                dataModifierComponent.Publish(DataModifierType.Hp);
-                dataModifierComponent.Publish(DataModifierType.BulletCount);
-                
-                self.PlayerIds.Add(info.PlayerId);
+                foreach (var kv2 in kv1.Value)
+                {
+                    deltaEvents.Events.Add($"{kv1.Key}_{kv2.Key}", kv2.Value);
+                }
             }
+            deltaEvents.Frame = frame;
 
-            self.StartTime = startTime;
-        }
-
-        public static void Update(this ET.Room self, OneFrameInputs inputs)
-        {
-            LSWorld world = self.AuthorityWorld;
-            LSUnitComponent unitComponent = world.GetComponent<LSUnitComponent>();
-
-            // 更新输入
-            foreach (var pair in inputs.Inputs)
-            {
-                LSUnit unit = unitComponent.GetChild<LSUnit>(pair.Key);
-                LSFInputComponent inputComponent = unit.GetComponent<LSFInputComponent>();
-                inputComponent.Input = pair.Value;
-            }
-
-            // 调用World的UpdateSystem
-            world.Update();
+            return deltaEvents;
         }
     }
 }

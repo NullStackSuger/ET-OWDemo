@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net;
 
 namespace ET.Server
 {
@@ -23,7 +20,6 @@ namespace ET.Server
             a2NetInnerMessage.FromAddress = fiber.Address;
             a2NetInnerMessage.ActorId = actorId;
             a2NetInnerMessage.MessageObject = message;
-
             MessageQueue.Instance.Send(new ActorId(fiber.Process, ConstFiberId.NetInner), a2NetInnerMessage);
         }
 

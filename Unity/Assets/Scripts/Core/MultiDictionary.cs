@@ -76,5 +76,24 @@ namespace ET
 
             return dic.ContainsValue(n);
         }
+        
+        public N this[T t, M m]
+        {
+            get
+            {
+                return this[t][m];
+            }
+            set
+            {
+                if (!ContainSubKey(t, m))
+                {
+                    Add(t, m, value);   
+                }
+                else
+                {
+                    this[t][m] = value;
+                }
+            }
+        }
     }
 }

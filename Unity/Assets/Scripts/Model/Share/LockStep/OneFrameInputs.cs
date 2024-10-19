@@ -25,9 +25,16 @@ namespace ET
         /// </summary>
         public void CopyTo(OneFrameInputs to, long id)
         {
+            LSInput input = to.Inputs[id];
+            to.Inputs.Clear();
+            
             foreach (var kv in this.Inputs)
             {
-                if (kv.Key == id) continue;
+                if (kv.Key == id)
+                {
+                    to.Inputs.Add(id, input);
+                    continue;
+                }
                 to.Inputs.Add(kv.Key, kv.Value);
             }
         }
@@ -83,7 +90,7 @@ namespace ET
             {
                 return false;
             }
-
+            
             return Equals((OneFrameInputs) obj);
         }
 

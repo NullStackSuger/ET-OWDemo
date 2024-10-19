@@ -3,7 +3,7 @@ using UnityEngine;
 namespace ET.Client
 {
     [ChildOf(typeof(LSFUnitViewComponent))]
-    public class LSFUnitView : Entity, IAwake<string, GameObject, LSUnit>, IAwake<GameObject, LSUnit>, IUpdate, IDestroy, ILSRollback
+    public class LSFUnitView : Entity, IAwake<GameObject, LSUnit>, IUpdate, IDestroy, ILSRollback
     {
         private EntityRef<LSUnit> unit;
         public EntityRef<LSUnit> Unit
@@ -17,6 +17,7 @@ namespace ET.Client
                 if (unit != null)
                 {
                     this.Unit = unit;
+                    Log.Warning($"{this.Root().Name}更新InstanceId, {unit.Id}, {unit.InstanceId}");
                     return unit;
                 }
 

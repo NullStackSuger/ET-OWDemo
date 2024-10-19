@@ -12,66 +12,13 @@ namespace ET.Client
             
         }
         
-        [EntitySystem]
-        private static void Destroy(this LSFUnitViewComponent self)
-        {
-            
-        }
-
-        public static async ETTask InitPlayerAsync(this LSFUnitViewComponent self, string bundlePath, string assetName, string type)
-        {
-            Room room = self.GetParent<Room>();
-
-            await self.Add(room.PlayerIds, bundlePath, assetName, type);
-        }
-        
         public static async ETTask InitPlayerAsync(this LSFUnitViewComponent self, string bundlePath, string assetName)
         {
-            LSWorld world = self.GetParent<LSWorld>();
-            Room room = world.GetParent<Room>();
+            Room room = self.GetParent<Room>();
 
             await self.Add(room.PlayerIds, bundlePath, assetName);
         }
-
-        public static async ETTask<LSFUnitView> Add(this LSFUnitViewComponent self, long unitId, string bundlePath, string assetName, string type)
-        {
-            Scene root = self.Root();
-            GlobalComponent globalComponent = root.GetComponent<GlobalComponent>();
-            Room room = self.GetParent<Room>();
-            LSUnitComponent unitComponent = room.PredictionWorld.GetComponent<LSUnitComponent>();
-            
-            string assetsName = $"Assets/Bundles/{bundlePath}";
-            GameObject bundleGameObject = await room.GetParent<Scene>().GetComponent<ResourcesLoaderComponent>().LoadAssetAsync<GameObject>(assetsName);
-            GameObject prefab = bundleGameObject.Get<GameObject>($"{assetName}");
-            
-            GameObject unitGo = UnityEngine.Object.Instantiate(prefab, globalComponent.Unit, true);
-            LSUnit unit = unitComponent.GetChild<LSUnit>(unitId);
-            unitGo.transform.position = unit.Position.ToVector();
-
-            return self.AddChildWithId<LSFUnitView, string, GameObject, LSUnit>(unit.Id, type, unitGo, unit);
-        }
-
-        public static async ETTask Add(this LSFUnitViewComponent self, List<long> unitIds, string bundlePath, string assetName, string type)
-        {
-            Scene root = self.Root();
-            GlobalComponent globalComponent = root.GetComponent<GlobalComponent>();
-            Room room = self.GetParent<Room>();
-            LSUnitComponent unitComponent = room.PredictionWorld.GetComponent<LSUnitComponent>();
-            
-            string assetsName = $"Assets/Bundles/{bundlePath}";
-            GameObject bundleGameObject = await room.GetParent<Scene>().GetComponent<ResourcesLoaderComponent>().LoadAssetAsync<GameObject>(assetsName);
-            GameObject prefab = bundleGameObject.Get<GameObject>($"{assetName}");
-
-            foreach (long id in unitIds)
-            {
-                GameObject unitGo = UnityEngine.Object.Instantiate(prefab, globalComponent.Unit, true);
-                LSUnit unit = unitComponent.GetChild<LSUnit>(id);
-                unitGo.transform.position = unit.Position.ToVector();
-                
-                self.AddChildWithId<LSFUnitView, string, GameObject, LSUnit>(unit.Id, type, unitGo, unit);
-            }
-        }
-
+        
         public static async ETTask<LSFUnitView> Add(this LSFUnitViewComponent self, long unitId, string bundlePath, string assetName)
         {
             Scene root = self.Root();

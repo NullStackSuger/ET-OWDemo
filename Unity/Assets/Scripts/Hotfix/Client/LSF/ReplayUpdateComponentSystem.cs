@@ -19,7 +19,7 @@ namespace ET.Client
             while (true)
             {
                 // 播放完了
-                if (room.AuthorityFrame + 1 >= room.Replay.FrameInputs.Count) return;
+                if (room.AuthorityFrame + 1 >= room.Replay.DeltaEvents.Count) return;
 
                 // 检查时间是否通过
                 // 放循环里 比如一次Update是0.4s 一帧0.2s 那一次Update就要执行2帧
@@ -28,8 +28,11 @@ namespace ET.Client
 
                 ++room.AuthorityFrame;
 
-                OneFrameInputs inputs = room.Replay.FrameInputs[room.AuthorityFrame];
-                room.PredictionWorld.Update(inputs);
+                OneFrameDeltaEvents deltas = room.Replay.DeltaEvents[room.AuthorityFrame];
+                foreach (var delta in deltas.Events.Values)
+                {
+                    // 把这些消息发送到自己
+                }
 
                 // 单次update时间>5ms 就留到下次update再做
                 // 避免单次update时间太长 卡住
