@@ -11,7 +11,6 @@ namespace ET.Client
         public const string Move = "Move";
         public const string Cast = "Cast";
         public const string Jump = "Jump";
-        public const string Shoot = "Shoot";
     }
     
     [ComponentOf(typeof(LSFUnitView))]

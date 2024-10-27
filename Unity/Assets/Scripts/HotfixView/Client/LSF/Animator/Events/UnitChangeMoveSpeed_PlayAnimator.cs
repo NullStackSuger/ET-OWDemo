@@ -20,7 +20,6 @@ namespace ET.Client
             if (a.Speed == 0)
             {
                 animator.Play(AnimatorState.Idle);
-                animator.Play(AnimatorState.Shoot);
             }
             else
             {

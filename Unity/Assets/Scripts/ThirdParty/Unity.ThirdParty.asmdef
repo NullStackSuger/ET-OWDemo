@@ -1,9 +1,7 @@
 {
     "name": "Unity.ThirdParty",
     "rootNamespace": "ET",
-    "references": [
-        "MemoryPack"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": true,

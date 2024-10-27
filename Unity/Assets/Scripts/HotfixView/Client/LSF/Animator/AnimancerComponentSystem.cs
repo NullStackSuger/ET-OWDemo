@@ -230,6 +230,7 @@ namespace ET.Client
             // 结束回调
             void OnEnd()
             {
+                clip.Time = 0;
                 if (playOnEnd == "") return;
                 self.Play(playOnEnd);
             }

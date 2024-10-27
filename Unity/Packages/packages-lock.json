@@ -7,6 +7,14 @@
       "dependencies": {},
       "hash": "909e96ca7c808cf9be733b881382fabb49523d0b"
     },
+    "com.kybernetik.animancer": {
+      "version": "file:com.kybernetik.animancer",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.modules.animation": "1.0.0"
+      }
+    },
     "com.tuyoogame.yooasset": {
       "version": "2.1.1",
       "depth": 0,

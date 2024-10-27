@@ -6,7 +6,6 @@
         "Unity.InputSystem",
         "Unity.Core",
         "HybridCLR.Runtime",
-        "MemoryPack",
         "YooAsset",
         "YooAsset.Editor"
     ],

@@ -1,9 +1,6 @@
 fileFormatVersion: 2
-guid: 833bcac93994ed2459b0b7f61940e220
-labels:
-- Example
-folderAsset: yes
-DefaultImporter:
+guid: 161d43aa12a3cf5489629ca055ef17f6
+AssemblyDefinitionImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 

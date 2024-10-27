@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Skill
   m_EditorClassIdentifier: 
   _Transition:
-    rid: 4920279949230997513
+    rid: 4920279964774301699
   references:
     version: 2
     RefIds:
-    - rid: 4920279949230997513
+    - rid: 4920279964774301699
       type: {class: ClipTransition, ns: Animancer, asm: Animancer}
       data:
         _FadeDuration: 0.25
