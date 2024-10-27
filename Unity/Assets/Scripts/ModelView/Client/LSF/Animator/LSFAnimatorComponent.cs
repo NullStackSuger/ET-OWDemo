@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+/*using System.Collections.Generic;
 using UnityEngine;
 
 namespace ET.Client
@@ -18,4 +18,4 @@ namespace ET.Client
 
         public Animator Animator;
     }
-}
+}*/

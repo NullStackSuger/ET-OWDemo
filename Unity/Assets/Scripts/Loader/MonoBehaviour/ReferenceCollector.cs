@@ -125,6 +125,18 @@ public class ReferenceCollector: MonoBehaviour, ISerializationCallbackReceiver
 		return dictGo as T;
 	}
 
+	public Dictionary<string, T> GetAll<T>() where T : class
+	{
+		Dictionary<string, T> dic = new();
+		foreach (var kv in this.dict)
+		{
+			if (kv.Value is not T t) continue;
+			
+			dic.Add(kv.Key, t);
+		}
+		return dic;
+	}
+
 	public Object GetObject(string key)
 	{
 		Object dictGo;

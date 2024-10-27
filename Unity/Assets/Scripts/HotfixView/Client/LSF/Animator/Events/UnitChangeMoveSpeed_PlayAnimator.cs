@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace ET.Client
 {
     [Event(SceneType.LSFClientPrediction)]
@@ -12,8 +14,20 @@ namespace ET.Client
             {
                 return;
             }
-            
-            view.GetComponent<LSFAnimatorComponent>().SetFloat("Speed", a.Speed);
+
+            //view.GetComponent<LSFAnimatorComponent>().SetFloat("Speed", a.Speed);
+            var animator = view.GetComponent<AnimancerComponent>();
+            if (a.Speed == 0)
+            {
+                animator.Play(AnimatorState.Idle);
+                animator.Play(AnimatorState.Shoot);
+            }
+            else
+            {
+                animator.Play(AnimatorState.Move);
+                //animator.Play(AnimatorState.Move, new Vector2(1, 0));
+                //animator.Play(AnimatorState.Move, 1);
+            }
             
             await ETTask.CompletedTask;
         }

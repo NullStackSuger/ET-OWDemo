@@ -73,8 +73,6 @@ namespace ET
 		public string Tag { get; set; }
 		/// <summary>Action分组</summary>
 		public int ActionGroup { get; set; }
-		/// <summary>碰撞体种类</summary>
-		public int RigidBody { get; set; }
 
 	}
 }

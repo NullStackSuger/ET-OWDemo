@@ -21,7 +21,8 @@ namespace ET.Client
 
             if (obj.TryGetComponent<Animator>(out Animator animator))
             {
-                self.AddComponent<LSFAnimatorComponent>();
+                //self.AddComponent<LSFAnimatorComponent>();
+                self.AddComponent<AnimancerComponent, string>(obj.name);
             }
         }
 

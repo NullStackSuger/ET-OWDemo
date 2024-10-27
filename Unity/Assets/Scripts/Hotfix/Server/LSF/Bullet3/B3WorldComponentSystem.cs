@@ -67,7 +67,6 @@ namespace ET.Server
             self.LastCollisionInfos = self.NowCollisionInfos;
             self.NowCollisionInfos = new();
             
-            // TODO 这里存在一个问题 不同客户端碰撞信息的index可能不同, 导致不同步
             Dispatcher dispatcher = self.World.Dispatcher;
             int count = dispatcher.NumManifolds;
             for (int i = 0; i < count; i++)

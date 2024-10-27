@@ -11,7 +11,8 @@
         "Unity.Hotfix",
         "Unity.ModelView",
         "Unity.InputSystem",
-        "YooAsset"
+        "YooAsset",
+        "Animancer"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

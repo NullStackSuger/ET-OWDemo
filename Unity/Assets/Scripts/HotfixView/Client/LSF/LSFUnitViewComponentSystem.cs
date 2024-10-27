@@ -31,6 +31,7 @@ namespace ET.Client
             GameObject prefab = bundleGameObject.Get<GameObject>($"{assetName}");
             
             GameObject unitGo = UnityEngine.Object.Instantiate(prefab, globalComponent.Unit, true);
+            unitGo.name = assetName;
             LSUnit unit = unitComponent.GetChild<LSUnit>(unitId);
             unitGo.transform.position = unit.Position.ToVector();
 
@@ -51,6 +52,7 @@ namespace ET.Client
             foreach (long id in unitIds)
             {
                 GameObject unitGo = UnityEngine.Object.Instantiate(prefab, globalComponent.Unit, true);
+                unitGo.name = assetName;
                 LSUnit unit = unitComponent.GetChild<LSUnit>(id);
                 unitGo.transform.position = unit.Position.ToVector();
                 

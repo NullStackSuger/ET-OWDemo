@@ -13,7 +13,9 @@ namespace ET.Client
                 return;
             }
             
-            view.GetComponent<LSFAnimatorComponent>().SetBool("OnGround", a.OnGround);
+            //view.GetComponent<LSFAnimatorComponent>().SetBool("OnGround", a.OnGround);
+            var animator = view.GetComponent<AnimancerComponent>();
+            //animator.Play(AnimatorState.Jump);
             
             await ETTask.CompletedTask;
         }

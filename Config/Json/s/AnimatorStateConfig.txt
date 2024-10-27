@@ -1,0 +1,6 @@
+{"dict": [
+[1, {"_t":"AnimatorStateConfig","_id":1,"Name":"Idle","Layer":"All","FadeDuration":"0.25","BreakUnderAble":1,"PlayOnEnd":""}],
+[2, {"_t":"AnimatorStateConfig","_id":2,"Name":"Move","Layer":"Down","FadeDuration":"0.25","BreakUnderAble":1,"PlayOnEnd":""}],
+[3, {"_t":"AnimatorStateConfig","_id":3,"Name":"Cast","Layer":"Up","FadeDuration":"0.25","BreakUnderAble":0,"PlayOnEnd":"Idle"}],
+[4, {"_t":"AnimatorStateConfig","_id":4,"Name":"Jump","Layer":"Down","FadeDuration":"0.25","BreakUnderAble":0,"PlayOnEnd":"Idle"}],
+]}

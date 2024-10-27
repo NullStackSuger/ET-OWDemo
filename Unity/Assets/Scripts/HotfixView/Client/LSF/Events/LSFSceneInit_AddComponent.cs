@@ -11,7 +11,7 @@ namespace ET.Client
         {
             Room room = scene.GetComponent<Room>();
 
-            await room.AddComponent<LSFUnitViewComponent>().InitPlayerAsync("Unit/Unit.prefab", "Skeleton");
+            await room.AddComponent<LSFUnitViewComponent>().InitPlayerAsync("Unit/Skeleton.prefab", "Skeleton");
 
             room.GetComponent<LSFUnitViewComponent>().GetChild<LSFUnitView>(room.PlayerId).AddComponent<LSFCameraComponent>();
 
