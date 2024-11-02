@@ -48,6 +48,7 @@ namespace ET.Server
             return self.SeePlayers;
         }
 
+        #region 注册进入退出事件
         // cell中的unit进入self的视野
         public static void SubEnter(this AOIEntity self, Cell cell)
         {
@@ -88,7 +89,8 @@ namespace ET.Server
 
             cell.SubsLeaveEntities.Remove(self.Id);
         }
-
+        #endregion
+        
         // enter进入self视野
         public static void EnterSight(this AOIEntity self, AOIEntity enter)
         {

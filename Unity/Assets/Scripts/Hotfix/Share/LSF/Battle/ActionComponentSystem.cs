@@ -39,7 +39,7 @@ namespace ET
                 AActionHandler handler = ActionDispatcherComponent.Instance[sceneType, config.Name];
                 if (handler == null)
                 {
-                    Log.Error($"Can not find handler {config.Name}");
+                    //Log.Warning($"Can not find handler {config.Name}");
                     continue;
                 }
 

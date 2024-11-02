@@ -16,9 +16,10 @@ namespace ET.Server
             {
                 aoiEntity.ViewDistance = 1;
             }
-
+            
             AOIHelper.CalcEnterAndLeaveCell(aoiEntity, cellX, cellY, aoiEntity.SubEnterCells, aoiEntity.SubLeaveCells);
 
+            // 新加入的9宫格
             // 遍历EnterCell
             foreach (long cellId in aoiEntity.SubEnterCells)
             {
@@ -26,6 +27,7 @@ namespace ET.Server
                 aoiEntity.SubEnter(cell);
             }
 
+            // 离开的之前的9宫格
             // 遍历LeaveCell
             foreach (long cellId in aoiEntity.SubLeaveCells)
             {
@@ -33,6 +35,7 @@ namespace ET.Server
                 aoiEntity.SubLeave(cell);
             }
 
+            // 处于哪个新的Cell
             // 自己加入的Cell
             Cell selfCell = self.GetCell(AOIHelper.CreateCellId(cellX, cellY));
             aoiEntity.Cell = selfCell;
@@ -52,6 +55,7 @@ namespace ET.Server
                 return;
             }
 
+            // 先从之前的Cell移除, 为什么不像Add一样最后移除(添加), 因为Remove中最后移除会导致退出事件无法正常工作
             // 通知订阅该Cell Leave的Unit
             aoiEntity.Cell.Remove(aoiEntity);
             foreach (KeyValuePair<long, EntityRef<AOIEntity>> kv in aoiEntity.Cell.SubsLeaveEntities)
@@ -60,6 +64,7 @@ namespace ET.Server
                 e?.LeaveSight(aoiEntity);
             }
 
+            // 取消订阅之前Cell的进入事件, eg.有新玩家进入这个Cell, 由于取消订阅了, 就不会再创建GameObject了
             // 通知自己订阅的Enter Cell，清理自己
             foreach (long cellId in aoiEntity.SubEnterCells)
             {
@@ -67,12 +72,14 @@ namespace ET.Server
                 aoiEntity.UnSubEnter(cell);
             }
 
+            // 取消订阅之前Cell的退出事件
             foreach (long cellId in aoiEntity.SubLeaveCells)
             {
                 Cell cell = self.GetCell(cellId);
                 aoiEntity.UnSubLeave(cell);
             }
     
+            // 移除之后这2个还有元素的话可能有泄露的地方, 应该再调用Add之后才有元素
             // 检查
             if (aoiEntity.SeeUnits.Count > 1)
             {
@@ -101,6 +108,8 @@ namespace ET.Server
             aoiEntity.Cell = newCell;
             preCell.Remove(aoiEntity);
             newCell.Add(aoiEntity);
+            
+            // TODO　为什么又遍历一次？不直接调用Add?
             // 通知订阅该newCell Enter的Unit
             foreach (KeyValuePair<long, EntityRef<AOIEntity>> kv in newCell.SubsEnterEntities)
             {
@@ -138,8 +147,9 @@ namespace ET.Server
             Cell newCell = self.GetCell(newCellId);
             Move(aoiEntity, newCell, aoiEntity.Cell);
 
+            // TODO ?
             AOIHelper.CalcEnterAndLeaveCell(aoiEntity, cellX, cellY, aoiEntity.enterHashSet, aoiEntity.leaveHashSet);
-
+            
             // 算出自己leave新Cell
             foreach (long cellId in aoiEntity.leaveHashSet)
             {

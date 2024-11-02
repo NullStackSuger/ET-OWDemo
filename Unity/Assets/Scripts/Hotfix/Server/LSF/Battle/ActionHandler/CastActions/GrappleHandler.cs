@@ -6,7 +6,7 @@ namespace ET.Server
 {
     [FriendOfAttribute(typeof(B3WorldComponent))]
     [FriendOfAttribute(typeof(ET.ActionComponent))]
-    public class GrapplerInitHandler : AActionHandler
+    public class GrappleInitHandler : AActionHandler
     {
         public override bool Check(ActionComponent actionComponent, ActionConfig config)
         {
@@ -26,18 +26,18 @@ namespace ET.Server
             TSMatrix matrix = TSMath.RotationMatrix(owner.HeadRotation, owner.Rotation);
             Vector3 length = (matrix * TSVector.forward * 10).ToBullet();
             Vector3 startPos = owner.Position.ToBullet();
-            world.GetComponent<B3WorldComponent>().RayTestFirst(startPos, startPos + length, out ClosestRayResultCallback callback);
+            worldComponent.RayTestFirst(startPos, startPos + length, out ClosestRayResultCallback callback);
             Vector3 endPos = callback.HitPointWorld;
             actionComponent.Args.Add("EndPos", endPos);
             
-            Point2PointConstraint p2pConstraint = new Point2PointConstraint(collisionComponent.Collision as RigidBody, endPos);
-            worldComponent.World.AddConstraint(p2pConstraint);
-            actionComponent.Args.Add("Constraint", p2pConstraint);
+            SliderConstraint constraint = collisionComponent.AddSliderConstraint(10);
+            actionComponent.Args.Add("Constraint", constraint);
+            // TODO 朝指定方向加力
         }
     }
     
-    [FriendOfAttribute(typeof(ET.ActionComponent))]
-    public class GrapplerHandler : AActionHandler
+    [FriendOf(typeof(ActionComponent))]
+    public class GrappleHandler : AActionHandler
     {
         public override bool Check(ActionComponent actionComponent, ActionConfig config)
         {
@@ -52,14 +52,10 @@ namespace ET.Server
 
         public override void Update(ActionComponent actionComponent, ActionConfig config)
         {
-            /*// 每次缩短一半, 直到距离小于0.1
-            Point2PointConstraint p2pConstraint = new Point2PointConstraint(collisionComponent.Collision as RigidBody, endPos);
-            //worldComponent.World.AddConstraint();
-            //worldComponent.World.RemoveConstraint();*/
         }
     }
 
-    public class GrapplerEndHandler : AActionHandler
+    public class GrappleEndHandler : AActionHandler
     {
         public override bool Check(ActionComponent actionComponent, ActionConfig config)
         {

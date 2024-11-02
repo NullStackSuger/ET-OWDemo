@@ -21,6 +21,7 @@ namespace ET.Server
                 leaveR += 1;
             }
 
+            // 遍历半径r内的9宫格
             for (int i = cellX - leaveR; i <= cellX + leaveR; ++i)
             {
                 for (int j = cellY - leaveR; j <= cellY + leaveR; ++j)

@@ -10,5 +10,5 @@
 [1009, {"_t":"CastConfig","_id":1009,"Name":"Shield","X":0,"Y":1,"Z":1,"Tag":"Shield","ActionGroup":10,"RigidBody":12}],
 [1010, {"_t":"CastConfig","_id":1010,"Name":"Bounce","X":0,"Y":1,"Z":1,"Tag":"","ActionGroup":0,"RigidBody":13}],
 [1011, {"_t":"CastConfig","_id":1011,"Name":"Armageddon","X":0,"Y":0,"Z":0,"Tag":"CastPreview","ActionGroup":11,"RigidBody":0}],
-[1012, {"_t":"CastConfig","_id":1012,"Name":"Grappler","X":0,"Y":1,"Z":"0.5","Tag":"","ActionGroup":12,"RigidBody":0}],
+[1012, {"_t":"CastConfig","_id":1012,"Name":"Grapple","X":0,"Y":0,"Z":0,"Tag":"","ActionGroup":12,"RigidBody":0}],
 ]}

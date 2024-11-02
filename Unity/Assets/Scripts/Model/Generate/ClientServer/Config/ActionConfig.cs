@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.Options;
 using System.ComponentModel;
-using MemoryPack;
 
 namespace ET
 {
@@ -57,8 +56,7 @@ namespace ET
             return enumerator.Current; 
         }
     }
-
-    [MemoryPackable]
+    
 	public partial class ActionConfig: ProtoObject, IConfig
 	{
 		/// <summary>Id</summary>

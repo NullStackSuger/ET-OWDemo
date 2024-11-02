@@ -17,9 +17,8 @@ namespace ET.Server
         {
             var collisionConf = new DefaultCollisionConfiguration();
             var dispatcher = new CollisionDispatcher(collisionConf);
-            var broadPhase = new AxisSweep3(Vector3.One * -1000, Vector3.One * 1000);
-            var solver = new SequentialImpulseConstraintSolver();
-            self.World = new DiscreteDynamicsWorld(dispatcher, broadPhase, solver, collisionConf);
+            var broadPhase = new AxisSweep3(Vector3.One * -1000, Vector3.One * 1000, 32766);
+            self.World = new DiscreteDynamicsWorld(dispatcher, broadPhase, null, collisionConf);
             self.World.DispatchInfo.AllowedCcdPenetration = 0.0001f;
             self.World.Broadphase.OverlappingPairCache.SetInternalGhostPairCallback(new GhostPairCallback());
             self.World.Gravity = new Vector3(0, LSFConfig.G, 0);
@@ -29,7 +28,7 @@ namespace ET.Server
             
             CreatSceneRb(self, room.Name).Coroutine();
 
-            async ETTask CreatSceneRb(B3WorldComponent self, string name)
+            static async ETTask CreatSceneRb(B3WorldComponent self, string name)
             {
                 string path = $"D:\\{name}.bytes";
                 if (!File.Exists(path)) return;
@@ -177,6 +176,7 @@ namespace ET.Server
             self.WaitToRemoves.Enqueue(collision);
         }
 
+        #region RayTest
         /// <summary>
         /// 获取第一个命中的目标
         /// </summary>
@@ -219,7 +219,8 @@ namespace ET.Server
             cos = callback.CollisionObjects;
             return callback.HasHit;
         }
-
+        #endregion
+        
         /// <summary>
         /// 场景中物体会使用这个来创建碰撞
         /// </summary>

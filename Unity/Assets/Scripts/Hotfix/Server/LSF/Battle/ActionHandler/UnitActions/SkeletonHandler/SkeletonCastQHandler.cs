@@ -25,20 +25,22 @@ namespace ET.Server
         {
             // 释放技能
             LSUnit unit = actionComponent.GetParent<LSUnit>();
-            
             CastComponent castComponent = unit.GetComponent<CastComponent>();
-            castComponent.Creat(1011);
+            castComponent.Creat(1012);
             
+            /*CastComponent castComponent = unit.GetComponent<CastComponent>();
+            castComponent.Creat(1011);*/
+
             // 传送门
             /*CastComponent castComponent = unit.GetComponent<CastComponent>();
             LSUnit portalA = castComponent.Creat(1005).Unit;
             LSUnit portalB = castComponent.Creat(1006).Unit;
             portalA.AddComponent<PortalComponent, TSVector>(portalB.Position);
             portalB.AddComponent<PortalComponent, TSVector>(portalA.Position);*/
-            
+
             /*CastComponent castComponent = unit.GetComponent<CastComponent>();
             castComponent.Creat(1004);*/
-            
+
             // 需要在Check里检查技能是否还存在
             /*CastComponent castComponent = unit.GetComponent<CastComponent>();
             Cast cast = castComponent.Creat(1009);

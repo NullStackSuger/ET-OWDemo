@@ -30,7 +30,7 @@
 [11003, {"_t":"ActionConfig","_id":11003,"Name":"ArmageddonMoveHandler","RunningType":"Repeat","IsOnly":0}],
 [11004, {"_t":"ActionConfig","_id":11004,"Name":"ArmageddonCastHandler","RunningType":"Repeat","IsOnly":0}],
 [11005, {"_t":"ActionConfig","_id":11005,"Name":"ArmageddonEndHandler","RunningType":"Once","IsOnly":1}],
-[12001, {"_t":"ActionConfig","_id":12001,"Name":"GrapplerInitHandler","RunningType":"Once","IsOnly":1}],
-[12002, {"_t":"ActionConfig","_id":12002,"Name":"GrapplerHandler","RunningType":"Repeat","IsOnly":1}],
-[12003, {"_t":"ActionConfig","_id":12003,"Name":"GrapplerEndHandler","RunningType":"Once","IsOnly":1}],
+[12001, {"_t":"ActionConfig","_id":12001,"Name":"GrappleInitHandler","RunningType":"Once","IsOnly":1}],
+[12002, {"_t":"ActionConfig","_id":12002,"Name":"GrappleHandler","RunningType":"Repeat","IsOnly":1}],
+[12003, {"_t":"ActionConfig","_id":12003,"Name":"GrappleEndHandler","RunningType":"Once","IsOnly":1}],
 ]}

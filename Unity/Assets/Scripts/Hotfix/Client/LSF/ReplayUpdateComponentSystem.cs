@@ -31,7 +31,7 @@ namespace ET.Client
                 OneFrameDeltaEvents deltas = room.Replay.DeltaEvents[room.AuthorityFrame];
                 foreach (var delta in deltas.Events.Values)
                 {
-                    // 把这些消息发送到自己
+                    // TODO 把这些消息发送到自己
                 }
 
                 // 单次update时间>5ms 就留到下次update再做

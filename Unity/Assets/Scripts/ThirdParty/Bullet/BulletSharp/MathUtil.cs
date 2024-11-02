@@ -82,6 +82,38 @@ namespace BulletSharp
 
         //            return a * b - c * d;
         //        }
+        
+        public static bool CreateMatrix(Vector3 forward, Vector3 up, Vector3 constraintPoint, ref Matrix m)
+        {
+            Vector4 x;
+            Vector4 y;
+            Vector4 z;
+            if (forward == Vector3.Zero)
+            {
+                return false;
+            }
+            forward.Normalize();
+            if (up == Vector3.Zero)
+            {
+                return false;
+            }
+            Vector3 right = Vector3.Cross(forward, up);
+            if (right == Vector3.Zero)
+            {
+                return false;
+            }
+            up = Vector3.Cross(right, forward);
+            right.Normalize();
+            up.Normalize();
+            x.X = forward.X; x.Y = forward.Y; x.Z = forward.Z; x.W = 0f;
+            y.X = up.X; y.Y = up.Y; y.Z = up.Z; y.W = 0f;
+            z.X = right.X; z.Y = right.Y; z.Z = right.Z; z.W = 0f;
+            m.Row1 = x;
+            m.Row2 = y;
+            m.Row3 = z;
+            m.Origin = constraintPoint;
+            return true;
+        }
 
 
         public static float FSel(float a, float b, float c)

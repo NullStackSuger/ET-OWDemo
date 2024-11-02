@@ -27,9 +27,11 @@ namespace ET
         {
             get
             {
-                if (sceneType == SceneType.RoomRoot) return Handlers[$"ET.Server.{key}"];
-                else if (sceneType == SceneType.LockStepFrame) return Handlers[$"ET.Client.{key}"];
-                else return null;
+                string name = "";
+                if (sceneType == SceneType.RoomRoot) name = $"ET.Server.{key}";
+                else if (sceneType == SceneType.LockStepFrame) name = $"ET.Client.{key}";
+
+                return this.Handlers.GetValueOrDefault(name);
             }
         }
     }

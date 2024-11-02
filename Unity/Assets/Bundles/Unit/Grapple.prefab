@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1566369761602789340}
   - component: {fileID: 8103117107433468186}
   m_Layer: 0
-  m_Name: Grappler
+  m_Name: Grapple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
-  - key: Grappler
+  - key: Grapple
     gameObject: {fileID: 1930633175122345865, guid: e74a35822ef266b4e805afb993d3a579,
       type: 3}
