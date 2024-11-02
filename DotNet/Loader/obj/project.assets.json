@@ -2233,42 +2233,35 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\NullStackSuger\\.nuget\\packages\\": {},
-    "D:\\ToolSoft\\VS2022\\Tools\\NuGetPackages": {}
+    "C:\\Users\\Lenovo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Loader\\DotNet.Loader.csproj",
+      "projectUniqueName": "D:\\Unity\\Project\\ET-OWDemo\\DotNet\\Loader\\DotNet.Loader.csproj",
       "projectName": "Loader",
-      "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Loader\\DotNet.Loader.csproj",
-      "packagesPath": "C:\\Users\\NullStackSuger\\.nuget\\packages\\",
-      "outputPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Loader\\obj\\",
+      "projectPath": "D:\\Unity\\Project\\ET-OWDemo\\DotNet\\Loader\\DotNet.Loader.csproj",
+      "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+      "outputPath": "D:\\Unity\\Project\\ET-OWDemo\\DotNet\\Loader\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "D:\\ToolSoft\\VS2022\\Tools\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\NullStackSuger\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Core\\DotNet.Core.csproj": {
-              "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\Core\\DotNet.Core.csproj"
+            "D:\\Unity\\Project\\ET-OWDemo\\DotNet\\Core\\DotNet.Core.csproj": {
+              "projectPath": "D:\\Unity\\Project\\ET-OWDemo\\DotNet\\Core\\DotNet.Core.csproj"
             },
-            "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj": {
-              "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj"
+            "D:\\Unity\\Project\\ET-OWDemo\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj": {
+              "projectPath": "D:\\Unity\\Project\\ET-OWDemo\\DotNet\\ThirdParty\\DotNet.ThirdParty.csproj"
             }
           }
         }
@@ -2278,6 +2271,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {

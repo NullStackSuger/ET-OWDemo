@@ -1024,31 +1024,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\NullStackSuger\\.nuget\\packages\\": {},
-    "D:\\ToolSoft\\VS2022\\Tools\\NuGetPackages": {}
+    "C:\\Users\\Lenovo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\Share\\Share.SourceGenerator\\Share.SourceGenerator.csproj",
+      "projectUniqueName": "D:\\Unity\\Project\\ET-OWDemo\\Share\\Share.SourceGenerator\\Share.SourceGenerator.csproj",
       "projectName": "Share.SourceGenerator",
-      "projectPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\Share\\Share.SourceGenerator\\Share.SourceGenerator.csproj",
-      "packagesPath": "C:\\Users\\NullStackSuger\\.nuget\\packages\\",
-      "outputPath": "D:\\ToolSoft\\U3D\\Project\\ETs\\ET-OWDemo-1\\Share\\Share.SourceGenerator\\obj\\",
+      "projectPath": "D:\\Unity\\Project\\ET-OWDemo\\Share\\Share.SourceGenerator\\Share.SourceGenerator.csproj",
+      "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+      "outputPath": "D:\\Unity\\Project\\ET-OWDemo\\Share\\Share.SourceGenerator\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "D:\\ToolSoft\\VS2022\\Tools\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\NullStackSuger\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1061,6 +1054,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {

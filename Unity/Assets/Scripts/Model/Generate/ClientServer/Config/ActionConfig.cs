@@ -56,7 +56,7 @@ namespace ET
             return enumerator.Current; 
         }
     }
-    
+
 	public partial class ActionConfig: ProtoObject, IConfig
 	{
 		/// <summary>Id</summary>

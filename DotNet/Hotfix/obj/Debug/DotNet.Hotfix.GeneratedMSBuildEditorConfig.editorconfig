@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ET
-build_property.ProjectDir = D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Hotfix\
+build_property.ProjectDir = D:\Unity\Project\ET-OWDemo\DotNet\Hotfix\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

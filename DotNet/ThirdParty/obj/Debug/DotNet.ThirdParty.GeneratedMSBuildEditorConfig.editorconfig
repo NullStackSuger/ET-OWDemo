@@ -15,6 +15,6 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
 build_property.RootNamespace = ET
-build_property.ProjectDir = D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\ThirdParty\
+build_property.ProjectDir = D:\Unity\Project\ET-OWDemo\DotNet\ThirdParty\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

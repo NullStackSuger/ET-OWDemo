@@ -38,3 +38,17 @@ D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\ThirdParty\obj\Debug\refint\Third
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\ThirdParty\obj\Debug\ThirdParty.pdb
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\ThirdParty\obj\Debug\ref\ThirdParty.dll
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\ThirdParty\obj\Debug\DotNet.T.EF4DBFB8.Up2Date
+D:\Unity\Project\ET-OWDemo\DotNet\ThirdParty\obj\Debug\DotNet.ThirdParty.csproj.AssemblyReference.cache
+D:\Unity\Project\ET-OWDemo\DotNet\ThirdParty\obj\Debug\DotNet.ThirdParty.GeneratedMSBuildEditorConfig.editorconfig
+D:\Unity\Project\ET-OWDemo\DotNet\ThirdParty\obj\Debug\DotNet.ThirdParty.AssemblyInfoInputs.cache
+D:\Unity\Project\ET-OWDemo\DotNet\ThirdParty\obj\Debug\DotNet.ThirdParty.AssemblyInfo.cs
+D:\Unity\Project\ET-OWDemo\DotNet\ThirdParty\obj\Debug\DotNet.ThirdParty.csproj.CoreCompileInputs.cache
+D:\Unity\Project\ET-OWDemo\DotNet\ThirdParty\obj\Debug\DotNet.ThirdParty.sourcelink.json
+D:\Unity\Project\ET-OWDemo\DotNet\ThirdParty\obj\Debug\ThirdParty.dll
+D:\Unity\Project\ET-OWDemo\DotNet\ThirdParty\obj\Debug\refint\ThirdParty.dll
+D:\Unity\Project\ET-OWDemo\DotNet\ThirdParty\obj\Debug\ThirdParty.pdb
+D:\Unity\Project\ET-OWDemo\Bin\ThirdParty.deps.json
+D:\Unity\Project\ET-OWDemo\Bin\ThirdParty.dll
+D:\Unity\Project\ET-OWDemo\Bin\ThirdParty.pdb
+D:\Unity\Project\ET-OWDemo\DotNet\ThirdParty\obj\Debug\DotNet.T.EF4DBFB8.Up2Date
+D:\Unity\Project\ET-OWDemo\DotNet\ThirdParty\obj\Debug\ref\ThirdParty.dll

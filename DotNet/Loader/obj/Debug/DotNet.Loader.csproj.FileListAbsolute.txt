@@ -39,3 +39,17 @@ D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Loader\obj\Debug\refint\Loader.dl
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Loader\obj\Debug\Loader.pdb
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Loader\obj\Debug\ref\Loader.dll
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Loader\obj\Debug\DotNet.L.DA009C55.Up2Date
+D:\Unity\Project\ET-OWDemo\Bin\Loader.deps.json
+D:\Unity\Project\ET-OWDemo\Bin\Loader.dll
+D:\Unity\Project\ET-OWDemo\Bin\Loader.pdb
+D:\Unity\Project\ET-OWDemo\DotNet\Loader\obj\Debug\DotNet.Loader.csproj.AssemblyReference.cache
+D:\Unity\Project\ET-OWDemo\DotNet\Loader\obj\Debug\DotNet.Loader.GeneratedMSBuildEditorConfig.editorconfig
+D:\Unity\Project\ET-OWDemo\DotNet\Loader\obj\Debug\DotNet.Loader.AssemblyInfoInputs.cache
+D:\Unity\Project\ET-OWDemo\DotNet\Loader\obj\Debug\DotNet.Loader.AssemblyInfo.cs
+D:\Unity\Project\ET-OWDemo\DotNet\Loader\obj\Debug\DotNet.Loader.csproj.CoreCompileInputs.cache
+D:\Unity\Project\ET-OWDemo\DotNet\Loader\obj\Debug\DotNet.Loader.sourcelink.json
+D:\Unity\Project\ET-OWDemo\DotNet\Loader\obj\Debug\DotNet.L.DA009C55.Up2Date
+D:\Unity\Project\ET-OWDemo\DotNet\Loader\obj\Debug\Loader.dll
+D:\Unity\Project\ET-OWDemo\DotNet\Loader\obj\Debug\refint\Loader.dll
+D:\Unity\Project\ET-OWDemo\DotNet\Loader\obj\Debug\Loader.pdb
+D:\Unity\Project\ET-OWDemo\DotNet\Loader\obj\Debug\ref\Loader.dll

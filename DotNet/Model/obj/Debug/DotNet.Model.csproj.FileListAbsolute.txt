@@ -39,3 +39,17 @@ D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Model\obj\Debug\refint\Model.dll
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Model\obj\Debug\Model.pdb
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Model\obj\Debug\ref\Model.dll
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Model\obj\Debug\DotNet.M.982713FF.Up2Date
+D:\Unity\Project\ET-OWDemo\Bin\Model.deps.json
+D:\Unity\Project\ET-OWDemo\Bin\Model.dll
+D:\Unity\Project\ET-OWDemo\Bin\Model.pdb
+D:\Unity\Project\ET-OWDemo\DotNet\Model\obj\Debug\DotNet.Model.csproj.AssemblyReference.cache
+D:\Unity\Project\ET-OWDemo\DotNet\Model\obj\Debug\DotNet.Model.GeneratedMSBuildEditorConfig.editorconfig
+D:\Unity\Project\ET-OWDemo\DotNet\Model\obj\Debug\DotNet.Model.AssemblyInfoInputs.cache
+D:\Unity\Project\ET-OWDemo\DotNet\Model\obj\Debug\DotNet.Model.AssemblyInfo.cs
+D:\Unity\Project\ET-OWDemo\DotNet\Model\obj\Debug\DotNet.Model.csproj.CoreCompileInputs.cache
+D:\Unity\Project\ET-OWDemo\DotNet\Model\obj\Debug\DotNet.Model.sourcelink.json
+D:\Unity\Project\ET-OWDemo\DotNet\Model\obj\Debug\DotNet.M.982713FF.Up2Date
+D:\Unity\Project\ET-OWDemo\DotNet\Model\obj\Debug\Model.dll
+D:\Unity\Project\ET-OWDemo\DotNet\Model\obj\Debug\refint\Model.dll
+D:\Unity\Project\ET-OWDemo\DotNet\Model\obj\Debug\Model.pdb
+D:\Unity\Project\ET-OWDemo\DotNet\Model\obj\Debug\ref\Model.dll

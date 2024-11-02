@@ -30,3 +30,14 @@ D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\Share\Share.SourceGenerator\obj\Debug\Sh
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\Share\Share.SourceGenerator\obj\Debug\Share.SourceGenerator.sourcelink.json
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\Share\Share.SourceGenerator\obj\Debug\Share.SourceGenerator.dll
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\Share\Share.SourceGenerator\obj\Debug\Share.SourceGenerator.pdb
+D:\Unity\Project\ET-OWDemo\Share\Share.SourceGenerator\bin\Debug\Share.SourceGenerator.deps.json
+D:\Unity\Project\ET-OWDemo\Share\Share.SourceGenerator\bin\Debug\Share.SourceGenerator.dll
+D:\Unity\Project\ET-OWDemo\Share\Share.SourceGenerator\bin\Debug\Share.SourceGenerator.pdb
+D:\Unity\Project\ET-OWDemo\Share\Share.SourceGenerator\obj\Debug\Share.SourceGenerator.csproj.AssemblyReference.cache
+D:\Unity\Project\ET-OWDemo\Share\Share.SourceGenerator\obj\Debug\Share.SourceGenerator.GeneratedMSBuildEditorConfig.editorconfig
+D:\Unity\Project\ET-OWDemo\Share\Share.SourceGenerator\obj\Debug\Share.SourceGenerator.AssemblyInfoInputs.cache
+D:\Unity\Project\ET-OWDemo\Share\Share.SourceGenerator\obj\Debug\Share.SourceGenerator.AssemblyInfo.cs
+D:\Unity\Project\ET-OWDemo\Share\Share.SourceGenerator\obj\Debug\Share.SourceGenerator.csproj.CoreCompileInputs.cache
+D:\Unity\Project\ET-OWDemo\Share\Share.SourceGenerator\obj\Debug\Share.SourceGenerator.sourcelink.json
+D:\Unity\Project\ET-OWDemo\Share\Share.SourceGenerator\obj\Debug\Share.SourceGenerator.dll
+D:\Unity\Project\ET-OWDemo\Share\Share.SourceGenerator\obj\Debug\Share.SourceGenerator.pdb

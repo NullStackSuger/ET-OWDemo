@@ -840,12 +840,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Reference Include="UnityEngine.CoreModule">
-        <HintPath>..\..\..\..\..\Editor\2022.3.15f1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
-      </Reference>
-    </ItemGroup>
-
-    <ItemGroup>
       <Content Include="..\..\Unity\Assets\Scripts\ThirdParty\Bullet\BulletSharp.meta">
         <Link>Bullet\BulletSharp.meta</Link>
       </Content>
@@ -2562,5 +2556,11 @@
       <ClInclude Include="..\..\Unity\Assets\Scripts\ThirdParty\Bullet\Native\OSX\libbulletc.bundle\Contents\Resources\hacdVector.inl">
         <Link>Bullet\Native\OSX\libbulletc.bundle\Contents\Resources\hacdVector.inl</Link>
       </ClInclude>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="UnityEngine.CoreModule">
+        <HintPath>..\..\Unity\Assets\Scripts\ThirdParty\UnityEngine.CoreModule\UnityEngine.CoreModule.dll</HintPath>
+      </Reference>
     </ItemGroup>
 </Project>

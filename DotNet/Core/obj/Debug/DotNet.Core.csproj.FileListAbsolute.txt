@@ -39,3 +39,17 @@ D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Core\obj\Debug\refint\Core.dll
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Core\obj\Debug\Core.pdb
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Core\obj\Debug\ref\Core.dll
 D:\ToolSoft\U3D\Project\ETs\ET-OWDemo-1\DotNet\Core\obj\Debug\DotNet.C.0F4929AF.Up2Date
+D:\Unity\Project\ET-OWDemo\Bin\Core.deps.json
+D:\Unity\Project\ET-OWDemo\Bin\Core.dll
+D:\Unity\Project\ET-OWDemo\Bin\Core.pdb
+D:\Unity\Project\ET-OWDemo\DotNet\Core\obj\Debug\DotNet.Core.csproj.AssemblyReference.cache
+D:\Unity\Project\ET-OWDemo\DotNet\Core\obj\Debug\DotNet.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Unity\Project\ET-OWDemo\DotNet\Core\obj\Debug\DotNet.Core.AssemblyInfoInputs.cache
+D:\Unity\Project\ET-OWDemo\DotNet\Core\obj\Debug\DotNet.Core.AssemblyInfo.cs
+D:\Unity\Project\ET-OWDemo\DotNet\Core\obj\Debug\DotNet.Core.csproj.CoreCompileInputs.cache
+D:\Unity\Project\ET-OWDemo\DotNet\Core\obj\Debug\DotNet.Core.sourcelink.json
+D:\Unity\Project\ET-OWDemo\DotNet\Core\obj\Debug\DotNet.C.0F4929AF.Up2Date
+D:\Unity\Project\ET-OWDemo\DotNet\Core\obj\Debug\Core.dll
+D:\Unity\Project\ET-OWDemo\DotNet\Core\obj\Debug\refint\Core.dll
+D:\Unity\Project\ET-OWDemo\DotNet\Core\obj\Debug\Core.pdb
+D:\Unity\Project\ET-OWDemo\DotNet\Core\obj\Debug\ref\Core.dll
