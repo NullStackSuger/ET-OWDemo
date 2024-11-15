@@ -30,11 +30,10 @@ namespace ET.Client
         public static async ETTask SceneChangeToReplay(Scene root, Replay replay)
         {
             root.RemoveComponent<Room>();
-            long playerId = root.GetComponent<PlayerComponent>().MyId;
             
             Room room = root.AddComponent<Room, string>("Map1");
             room.Replay = replay;
-            room.Init(playerId, replay.UnitInfos, TimeInfo.Instance.ServerFrameTime());
+            room.Init(replay.PlayerId, replay.UnitInfos, TimeInfo.Instance.ServerFrameTime());
 
             await EventSystem.Instance.PublishAsync(root, new LSFSceneChange());
 

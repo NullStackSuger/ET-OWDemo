@@ -36,5 +36,19 @@ namespace ET.Server
                 type.Send(id, message);
             }
         }
+
+        public static void BroadCast(this LSUnit self, IRoomMessage message)
+        {
+            // 广播的消息不能被池回收
+            (message as MessageObject).IsFromPool = false;
+            
+            MessageLocationSenderComponent messageLocationSenderComponent = self.Root().GetComponent<MessageLocationSenderComponent>();
+            AOIEntity aoiEntity = self.GetComponent<AOIEntity>();
+            foreach (AOIEntity entity in aoiEntity.GetAOI())
+            {
+                var type = messageLocationSenderComponent.Get(LocationType.GateSession);
+                type.Send(entity.GetParent<LSUnit>().Id, message);
+            }
+        }
     }
 }

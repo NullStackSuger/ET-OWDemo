@@ -92,7 +92,7 @@ namespace ET.Server
                 infos.Add(info);
             }
 
-            string path = $"D:\\{SceneManager.GetActiveScene().name}.bytes";
+            string path = $"D:\\Collision{SceneManager.GetActiveScene().name}.bytes";
             byte[] bytes = MemoryPackHelper.Serialize(infos);
             File.WriteAllBytes(path, bytes);
             

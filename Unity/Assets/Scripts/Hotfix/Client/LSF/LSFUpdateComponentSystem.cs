@@ -13,7 +13,13 @@ namespace ET.Client
         private static void Awake(this LSFUpdateComponent self)
         {
         }
-        public static void Init(this ET.Room self, long playerId, List<LockStepUnitInfo> unitInfos, long startTime, int frame = -1)
+        [EntitySystem]
+        private static void Destroy(this LSFUpdateComponent self)
+        {
+            Room room = self.GetParent<Room>();
+            room.SaveReplay("D:\\Replay.rp");
+        }
+        public static void Init(this Room self, long playerId, List<LockStepUnitInfo> unitInfos, long startTime, int frame = -1)
         {
             self.AddComponent<LSFTimerComponent>();
             
@@ -32,6 +38,7 @@ namespace ET.Client
             {
                 self.Replay = new();
                 self.Replay.UnitInfos = unitInfos;
+                self.Replay.PlayerId = playerId;
             }
 
             self.PredictionWorld = new LSWorld(1, SceneType.LSFClientPrediction);
@@ -48,13 +55,13 @@ namespace ET.Client
                 unitComponent.Creat(info, Tag.PlayerA);
             }
         }
-
+        
 
         
         [EntitySystem]
         private static void Update(this LSFUpdateComponent self)
         {
-            ET.Room room = self.GetParent<ET.Room>();
+            Room room = self.GetParent<Room>();
             long now = TimeInfo.Instance.ServerNow();
 
             while (true)
@@ -92,7 +99,7 @@ namespace ET.Client
                 if (now2 > now + 5) break;
             }
         }
-        public static void Update(this ET.LSWorld world, OneFrameInputs inputs)
+        public static void Update(this LSWorld world, OneFrameInputs inputs)
         {
             LSUnitComponent unitComponent = world.GetComponent<LSUnitComponent>();
             
@@ -107,7 +114,7 @@ namespace ET.Client
             // 调用World的UpdateSystem
             world.Update();
         }
-        private static OneFrameInputs GetInputs(ET.Room room, int frame)
+        private static OneFrameInputs GetInputs(Room room, int frame)
         {
             FrameBuffer frameBuffer = room.FrameBuffer;
 
@@ -133,7 +140,7 @@ namespace ET.Client
 
             return predictionInputs;
         }
-        private static OneFrameDeltaEvents GetDeltaEvents(ET.Room room, int frame)
+        private static OneFrameDeltaEvents GetDeltaEvents(Room room, int frame)
         {
             FrameBuffer frameBuffer = room.FrameBuffer;
 
@@ -147,14 +154,13 @@ namespace ET.Client
             {
                 foreach (var kv2 in kv1.Value)
                 {
-                    deltaEvents.Events.Add($"{kv1.Key}_{kv2.Key}", kv2.Value);
+                    deltaEvents.Add(kv2.Value.ToString(), kv2.Value);
                 }
             }
             deltaEvents.Frame = frame;
 
             return deltaEvents;
         }
-
         
         
         public static void Rollback(this ET.Room self)
@@ -216,35 +222,65 @@ namespace ET.Client
             Log.Warning($"Save Path {path}");
             File.WriteAllBytes(path, bytes);
         }
+        /// <summary>
+        /// 记录快照
+        /// </summary>
         public static void Record(this ET.Room self, int frame)
         {
             if (frame > self.AuthorityFrame) return;
-            
-            // 即使当前帧没有消息发过来也要去Record, 不然消息数和帧数对不上
-            self.Record(frame, "", null);
 
             // 每分钟记录下快照
-            if (frame % LSFConfig.FrameCountPerMinute == 0)
-            {
-                // 生成World的快照和Hash
-                MemoryBuffer memoryBuffer = new(1024);
-                memoryBuffer.Seek(0, SeekOrigin.Begin);
-                memoryBuffer.SetLength(0);
-                MemoryPackHelper.Serialize(self.AuthorityWorld, memoryBuffer);
-                memoryBuffer.Seek(0, SeekOrigin.Begin);
-                long hash = memoryBuffer.GetBuffer().Hash(0, (int)memoryBuffer.Length);
-                self.FrameBuffer.SetHash(self.AuthorityFrame, hash);
-                // 保存到回放文件
-                byte[] bytes = memoryBuffer.ToArray();
-                self.Replay.Snapshots.Add(bytes);
-            }
+            if (frame % LSFConfig.FrameCountPerMinute != 0) return;
+            
+            // 生成World的快照和Hash
+            MemoryBuffer memoryBuffer = new(1024);
+            memoryBuffer.Seek(0, SeekOrigin.Begin);
+            memoryBuffer.SetLength(0);
+            MemoryPackHelper.Serialize(self.AuthorityWorld, memoryBuffer);
+            memoryBuffer.Seek(0, SeekOrigin.Begin);
+            long hash = memoryBuffer.GetBuffer().Hash(0, (int)memoryBuffer.Length);
+            self.FrameBuffer.SetHash(self.AuthorityFrame, hash);
+            // 保存到回放文件
+            byte[] bytes = memoryBuffer.ToArray();
+            self.Replay.Snapshots.Add(bytes);
         }
-        public static void Record(this ET.Room self, int frame, string key, MessageObject value)
+        /// <summary>
+        /// 记录输入
+        /// </summary>
+        public static void Record(this Room self, OneFrameInputs inputs)
+        {
+            if (inputs == null) return;
+            
+            int frame = inputs.Frame;
+            
+            // 这时权威帧还没+1
+            if (frame > self.AuthorityFrame + 1)
+            {
+                return;
+            }
+            
+            if (self.Replay.FrameInputs.Count != frame)
+            {
+                Log.Error($"回放第{frame}帧出现问题 : {self.Replay.FrameInputs.Count}");
+            }
+            
+            OneFrameInputs saveInput = OneFrameInputs.Create();
+            inputs.CopyTo(saveInput);
+            self.Replay.FrameInputs.Add(saveInput);
+        }
+        /// <summary>
+        /// 记录脏数据
+        /// 这里有可能会一帧同一玩家同一事件发送多次, 所以要设置不同Key区分, 正常玩的时候没有这种情况是因为DataModifierChange不会被预测, 从而不会记录到OneFrameDeltaEvents
+        /// </summary>
+        public static void Record(this Room self, int frame, string key, MessageObject value)
         {
             if (frame > self.AuthorityFrame) return;
-            if (frame <= -1) return;
+
+            if (frame <= -1)
+            {
+                frame = 0;
+            }
             
-            // 每帧记录下输入
             if (self.Replay.DeltaEvents.Count < frame + 1)
             {
                 OneFrameDeltaEvents saveDelta = OneFrameDeltaEvents.Create();
@@ -260,7 +296,7 @@ namespace ET.Client
             if (value == null) return;
 
             OneFrameDeltaEvents events = self.Replay.DeltaEvents[frame];
-            events.Events.Add(key, value);
+            events.Add(key, value);
         }
     }
 }

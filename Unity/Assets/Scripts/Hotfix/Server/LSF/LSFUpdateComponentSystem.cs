@@ -11,10 +11,10 @@ namespace ET.Server
         private static void Awake(this LSFUpdateComponent self)
         {
         }
-
         public static void Init(this Room self, List<LockStepUnitInfo> unitInfos, long startTime, int frame = -1)
         {
             self.AddComponent<LSFTimerComponent>();
+            self.AddComponent<AOIManagerComponent>();
 
             self.AuthorityFrame = frame;
             self.FrameBuffer = new(frame);
@@ -39,7 +39,7 @@ namespace ET.Server
         [EntitySystem]
         private static void Update(this LSFUpdateComponent self)
         {
-            ET.Room room = self.GetParent<ET.Room>();
+            Room room = self.GetParent<Room>();
 
             // 检查当前时间是否能进行下一帧
             long now = TimeInfo.Instance.ServerFrameTime();
@@ -86,7 +86,7 @@ namespace ET.Server
             world.Update();
         }
         
-        private static OneFrameInputs GetInputs(ET.Room room, int frame)
+        private static OneFrameInputs GetInputs(Room room, int frame)
         {
             FrameBuffer frameBuffer = room.FrameBuffer;
             OneFrameInputs inputs = frameBuffer.FrameInputs(frame);
@@ -123,7 +123,7 @@ namespace ET.Server
             return inputs;
         }
 
-        private static OneFrameDeltaEvents GetDeltaEvents(ET.Room room, int frame)
+        private static OneFrameDeltaEvents GetDeltaEvents(Room room, int frame)
         {
             FrameBuffer frameBuffer = room.FrameBuffer;
 
@@ -133,7 +133,7 @@ namespace ET.Server
             {
                 foreach (var kv2 in kv1.Value)
                 {
-                    deltaEvents.Events.Add($"{kv1.Key}_{kv2.Key}", kv2.Value);
+                    deltaEvents.Add(kv2.Value.ToString(), kv2.Value);
                 }
             }
             deltaEvents.Frame = frame;

@@ -53,8 +53,7 @@ namespace ET
             
             // 移除CastUnit
             LSUnitComponent unitComponent = player.GetParent<LSUnitComponent>();
-            // TODO 这里不会立刻Remove Unit 不确定会不会有什么问题
-            unitComponent.WaitToRemove(self.Id);
+            unitComponent.RemoveChild(self.Id);
         }
     }
 }

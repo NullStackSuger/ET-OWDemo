@@ -38,7 +38,7 @@ namespace ET.Server
             MapMessageHelper.SendToClient(unit, m2CCreateUnits);
 
             // 加入aoi
-            unit.AddComponent<AOIEntity, int, float3>(9 * 1000, unit.Position);
+            //unit.AddComponent<AOIEntity, int, float3>(9 * 1000, unit.Position);
 
             // 解锁location，可以接收发给Unit的消息
             await scene.Root().GetComponent<LocationProxyComponent>().UnLock(LocationType.Unit, unit.Id, request.OldActorId, unit.GetActorId());

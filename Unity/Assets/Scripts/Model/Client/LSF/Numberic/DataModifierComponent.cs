@@ -30,14 +30,6 @@ namespace ET.Client
             return Types.Contains(item);
         }
     }
-
-    public struct DataModifierChange
-    {
-        public LSUnit Unit;
-        public int DataModifierType;
-        public long Old;
-        public long New;
-    }
     
     [ComponentOf(typeof(LSUnit))]
     public class DataModifierComponent : LSEntity, IAwake
@@ -57,6 +49,7 @@ namespace ET.Client
                 if (this.NumericDic.ContainsKey(numericType))
                 {
                     old = NumericDic[numericType];
+                    if (old == value) return;
                     NumericDic[numericType] = value;
                 }
                 else

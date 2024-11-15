@@ -432,7 +432,7 @@ namespace ET
 
         [MongoDB.Bson.Serialization.Attributes.BsonDictionaryOptions(MongoDB.Bson.Serialization.Options.DictionaryRepresentation.ArrayOfArrays)]
         [MemoryPackOrder(1)]
-        public Dictionary<string, MessageObject> Events { get; set; } = new();
+        public Dictionary<string, LinkedList<MessageObject>> Events { get; set; } = new();
         public override void Dispose()
         {
             if (!this.IsFromPool)
@@ -446,13 +446,10 @@ namespace ET
             ObjectPool.Instance.Recycle(this);
         }
     }
-
-    /// <summary>
-    /// 
-    /// </summary>
+    
     [MemoryPackable]
     [Message(LockStepOuter.S2C_UnitChangePosition)]
-    public partial class S2C_UnitChangePosition : MessageObject, IMessage
+    public partial class S2C_UnitChangePosition : MessageObject, IRoomMessage
     {
         public static S2C_UnitChangePosition Create(bool isFromPool = false)
         {
@@ -460,7 +457,7 @@ namespace ET
         }
 
         [MemoryPackOrder(0)]
-        public long UnitId { get; set; }
+        public long PlayerId { get; set; }
 
         [MemoryPackOrder(1)]
         public TSVector Position { get; set; }
@@ -472,7 +469,7 @@ namespace ET
                 return;
             }
 
-            this.UnitId = default;
+            this.PlayerId = default;
             this.Position = default;
 
             ObjectPool.Instance.Recycle(this);
@@ -481,7 +478,7 @@ namespace ET
 
     [MemoryPackable]
     [Message(LockStepOuter.S2C_UnitChangeRotation)]
-    public partial class S2C_UnitChangeRotation : MessageObject, IMessage
+    public partial class S2C_UnitChangeRotation : MessageObject, IRoomMessage
     {
         public static S2C_UnitChangeRotation Create(bool isFromPool = false)
         {
@@ -489,7 +486,7 @@ namespace ET
         }
 
         [MemoryPackOrder(0)]
-        public long UnitId { get; set; }
+        public long PlayerId { get; set; }
 
         [MemoryPackOrder(1)]
         public FP Rotation { get; set; }
@@ -501,7 +498,7 @@ namespace ET
                 return;
             }
 
-            this.UnitId = default;
+            this.PlayerId = default;
             this.Rotation = default;
 
             ObjectPool.Instance.Recycle(this);
@@ -510,7 +507,7 @@ namespace ET
 
     [MemoryPackable]
     [Message(LockStepOuter.S2C_UnitChangeHeadRotation)]
-    public partial class S2C_UnitChangeHeadRotation : MessageObject, IMessage
+    public partial class S2C_UnitChangeHeadRotation : MessageObject, IRoomMessage
     {
         public static S2C_UnitChangeHeadRotation Create(bool isFromPool = false)
         {
@@ -518,7 +515,7 @@ namespace ET
         }
 
         [MemoryPackOrder(0)]
-        public long UnitId { get; set; }
+        public long PlayerId { get; set; }
 
         [MemoryPackOrder(1)]
         public FP HeadRotation { get; set; }
@@ -530,7 +527,7 @@ namespace ET
                 return;
             }
 
-            this.UnitId = default;
+            this.PlayerId = default;
             this.HeadRotation = default;
 
             ObjectPool.Instance.Recycle(this);
@@ -539,7 +536,7 @@ namespace ET
 
     [MemoryPackable]
     [Message(LockStepOuter.S2C_UnitUseCast)]
-    public partial class S2C_UnitUseCast : MessageObject, IMessage
+    public partial class S2C_UnitUseCast : MessageObject, IRoomMessage
     {
         public static S2C_UnitUseCast Create(bool isFromPool = false)
         {
@@ -547,7 +544,7 @@ namespace ET
         }
 
         [MemoryPackOrder(0)]
-        public long OwnerId { get; set; }
+        public long PlayerId { get; set; }
 
         [MemoryPackOrder(1)]
         public long CastId { get; set; }
@@ -562,7 +559,7 @@ namespace ET
                 return;
             }
 
-            this.OwnerId = default;
+            this.PlayerId = default;
             this.CastId = default;
             this.ConfigId = default;
 
@@ -572,7 +569,7 @@ namespace ET
 
     [MemoryPackable]
     [Message(LockStepOuter.S2C_UnitRemoveCast)]
-    public partial class S2C_UnitRemoveCast : MessageObject, IMessage
+    public partial class S2C_UnitRemoveCast : MessageObject, IRoomMessage
     {
         public static S2C_UnitRemoveCast Create(bool isFromPool = false)
         {
@@ -580,7 +577,7 @@ namespace ET
         }
 
         [MemoryPackOrder(0)]
-        public long OwnerId { get; set; }
+        public long PlayerId { get; set; }
 
         [MemoryPackOrder(1)]
         public long CastId { get; set; }
@@ -592,7 +589,7 @@ namespace ET
                 return;
             }
 
-            this.OwnerId = default;
+            this.PlayerId = default;
             this.CastId = default;
 
             ObjectPool.Instance.Recycle(this);
@@ -601,7 +598,7 @@ namespace ET
 
     [MemoryPackable]
     [Message(LockStepOuter.S2C_UnitUseBuff)]
-    public partial class S2C_UnitUseBuff : MessageObject, IMessage
+    public partial class S2C_UnitUseBuff : MessageObject, IRoomMessage
     {
         public static S2C_UnitUseBuff Create(bool isFromPool = false)
         {
@@ -609,7 +606,7 @@ namespace ET
         }
 
         [MemoryPackOrder(0)]
-        public long OwnerId { get; set; }
+        public long PlayerId { get; set; }
 
         [MemoryPackOrder(1)]
         public long BuffId { get; set; }
@@ -624,7 +621,7 @@ namespace ET
                 return;
             }
 
-            this.OwnerId = default;
+            this.PlayerId = default;
             this.BuffId = default;
             this.ConfigId = default;
 
@@ -634,7 +631,7 @@ namespace ET
 
     [MemoryPackable]
     [Message(LockStepOuter.S2C_UnitRemoveBuff)]
-    public partial class S2C_UnitRemoveBuff : MessageObject, IMessage
+    public partial class S2C_UnitRemoveBuff : MessageObject, IRoomMessage
     {
         public static S2C_UnitRemoveBuff Create(bool isFromPool = false)
         {
@@ -642,7 +639,7 @@ namespace ET
         }
 
         [MemoryPackOrder(0)]
-        public long OwnerId { get; set; }
+        public long PlayerId { get; set; }
 
         [MemoryPackOrder(1)]
         public long BuffId { get; set; }
@@ -654,7 +651,7 @@ namespace ET
                 return;
             }
 
-            this.OwnerId = default;
+            this.PlayerId = default;
             this.BuffId = default;
 
             ObjectPool.Instance.Recycle(this);
@@ -663,7 +660,7 @@ namespace ET
 
     [MemoryPackable]
     [Message(LockStepOuter.S2C_UnitChangeDataModifier)]
-    public partial class S2C_UnitChangeDataModifier : MessageObject, IMessage
+    public partial class S2C_UnitChangeDataModifier : MessageObject, IRoomMessage
     {
         public static S2C_UnitChangeDataModifier Create(bool isFromPool = false)
         {
@@ -671,7 +668,7 @@ namespace ET
         }
 
         [MemoryPackOrder(0)]
-        public long UnitId { get; set; }
+        public long PlayerId { get; set; }
 
         [MemoryPackOrder(1)]
         public int DataModifierType { get; set; }
@@ -686,7 +683,7 @@ namespace ET
                 return;
             }
 
-            this.UnitId = default;
+            this.PlayerId = default;
             this.DataModifierType = default;
             this.Value = default;
 
@@ -696,7 +693,7 @@ namespace ET
 
     [MemoryPackable]
     [Message(LockStepOuter.S2C_UnitOnGround)]
-    public partial class S2C_UnitOnGround : MessageObject, IMessage
+    public partial class S2C_UnitOnGround : MessageObject, IRoomMessage
     {
         public static S2C_UnitOnGround Create(bool isFromPool = false)
         {
@@ -704,7 +701,7 @@ namespace ET
         }
 
         [MemoryPackOrder(0)]
-        public long UnitId { get; set; }
+        public long PlayerId { get; set; }
 
         [MemoryPackOrder(1)]
         public bool OnGround { get; set; }
@@ -716,7 +713,7 @@ namespace ET
                 return;
             }
 
-            this.UnitId = default;
+            this.PlayerId = default;
             this.OnGround = default;
 
             ObjectPool.Instance.Recycle(this);

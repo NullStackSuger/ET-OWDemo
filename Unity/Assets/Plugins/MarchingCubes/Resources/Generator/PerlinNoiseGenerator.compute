@@ -1,0 +1,19 @@
+#pragma kernel CSMain
+#include "ValueGenerator.compute"
+#include "../System/PerlinNoise.compute"
+
+float3 diff;
+float loud;
+int seed;
+
+[numthreads(8, 8, 8)]
+void CSMain (int3 id : SV_DispatchThreadID)
+{
+    float3 pos = float3(id.x * cellSize.x, id.y * cellSize.y, id.z * cellSize.z);
+    
+    float value = PerlinNoise3D(pos / diff, seed) * loud;
+    
+    int index = ToIndex(id.x, id.y, id.z);
+    
+    vertices[index] = float4(pos, value);
+}

@@ -80,6 +80,8 @@ namespace ET.Client
             {
                 Log.Warning($"Masks: {kv}");
             }*/
+            
+            self.Play(AnimatorState.Idle);
         }
 
         public static void Play(this AnimancerComponent self, string state)
@@ -107,15 +109,15 @@ namespace ET.Client
                     // 2.点击移动过快会出现2个Idle, 是因为开启了FromStart, https://kybernetik.com.au/animancer/docs/manual/blending/fading/modes/
                     AnimancerLayer layer = self.Animancer.Layers[self.Masks[layerName]];
                     AnimancerState clip = layer.Play(self[state], newConfig.FadeDuration, FadeMode.FromStart);
+                    // TODO 权重应该自动计算
                     layer.Weight = self.LayerWeight[layerName];
-                    // TODO Weight设置有问题, 播放动画会使Layer权重为1
                 }
                 else
                 {
                     AnimancerLayer layer = self.Animancer.Layers[self.Masks[layerName]];
                     AnimancerState clip = layer.Play(self[state], newConfig.FadeDuration);
                     layer.Weight = self.LayerWeight[layerName];
-                    OnEndHandler(clip, self, newConfig.PlayOnEnd);
+                    OnEndHandler(clip, self, state, newConfig.PlayOnEnd);
                 }
 
                 // 更新LayerPeekState
@@ -158,14 +160,13 @@ namespace ET.Client
                     AnimancerLayer layer = self.Animancer.Layers[self.Masks[layerName]];
                     AnimancerState clip = layer.Play(self[state], newConfig.FadeDuration, FadeMode.FromStart);
                     layer.Weight = self.LayerWeight[layerName];
-                    // TODO Weight设置有问题, 播放动画会使Layer权重为1
                 }
                 else
                 {
                     AnimancerLayer layer = self.Animancer.Layers[self.Masks[layerName]];
                     AnimancerState clip = layer.Play(self[state], newConfig.FadeDuration);
                     layer.Weight = self.LayerWeight[layerName];
-                    OnEndHandler(clip, self, newConfig.PlayOnEnd);
+                    OnEndHandler(clip, self, state, newConfig.PlayOnEnd);
                 }
 
                 // 更新LayerPeekState
@@ -208,14 +209,13 @@ namespace ET.Client
                     AnimancerLayer layer = self.Animancer.Layers[self.Masks[layerName]];
                     AnimancerState clip = layer.Play(self[state], newConfig.FadeDuration, FadeMode.FromStart);
                     layer.Weight = self.LayerWeight[layerName];
-                    // TODO Weight设置有问题, 播放动画会使Layer权重为1
                 }
                 else
                 {
                     AnimancerLayer layer = self.Animancer.Layers[self.Masks[layerName]];
                     AnimancerState clip = layer.Play(self[state], newConfig.FadeDuration);
                     layer.Weight = self.LayerWeight[layerName];
-                    OnEndHandler(clip, self, newConfig.PlayOnEnd);
+                    OnEndHandler(clip, self, state, newConfig.PlayOnEnd);
                 }
 
                 // 更新LayerPeekState
@@ -223,16 +223,36 @@ namespace ET.Client
             }
         }
 
-        private static void OnEndHandler(AnimancerState clip, AnimancerComponent self, string playOnEnd)
+        public static void Display(this AnimancerComponent self, string state, string defaultState = AnimatorState.None)
         {
+            // 先获取
+            AnimatorStateConfig config = AnimatorStateConfigCategory.Instance.GetByName(state);
+            foreach (string layerName in GetLayers(self, config.Layer))
+            {
+                // 设置LayerPeekState = None
+                self.LayerPeekState[layerName] = AnimatorState.None;
+            }
+            
+            // 播放默认动画
+            if (defaultState != AnimatorState.None && defaultState != "")
+            {
+                self.Play(defaultState);   
+            }
+        }
+
+        private static void OnEndHandler(AnimancerState clip, AnimancerComponent self, string state, string playOnEnd)
+        {
+            if (playOnEnd == AnimatorState.None || playOnEnd == "")
+            {
+                return;    
+            }
+            
             clip.Events.OnEnd = OnEnd;
             
             // 结束回调
             void OnEnd()
             {
-                clip.Time = 0;
-                if (playOnEnd == "") return;
-                self.Play(playOnEnd);
+                self.Display(state, playOnEnd);
             }
         }
         

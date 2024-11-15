@@ -1,0 +1,75 @@
+#pragma kernel CSMain
+#include "./System/Triangle.compute"
+#include "./System/MarchingCubesTable.compute"
+
+AppendStructuredBuffer<Triangle> triangles;
+RWStructuredBuffer<float4> vertices;
+
+float3 area; // 需要生成的区域(Cell的数量)
+float maxValue;
+
+// 把Id转换为vertices的下标
+int ToIndex(uint x, uint y, uint z)
+{
+    return z * (area.x + 1) * (area.y + 1) + y * (area.x + 1) + x;
+}
+
+// 获取一个边的中间点
+float3 GetMidPos(float4 a, float4 b)
+{
+    float t = (maxValue - a.w) / (b.w - a.w);
+    return a.xyz + t * (b.xyz - b.xyz);
+}
+
+[numthreads(8, 8, 8)]
+void CSMain(int3 id : SV_DispatchThreadID)
+{
+    // 判断边界
+    if (id.x >= area.x || id.y >= area.y || id.z >= area.z) 
+    {
+        return;
+    }
+
+    // 找到8个顶点
+    float4 cellVertices[8] =
+    {
+        vertices[ToIndex(id.x, id.y, id.z)],
+        vertices[ToIndex(id.x + 1, id.y, id.z)],
+        vertices[ToIndex(id.x + 1, id.y, id.z + 1)],
+        vertices[ToIndex(id.x, id.y, id.z + 1)],
+        vertices[ToIndex(id.x, id.y + 1, id.z)],
+        vertices[ToIndex(id.x + 1, id.y + 1, id.z)],
+        vertices[ToIndex(id.x + 1, id.y + 1, id.z + 1)],
+        vertices[ToIndex(id.x, id.y + 1, id.z + 1)]
+    };
+
+    // 计算网格种类
+    int cellType = 0;
+    if (cellVertices[0].w < maxValue) cellType |= 1;
+    if (cellVertices[1].w < maxValue) cellType |= 2;
+    if (cellVertices[2].w < maxValue) cellType |= 4;
+    if (cellVertices[3].w < maxValue) cellType |= 8;
+    if (cellVertices[4].w < maxValue) cellType |= 16;
+    if (cellVertices[5].w < maxValue) cellType |= 32;
+    if (cellVertices[6].w < maxValue) cellType |= 64;
+    if (cellVertices[7].w < maxValue) cellType |= 128;
+
+    // 构建三角面
+    for (int i = 0; triangulation[cellType][i] != -1; i += 3)
+    {
+        int a0 = cornerIndexAFromEdge[triangulation[cellType][i]];
+        int b0 = cornerIndexBFromEdge[triangulation[cellType][i]];
+
+        int a1 = cornerIndexAFromEdge[triangulation[cellType][i+1]];
+        int b1 = cornerIndexBFromEdge[triangulation[cellType][i+1]];
+
+        int a2 = cornerIndexAFromEdge[triangulation[cellType][i+2]];
+        int b2 = cornerIndexBFromEdge[triangulation[cellType][i+2]];
+
+        Triangle tri;
+        tri.vertexA = GetMidPos(cellVertices[a0], cellVertices[b0]);
+        tri.vertexB = GetMidPos(cellVertices[a1], cellVertices[b1]);
+        tri.vertexC = GetMidPos(cellVertices[a2], cellVertices[b2]);
+        triangles.Append(tri);
+    }
+}

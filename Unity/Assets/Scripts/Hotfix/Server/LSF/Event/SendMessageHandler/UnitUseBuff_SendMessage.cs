@@ -10,7 +10,7 @@ namespace ET.Server
             if (room.AuthorityWorld == null) return;
             
             S2C_UnitUseBuff message = S2C_UnitUseBuff.Create();
-            message.OwnerId = a.Owner.Id;
+            message.PlayerId = a.Owner.Id;
             message.BuffId = a.Buff.Id;
             message.ConfigId = a.Buff.ConfigId;
             

@@ -36,8 +36,5 @@ namespace ET.Client
         public Transform Transform;
         
         public Vector3 Position;
-        
-        public float TotalTime;
-        public float Time;
     }
 }

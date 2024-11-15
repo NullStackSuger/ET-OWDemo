@@ -9,10 +9,10 @@
             await ETTask.CompletedTask;
             AOIEntity a = args.A;
             AOIEntity b = args.B;
-            if (a.Unit.Type() != UnitType.Player)
+            /*if (a.Unit.Type() != UnitType.Player)
             {
                 return;
-            }
+            }*/
 
             MapMessageHelper.NoticeUnitRemove(a.GetParent<Unit>(), b.GetParent<Unit>());
         }

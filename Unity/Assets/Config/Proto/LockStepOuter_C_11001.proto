@@ -100,59 +100,59 @@ message OneFrameDeltaEvents // IMessage
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-message S2C_UnitChangePosition // IMessage
+message S2C_UnitChangePosition // IRoomMessage
 {
-	int64 UnitId = 1;
+	int64 PlayerId = 1;
 	TSVector Position = 2;
 }
 
-message S2C_UnitChangeRotation // IMessage
+message S2C_UnitChangeRotation // IRoomMessage
 {
-	int64 UnitId = 1;
+	int64 PlayerId = 1;
 	FP Rotation = 2;
 }
 
-message S2C_UnitChangeHeadRotation // IMessage
+message S2C_UnitChangeHeadRotation // IRoomMessage
 {
-	int64 UnitId = 1;
+	int64 PlayerId = 1;
 	FP HeadRotation = 2;
 }
 
-message S2C_UnitUseCast // IMessage
+message S2C_UnitUseCast // IRoomMessage
 {
-	int64 OwnerId = 1;
+	int64 PlayerId = 1;
 	int64 CastId = 2;
 	int32 ConfigId = 3;
 }
 
-message S2C_UnitRemoveCast // IMessage
+message S2C_UnitRemoveCast // IRoomMessage
 {
-	int64 OwnerId = 1;
+	int64 PlayerId = 1;
 	int64 CastId = 2;
 }
 
-message S2C_UnitUseBuff // IMessage
+message S2C_UnitUseBuff // IRoomMessage
 {
-	int64 OwnerId = 1;
+	int64 PlayerId = 1;
 	int64 BuffId = 2;
 	int32 ConfigId = 3;
 }
 
-message S2C_UnitRemoveBuff // IMessage
+message S2C_UnitRemoveBuff // IRoomMessage
 {
-	int64 OwnerId = 1;
+	int64 PlayerId = 1;
 	int64 BuffId = 2;
 }
 
-message S2C_UnitChangeDataModifier // IMessage
+message S2C_UnitChangeDataModifier // IRoomMessage
 {
-	int64 UnitId = 1;
+	int64 PlayerId = 1;
 	int32 DataModifierType = 2;
 	int64 Value = 3;
 }
 
-message S2C_UnitOnGround // IMessage
+message S2C_UnitOnGround // IRoomMessage
 {
-	int64 UnitId = 1;
+	int64 PlayerId = 1;
 	bool OnGround = 2;
 }

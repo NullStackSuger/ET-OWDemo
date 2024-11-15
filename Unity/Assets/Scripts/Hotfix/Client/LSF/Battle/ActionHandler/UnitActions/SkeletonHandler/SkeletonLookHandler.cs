@@ -22,8 +22,8 @@ namespace ET.Client
             LSUnit unit = actionComponent.GetParent<LSUnit>();
             LSInput input = unit.GetComponent<LSFInputComponent>().Input;
             
-            unit.Rotation += 10 * input.Look.x;
-            unit.HeadRotation += 5 * input.Look.y;
+            //unit.Rotation += 10 * input.Look.x;
+            //unit.HeadRotation += 5 * input.Look.y;
         }
     }
 }

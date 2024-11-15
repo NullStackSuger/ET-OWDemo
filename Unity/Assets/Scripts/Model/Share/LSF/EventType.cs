@@ -66,11 +66,6 @@ namespace ET
         public Buff Buff;
     }
 
-    public struct UnitChangeSnipe
-    {
-        
-    }
-
     public struct UnitOnGround
     {
         public LSUnit Unit;
@@ -81,5 +76,13 @@ namespace ET
     {
         public LSUnit Unit;
         public float Speed;
+    }
+    
+    public struct DataModifierChange
+    {
+        public LSUnit Unit;
+        public int DataModifierType;
+        public long Old;
+        public long New;
     }
 }

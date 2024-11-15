@@ -21,6 +21,8 @@ namespace ET.Client
             SceneType sceneType = EnumHelper.FromString<SceneType>(globalComponent.GlobalConfig.AppType.ToString());
             root.SceneType = sceneType;
             
+            MessageFormatterInitializer.RegisterFormatter();
+            
             await EventSystem.Instance.PublishAsync(root, new AppStartInitFinish());
         }
     }

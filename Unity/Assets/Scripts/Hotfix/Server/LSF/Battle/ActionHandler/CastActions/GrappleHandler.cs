@@ -4,10 +4,12 @@ using TrueSync;
 
 namespace ET.Server
 {
-    [FriendOfAttribute(typeof(B3WorldComponent))]
-    [FriendOfAttribute(typeof(ET.ActionComponent))]
+    [FriendOf(typeof(B3WorldComponent))]
+    [FriendOf(typeof(ActionComponent))]
     public class GrappleInitHandler : AActionHandler
     {
+        private const long GrappleMaxLength = 5;
+        
         public override bool Check(ActionComponent actionComponent, ActionConfig config)
         {
             return true;
@@ -21,18 +23,23 @@ namespace ET.Server
 
             LSUnit unit = actionComponent.GetParent<LSUnit>();
             LSUnit owner = unit.Owner;
-            B3CollisionComponent collisionComponent = owner.GetComponent<B3CollisionComponent>();
 
             TSMatrix matrix = TSMath.RotationMatrix(owner.HeadRotation, owner.Rotation);
-            Vector3 length = (matrix * TSVector.forward * 10).ToBullet();
+            Vector3 offset = (matrix * TSVector.forward * GrappleMaxLength).ToBullet();
             Vector3 startPos = owner.Position.ToBullet();
-            worldComponent.RayTestFirst(startPos, startPos + length, out ClosestRayResultCallback callback);
+            bool hasHit = worldComponent.RayTestFirst(startPos, startPos + offset, out ClosestRayResultCallback callback);
+            if (!hasHit)
+            {
+                //callback.HitPointWorld = startPos + offset;
+                return;
+            }
             Vector3 endPos = callback.HitPointWorld;
             actionComponent.Args.Add("EndPos", endPos);
             
-            SliderConstraint constraint = collisionComponent.AddSliderConstraint(10);
+            B3CollisionComponent collisionComponent = owner.GetComponent<B3CollisionComponent>();
+            // TODO 测试破坏球
+            P2PConstraintComponent constraint = collisionComponent.AddComponent<P2PConstraintComponent, Vector3, long>(/*endPos*/new Vector3(0, 10, 10), (long)Vector3.Distance(endPos, startPos));
             actionComponent.Args.Add("Constraint", constraint);
-            // TODO 朝指定方向加力
         }
     }
     
@@ -41,17 +48,18 @@ namespace ET.Server
     {
         public override bool Check(ActionComponent actionComponent, ActionConfig config)
         {
-            Vector3 endPos = (Vector3)actionComponent.Args["EndPos"];
-
             LSUnit unit = actionComponent.GetParent<LSUnit>();
             LSUnit owner = unit.Owner;
             Vector3 startPos = owner.Position.ToBullet();
-
-            return Vector3.Distance(startPos, endPos) >= 0.1;
+            Vector3 endPos = (Vector3)actionComponent.Args["EndPos"];
+            return Vector3.Distance(startPos, endPos) > 0.2;
         }
 
         public override void Update(ActionComponent actionComponent, ActionConfig config)
         {
+            P2PConstraintComponent constraint = actionComponent.Args["Constraint"] as P2PConstraintComponent;
+            //constraint.ChangeLength(constraint.Length * 0.5f);
+            //Log.Warning($"ChangeLength");
         }
     }
 
@@ -66,6 +74,8 @@ namespace ET.Server
         {
             LSUnit unit = actionComponent.GetParent<LSUnit>();
             LSUnit owner = unit.Owner;
+            owner.GetComponent<B3CollisionComponent>().RemoveComponent<P2PConstraintComponent>();
+            
             CastComponent castComponent = owner.GetComponent<CastComponent>();
             castComponent.Remove(unit.Id);
         }

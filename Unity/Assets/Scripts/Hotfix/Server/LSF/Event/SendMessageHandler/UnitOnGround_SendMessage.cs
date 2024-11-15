@@ -9,7 +9,7 @@ namespace ET.Server
             if (room.AuthorityWorld == null) return;
             
             S2C_UnitOnGround message = S2C_UnitOnGround.Create();
-            message.UnitId = a.Unit.Id;
+            message.PlayerId = a.Unit.Id;
             message.OnGround = a.OnGround;
             
             room.BroadCast(message);

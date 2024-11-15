@@ -18,13 +18,13 @@ namespace ET.Server
                 return;
             }
 
-            AOIEntity aoiEntity = unit.GetComponent<AOIEntity>();
+            /*AOIEntity aoiEntity = unit.GetComponent<AOIEntity>();
             if (aoiEntity == null)
             {
                 return;
-            }
+            }*/
 
-            unit.Scene().GetComponent<AOIManagerComponent>().Move(aoiEntity, newCellX, newCellY);
+            //unit.Scene().GetComponent<AOIManagerComponent>().Move(aoiEntity, newCellX, newCellY);
             await ETTask.CompletedTask;
         }
     }

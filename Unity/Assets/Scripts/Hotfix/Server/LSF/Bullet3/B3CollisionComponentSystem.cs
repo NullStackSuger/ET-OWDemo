@@ -68,6 +68,7 @@ namespace ET.Server
             LSUnit unit = self.GetParent<LSUnit>();
             
             unit.Position = (position - self.Offset).ToTSVector();
+            // TODO 似乎Bullet有Bug, 当点Hierarchy后, unit无法移动, 但输入正常
         }
 
         #region MoveTo
@@ -90,41 +91,6 @@ namespace ET.Server
         public static void MoveTo(this B3CollisionComponent self, Matrix matrix)
         {
             self.Collision.WorldTransform = matrix;
-        }
-        #endregion
-
-        #region Constraint
-        public static SliderConstraint AddSliderConstraint(this B3CollisionComponent self, int maxLength, int minLength = 0, float breakImpulse = float.MaxValue)
-        {
-            Vector3 position = self.GetParent<LSUnit>().Position.ToVector();
-            Matrix matrix = Matrix.Identity;
-            // TODO 需要计算向量构建矩阵
-            MathUtil.CreateMatrix(Vector3.UnitZ, Vector3.UnitY, position, ref matrix);
-            SliderConstraint constraint = new SliderConstraint(self.Collision as RigidBody, matrix, true);
-            constraint.LowerLinearLimit = minLength;
-            constraint.UpperLinearLimit = maxLength;
-            constraint.BreakingImpulseThreshold = breakImpulse;
-            constraint.OverrideNumSolverIterations = 20;
-
-            B3WorldComponent WorldComponent = (self.IScene as LSWorld).GetComponent<B3WorldComponent>();
-            WorldComponent.World.AddConstraint(constraint, true); // 因为是用具体点链接 而不是另一个刚体, 所以可以添true
-            
-            return constraint;
-        }
-
-        public static void UpdateConstraint(this B3CollisionComponent self, SliderConstraint constraint, int maxLength, int minLength = 0)
-        {
-            B3WorldComponent worldComponent = (self.IScene as LSWorld).GetComponent<B3WorldComponent>();
-            worldComponent.World.RemoveConstraint(constraint);
-            constraint.LowerLinearLimit = minLength;
-            constraint.UpperLinearLimit = maxLength;
-            worldComponent.World.AddConstraint(constraint, true);
-        }
-
-        public static void RemoveConstraint(this B3CollisionComponent self, TypedConstraint constraint)
-        {
-            B3WorldComponent WorldComponent = (self.IScene as LSWorld).GetComponent<B3WorldComponent>();
-            WorldComponent.World.RemoveConstraint(constraint);
         }
         #endregion
     }

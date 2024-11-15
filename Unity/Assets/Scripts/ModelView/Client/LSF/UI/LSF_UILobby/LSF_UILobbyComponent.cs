@@ -10,5 +10,6 @@ namespace ET.Client
         public List<Image> players = new(LSFConfig.MatchCount);
         public Dictionary<string, GameObject> roles = new();
         public GameObject matchBut;
+        public GameObject replayBut;
     }
 }

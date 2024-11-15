@@ -469,7 +469,9 @@ namespace ET
             // 清理Children
             if (this.children != null)
             {
-                foreach (Entity child in this.children.Values)
+                // TODO 这样写感觉好费内存, 但是能防止循环Dispose过程中改变children
+                List<Entity> entities = new List<Entity>(this.children.Values);
+                foreach (Entity child in entities)
                 {
                     child.Dispose();
                 }

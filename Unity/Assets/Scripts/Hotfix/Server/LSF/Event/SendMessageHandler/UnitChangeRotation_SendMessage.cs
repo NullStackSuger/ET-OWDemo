@@ -10,7 +10,7 @@ namespace ET.Server
             if (room.AuthorityWorld == null) return;
             
             S2C_UnitChangeRotation message = S2C_UnitChangeRotation.Create();
-            message.UnitId = a.Unit.Id;
+            message.PlayerId = a.Unit.Id;
             message.Rotation = a.NewRotation;
             
             room.BroadCast(message);

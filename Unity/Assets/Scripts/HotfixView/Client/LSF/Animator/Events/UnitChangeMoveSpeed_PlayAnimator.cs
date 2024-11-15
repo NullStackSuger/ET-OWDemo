@@ -14,8 +14,7 @@ namespace ET.Client
             {
                 return;
             }
-
-            //view.GetComponent<LSFAnimatorComponent>().SetFloat("Speed", a.Speed);
+            
             var animator = view.GetComponent<AnimancerComponent>();
             if (a.Speed == 0)
             {

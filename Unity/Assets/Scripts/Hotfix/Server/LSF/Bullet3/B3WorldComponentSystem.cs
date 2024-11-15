@@ -30,7 +30,7 @@ namespace ET.Server
 
             static async ETTask CreatSceneRb(B3WorldComponent self, string name)
             {
-                string path = $"D:\\{name}.bytes";
+                string path = $"D:\\Collision{name}.bytes";
                 if (!File.Exists(path)) return;
                 byte[] bytes = await File.ReadAllBytesAsync(path);
                 List<CollisionInfo> infos = MemoryPackHelper.Deserialize<List<CollisionInfo>>(bytes);

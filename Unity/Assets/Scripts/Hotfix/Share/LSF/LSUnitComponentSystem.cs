@@ -33,24 +33,5 @@ namespace ET
             LSUnit unit = self.AddChildWithId<LSUnit>(id);
             return unit;
         }
-
-        /*public static LSUnit Creat(this LSUnitComponent self, LockStepUnitInfo playerInfo, string tag)
-        {
-            LSUnit unit = self.AddChildWithId<LSUnit>(playerInfo.PlayerId);
-
-            unit.Position = playerInfo.Position;
-            unit.Rotation = playerInfo.Rotation;
-            unit.AddComponent<ActionComponent, int>(playerInfo.ActionGroup);
-            unit.AddComponent<BuffComponent>();
-            unit.AddComponent<CastComponent>();
-            unit.Tag = tag;
-
-            return unit;
-        }*/
-
-        public static void WaitToRemove(this LSUnitComponent self, long id)
-        {
-            self.WaitToRemove.Enqueue(id);
-        }
     }
 }

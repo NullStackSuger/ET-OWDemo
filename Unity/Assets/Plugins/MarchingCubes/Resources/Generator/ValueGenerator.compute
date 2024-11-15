@@ -1,0 +1,9 @@
+static float3 cellSize = float3(1, 1, 1);
+
+RWStructuredBuffer<float4> vertices;
+float3 area;
+
+int ToIndex(uint x, uint y, uint z)
+{
+    return z * (area.x + 1) * (area.y + 1) + y * (area.x + 1) + x;
+}

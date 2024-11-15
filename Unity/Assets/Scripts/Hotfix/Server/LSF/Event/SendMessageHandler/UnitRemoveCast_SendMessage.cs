@@ -10,7 +10,7 @@ namespace ET.Server
             if (room.AuthorityWorld == null) return;
             
             S2C_UnitRemoveCast message = S2C_UnitRemoveCast.Create();
-            message.OwnerId = a.Owner.Id;
+            message.PlayerId = a.Owner.Id;
             message.CastId = a.Cast.Id;
    
             room.BroadCast(message);

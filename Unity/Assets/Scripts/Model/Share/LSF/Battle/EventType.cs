@@ -9,4 +9,9 @@ namespace ET
     {
         public long UnitId; // 玩家
     }
+    
+    public struct UnitChangeSnipe
+    {
+        
+    }
 }

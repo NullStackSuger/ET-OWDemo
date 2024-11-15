@@ -1,9 +1,20 @@
 using System;
+using System.Collections.Generic;
 
 namespace ET
 {
+    // TODO 在客户端对收到的信息进行过滤, eg.A视角下没C, 但收到C的消息, 会把消息记录下来, 当A的视角里出现C, 再把收到的C的消息快速的作用给A视角的C
     public partial class OneFrameDeltaEvents
     {
+        public void Add(string key, MessageObject value)
+        {
+            if (!this.Events.ContainsKey(key))
+            {
+                this.Events.Add(key, new LinkedList<MessageObject>());
+            }
+            this.Events[key].AddLast(value);
+        }
+        
         public void CopyTo(OneFrameDeltaEvents to)
         {
             to.Events.Clear();
@@ -37,16 +48,39 @@ namespace ET
 
             foreach (var kv in a.Events)
             {
-                if (!b.Events.TryGetValue(kv.Key, out MessageObject bEvent))
+                if (!b.Events.TryGetValue(kv.Key, out LinkedList<MessageObject> bEvents))
                 {
                     return false;
                 }
 
+                LinkedList<MessageObject> aEvents = kv.Value;
+
+                if (aEvents.Count != bEvents.Count)
+                {
+                    return false;
+                }
+
+                foreach (var aEvent in aEvents)
+                {
+                    if (!bEvents.Contains(aEvent))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            /*foreach (var kv in a.Events)
+            {
+                if (!b.Events.TryGetValue(kv.Key, out MessageObject bEvent))
+                {
+                    return false;
+                }
+                
                 if (!kv.Value.Equals(bEvent))
                 {
                     return false;
                 }
-            }
+            }*/
 
             return true;
         }

@@ -22,6 +22,8 @@ namespace ET.Client
                 input.CopyTo(authorityInput);
             }
             
+            room.Record(input);
+            
             await ETTask.CompletedTask;
         }
     }

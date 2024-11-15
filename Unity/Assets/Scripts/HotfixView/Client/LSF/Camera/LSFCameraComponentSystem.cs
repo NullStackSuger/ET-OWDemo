@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 
 namespace ET.Client
@@ -26,7 +25,7 @@ namespace ET.Client
         {
             LSUnit owner = self.GetParent<LSFUnitView>().Unit;
 
-            self.LookAt.localRotation = Quaternion.Euler(Mathf.Lerp(self.LookAt.localRotation.x, (float)owner.HeadRotation, 0.7f), 0, 0);
+            self.LookAt.localRotation = Quaternion.Euler(Mathf.Lerp(self.LookAt.localRotation.x, (float)owner.HeadRotation, 0.35f), 0, 0);
         }
     }
 }

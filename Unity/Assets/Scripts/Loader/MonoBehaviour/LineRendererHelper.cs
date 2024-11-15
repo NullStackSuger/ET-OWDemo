@@ -6,17 +6,17 @@ namespace ET
     [RequireComponent(typeof(LineRenderer))]
     public class LineRendererHelper : MonoBehaviour
     {
-        private LineRenderer renderer;
+        private LineRenderer lineRenderer;
         private LineRenderer Renderer
         {
             get
             {
-                if (renderer == null)
+                if (this.lineRenderer == null)
                 {
-                    this.renderer = this.GetComponent<LineRenderer>();
+                    this.lineRenderer = this.GetComponent<LineRenderer>();
                 }
 
-                return this.renderer;
+                return this.lineRenderer;
             }
         }
 

@@ -9,7 +9,7 @@ namespace ET.Server
             if (room.AuthorityWorld == null) return;
             
             S2C_UnitChangePosition message = S2C_UnitChangePosition.Create();
-            message.UnitId = a.Unit.Id;
+            message.PlayerId = a.Unit.Id;
             message.Position = a.NewPosition;
         
             room.BroadCast(message);

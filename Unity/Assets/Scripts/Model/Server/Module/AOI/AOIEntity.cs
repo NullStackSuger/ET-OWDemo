@@ -1,51 +1,14 @@
 ﻿using System.Collections.Generic;
-using Unity.Mathematics;
 
 namespace ET.Server
 {
-    [ComponentOf(typeof(Unit))]
-    public class AOIEntity: Entity, IAwake<int, float3>, IDestroy
+    [ComponentOf(typeof(LSUnit))]
+    public class AOIEntity : LSEntity, IAwake<float, float, int>, IDestroy
     {
-        public Unit Unit => this.GetParent<Unit>();
-
-        public int ViewDistance;
-
-        private EntityRef<Cell> cell;
-
-        public Cell Cell
-        {
-            get
-            {
-                return this.cell;
-            }
-            set
-            {
-                this.cell = value;
-            }
-        }
-
-        // 观察进入视野的Cell
-        public HashSet<long> SubEnterCells = new HashSet<long>();
-
-        // 观察离开视野的Cell
-        public HashSet<long> SubLeaveCells = new HashSet<long>();
+        public int Radius { get; set; }
+        public Cell Cell { get; set; }
+        public List<Cell> AOICells { get; set; } = new List<Cell>();
         
-        // 观察进入视野的Cell
-        public HashSet<long> enterHashSet = new HashSet<long>();
-
-        // 观察离开视野的Cell
-        public HashSet<long> leaveHashSet = new HashSet<long>();
-
-        // 我看的见的Unit
-        public Dictionary<long, EntityRef<AOIEntity>> SeeUnits = new Dictionary<long, EntityRef<AOIEntity>>();
-        
-        // 看见我的Unit
-        public Dictionary<long, EntityRef<AOIEntity>> BeSeeUnits = new Dictionary<long, EntityRef<AOIEntity>>();
-        
-        // 我看的见的Player
-        public Dictionary<long, EntityRef<AOIEntity>> SeePlayers = new Dictionary<long, EntityRef<AOIEntity>>();
-
-        // 看见我的Player单独放一个Dict，用于广播
-        public Dictionary<long, EntityRef<AOIEntity>> BeSeePlayers = new Dictionary<long, EntityRef<AOIEntity>>();
+        public List<AOIEntity> BeSee { get; set; } = new List<AOIEntity>();
     }
 }

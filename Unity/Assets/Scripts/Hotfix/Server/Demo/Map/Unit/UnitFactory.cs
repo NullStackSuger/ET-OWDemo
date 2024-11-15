@@ -22,7 +22,7 @@ namespace ET.Server
                     
                     unitComponent.Add(unit);
                     // 加入aoi
-                    unit.AddComponent<AOIEntity, int, float3>(9 * 1000, unit.Position);
+                    //unit.AddComponent<AOIEntity, int, float3>(9 * 1000, unit.Position);
                     return unit;
                 }
                 default:

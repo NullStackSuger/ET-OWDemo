@@ -6,11 +6,15 @@ namespace ET.Client
         protected override async ETTask Run(Scene scene, S2C_UnitChangeHeadRotation message)
         {
             Room room = scene.GetComponent<Room>();
-            room.Record(room.AuthorityFrame, $"{message.UnitId}_{message.GetType()}", message);
-            
+
+            if (!room.IsReplay)
+            {
+                room.Record(room.AuthorityFrame, message.ToString(), message);
+            }
+
             if (room.PredictionWorld == null) return;
             LSUnitComponent unitComponent = room.PredictionWorld.GetComponent<LSUnitComponent>();
-            LSUnit unit = unitComponent.GetChild<LSUnit>(message.UnitId);
+            LSUnit unit = unitComponent.GetChild<LSUnit>(message.PlayerId);
             if (unit == null)
             {
                 return;
@@ -19,7 +23,7 @@ namespace ET.Client
             
             if (room.AuthorityWorld == null) return;
             unitComponent = room.AuthorityWorld.GetComponent<LSUnitComponent>();
-            unit = unitComponent.GetChild<LSUnit>(message.UnitId);
+            unit = unitComponent.GetChild<LSUnit>(message.PlayerId);
             if (unit == null)
             {
                 return;

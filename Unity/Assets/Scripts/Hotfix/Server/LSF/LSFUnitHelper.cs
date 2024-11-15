@@ -9,6 +9,9 @@ namespace ET.Server
             unit.Position = playerInfo.Position;
             unit.Rotation = playerInfo.Rotation;
             unit.Tag = tag;
+            /*unit.AddComponent<AOIEntity, float, float, int>(
+                (float)unit.Position.x / AOIManagerComponent.CellSize, 
+                (float)unit.Position.z / AOIManagerComponent.CellSize, 1);*/
             unit.AddComponent<ActionComponent, int>(playerInfo.ActionGroup);
             unit.AddComponent<BuffComponent>();
             unit.AddComponent<CastComponent>();
@@ -50,8 +53,8 @@ namespace ET.Server
             dataModifierComponent.Add(new Default_CCD_ConstantModifier() { Value = 1000 });
 
             dataModifierComponent.Publish(DataModifierType.Speed);
-            dataModifierComponent.Publish(DataModifierType.Hp);
-            dataModifierComponent.Publish(DataModifierType.BulletCount);
+            //dataModifierComponent.Publish(DataModifierType.Hp);
+            //dataModifierComponent.Publish(DataModifierType.BulletCount);
 
             return unit;
         }

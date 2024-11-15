@@ -1,0 +1,54 @@
+#include "PerlinNoiseTable.compute"
+#include "Random.compute"
+
+float Fade(float t)
+{
+    return t * t * t * (t * (t * 6 - 15) + 10);
+}
+
+float PerlinNoise3D(float3 p, int seed)
+{
+    int3 p0 = int3(floor(p.x), floor(p.y), floor(p.z));
+    int3 p1 = int3(p0.x + 1, p0.y, p0.z);
+    int3 p2 = int3(p0.x, p0.y + 1, p0.z);
+    int3 p3 = int3(p0.x + 1, p0.y + 1, p0.z);
+    int3 p4 = int3(p0.x, p0.y, p0.z + 1);
+    int3 p5 = int3(p0.x + 1, p0.y, p0.z + 1);
+    int3 p6 = int3(p0.x, p0.y + 1, p0.z + 1);
+    int3 p7 = int3(p0.x + 1, p0.y + 1, p0.z + 1);
+    
+    float3 g0 = G[Random(p0, seed)];
+    float3 g1 = G[Random(p1, seed)];
+    float3 g2 = G[Random(p2, seed)];
+    float3 g3 = G[Random(p3, seed)];
+    float3 g4 = G[Random(p4, seed)];
+    float3 g5 = G[Random(p5, seed)];
+    float3 g6 = G[Random(p6, seed)];
+    float3 g7 = G[Random(p7, seed)];
+
+    float3 dir0 = p - p0;
+    float3 dir1 = p - p1;
+    float3 dir2 = p - p2;
+    float3 dir3 = p - p3;
+    float3 dir4 = p - p4;
+    float3 dir5 = p - p5;
+    float3 dir6 = p - p6;
+    float3 dir7 = p - p7;
+
+    float product0 = dot(g0, dir0);
+    float product1 = dot(g1, dir1);
+    float product2 = dot(g2, dir2);
+    float product3 = dot(g3, dir3);
+    float product4 = dot(g4, dir4);
+    float product5 = dot(g5, dir5);
+    float product6 = dot(g6, dir6);
+    float product7 = dot(g7, dir7);
+
+    float tX = Fade(dir0.x);
+    float tY = Fade(dir0.y);
+    float tZ = Fade(dir0.z);
+    
+    return lerp(
+        lerp(lerp(product0, product1, tX), lerp(product2, product3, tX), tY),
+        lerp(lerp(product4, product5, tX), lerp(product6, product7, tX), tY), tZ);
+}

@@ -10,7 +10,7 @@ namespace ET.Server
             if (room.AuthorityWorld == null) return;
             
             S2C_UnitUseCast message = S2C_UnitUseCast.Create();
-            message.OwnerId = a.Owner.Id;
+            message.PlayerId = a.Owner.Id;
             message.CastId = a.Cast.Id;
             message.ConfigId = a.Cast.ConfigId;
             

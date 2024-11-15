@@ -1,0 +1,16 @@
+#pragma kernel CSMain
+#include "ValueGenerator.compute"
+
+float radius;
+
+[numthreads(8, 8, 8)]
+void CSMain (int3 id : SV_DispatchThreadID)
+{
+    float3 pos = float3(id.x * cellSize.x, id.y * cellSize.y, id.z * cellSize.z);
+    
+    float value = length(pos) - radius;
+    
+    int index = ToIndex(id.x, id.y, id.z);
+    
+    vertices[index] = float4(pos, value);
+}

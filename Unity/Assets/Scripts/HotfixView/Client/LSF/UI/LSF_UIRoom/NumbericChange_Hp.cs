@@ -1,14 +1,14 @@
 namespace ET.Client
 {
-    [Event(SceneType.LockStepFrame)]
+    [Event(SceneType.LSFClientPrediction)]
     [FriendOf(typeof(LSF_UIRoomComponent))]
-    public class NumbericChange_Hp : AEvent<Scene, DataModifierChange>
+    public class NumbericChange_Hp : AEvent<LSWorld, DataModifierChange>
     {
-        protected override async ETTask Run(Scene scene, DataModifierChange a)
+        protected override async ETTask Run(LSWorld world, DataModifierChange a)
         {
             if (a.DataModifierType != DataModifierType.Hp) return;
 
-            UIComponent uiComponent = scene.GetComponent<UIComponent>();
+            UIComponent uiComponent = world.Root().GetComponent<UIComponent>();
             UI ui = uiComponent.Get(UIType.LSF_UIRoom);
             LSF_UIRoomComponent roomComponent = ui.GetComponent<LSF_UIRoomComponent>();
             roomComponent.CurrentHp.text = a.New.ToString();

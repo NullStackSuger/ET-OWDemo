@@ -1,3 +1,5 @@
+using System;
+
 namespace ET.Client
 {
     [EntitySystemOf(typeof(ReplayUpdateComponent))]
@@ -27,11 +29,23 @@ namespace ET.Client
                 if (now < next) return;
 
                 ++room.AuthorityFrame;
-
-                OneFrameDeltaEvents deltas = room.Replay.DeltaEvents[room.AuthorityFrame];
-                foreach (var delta in deltas.Events.Values)
+                
+                Scene scene = self.Root();
+                
+                // 设置输入
+                OneFrameInputs inputs = room.Replay.FrameInputs[room.AuthorityFrame];
+                room.PredictionWorld.Update(inputs);
+                
+                // 设置脏数据
+                MailBoxComponent mailBox = scene.GetComponent<MailBoxComponent>();
+                OneFrameDeltaEvents deltaEvents = room.Replay.DeltaEvents[room.AuthorityFrame];
+                foreach (var items in deltaEvents.Events.Values)
                 {
-                    // TODO 把这些消息发送到自己
+                    foreach (MessageObject delta in items)
+                    {
+                        // 第1个参数地址其实可以填null, 里面不会使用Address
+                        mailBox.Add(scene.Fiber.Address, delta);   
+                    }
                 }
 
                 // 单次update时间>5ms 就留到下次update再做

@@ -7,7 +7,7 @@ namespace ET
     {
         protected bool Equals(S2C_UnitChangePosition other)
         {
-            return this.UnitId == other.UnitId && TSVector.Distance(this.Position, other.Position) < 0.05f;
+            return this.PlayerId == other.PlayerId && TSVector.Distance(this.Position, other.Position) < 0.05f;
         }
         
         public override bool Equals(object obj)
@@ -32,7 +32,7 @@ namespace ET
         
         public override int GetHashCode()
         {
-            return HashCode.Combine(this.UnitId, this.Position);
+            return HashCode.Combine(this.PlayerId, this.Position);
         }
     }
     
@@ -40,7 +40,7 @@ namespace ET
     {
         protected bool Equals(S2C_UnitChangeRotation other)
         {
-            return this.UnitId == other.UnitId && /*this.Rotation == other.Rotation*/ TSMath.Abs(this.Rotation - other.Rotation) < 3;
+            return this.PlayerId == other.PlayerId && /*this.Rotation == other.Rotation*/ TSMath.Abs(this.Rotation - other.Rotation) < 3;
         }
         
         public override bool Equals(object obj)
@@ -65,7 +65,7 @@ namespace ET
         
         public override int GetHashCode()
         {
-            return HashCode.Combine(this.UnitId, this.Rotation);
+            return HashCode.Combine(this.PlayerId, this.Rotation);
         }
     }
 
@@ -73,7 +73,7 @@ namespace ET
     {
         protected bool Equals(S2C_UnitChangeHeadRotation other)
         {
-            return this.UnitId == other.UnitId && /*this.HeadRotation == other.HeadRotation*/ TSMath.Abs(this.HeadRotation - other.HeadRotation) < 3;
+            return this.PlayerId == other.PlayerId && /*this.HeadRotation == other.HeadRotation*/ TSMath.Abs(this.HeadRotation - other.HeadRotation) < 3;
         }
         
         public override bool Equals(object obj)
@@ -98,7 +98,7 @@ namespace ET
         
         public override int GetHashCode()
         {
-            return HashCode.Combine(this.UnitId, this.HeadRotation);
+            return HashCode.Combine(this.PlayerId, this.HeadRotation);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace ET.Server
             if (room.AuthorityWorld == null) return;
             
             S2C_UnitChangeDataModifier message = S2C_UnitChangeDataModifier.Create();
-            message.UnitId = a.Unit.Id;
+            message.PlayerId = a.Unit.Id;
             message.DataModifierType = a.DataModifierType;
             message.Value = a.New;
         

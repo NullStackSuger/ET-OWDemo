@@ -2,41 +2,35 @@
 
 namespace ET.Server
 {
-    [FriendOf(typeof(AOIEntity))]
     public static partial class AOIHelper
     {
-        public static long CreateCellId(int x, int y)
+        /// <summary>
+        /// a关注到b创建的事件
+        /// </summary>
+        public static void OnEnter(AOIEntity a, AOIEntity b)
         {
-            return (long) ((ulong) x << 32) | (uint) y;
+            if (a == null || b == null) return;
+            if (a == b) return;
+            
+            if (!b.BeSee.Contains(a)) b.BeSee.Add(a);
+            EventSystem.Instance.Publish(a.Root(), new UnitEnterSightRange() { A = a, B = b });
+        }
+        
+        /// <summary>
+        /// a关注到b退出的事件
+        /// </summary>
+        public static void OnExit(AOIEntity a, AOIEntity b)
+        {
+            if (a == null || b == null) return;
+            if (a == b) return;
+            
+            EventSystem.Instance.Publish(a.Root(), new UnitLeaveSightRange() { A = a, B = b });
+            if (b.BeSee.Contains(a)) b.BeSee.Remove(a);
         }
 
-        public static void CalcEnterAndLeaveCell(AOIEntity aoiEntity, int cellX, int cellY, HashSet<long> enterCell, HashSet<long> leaveCell)
+        public static List<AOIEntity> GetAOI(this AOIEntity self)
         {
-            enterCell.Clear();
-            leaveCell.Clear();
-            int r = (aoiEntity.ViewDistance - 1) / AOIManagerComponent.CellSize + 1;
-            int leaveR = r;
-            if (aoiEntity.Unit.Type() == UnitType.Player)
-            {
-                leaveR += 1;
-            }
-
-            // 遍历半径r内的9宫格
-            for (int i = cellX - leaveR; i <= cellX + leaveR; ++i)
-            {
-                for (int j = cellY - leaveR; j <= cellY + leaveR; ++j)
-                {
-                    long cellId = CreateCellId(i, j);
-                    leaveCell.Add(cellId);
-
-                    if (i > cellX + r || i < cellX - r || j > cellY + r || j < cellY - r)
-                    {
-                        continue;
-                    }
-
-                    enterCell.Add(cellId);
-                }
-            }
+            return self.BeSee;
         }
     }
 }

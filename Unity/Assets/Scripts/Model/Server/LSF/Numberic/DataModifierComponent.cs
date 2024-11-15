@@ -438,7 +438,6 @@ namespace ET.Server
 
         public static long Shield(long value, DataModifierComponent b, int dataModifierTypeB)
         {
-            // TODO 写护盾扣血的逻辑
             return -1;
         }
     }

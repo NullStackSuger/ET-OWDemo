@@ -35,8 +35,13 @@ namespace ET.Client
                 Log.Warning($"回滚{room.AuthorityFrame}");
                 room.Rollback();
             }
-            
-            room.Record(room.AuthorityFrame);
+
+            if (!room.IsReplay)
+            {
+                // 防止这一帧没东西, 导致少Add一个
+                room.Record(room.AuthorityFrame, "", null);
+                room.Record(room.AuthorityFrame);
+            }
             
             await ETTask.CompletedTask;
         }

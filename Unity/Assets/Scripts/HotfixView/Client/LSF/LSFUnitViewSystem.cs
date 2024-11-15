@@ -1,4 +1,3 @@
-using TrueSync;
 using UnityEngine;
 
 namespace ET.Client
@@ -46,21 +45,9 @@ namespace ET.Client
                 unitViewComponent.Remove(self.Id);
                 return;
             }
-
-            Vector3 position = unit.Position.ToVector();
-
-            if (position != self.Position)
-            {
-                float distance = (position - self.Position).magnitude;
-                self.TotalTime = distance / 6;
-                self.Time = 0;
-
-                self.Position = position;
-            }
             
-            self.Time += Time.deltaTime;
-            self.Transform.position = Vector3.Lerp(self.Transform.position, self.Position, 1/*self.Time / self.TotalTime*/);
-            self.Transform.rotation = Quaternion.Lerp(self.Transform.rotation, Quaternion.Euler(0, (float)unit.Rotation, 0), 0.7f/*self.Time / 0.51f*/);
+            self.Transform.position = Vector3.Lerp(self.Transform.position, unit.Position.ToVector(), 1);
+            self.Transform.rotation = Quaternion.Lerp(self.Transform.rotation, Quaternion.Euler(0, (float)unit.Rotation, 0), 0.7f);
         }
 
         [LSEntitySystem]
@@ -70,8 +57,6 @@ namespace ET.Client
             if (unit == null) Log.Error($"{self.Id}Unit不存在");
             self.Transform.position = unit.Position.ToVector();
             self.Transform.rotation = Quaternion.Euler((float)unit.HeadRotation, (float)unit.Rotation, 0);
-            self.Time = 0;
-            self.TotalTime = 0;
         }
     }
 }

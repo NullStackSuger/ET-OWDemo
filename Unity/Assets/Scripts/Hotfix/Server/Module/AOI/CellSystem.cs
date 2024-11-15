@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace ET.Server
 {
@@ -8,49 +8,85 @@ namespace ET.Server
     public static partial class CellSystem
     {
         [EntitySystem]
-        private static void Awake(this ET.Server.Cell self)
+        private static void Awake(this Cell self)
         {
 
         }
-        
         [EntitySystem]
         private static void Destroy(this Cell self)
         {
-            self.AOIUnits.Clear();
-
-            self.SubsEnterEntities.Clear();
-
-            self.SubsLeaveEntities.Clear();
+            if (self.Entities.Count > 0)
+                Log.Warning($"{self.Id} Entities Error");
+            
+            if (self.OnEnter.Count > 0)
+                Log.Warning($"{self.Id} OnEnter Error");
+            
+            if (self.OnExit.Count > 0)
+                Log.Warning($"{self.Id} OnExit Error");
         }
 
-        public static void Add(this Cell self, AOIEntity aoiEntity)
+        /// <summary>
+        /// 使其他Entity关注一个Entity
+        /// </summary>
+        public static void AddEntity(this Cell self, AOIEntity entity)
         {
-            self.AOIUnits.Add(aoiEntity.Id, aoiEntity);
-        }
-
-        public static void Remove(this Cell self, AOIEntity aoiEntity)
-        {
-            self.AOIUnits.Remove(aoiEntity.Id);
-        }
-
-        public static string CellIdToString(this long cellId)
-        {
-            int y = (int)(cellId & 0xffffffff);
-            int x = (int)((ulong)cellId >> 32);
-            return $"{x}:{y}";
-        }
-
-        public static string CellIdToString(this HashSet<long> cellIds)
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach (long cellId in cellIds)
+            entity.Cell = self;
+            self.Entities.Add(entity.Id, entity);
+            
+            foreach (var kv in entity.Cell.OnEnter)
             {
-                sb.Append(cellId.CellIdToString());
-                sb.Append(",");
+                AOIEntity a = kv.Value;
+                AOIHelper.OnEnter(a, entity);
             }
-
-            return sb.ToString();
         }
 
+        /// <summary>
+        /// 使其他Entity取关一个Entity
+        /// </summary>
+        public static void RemoveEntity(this Cell self, AOIEntity entity)
+        {
+            foreach (var kv in entity.Cell.OnExit)
+            {
+                AOIEntity a = kv.Value;
+                AOIHelper.OnExit(a, entity);
+            }
+            
+            self.Entities.Remove(entity.Id);
+            entity.Cell = null;
+        }
+
+        /// <summary>
+        /// 使其他Entity关注一个Entity
+        /// </summary>
+        /// <param name="disHandler">哪些Cell下的Entity不需要执行OnEnter</param>
+        public static void AddEntityWithDisHandler(this Cell self, AOIEntity entity, IEnumerable<Cell> disHandler)
+        {
+            entity.Cell = self;
+            self.Entities.Add(entity.Id, entity);
+            
+            foreach (var kv in entity.Cell.OnEnter)
+            {
+                AOIEntity a = kv.Value;
+                if (disHandler.Contains(a.Cell)) continue;
+                AOIHelper.OnEnter(a, entity);
+            }
+        }
+
+        /// <summary>
+        /// 使其他Entity取关一个Entity
+        /// </summary>
+        /// <param name="disHandler">哪些Cell下的Entity不需要执行OnEnter</param>
+        public static void RemoveEntityWithDisHandler(this Cell self, AOIEntity entity, IEnumerable<Cell> disHandler)
+        {
+            foreach (var kv in entity.Cell.OnExit)
+            {
+                AOIEntity a = kv.Value;
+                if (disHandler.Contains(a.Cell)) continue;
+                AOIHelper.OnExit(a, entity);
+            }
+            
+            self.Entities.Remove(entity.Id);
+            entity.Cell = null;
+        }
     }
 }

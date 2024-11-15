@@ -8,7 +8,7 @@ namespace ET.Server
             Scene scene = EntitySceneFactory.CreateScene(parent, id, instanceId, SceneType.Map, name);
 
             scene.AddComponent<UnitComponent>();
-            scene.AddComponent<AOIManagerComponent>();
+            //scene.AddComponent<AOIManagerComponent>();
             scene.AddComponent<RoomManagerComponent>();
             
             scene.AddComponent<MailBoxComponent, MailBoxType>(MailBoxType.UnOrderedMessage);

@@ -40,6 +40,8 @@ namespace ET.Server
                     break;
                 }
             }
+            
+            MessageFormatterInitializer.RegisterFormatter();
 
             if (Options.Instance.Console == 1)
             {

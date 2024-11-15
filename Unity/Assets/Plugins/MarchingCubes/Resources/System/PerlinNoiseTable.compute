@@ -1,0 +1,15 @@
+static const float3 G[12] =
+{
+    float3(1, 1, 0),
+    float3(-1, 1, 0),
+    float3(1, -1, 0),
+    float3(-1, -1, 0),
+    float3(1, 0, 1),
+    float3(-1, 0, 1),
+    float3(1, 0, -1),
+    float3(-1, 0, -1),
+    float3(0, 1, 1),
+    float3(0, -1, 1),
+    float3(0, 1, -1),
+    float3(0, -1, -1),
+};

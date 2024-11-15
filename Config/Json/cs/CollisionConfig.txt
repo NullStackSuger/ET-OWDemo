@@ -1,6 +1,6 @@
 {"dict": [
 [1, {"_t":"CollisionConfig","_id":1,"IsTrigger":0,"InvInertiaDiagLocal":"None","Restitution":0,"ApplyHeadRotation":0,"Callback":"FireBallCollisionCallback"}],
-[5, {"_t":"CollisionConfig","_id":5,"IsTrigger":0,"InvInertiaDiagLocal":"Y","Restitution":0,"ApplyHeadRotation":0,"Callback":""}],
+[5, {"_t":"CollisionConfig","_id":5,"IsTrigger":0,"InvInertiaDiagLocal":"Y","Restitution":"0.15","ApplyHeadRotation":0,"Callback":""}],
 [6, {"_t":"CollisionConfig","_id":6,"IsTrigger":1,"InvInertiaDiagLocal":"None","Restitution":0,"ApplyHeadRotation":0,"Callback":"HpStickCollisionCallback"}],
 [7, {"_t":"CollisionConfig","_id":7,"IsTrigger":0,"InvInertiaDiagLocal":"None","Restitution":0,"ApplyHeadRotation":0,"Callback":"GrenadeCollisionCallback"}],
 [8, {"_t":"CollisionConfig","_id":8,"IsTrigger":1,"InvInertiaDiagLocal":"None","Restitution":0,"ApplyHeadRotation":0,"Callback":"EMPCollisionCallback"}],
